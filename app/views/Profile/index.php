@@ -6,7 +6,7 @@
 </head>
 <body>
 	<div class='container'>
-		<h1>User profile</h1>
+		<h1><?=__('User profile')?></h1>
 		<dl>
 		<dt>First name:</dt>
 		<dd><?= $data->first_name ?></dd>
