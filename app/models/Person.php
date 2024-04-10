@@ -1,15 +1,17 @@
 <?php
 namespace app\models;
 
-class Person{
+class Person
+{
 	public $first_name;
 	public $last_name;
 	public $email;
 	public $weekly_flyer;
 	public $mailing_list;
 
-	public function __construct($object = null){
-		if($object == null)
+	public function __construct($object = null)
+	{
+		if ($object == null)
 			return;// avoid this running when there is no parameter....
 		$this->first_name = $object->first_name;
 		$this->last_name = $object->last_name;
@@ -20,7 +22,8 @@ class Person{
 
 
 	/* insert the record in the data file */
-	public function insert(){
+	public function insert()
+	{
 		$filename = 'resources/People.txt';
 		//open a file for writing (append)
 		$file_handle = fopen($filename, 'a'); //a is for append, w for writing from the start
@@ -36,7 +39,8 @@ class Person{
 	}
 
 
-	public function update(){
+	public function update()
+	{
 		//read the entire file
 		$filename = "resources/People.txt";
 		//get the contents of the file in this array (line by line)
@@ -49,10 +53,10 @@ class Person{
 		//start at the first line
 		$counter = 0;
 		$size = count($file_contents);
-		while($counter < $size){
-			if($this->id != $counter){
+		while ($counter < $size) {
+			if ($this->id != $counter) {
 				fwrite($file_handle, $file_contents[$counter]);
-			}else{
+			} else {
 				//add the modified record
 				//format the data and write to the file
 				unset($this->id);
@@ -60,13 +64,14 @@ class Person{
 				fwrite($file_handle, $data . "\n");//place a single record on each line
 			}
 			$counter++;//next record
-		}		
+		}
 		flock($file_handle, LOCK_UN);
 		fclose($file_handle);
 
 	}
 
-	public static function getAll(){
+	public static function getAll()
+	{
 		//read the file and return the collection of people (all Person records)
 		$filename = 'resources/People.txt';
 		$records = file($filename);
@@ -81,7 +86,8 @@ class Person{
 	}
 
 	//delete a record at line $id in the file
-	public static function delete($id){
+	public static function delete($id)
+	{
 		//read the entire file
 		$filename = "resources/People.txt";
 		//get the contents of the file in this array (line by line)
@@ -94,17 +100,18 @@ class Person{
 		//start at the first line
 		$counter = 0;
 		$size = count($file_contents);
-		while($counter < $size){
-			if($id != $counter){
+		while ($counter < $size) {
+			if ($id != $counter) {
 				fwrite($file_handle, $file_contents[$counter]);
 			}//else it is skipped
 			$counter++;//next record
-		}		
+		}
 		flock($file_handle, LOCK_UN);
 		fclose($file_handle);
 	}
 
-	public static function get($id){
+	public static function get($id)
+	{
 		//read the file and return the collection of people (all Person records)
 		$filename = 'resources/People.txt';
 		$records = file($filename);
