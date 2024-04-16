@@ -1,37 +1,49 @@
 <?php
+
 namespace app\models;
 
 use PDO;
 
 class Booking extends \app\core\Model
 {
-    public $booking_id;
-    public $user_id;
+    public $bookingID;
+    public $customerID;
+    public $serviceID;
+    public $bookingDate;
+    public $bookingTime;
+    public $status;
+    public $frequency;
 
-
-    //insert
+    // Insert new booking
     public function insert()
     {
-        //define the SQL query
-        $SQL = 'INSERT INTO booking (booking_id, user_id) VALUES (:booking_id, :user_id)';
-        //prepare the statement
+        $SQL = 'INSERT INTO Booking (bookingID, customerID, serviceID, bookingDate, bookingTime, Status, Frequency)
+                VALUES (:bookingID, :customerID, :serviceID, :bookingDate, :bookingTime, :status, :frequency)';
+        
         $STMT = self::$_conn->prepare($SQL);
-        //execute
+        
         $data = [
-            'booking_id' => $this->booking_id,
-            'user_id' => $this->user_id
+            'bookingID' => $this->bookingID,
+            'customerID' => $this->customerID,
+            'serviceID' => $this->serviceID,
+            'bookingDate' => $this->bookingDate,
+            'bookingTime' => $this->bookingTime,
+            'status' => $this->status,
+            'frequency' => $this->frequency
         ];
+        
         $STMT->execute($data);
     }
 
-    //delete
+    // Delete booking
     public function delete()
     {
-        $SQL = 'DELETE FROM profile WHERE booking_id = :booking_id';
+        $SQL = 'DELETE FROM Booking WHERE bookingID = :bookingID';
         $STMT = self::$_conn->prepare($SQL);
-        $STMT->execute(
-            ['booking_id' => $this->booking_id]
-        );
+        $STMT->execute(['bookingID' => $this->bookingID]);
     }
 
+    // Additional methods can be added here for other CRUD operations
 }
+
+?>
