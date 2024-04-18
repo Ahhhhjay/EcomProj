@@ -59,6 +59,25 @@ class BookingController extends Controller
     }
 
     // Additional controller methods for other actions can be added here
+    public function getAll()
+    {
+        try {
+            // Instantiate Booking model
+            $booking = new Booking();
+
+            // Call method to get all bookings
+            $allBookings = $booking->getAllBookings();
+
+            // Here, you can do something with $allBookings, like passing it to a view for display
+            // Or you can directly send a JSON response, etc.
+
+            // For example, if you want to pass it to a view:
+            $this->view('booking/all', ['bookings' => $allBookings]);
+        } catch (\Exception $e) {
+            // Error handling
+            header('Location: /booking/error');
+        }
+    }
 }
 
 ?>

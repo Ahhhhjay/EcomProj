@@ -30,6 +30,40 @@ class Customer extends \app\core\Model
         $STMT->execute($data);
     }
 
+    public function getAllCustomers()
+    {
+        $SQL = 'SELECT * FROM Customer';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute();
+        return $STMT->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getCustomer($customerID)
+    {
+        $SQL = 'SELECT * FROM Customer WHERE customerID = :customerID';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute(['customerID' => $customerID]);
+        return $STMT->fetch(PDO::FETCH_ASSOC);
+    }
+
+    // Update
+    public function update()
+    {
+        $SQL = 'UPDATE Customer SET firstName = :firstName, lastName = :lastName, Email = :Email, 
+                contactNumber = :contactNumber, passwordHash = :passwordHash, Address = :Address 
+                WHERE customerID = :customerID';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute([
+            'customerID' => $this->customerID,
+            'firstName' => $this->firstName,
+            'lastName' => $this->lastName,
+            'Email' => $this->Email,
+            'contactNumber' => $this->contactNumber,
+            'passwordHash' => $this->passwordHash,
+            'Address' => $this->Address
+        ]);
+    }
+
     // Delete
     public function delete()
     {

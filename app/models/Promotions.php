@@ -13,7 +13,7 @@ class Promotions extends \app\core\Model
 
     public function insert() {
         $SQL = 'INSERT INTO Promotions (promotionID, description, discountRate, validFrom, validTo) VALUES (:promotionID, :description, :discountRate, :validFrom, :validTo)';
-        $STMT = self::$_connection->prepare($SQL);
+        $STMT = self::$_conn->prepare($SQL);
         $data = [
             'promotionID' => $this->promotionID,
             'description' => $this->description,
@@ -26,7 +26,7 @@ class Promotions extends \app\core\Model
 
     public function delete() {
         $SQL = 'DELETE FROM Promotions WHERE promotionID = :promotionID';
-        $STMT = self::$_connection->prepare($SQL);
+        $STMT = self::$_conn->prepare($SQL);
         $STMT->execute(['promotionID' => $this->promotionID]);
     }
 }
