@@ -16,10 +16,9 @@ class Customer extends \app\core\Model
     // Insert
     public function insert()
     {
-        $SQL = 'INSERT INTO Customer (customerID, firstName, lastName, Email, contactNumber, passwordHash, Address) VALUES (:customerID, :firstName, :lastName, :Email, :contactNumber, :passwordHash, :Address)';
+        $SQL = 'INSERT INTO Customer(firstName, lastName, Email, contactNumber, passwordHash, Address) VALUES (:firstName, :lastName, :Email, :contactNumber, :passwordHash, :Address)';
         $STMT = self::$_conn->prepare($SQL);
         $data = [
-            'customerID' => $this->customerID,
             'firstName' => $this->firstName,
             'lastName' => $this->lastName,
             'Email' => $this->Email,
@@ -30,7 +29,7 @@ class Customer extends \app\core\Model
         $STMT->execute($data);
     }
 
-    public function getAllCustomers()
+    public function getAll()
     {
         $SQL = 'SELECT * FROM Customer';
         $STMT = self::$_conn->prepare($SQL);
@@ -38,12 +37,21 @@ class Customer extends \app\core\Model
         return $STMT->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getCustomer($customerID)
+    public function getById($customerID)
     {
         $SQL = 'SELECT * FROM Customer WHERE customerID = :customerID';
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute(['customerID' => $customerID]);
         return $STMT->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function get($Email)
+    {
+        $SQL = 'SELECT * FROM Customer WHERE Email = :Email';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute(['Email' => $Email]);
+        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Customer');//choose the type of return from fetch
+        return $STMT->fetch();
     }
 
     // Update

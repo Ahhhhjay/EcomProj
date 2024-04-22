@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 11, 2024 at 04:24 AM
+-- Generation Time: Apr 22, 2024 at 08:52 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,8 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `MKCleaning`
 --
-CREATE DATABASE IF NOT EXISTS `MKCleaning` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `MKCleaning`;
+
 -- --------------------------------------------------------
 
 --
@@ -51,7 +50,7 @@ CREATE TABLE `Customer` (
   `Email` varchar(255) NOT NULL,
   `contactNumber` varchar(20) NOT NULL,
   `passwordHash` varchar(255) NOT NULL,
-  `Address` int(11) NOT NULL
+  `Address` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -203,14 +202,14 @@ ALTER TABLE `Service`
 -- Constraints for table `Booking`
 --
 ALTER TABLE `Booking`
-  ADD CONSTRAINT `bookingCustomerIDKey` FOREIGN KEY (`customerID`) REFERENCES `Customer` (`CustomerID`),
+  ADD CONSTRAINT `bookingCustomerIDKey` FOREIGN KEY (`customerID`) REFERENCES `Customer` (`customerID`),
   ADD CONSTRAINT `bookingServiceIDKey` FOREIGN KEY (`serviceID`) REFERENCES `Service` (`serviceID`);
 
 --
 -- Constraints for table `Payment`
 --
 ALTER TABLE `Payment`
-  ADD CONSTRAINT `paymentCustomerIDKey` FOREIGN KEY (`customerID`) REFERENCES `Customer` (`CustomerID`);
+  ADD CONSTRAINT `paymentCustomerIDKey` FOREIGN KEY (`customerID`) REFERENCES `Customer` (`customerID`);
 
 --
 -- Constraints for table `Reviews`

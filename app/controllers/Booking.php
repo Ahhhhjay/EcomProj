@@ -16,7 +16,6 @@ class BookingController extends Controller
     public function create()
     {
         $booking = new Booking();
-        $booking->bookingID = $_POST['bookingID'] ?? null;
         $booking->customerID = $_POST['customerID'];
         $booking->serviceID = $_POST['serviceID'];
         $booking->bookingDate = $_POST['bookingDate'];
