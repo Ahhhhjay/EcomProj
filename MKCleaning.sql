@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 22, 2024 at 08:52 PM
+-- Generation Time: Apr 22, 2024 at 09:47 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -52,6 +52,13 @@ CREATE TABLE `Customer` (
   `passwordHash` varchar(255) NOT NULL,
   `Address` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `Customer`
+--
+
+INSERT INTO `Customer` (`customerID`, `firstName`, `lastName`, `Email`, `contactNumber`, `passwordHash`, `Address`) VALUES
+(1, 'Rolly', 'Gayo', 'rjgayo@email.com', '514-123-4567', '$2y$10$8NpAlMD0ph/9zfu3of6t8.ZbZlOBOYnnHdu5D81/gyQktjJgZCR.q', '5555 Avenue Coolbrook');
 
 -- --------------------------------------------------------
 
@@ -107,7 +114,6 @@ CREATE TABLE `Service` (
   `description` text NOT NULL,
   `basePrice` decimal(10,2) NOT NULL,
   `ratePerSquareFoot` decimal(10,4) DEFAULT NULL,
-  `travelSurcharge` decimal(10,2) DEFAULT NULL,
   `Category` enum('Residential','Commercial') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -168,7 +174,7 @@ ALTER TABLE `Booking`
 -- AUTO_INCREMENT for table `Customer`
 --
 ALTER TABLE `Customer`
-  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `Payment`
