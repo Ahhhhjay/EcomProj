@@ -11,7 +11,11 @@ class Model
 	public function __construct()
 	{
 		$host = 'localhost';
+<<<<<<< HEAD
 		$dbname = 'MKCleaning';
+=======
+		$dbname = 'MKCleaning'; 
+>>>>>>> 4e3344eaea115059cd5e7d4c3877a29f15ace499
 		$user = 'root';
 		$pass = '';
 		try { # MySQL with PDO_MYSQL

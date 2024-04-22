@@ -8,10 +8,10 @@
 	<div class='container'>
 		<form method='post' action=''>
 			<div class="form-group">
-				<label>Username:<input type="text" class="form-control" name="username" placeholder="Jon" /></label>
+				<label>Email:<input type="text" class="form-control" name="Email" placeholder="Enter your email" /></label>
 			</div>
 			<div class="form-group">
-				<label>Password:<input type="password" class="form-control" name="password" placeholder="password" /></label>
+				<label>Password:<input type="password" class="form-control" name="passwordHash" placeholder="Enter your password" /></label>
 			</div>
 
 			<div class="form-group">
