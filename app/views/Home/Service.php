@@ -109,7 +109,7 @@
             <h1>Book Your Cleaning Service</h1>
             <form action="/submit-your-booking" method="post">
                 <label for="Description">Description of the type of cleaning:</label>
-                <input type="text" id="Description" name="Description" required>
+                <input type="text" id="Description" name="Description" required />
                 <br>
                 <label for="type">The type of residence:</label>
                 <br>
