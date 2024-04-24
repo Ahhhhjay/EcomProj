@@ -16,7 +16,6 @@ class ReviewsController extends Controller
     public function create()
     {
         $review = new Reviews();
-        $review->reviewID = $_POST['reviewID'] ?? null;
         $review->bookingID = $_POST['bookingID'];
         $review->customerID = $_POST['customerID'];
         $review->rating = $_POST['rating'];
