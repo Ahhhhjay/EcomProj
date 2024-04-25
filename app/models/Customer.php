@@ -42,7 +42,8 @@ class Customer extends \app\core\Model
         $SQL = 'SELECT * FROM Customer WHERE customerID = :customerID';
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute(['customerID' => $customerID]);
-        return $STMT->fetch(PDO::FETCH_ASSOC);
+        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Customer');//choose the type of return from fetch
+        return $STMT->fetch();//fetch
     }
 
     public function get($Email)

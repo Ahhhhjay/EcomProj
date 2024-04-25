@@ -14,4 +14,8 @@ class Home extends \app\core\Controller {
 	public function complete(){
 		$this->view('Home/Complete');
 	}
+
+	public function profile(){
+		$this->view('Customer/update');
+	}
 }

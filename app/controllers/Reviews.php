@@ -2,20 +2,20 @@
 
 namespace app\controllers;
 
-use app\models\Reviews;
-use app\core\Controller;
+
+
 
 /**
  * ReviewsController manages actions related to customer reviews.
  */
-class ReviewsController extends Controller
+class Reviews extends app\core\Controller
 {
     /**
      * Creates a new review from POST data.
      */
     public function create()
     {
-        $review = new Reviews();
+        $review =  new \app\models\Reviews();
         $review->bookingID = $_POST['bookingID'];
         $review->customerID = $_POST['customerID'];
         $review->rating = $_POST['rating'];
@@ -39,7 +39,7 @@ class ReviewsController extends Controller
     {
         $reviewID = $_POST['reviewID'] ?? null;
         if ($reviewID) {
-            $review = new Reviews();
+            $review = new \app\models\Reviews();
             $review->reviewID = $reviewID;
 
             try {

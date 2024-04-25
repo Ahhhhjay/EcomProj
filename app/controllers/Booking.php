@@ -2,13 +2,11 @@
 
 namespace app\controllers;
 
-use app\models\Booking;
-use app\core\Controller;
 
 /**
  * BookingController handles the web requests related to bookings.
  */
-class BookingController extends Controller
+class Booking extends app\core\Controller
 {
     /**
      * Creates a new booking with provided data.

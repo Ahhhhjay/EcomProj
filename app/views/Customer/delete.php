@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Profile - CleanIt Services</title>
+    <title>Delete Profile - CleanIt Services</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         body {
@@ -33,20 +33,19 @@
             width: 100%;
             max-width: 500px;
         }
-        label {
-            display: block;
-            margin-top: 10px;
+        dl {
+            margin-top: 20px;
+        }
+        dt {
             color: #555;
         }
-        input, select {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
+        dd {
+            margin: 0 0 20px 0;
+            color: #666;
         }
         input[type="submit"] {
+            width: auto;
+            padding: 10px 20px;
             background-color: #89CFF0;
             color: white;
             border: none;
@@ -59,8 +58,7 @@
         a {
             color: #89CFF0;
             text-decoration: none;
-            display: block;
-            margin-top: 15px;
+            margin-left: 10px;
         }
         footer {
             background-color: #89CFF0;
@@ -75,39 +73,24 @@
 </head>
 <body>
     <header>
-        <h1>CleanIt Services - Update Profile</h1>
+        <h1>CleanIt - Profile Management</h1>
     </header>
     <main>
         <form method="post" action="">
-<div class="form-group">
-		<label>First Name
-		<input type="text" class="form-control" name="firstName" placeholder="Enter your First Name" value="<?= htmlspecialchars($data->firstName) ?>" required>
-		</label>
-		<label>Last Name
-		<input type="text" class="form-control" name="lastName" placeholder="Enter your Last Name" value="<?= htmlspecialchars($data->lastName) ?>" required>
-		</label>
-
-    <label>Email:
-        <input type="email" class="form-control" name="Email" placeholder="Enter your email" value="<?= htmlspecialchars($data->Email) ?>" required>
-    </label>
-</div>
-<div class="form-group">
-    <label>Contact Number:
-        <input type="tel" class="form-control" name="contactNumber" placeholder="Enter your contact number" value="<?= htmlspecialchars($data->contactNumber) ?>" required>
-    </label>
-</div>
-<div class="form-group">
-    <label>Address:
-        <input type="text" class="form-control" name="Address" placeholder="Enter your address" value="<?= htmlspecialchars($data->Address) ?>" required>
-    </label>
-</div>
-<div class="form-group">
-    <label>Password (leave blank if you do not wish to change it):
-        <input type="password" class="form-control" name="passwordHash" placeholder="Enter new password">
-    </label>
-</div>
-<input type="submit" name="update" value="Update">
-
+            <h2>User profile</h2>
+            <p>Do you want to proceed with the deletion of your profile?</p>
+            <dl>
+            <dt>First name:</dt>
+            <dd><?= $data->firstName?></dd>
+            <dt>Last name:</dt>
+            <dd><?= $data->lastName ?></dd>
+            <dt>Email:</dt>
+            <dd><?= $data->Email ?></dd>
+            <dt>Adress:</dt>
+            <dd><?= $data->Address ?></dd>
+            </dl>
+            <input type="submit" name="action" value="Delete">
+            <a href='/Home/index'>Cancel</a>
         </form>
     </main>
     <footer>

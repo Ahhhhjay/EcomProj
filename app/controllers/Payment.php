@@ -2,34 +2,33 @@
 
 namespace app\controllers;
 
-use app\models\Payment;
-use app\core\Controller;
+
 
 /**
  * PaymentController manages actions related to payment operations.
  */
-class PaymentController extends Controller
+class Payment extends app\core\Controller
 {
     /**
      * Creates a new payment from POST data.
      */
     public function create()
     {
-        $payment = new Payment();
-        $payment->paymentID = $_POST['paymentID'] ?? null;
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+        $payment = new \app\models\Payment();
         $payment->customerID = $_POST['customerID'];
         $payment->cardNumber = $_POST['cardNumber'];
         $payment->expirationDate = $_POST['expirationDate'];
         $payment->billingAddress = $_POST['billingAddress'];
-
-        try {
-            $payment->insert();
+         $payment->insert();
             // Redirect to a success page or send a success response
-            header('Location: /payment/success');
-        } catch (\Exception $e) {
-            // Handle errors and potentially log them, redirect to an error page
-            header('Location: /payment/error');
+            header('Location: /Payment/success');
+        }else{
+            $this->view('');
         }
+       
+      
     }
 
     /**
@@ -39,7 +38,7 @@ class PaymentController extends Controller
     {
         $paymentID = $_POST['paymentID'] ?? null;
         if ($paymentID) {
-            $payment = new Payment();
+            $payment = new \app\models\Payment();
             $payment->paymentID = $paymentID;
 
             try {

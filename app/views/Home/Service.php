@@ -103,6 +103,7 @@
         <a href="#about-us">About Us</a>
         <a href="#promotions">Promotions</a>
         <a href="#reviews">Leave a Review</a>
+        <a href="/Customer/index">My Profile</a>
     </nav>
     <main>
         <div class="form-section">

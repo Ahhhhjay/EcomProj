@@ -33,3 +33,6 @@ $this->addRoute('Example/count','Example,count');
 
 $this->addRoute('Customer/register' , 'Customer,register');
 $this->addRoute('Customer/login' , 'Customer,login');
+$this->addRoute('Customer/update' , 'Customer,update');
+$this->addRoute('Customer/index' , 'Customer,index');
+$this->addRoute('Customer/delete' , 'Customer,delete');

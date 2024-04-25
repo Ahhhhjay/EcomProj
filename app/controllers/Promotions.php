@@ -2,20 +2,20 @@
 
 namespace app\controllers;
 
-use app\models\Promotions;
-use app\core\Controller;
+
+
 
 /**
  * PromotionsController manages actions related to promotional operations.
  */
-class PromotionsController extends Controller
+class Promotions extends app\core\Controller
 {
     /**
      * Creates a new promotion from POST data.
      */
     public function create()
     {
-        $promotion = new Promotions();
+        $promotion = new \app\models\Promotions();
         $promotion->promotionID = $_POST['promotionID'] ?? null;
         $promotion->description = $_POST['description'];
         $promotion->discountRate = $_POST['discountRate'];
@@ -39,7 +39,7 @@ class PromotionsController extends Controller
     {
         $promotionID = $_POST['promotionID'] ?? null;
         if ($promotionID) {
-            $promotion = new Promotions();
+            $promotion =  new \app\models\Promotions();
             $promotion->promotionID = $promotionID;
 
             try {

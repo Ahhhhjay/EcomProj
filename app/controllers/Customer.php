@@ -10,6 +10,34 @@ class Customer extends \app\core\Controller
     /**
      * Creates a new customer from POST data.
      */
+
+
+     public function index()
+     {
+        //  $customer = new \app\models\Customer();
+        //  $customer = $customer->getById($_SESSION['customerID']);
+         if (!isset($_SESSION['customerID'])) {
+            // Redirect to login page if not logged in.
+            header('Location: /Customer/login');
+            exit;
+        }
+
+        // Get customer data from the model.
+        $customerModel = new \app\models\Customer();
+        $customer = $customerModel->getById($_SESSION['customerID']);
+
+        if (!$customer) {
+            // If no customer is found, handle the error.
+            // This could redirect to an error page or handle differently.
+            header('Location: /Customer/error'); // Assuming there's an error route.
+            exit;
+        }
+
+        // Render the profile view with customer data.
+        $this->view('Customer/index', $customer);
+    }
+        
+     
     public function register()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -58,24 +86,53 @@ class Customer extends \app\core\Controller
      */
     public function delete()
     {
-        $customerID = $_POST['customerID'] ?? null;
-        if ($customerID) {
-            $customer = new \app\models\Customer();
-            $customer->customerID = $customerID;
+        
+        $customer = new \app\models\Customer();
+        $customer = $customer->getById($_SESSION['customerID']);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+           
 
-            try {
+           
                 $customer->delete();
-                // Redirect or respond after successful deletion
-                header('Location: /customer/deleted');
-            } catch (\Exception $e) {
-                // Error handling
-                header('Location: /customer/error');
-            }
+                unset($_SESSION['customerID']);
+                header('Location:/Customer/index');
+           
         } else {
-            // Error handling for no customer ID provided
-            header('Location: /customer/error');
+            
+            $this->view('Customer/delete', $customer);
         }
     }
 
+   
     // Additional controller methods can be added here for other operations like updating, retrieving, or listing customers
+    public function update()
+	{
+        if (!isset($_SESSION['customerID'])) {
+            header('Location: /Customer/login');
+            exit;
+        }
+    
+        $customerModel = new \app\models\Customer();
+        $customer = $customerModel->getById($_SESSION['customerID']);
+    
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $customer->firstName = $_POST['firstName']; 
+            $customer->lastName = $_POST['lastName']; 
+            $customer->Email = $_POST['Email'];
+            $customer->contactNumber = $_POST['contactNumber'];
+            $customer->Address = $_POST['Address'];
+    
+            // Update the password only if a new one was provided
+            if (!empty($_POST['passwordHash'])) {
+                $customer->passwordHash = password_hash($_POST['passwordHash'], PASSWORD_DEFAULT);
+            }
+    
+            $customer->update();
+            header('Location: /Customer/index'); // Redirect to a profile page or other appropriate location
+            exit;
+        } else {
+            $this->view('Customer/update',$customer);
+        }
+	}
+
 }
