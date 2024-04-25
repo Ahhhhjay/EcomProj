@@ -32,6 +32,7 @@ class Booking extends \app\core\Model
         ];
         
         $STMT->execute($data);
+        $this->bookingID = self::$_conn->lastInsertId();
     }
     //READ
     public function getAllBookings()
@@ -54,6 +55,26 @@ class Booking extends \app\core\Model
 		$STMT->setFetchMode(PDO::FETCH_CLASS,'app\models\booking');//set the type of data returned by fetches
 		return $STMT->fetch();//return (what should be) the only record
 	}
+
+    // public function getAllForCustomer($customerID) {
+    //     $SQL = 'SELECT * FROM Booking WHERE customerID = :customerID';
+    //     $STMT = self::$_conn->prepare($SQL);
+    //     $STMT->execute(['customerID' => $customerID]);
+    //     return $STMT->fetchAll(PDO::FETCH_CLASS, 'app\models\Booking');
+    // }
+
+
+    public function getDetailedBooking($bookingID) {
+        $SQL = 'SELECT Booking.*, Service.description, Service.Category, Customer.Address
+                FROM Booking
+                INNER JOIN Service ON Booking.serviceID = Service.serviceID
+                INNER JOIN Customer ON Booking.customerID = Customer.customerID
+                WHERE Booking.bookingID = :bookingID';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute(['bookingID' => $bookingID]);
+        $STMT->setFetchMode(PDO::FETCH_CLASS,'app\models\Booking');
+        return $STMT->fetch();
+    }
 //Update
 // Update booking
 public function update()
