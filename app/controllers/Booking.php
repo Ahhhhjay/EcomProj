@@ -111,7 +111,7 @@ class Booking extends \app\core\Controller
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $detailedBooking->bookingDate = $_POST['bookingDate']; 
             $detailedBooking->bookingTime = $_POST['bookingTime']; 
-            $detailedBooking->Frequency = $_POST['Frequency'];
+            $detailedBooking->frequency = $_POST['Frequency'];
             $detailedBooking->status = 'Scheduled';
           
     

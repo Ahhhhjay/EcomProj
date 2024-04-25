@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 22, 2024 at 09:47 PM
+-- Generation Time: Apr 25, 2024 at 04:39 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,10 +20,10 @@ SET time_zone = "+00:00";
 --
 -- Database: `MKCleaning`
 --
-CREATE DATABASE IF NOT EXISTS MKCleaning DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE MKCleaning;
--- --------------------------------------------------------
 
+-- --------------------------------------------------------
+CREATE DATABASE IF NOT EXISTS `MKCleaning` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `MKCleaning`;
 --
 -- Table structure for table `Booking`
 --
@@ -53,13 +53,6 @@ CREATE TABLE `Customer` (
   `passwordHash` varchar(255) NOT NULL,
   `Address` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `Customer`
---
-
-INSERT INTO `Customer` (`customerID`, `firstName`, `lastName`, `Email`, `contactNumber`, `passwordHash`, `Address`) VALUES
-(1, 'Rolly', 'Gayo', 'rjgayo@email.com', '514-123-4567', '$2y$10$8NpAlMD0ph/9zfu3of6t8.ZbZlOBOYnnHdu5D81/gyQktjJgZCR.q', '5555 Avenue Coolbrook');
 
 -- --------------------------------------------------------
 
@@ -169,13 +162,13 @@ ALTER TABLE `Service`
 -- AUTO_INCREMENT for table `Booking`
 --
 ALTER TABLE `Booking`
-  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `Customer`
 --
 ALTER TABLE `Customer`
-  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `Payment`
@@ -199,7 +192,7 @@ ALTER TABLE `Reviews`
 -- AUTO_INCREMENT for table `Service`
 --
 ALTER TABLE `Service`
-  MODIFY `serviceID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `serviceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -210,7 +203,7 @@ ALTER TABLE `Service`
 --
 ALTER TABLE `Booking`
   ADD CONSTRAINT `bookingCustomerIDKey` FOREIGN KEY (`customerID`) REFERENCES `Customer` (`customerID`),
-  ADD CONSTRAINT `bookingServiceIDKey` FOREIGN KEY (`serviceID`) REFERENCES `Service` (`serviceID`);
+  ADD CONSTRAINT `bookingServiceIDKey` FOREIGN KEY (`serviceID`) REFERENCES `Service` (`serviceID`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `Payment`

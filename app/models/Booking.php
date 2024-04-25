@@ -79,14 +79,14 @@ class Booking extends \app\core\Model
 // Update booking
 public function update()
 {
-    $SQL = 'UPDATE Booking SET bookingDate=:bookingDate, bookingTime=:bookingTime, Status=:status, Frequency=:frequency WHERE bookingID = :bookingID';
+    $SQL = 'UPDATE Booking SET bookingDate=:bookingDate, bookingTime=:bookingTime, Status=:status, Frequency=:Frequency WHERE bookingID = :bookingID';
     $STMT = self::$_conn->prepare($SQL);
     $STMT->execute([
         'bookingID' => $this->bookingID,
         'bookingDate' => $this->bookingDate,
         'bookingTime' => $this->bookingTime,
         'status' => $this->status,
-        'frequency' => $this->frequency
+        'Frequency' => $this->frequency
     ]);
 }
 
