@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 25, 2024 at 04:39 PM
+-- Generation Time: Apr 25, 2024 at 05:10 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,10 +20,10 @@ SET time_zone = "+00:00";
 --
 -- Database: `MKCleaning`
 --
-
--- --------------------------------------------------------
 CREATE DATABASE IF NOT EXISTS `MKCleaning` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `MKCleaning`;
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `Booking`
 --
@@ -31,11 +31,14 @@ USE `MKCleaning`;
 CREATE TABLE `Booking` (
   `bookingID` int(11) NOT NULL,
   `customerID` int(11) NOT NULL,
-  `serviceID` int(11) NOT NULL,
   `bookingDate` date NOT NULL,
   `bookingTime` time NOT NULL,
   `Status` enum('Scheduled','Completed','Cancelled') NOT NULL,
-  `Frequency` enum('One-time','Weekly','Bi-Weekly','Monthly') DEFAULT NULL
+  `Frequency` enum('One-time','Weekly','Bi-Weekly','Monthly') DEFAULT NULL,
+  `description` text NOT NULL,
+  `basePrice` int(4) NOT NULL,
+  `ratePerSquareFoot` decimal(10,2) NOT NULL,
+  `Category` enum('Residential','Commercial') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -53,6 +56,13 @@ CREATE TABLE `Customer` (
   `passwordHash` varchar(255) NOT NULL,
   `Address` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `Customer`
+--
+
+INSERT INTO `Customer` (`customerID`, `firstName`, `lastName`, `Email`, `contactNumber`, `passwordHash`, `Address`) VALUES
+(3, 'Adryan', 'Vera', 'adryannayrda2319@email.com', '514-123-1111', '$2y$10$S6.i9oV7gKOYadkCLHvXl.lEGYgZiAZ7w9KIr2Cz8h7/u6j8Jyu9S', '2000 Van Horne');
 
 -- --------------------------------------------------------
 
@@ -90,25 +100,10 @@ CREATE TABLE `Promotions` (
 
 CREATE TABLE `Reviews` (
   `reviewID` int(11) NOT NULL,
-  `bookingID` int(11) NOT NULL,
   `customerID` int(11) NOT NULL,
   `rating` int(11) NOT NULL,
   `text` text NOT NULL,
   `datePosted` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Service`
---
-
-CREATE TABLE `Service` (
-  `serviceID` int(11) NOT NULL,
-  `description` text NOT NULL,
-  `basePrice` decimal(10,2) NOT NULL,
-  `ratePerSquareFoot` decimal(10,4) DEFAULT NULL,
-  `Category` enum('Residential','Commercial') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -120,8 +115,7 @@ CREATE TABLE `Service` (
 --
 ALTER TABLE `Booking`
   ADD PRIMARY KEY (`bookingID`),
-  ADD KEY `bookingCustomerIDKey` (`customerID`),
-  ADD KEY `bookingServiceIDKey` (`serviceID`);
+  ADD KEY `bookingCustomerIDKey` (`customerID`);
 
 --
 -- Indexes for table `Customer`
@@ -149,12 +143,6 @@ ALTER TABLE `Reviews`
   ADD PRIMARY KEY (`reviewID`);
 
 --
--- Indexes for table `Service`
---
-ALTER TABLE `Service`
-  ADD PRIMARY KEY (`serviceID`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -162,13 +150,13 @@ ALTER TABLE `Service`
 -- AUTO_INCREMENT for table `Booking`
 --
 ALTER TABLE `Booking`
-  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `Customer`
 --
 ALTER TABLE `Customer`
-  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `Payment`
@@ -189,12 +177,6 @@ ALTER TABLE `Reviews`
   MODIFY `reviewID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `Service`
---
-ALTER TABLE `Service`
-  MODIFY `serviceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- Constraints for dumped tables
 --
 
@@ -202,8 +184,7 @@ ALTER TABLE `Service`
 -- Constraints for table `Booking`
 --
 ALTER TABLE `Booking`
-  ADD CONSTRAINT `bookingCustomerIDKey` FOREIGN KEY (`customerID`) REFERENCES `Customer` (`customerID`),
-  ADD CONSTRAINT `bookingServiceIDKey` FOREIGN KEY (`serviceID`) REFERENCES `Service` (`serviceID`) ON DELETE CASCADE;
+  ADD CONSTRAINT `bookingCustomerIDKey` FOREIGN KEY (`customerID`) REFERENCES `Customer` (`customerID`);
 
 --
 -- Constraints for table `Payment`

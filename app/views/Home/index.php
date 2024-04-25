@@ -93,7 +93,7 @@
     </nav>
     <main>
         <h1>Welcome to MKCleaners MTL!</h1>
-        <a href="/Service/create" class="book-now">Book Now</a>
+        <a href="/Booking/create" class="book-now">Book Now</a>
         <section id="about-us">
             <h2>About Us</h2>
             <div class="about-description">

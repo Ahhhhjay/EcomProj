@@ -78,9 +78,7 @@
             box-sizing: border-box;
         }
 
-        input[type="radio"] {
-            margin-right: 5px;
-        }
+        
 
         input[type="submit"] {
             background-color: #89CFF0;
@@ -125,25 +123,8 @@
     </nav>
     <main>
         <div class="form-section">
-            <h1>Book Your Cleaning Service</h1>
             <form action="" method="post">
-                <label for="description">Description of the type of cleaning:</label>
-                <input type="text" id="description" name="description" required />
-                <br>
-                <label for="area">Enter area of residence (square feet):</label>
-                <input type="number" name="area" id="area" required>
-                <br>
-                <br>
-                <label for="category">The type of residence:</label>
-                <br>
-                <br>
-                <label for="commercial">Commercial</label>
-                <input type="radio" id="commercial" name="category" value="Commercial">
-                <!-- 250 -->
-                <label for="residential">Residential</label>
-                <input type="radio" id="residential" name="category" value="Residential" checked>
-                <!-- 100 -->
-                <br>
+                
                 <input type="submit" value="Continue">
             </form>
         </div>

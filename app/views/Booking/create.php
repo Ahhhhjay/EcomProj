@@ -70,8 +70,12 @@
             padding: 10px;
             text-align: center;
             position: absolute;
-            bottom: 0;
+            bottom: end;
             width: 100%;
+        }
+        
+        input[type="radio"] {
+            margin-right: 5px;
         }
     </style>
 </head>
@@ -82,6 +86,24 @@
     </header>
     <main>
         <form action="" method="post">
+            <h1>Book Your Cleaning Service</h1>
+            <label for="description">Description of the type of cleaning:</label>
+            <input type="text" id="description" name="description" required />
+            <br>
+            <label for="area">Enter area of residence (square feet):</label>
+            <input type="number" name="area" id="area" required>
+            <br>
+            <br>
+            <label for="category">The type of residence:</label>
+            <br>
+            <br>
+            <label for="commercial">Commercial</label>
+            <input type="radio" id="commercial" name="category" value="Commercial">
+            <!-- 250 -->
+            <label for="residential">Residential</label>
+            <input type="radio" id="residential" name="category" value="Residential" checked>
+            <!-- 100 -->
+            <br>
             <label for="bookingDate">Booking Date:</label>
             <input type="date" id="bookingDate" name="bookingDate" required>
 

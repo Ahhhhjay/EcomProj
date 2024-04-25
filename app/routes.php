@@ -34,8 +34,6 @@ $this->addRoute('Customer/update' , 'Customer,update');
 $this->addRoute('Customer/index' , 'Customer,index');
 $this->addRoute('Customer/delete' , 'Customer,delete');
 
-$this->addRoute('Service/create' , 'Service,create');
-
 $this->addRoute('Booking/create' , 'Booking,create');
 $this->addRoute('Booking/complete' , 'Booking,complete');
 $this->addRoute('Booking/delete' , 'Booking,delete');

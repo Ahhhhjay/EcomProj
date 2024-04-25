@@ -15,23 +15,25 @@ class Booking extends \app\core\Controller
     
     public function create()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (empty($_SESSION['serviceID'])) {
-                die('Service ID is required for booking.');
-            }
-            
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {            
             $booking = new \app\models\Booking();
             $booking->customerID = $_SESSION['customerID'];
-            $booking->serviceID = $_SESSION['serviceID'];
             $booking->bookingDate = $_POST['bookingDate'];
             $booking->bookingTime = $_POST['bookingTime'];
             $booking->status = "Scheduled";
             $booking->frequency = $_POST['frequency'] ?? null;
-
+            $booking->description = $_POST['description'];
+            $booking->category = $_POST['category'];
+            if ($booking->category == 'Commercial') {
+                $booking->basePrice = 250;
+                $booking->ratePerSquareFoot = 25.50 * $_POST['area'];
+            } else {
+                $booking->basePrice = 100;
+                $booking->ratePerSquareFoot = 15.75 * $_POST['area'];
+            }
             $booking->insert();
-            $_SESSION['bookingID'] = $booking->bookingID;
-            header('location:/Booking/complete');
-            
+            $_SESSION['bookingID']=$booking->bookingID;
+            header('location:/Booking/complete');            
         } else {
             $this->view('Booking/create');
         }
@@ -81,24 +83,11 @@ class Booking extends \app\core\Controller
     }
 
     public function complete() {
-     
-    
-
-       
-
-
-
-
         $bookingModel = new \app\models\Booking();
-        $detailedBooking = $bookingModel->getDetailedBooking($_SESSION['bookingID']);
-
+        $detailedBooking = $bookingModel->getForBooking($_SESSION['bookingID']);
 
         // Render the profile view with customer data.
         $this->view('Booking/complete', $detailedBooking);
-
-       
-        
-       
     }
 
     public function modify()

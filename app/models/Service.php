@@ -6,21 +6,15 @@ use PDO;
 class Service extends \app\core\Model
 {
     public $serviceID;
-    public $description;
-    public $basePrice;
-    public $ratePerSquareFoot;
-    public $category;
+    
 
     public function insert()
     {
-        $SQL = 'INSERT INTO Service(description, basePrice, ratePerSquareFoot, category) 
-                VALUES (:description, :basePrice, :ratePerSquareFoot, :category)';
+        $SQL = 'INSERT INTO Service() 
+                VALUES ()';
         $STMT = self::$_conn->prepare($SQL);
         $data = [
-            'description' => $this->description,
-            'basePrice' => $this->basePrice,
-            'ratePerSquareFoot' => $this->ratePerSquareFoot,
-            'category' => $this->category
+            
         ];
         $STMT->execute($data);
         $this->serviceID = self::$_conn->lastInsertId(); // Get the last inserted ID and set it to serviceID

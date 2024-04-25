@@ -7,15 +7,7 @@ class Service extends \app\core\Controller
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $service = new \app\models\Service();
-            $service->description = $_POST['description'];
-            $service->category = $_POST['category'];
-            if ($service->category == 'Commercial') {
-                $service->basePrice = 250;
-                $service->ratePerSquareFoot = 100 * $_POST['area'];
-            } else {
-                $service->basePrice = 100;
-                $service->ratePerSquareFoot = 50 * $_POST['area'];
-            }
+            
 
             $service->insert();
 
