@@ -7,10 +7,6 @@ class Home extends \app\core\Controller {
 		$this->view('Home/index');
 	}
 
-	public function service(){
-		$this->view('Home/Service');
-	}
-
 	public function complete(){
 		$this->view('Home/Complete');
 	}

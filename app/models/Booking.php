@@ -17,13 +17,12 @@ class Booking extends \app\core\Model
     // Insert new booking
     public function insert()
     {
-        $SQL = 'INSERT INTO Booking (bookingID, customerID, serviceID, bookingDate, bookingTime, Status, Frequency)
-                VALUE (:bookingID, :customerID, :serviceID, :bookingDate, :bookingTime, :status, :frequency)';
+        $SQL = 'INSERT INTO Booking (customerID, serviceID, bookingDate, bookingTime, Status, Frequency)
+                VALUE (:customerID, :serviceID, :bookingDate, :bookingTime, :status, :frequency)';
         
         $STMT = self::$_conn->prepare($SQL);
         
         $data = [
-            'bookingID' => $this->bookingID,
             'customerID' => $this->customerID,
             'serviceID' => $this->serviceID,
             'bookingDate' => $this->bookingDate,

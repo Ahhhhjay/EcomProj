@@ -1,9 +1,6 @@
 <?php
 //defined a few routes "url"=>"controller,method"
 $this->addRoute('Home/index','Home,index');
-$this->addRoute('Home/Service','Home,Service');
-$this->addRoute('Home/Complete','Home,Complete');
-
 
 $this->addRoute('Person/register','Person,register');
 $this->addRoute('Person/complete_registration','Person,complete_registration');
@@ -36,3 +33,7 @@ $this->addRoute('Customer/login' , 'Customer,login');
 $this->addRoute('Customer/update' , 'Customer,update');
 $this->addRoute('Customer/index' , 'Customer,index');
 $this->addRoute('Customer/delete' , 'Customer,delete');
+
+$this->addRoute('Service/create' , 'Service,create');
+
+$this->addRoute('Booking/create' , 'Booking,create');

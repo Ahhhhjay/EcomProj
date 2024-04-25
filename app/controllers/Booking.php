@@ -6,28 +6,30 @@ namespace app\controllers;
 /**
  * BookingController handles the web requests related to bookings.
  */
-class Booking extends app\core\Controller
+class Booking extends \app\core\Controller
 {
     /**
      * Creates a new booking with provided data.
      */
     public function create()
     {
-        $booking = new Booking();
-        $booking->customerID = $_POST['customerID'];
-        $booking->serviceID = $_POST['serviceID'];
-        $booking->bookingDate = $_POST['bookingDate'];
-        $booking->bookingTime = $_POST['bookingTime'];
-        $booking->status = $_POST['status'];
-        $booking->frequency = $_POST['frequency'] ?? null;
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (empty($_SESSION['serviceID'])) {
+                die('Service ID is required for booking.');
+            }
+            
+            $booking = new \app\models\Booking();
+            $booking->customerID = $_SESSION['customerID'];
+            $booking->serviceID = $_SESSION['serviceID'];
+            $booking->bookingDate = $_POST['bookingDate'];
+            $booking->bookingTime = $_POST['bookingTime'];
+            $booking->status = "Scheduled";
+            $booking->frequency = $_POST['frequency'] ?? null;
 
-        try {
             $booking->insert();
-            // Redirect to a success page or send a success response
-            header('Location: /booking/success');
-        } catch (\Exception $e) {
-            // Handle errors, possibly log them and show an error message to the user
-            header('Location: /booking/error');
+            header('location:/Booking/complete');
+        } else {
+            $this->view('Booking/create');
         }
     }
 
