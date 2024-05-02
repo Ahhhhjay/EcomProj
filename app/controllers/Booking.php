@@ -46,7 +46,7 @@ class Booking extends \app\core\Controller
     {
          
         $booking = new \app\models\Booking();
-        $booking = $booking->getDetailedBooking($_SESSION['bookingID']);
+        $booking = $booking->getForBooking($_SESSION['bookingID']);
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
            
 

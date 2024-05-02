@@ -25,21 +25,24 @@ class TranslationReader implements TranslationReaderInterface
     /**
      * Loaders used for import.
      *
-     * @var array<string, LoaderInterface>
+     * @var array
      */
-    private array $loaders = [];
+    private $loaders = [];
 
     /**
      * Adds a loader to the translation extractor.
      *
      * @param string $format The format of the loader
      */
-    public function addLoader(string $format, LoaderInterface $loader): void
+    public function addLoader($format, LoaderInterface $loader)
     {
         $this->loaders[$format] = $loader;
     }
 
-    public function read(string $directory, MessageCatalogue $catalogue): void
+    /**
+     * {@inheritdoc}
+     */
+    public function read($directory, MessageCatalogue $catalogue)
     {
         if (!is_dir($directory)) {
             return;
