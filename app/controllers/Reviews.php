@@ -1,62 +1,76 @@
 <?php
-
 namespace app\controllers;
 
+class Reviews extends \app\core\Controller {
 
+    public function index() {
+        if (!isset($_SESSION['customerID'])) {
+            header('location:/Customer/register');
+            exit;
+        }
 
+        $reviewsModel = new \app\models\Reviews();
+        $reviews = $reviewsModel->getAllWithCustomerDetails();
+        $this->view('Reviews/index', ['reviews' => $reviews]);
+    }
 
-/**
- * ReviewsController manages actions related to customer reviews.
- */
-class Reviews extends app\core\Controller
-{
-    /**
-     * Creates a new review from POST data.
-     */
-    public function create()
-    {
-        $review =  new \app\models\Reviews();
-        $review->bookingID = $_POST['bookingID'];
-        $review->customerID = $_POST['customerID'];
-        $review->rating = $_POST['rating'];
-        $review->text = $_POST['text'];
-        $review->datePosted = $_POST['datePosted'];
+    public function create() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!isset($_SESSION['customerID'])) {
+                header('location:/Customer/register');
+                exit;
+            }
 
-        try {
+            $review = new \app\models\Reviews();
+            $review->customerID = $_SESSION['customerID'];
+            $review->rating = $_POST['rating'];
+            $review->text = $_POST['text'];
+
             $review->insert();
-            // Redirect to a success page or send a success response
-            header('Location: /review/success');
-        } catch (\Exception $e) {
-            // Handle errors and potentially log them, redirect to an error page
-            header('Location: /review/error');
+            header('location:/Reviews/index');
+            exit;
+        } else {
+            $this->view('Reviews/create');
         }
     }
 
-    /**
-     * Deletes an existing review.
-     */
-    public function delete()
+    public function edit($reviewID) {
+        if (!isset($_SESSION['user_id'])) {
+            header('location:/User/login');
+            exit;
+        }
+
+        $reviewsModel = new \app\models\Reviews();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $reviewsModel->reviewID = $reviewID;
+            $reviewsModel->customerID = $_SESSION['customerID'];
+            $reviewsModel->rating = $_POST['rating'];
+            $reviewsModel->text = $_POST['text'];
+            $reviewsModel->update();
+
+            header('location:/Reviews/index');
+            exit;
+        } else {
+            $review = $reviewsModel->getById($reviewID);
+            if ($review) {
+                $this->view('Reviews/edit', ['review' => $review]);
+            } else {
+                echo "Review not found.";
+                exit;
+            }
+        }
+    }
+
+    #[\app\filters\HasProfile]
+    public function delete($reviewID)
     {
-        $reviewID = $_POST['reviewID'] ?? null;
-        if ($reviewID) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $review = new \app\models\Reviews();
             $review->reviewID = $reviewID;
-
-            try {
-                $review->delete();
-                // Redirect or respond after successful deletion
-                header('Location: /review/deleted');
-            } catch (\Exception $e) {
-                // Error handling
-                header('Location: /review/error');
-            }
+            $review->delete();
+            header('location:/Reviews/index');
         } else {
-            // Error handling for no review ID provided
-            header('Location: /review/error');
+            $this->view('Reviews/delete', ['reviewID' => $reviewID]);
         }
     }
-
-    // Additional methods for other operations like updating or listing reviews could be added here
 }
-
-?>

@@ -2,11 +2,6 @@
 
 namespace app\controllers;
 
-
-
-/**
- * PaymentController manages actions related to payment operations.
- */
 class Payment extends app\core\Controller
 {
     /**

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 25, 2024 at 05:10 PM
+-- Generation Time: May 05, 2024 at 04:09 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,8 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `MKCleaning`
 --
-CREATE DATABASE IF NOT EXISTS `MKCleaning` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `MKCleaning`;
+
 -- --------------------------------------------------------
 
 --
@@ -62,7 +61,8 @@ CREATE TABLE `Customer` (
 --
 
 INSERT INTO `Customer` (`customerID`, `firstName`, `lastName`, `Email`, `contactNumber`, `passwordHash`, `Address`) VALUES
-(3, 'Adryan', 'Vera', 'adryannayrda2319@email.com', '514-123-1111', '$2y$10$S6.i9oV7gKOYadkCLHvXl.lEGYgZiAZ7w9KIr2Cz8h7/u6j8Jyu9S', '2000 Van Horne');
+(3, 'Adryan', 'Vera', 'adryannayrda2319@email.com', '514-123-1111', '$2y$10$S6.i9oV7gKOYadkCLHvXl.lEGYgZiAZ7w9KIr2Cz8h7/u6j8Jyu9S', '2000 Van Horne'),
+(4, 'Ralph', 'Bantillo', 'ralphbantillo@gmail.com', '438-922-1772', '$2y$10$wO1m4nxnCB53fEa7ptvVLOmv0Q6iIToIiIyUqUjPTn0k4z9XPbhwe', '4A Rue Hadley');
 
 -- --------------------------------------------------------
 
@@ -140,7 +140,8 @@ ALTER TABLE `Promotions`
 -- Indexes for table `Reviews`
 --
 ALTER TABLE `Reviews`
-  ADD PRIMARY KEY (`reviewID`);
+  ADD PRIMARY KEY (`reviewID`),
+  ADD KEY `reviewsCustomerIDKey` (`customerID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -156,7 +157,7 @@ ALTER TABLE `Booking`
 -- AUTO_INCREMENT for table `Customer`
 --
 ALTER TABLE `Customer`
-  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `Payment`
@@ -174,7 +175,7 @@ ALTER TABLE `Promotions`
 -- AUTO_INCREMENT for table `Reviews`
 --
 ALTER TABLE `Reviews`
-  MODIFY `reviewID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `reviewID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
@@ -196,7 +197,7 @@ ALTER TABLE `Payment`
 -- Constraints for table `Reviews`
 --
 ALTER TABLE `Reviews`
-  ADD CONSTRAINT `reviewsBookingIDKey` FOREIGN KEY (`reviewID`) REFERENCES `Booking` (`bookingID`);
+  ADD CONSTRAINT `reviewsCustomerIDKey` FOREIGN KEY (`customerID`) REFERENCES `Customer` (`customerID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -3,63 +3,54 @@ namespace app\models;
 
 use PDO;
 
-class Reviews extends \app\core\Model
-{
+class Reviews extends \app\core\Model {
     public $reviewID;
-    public $bookingID;
     public $customerID;
     public $rating;
     public $text;
     public $datePosted;
 
     public function insert() {
-        $SQL = 'INSERT INTO Reviews (reviewID, bookingID, customerID, rating, text, datePosted) VALUES (:reviewID, :bookingID, :customerID, :rating, :text, :datePosted)';
+        $SQL = 'INSERT INTO Reviews (customerID, rating, text) VALUES (:customerID, :rating, :text)';
         $STMT = self::$_conn->prepare($SQL);
-        $data = [
-            'reviewID' => $this->reviewID,
-            'bookingID' => $this->bookingID,
+        $STMT->execute([
             'customerID' => $this->customerID,
             'rating' => $this->rating,
-            'text' => $this->text,
-            'datePosted' => $this->datePosted
-        ];
-        $STMT->execute($data);
+            'text' => $this->text
+        ]);
+        $this->reviewID = self::$_conn->lastInsertId();
     }
-    public function getAllReviews()
-    {
-        $SQL = 'SELECT * FROM Reviews';
+
+    public function getAllWithCustomerDetails() {
+        $SQL = 'SELECT Reviews.*, Customer.firstName, Customer.lastName FROM Reviews 
+                INNER JOIN Customer ON Reviews.customerID = Customer.customerID 
+                ORDER BY Reviews.datePosted DESC';
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute();
-        return $STMT->fetchAll(PDO::FETCH_ASSOC);
+        return $STMT->fetchAll(PDO::FETCH_CLASS, 'app\models\Reviews');
     }
 
-    // Read (Retrieve a specific review by reviewID)
-    public function getReview($reviewID)
-    {
-        $SQL = 'SELECT * FROM Reviews WHERE reviewID = :reviewID';
+    public function getById($reviewID) {
+        $SQL = 'SELECT * FROM Reviews WHERE reviewID = :reviewID LIMIT 1';
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute(['reviewID' => $reviewID]);
-        return $STMT->fetch(PDO::FETCH_ASSOC);
+        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Reviews');
+        return $STMT->fetch();
     }
 
-    // Update
-    public function update()
-    {
-        $SQL = 'UPDATE Reviews SET rating = :rating, text = :text, datePosted = :datePosted 
-                WHERE reviewID = :reviewID';
+    public function update() {
+        $SQL = 'UPDATE Reviews SET rating = :rating, text = :text WHERE reviewID = :reviewID';
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute([
             'reviewID' => $this->reviewID,
-           'rating' => $this->rating,
-            'text' => $this->text,
-            'datePosted' => $this->datePosted
+            'rating' => $this->rating,
+            'text' => $this->text
         ]);
     }
 
-    public function delete() {
+    public function delete($reviewID) {
         $SQL = 'DELETE FROM Reviews WHERE reviewID = :reviewID';
         $STMT = self::$_conn->prepare($SQL);
-        $STMT->execute(['reviewID' => $this->reviewID]);
+        return $STMT->execute(['reviewID' => $reviewID]);
     }
 }
-?>

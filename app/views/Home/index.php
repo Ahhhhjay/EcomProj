@@ -63,7 +63,7 @@
             border-radius: 5px;
             font-weight: bold;
             box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            display: inline-block; /* Allows for margin and alignment */
+            display: inline-block; 
             margin-top: 20px;
         }
 
@@ -77,7 +77,6 @@
             margin-top: 20px;
             display: block;
         }
-
     </style>
 </head>
 <body>
@@ -88,7 +87,7 @@
         <a href="/Home/index">Home</a>
         <a href="#about-us">About Us</a>
         <a href="#promotions">Promotions</a>
-        <a href="#reviews">Leave a Review</a>
+        <a href="/Reviews/index">Leave a Review</a>
         <a href="/Customer/index">My Profile</a>
     </nav>
     <main>

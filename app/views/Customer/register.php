@@ -76,6 +76,7 @@
 <body>
     <header>
         <h1>CleanIt Services - Registration</h1>
+        <a href="/Home/index">Home</a>
     </header>
     <main>
         <form method="post" action="">

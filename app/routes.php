@@ -38,4 +38,10 @@ $this->addRoute('Booking/create' , 'Booking,create');
 $this->addRoute('Booking/complete' , 'Booking,complete');
 $this->addRoute('Booking/delete' , 'Booking,delete');
 $this->addRoute('Booking/modify' , 'Booking,modify');
+
+$this->addRoute('Reviews/index' , 'Reviews,index');
+$this->addRoute('Reviews/create' , 'Reviews,create');
+$this->addRoute('Reviews/delete{id}' , 'Reviews,delete');
+$this->addRoute('Reviews/edit{id}' , 'Reviews,edit');
+
 // $this->addRoute('Publication/modify/{publication_id}', 'Publication,modify');
