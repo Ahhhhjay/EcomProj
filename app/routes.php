@@ -41,7 +41,7 @@ $this->addRoute('Booking/modify' , 'Booking,modify');
 
 $this->addRoute('Reviews/index' , 'Reviews,index');
 $this->addRoute('Reviews/create' , 'Reviews,create');
-$this->addRoute('Reviews/delete{id}' , 'Reviews,delete');
-$this->addRoute('Reviews/edit{id}' , 'Reviews,edit');
+$this->addRoute('Reviews/delete/{reviewID}' , 'Reviews,delete');
+$this->addRoute('Reviews/edit/{reviewID}' , 'Reviews,edit');
 
 // $this->addRoute('Publication/modify/{publication_id}', 'Publication,modify');

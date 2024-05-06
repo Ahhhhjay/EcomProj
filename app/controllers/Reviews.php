@@ -35,7 +35,7 @@ class Reviews extends \app\core\Controller {
     }
 
     public function edit($reviewID) {
-        if (!isset($_SESSION['user_id'])) {
+        if (!isset($_SESSION['customerID'])) {
             header('location:/User/login');
             exit;
         }
@@ -43,34 +43,43 @@ class Reviews extends \app\core\Controller {
         $reviewsModel = new \app\models\Reviews();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $reviewsModel->reviewID = $reviewID;
-            $reviewsModel->customerID = $_SESSION['customerID'];
             $reviewsModel->rating = $_POST['rating'];
             $reviewsModel->text = $_POST['text'];
-            $reviewsModel->update();
 
-            header('location:/Reviews/index');
-            exit;
-        } else {
-            $review = $reviewsModel->getById($reviewID);
-            if ($review) {
-                $this->view('Reviews/edit', ['review' => $review]);
-            } else {
-                echo "Review not found.";
+            if ($reviewsModel->update()) {
+                $_SESSION['message'] = 'Review updated successfully.';
+                header('location:/Reviews/index');
                 exit;
+            } else {
+                $_SESSION['error'] = 'Failed to update the review.';
             }
         }
+
+        $review = $reviewsModel->getById($reviewID);
+        if (!$review) {
+            $_SESSION['error'] = 'Review not found.';
+            header('location:/Reviews/index');
+            exit;
+        }
+
+        $this->view('Reviews/edit', ['review' => $review]);
     }
 
-    #[\app\filters\HasProfile]
-    public function delete($reviewID)
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $review = new \app\models\Reviews();
-            $review->reviewID = $reviewID;
-            $review->delete();
-            header('location:/Reviews/index');
+    public function delete($reviewID) {
+        if (!isset($_SESSION['customerID'])) {
+            header('Location: /Customer/register');
+            exit;
+        }
+    
+        $reviewsModel = new \app\models\Reviews();
+        if ($reviewsModel->delete($reviewID)) {  // Correctly passing the reviewID
+            $_SESSION['message'] = 'Review deleted successfully.';
+            header('Location: /Reviews/index');
+            exit;
         } else {
-            $this->view('Reviews/delete', ['reviewID' => $reviewID]);
+            $_SESSION['error'] = 'Failed to delete review.';
+            header('Location: /Reviews/index');
+            exit;
         }
     }
 }

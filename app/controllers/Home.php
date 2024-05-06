@@ -3,9 +3,12 @@
 namespace app\controllers;
 
 class Home extends \app\core\Controller {
-	public function index(){
-		$this->view('Home/index');
+	public function index() {
+		$reviewsModel = new \app\models\Reviews();
+		$latestReviews = $reviewsModel->getLatestReviews();
+		$this->view('Home/index', ['latestReviews' => $latestReviews]);
 	}
+	
 
 	public function complete(){
 		$this->view('Home/Complete');

@@ -47,21 +47,13 @@
         h1, h2 {
             color: #2a587a;
         }
-        footer {
-            background-color: #89CFF0;
-            color: white;
-            padding: 20px 0;
+        footer h3 {
+        color: #ffffff; 
+        margin-bottom: 10px;
         }
-        footer h3, footer p, footer a {
-            margin: 0;
-            padding: 0;
-        }
-        footer div {
-            display: flex;
-            justify-content: space-around;
-            align-items: start;
-            flex-wrap: wrap;
-            padding: 0 10%;
+
+        footer p, footer a {
+            color: #d0e8f2;
         }
         .review-item {
             background-color: #ffffff;
@@ -109,19 +101,19 @@
         }
 
         .edit-button {
-            background-color: #4CAF50; /* Green background for edit */
+            background-color: #4CAF50;
         }
 
         .edit-button:hover {
-            background-color: #45a049; /* Slightly darker green on hover */
+            background-color: #45a049; 
         }
 
         .delete-button {
-            background-color: #f44336; /* Red background for delete */
+            background-color: #f44336; 
         }
 
         .delete-button:hover {
-            background-color: #da190b; /* Slightly darker red on hover */
+            background-color: #da190b;
         }
 
         .review-item {
@@ -150,7 +142,7 @@
     </nav>
     <main>
         <h1>Customer Reviews</h1>
-        <a href="/Reviews/create" class="create-review-button">Create Review</a>
+        <a href="/Reviews/create" class="create-review-button">Post a Review</a>
         <section id="reviews">
             <?php if (empty($data['reviews'])): ?>
                 <p>No reviews at the moment.</p>

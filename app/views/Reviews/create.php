@@ -44,6 +44,7 @@
         }
         h1, h2 {
             color: #2a587a;
+            text-align: center;
         }
         footer {
             background-color: #89CFF0;
@@ -103,26 +104,29 @@
         background-color: #66afe9;
     }
     .star-rating {
-        display: inline-flex; /* Use flexbox to align children horizontally */
-        justify-content: center; /* Center align the stars within the container */
-        direction: rtl;
-    }
+            display: inline-flex; 
+            justify-content: center; 
+            direction: rtl;
+        }
 
-    .star-rating input[type="radio"] {
-        display: none; /* Hide radio buttons */
-    }
+        .star-rating input[type="radio"] {
+            display: none; 
+        }
+        .star-rating label {
+            font-size: 30px; 
+            color: #ccc; /
+            cursor: pointer;
+            padding: 5px; 
+        }
 
-    .star-rating label {
-        font-size: 30px; /* Adjust the size of the stars */
-        color: #ccc; /* Color for unselected stars */
-        cursor: pointer;
-        padding: 5px; /* Add some space around the stars */
-    }
-
-    .star-rating input[type="radio"]:checked ~ label {
-        color: #f5b301; /* Color for selected stars */
-    }
-
+        .star-rating input[type="radio"]:checked ~ label {
+            color: #f5b301; 
+        }
+        
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            color: #f5b301;
+        }
     </style>
 </head>
 <body>
@@ -136,9 +140,8 @@
         <a href="/Reviews/index">Leave a Review</a>
         <a href="/Customer/index">My Profile</a>
     </nav>
-    <h1>Create a New Review</h1>
+    <h1>Post a New Review</h1>
     <main>
-            <h1>Create a Review</h1>
             <form action="" method="post" class="review-form">
             <input type="hidden" id="customerID" name="customerID" value="<?= $_SESSION['customerID'] ?>">
 

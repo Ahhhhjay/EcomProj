@@ -77,7 +77,34 @@
             margin-top: 20px;
             display: block;
         }
-    </style>
+        .star-rating .filled-star {
+            color: #f5b301;  /* Gold color for filled stars */
+            font-size: 20px;
+        }
+
+        .star-rating .empty-star {
+            color: #ccc;  /* Light gray for empty stars */
+            font-size: 20px;
+        }
+
+        .reviews-row {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            flex-wrap: wrap;  /* Ensures responsiveness */
+        }
+
+        .review-item {
+            background-color: #ffffff;
+            padding: 15px;
+            margin: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            flex: 1;  /* Ensures that each review item takes equal space */
+            text-align: left;
+            min-width: 250px;  /* Ensures that items do not become too narrow */
+            max-width: 30%;  /* Prevents items from being too wide on larger screens */
+        }
+            </style>
 </head>
 <body>
     <header>
@@ -101,8 +128,21 @@
             </div>
         </section>
         <section id="reviews">
-            <h2>Leave a Review</h2>
-            <p>Show like 3 reviews or sum.</p>
+            <h2>Reviews</h2>
+            <div class="reviews-row">
+                <?php foreach ($latestReviews as $review): ?>
+                <div class="review-item">
+                    <h4><?= htmlspecialchars($review->firstName) . ' ' . htmlspecialchars($review->lastName) ?></h4>
+                    <div class="star-rating">
+                        <?php for ($i = 1; $i <= 5; $i++): ?>
+                            <span class="<?= $i <= $review->rating ? 'filled-star' : 'empty-star' ?>">&#9733;</span>
+                        <?php endfor; ?>
+                    </div>
+                    <p><?= htmlspecialchars($review->text) ?></p>
+                    <small>Posted on: <?= date('M d, Y', strtotime($review->datePosted)) ?></small>
+                </div>
+            <?php endforeach; ?>
+            </div>
         </section>
     </main>
     <footer style="background-color: #89CFF0; color: white; padding: 20px 0; font-family: 'Roboto', sans-serif;">

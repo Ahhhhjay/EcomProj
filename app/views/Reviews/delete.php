@@ -12,22 +12,25 @@
             color: #333;
             background-color: #f4faff;
         }
-        header, footer {
+        header {
             background-color: #89CFF0;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
+            padding: 0; 
+        }
+        header img {
+            width: 100%;
+            height: 250px;
+            display: block; 
         }
         nav {
-            background-color: #ffffff;
+            background-color: #ffffff; 
             text-align: center;
-            padding: 10px 0;
+            padding: 10px 0; 
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         nav a {
             margin: 0 20px;
             text-decoration: none;
-            color: #89CFF0;
+            color: #89CFF0; 
             font-weight: 500;
             font-size: 20px;
         }
@@ -38,20 +41,28 @@
             padding: 40px 20px;
             text-align: center;
         }
+        footer h3 {
+        color: #ffffff; 
+        margin-bottom: 10px;
+        }
+
+        footer p, footer a {
+            color: #d0e8f2;
+        }
         .button {
             padding: 10px 20px;
             color: white;
-            background-color: #f44336; /* Red for delete action */
+            background-color: #f44336; 
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
             margin-top: 20px;
         }
         .button:hover {
-            background-color: #da190b; /* Darker red on hover */
+            background-color: #da190b; 
         }
         .cancel-button {
-            background-color: #ccc; /* Grey for cancel action */
+            background-color: #ccc; 
             margin-left: 20px;
         }
         .cancel-button:hover {
@@ -60,13 +71,15 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>MKCleaners MTL - Delete Review</h1>
+    <<header>
+        <img src="/Images/MKCleaningLogo.png" alt="CleanIt Logo">
     </header>
     <nav>
         <a href="/Home/index">Home</a>
-        <a href="/Reviews/index">Reviews</a>
-        <a href="/Customer/index">Profile</a>
+        <a href="#about-us">About Us</a>
+        <a href="#promotions">Promotions</a>
+        <a href="/Reviews/index">Leave a Review</a>
+        <a href="/Customer/index">My Profile</a>
     </nav>
     <main>
         <h2>Are you sure you want to delete this review?</h2>
@@ -75,8 +88,26 @@
             <a href="/Reviews/index" class="button cancel-button">Cancel</a>
         </form>
     </main>
-    <footer>
-        <p>© 2024 All Rights Reserved | MKCleaners MTL</p>
-    </footer>
+    <footer style="background-color: #89CFF0; color: white; padding: 20px 0; font-family: 'Roboto', sans-serif;">
+    <div style="display: flex; justify-content: space-around; align-items: start; flex-wrap: wrap; padding: 0 10%;">
+        <div style="flex: 1; min-width: 200px; margin: 10px;">
+            <h3>MKCleaners MTL</h3>
+            <p>Discover our cleaning company, where your home is your best friend! Enjoy a spotless home without lifting a finger!</p>
+        </div>
+        <div style="flex: 1; min-width: 250px; margin: 10px;">
+            <h3>Contact info.</h3>
+            <p> Phone Number: (514) 799-4881 <br>
+            Email: MKCleanersMTL@gmail.com <br>
+            Instagram: mkcleanersmtl</p>
+        </div>
+    </div>
+    <div style="text-align: center; padding-top: 20px;">
+        © 2024 All Rights Reserved | MKCleaning
+    </div>
+</footer>
 </body>
 </html>
+
+
+
+
