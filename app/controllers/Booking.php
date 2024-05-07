@@ -12,10 +12,10 @@ class Booking extends \app\core\Controller
      * Creates a new booking with provided data.
      */
 
-    
+
     public function create()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {            
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $booking = new \app\models\Booking();
             $booking->customerID = $_SESSION['customerID'];
             $booking->bookingDate = $_POST['bookingDate'];
@@ -32,8 +32,8 @@ class Booking extends \app\core\Controller
                 $booking->ratePerSquareFoot = 15.75 * $_POST['area'];
             }
             $booking->insert();
-            $_SESSION['bookingID']=$booking->bookingID;
-            header('location:/Booking/complete');            
+
+            header('Location: /Booking/complete?bookingID=' . $booking->bookingID);
         } else {
             $this->view('Booking/create');
         }
@@ -44,20 +44,17 @@ class Booking extends \app\core\Controller
      */
     public function delete()
     {
-         
-        $booking = new \app\models\Booking();
-        $booking = $booking->getForBooking($_SESSION['bookingID']);
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-           
+        $bookingID = $_GET['bookingID'] ?? null;
 
-           
-                $booking->delete();
-                unset($_SESSION['bookingID']);
-                header('Location:/Home/index');
-           
+        $bookingModel = new \app\models\Booking();
+        $booking = $bookingModel->getForBooking($bookingID);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $booking->delete();
+            unset($_SESSION['bookingID']);
+            header('Location:/Home/index');
+
         } else {
-            
-            $this->view('Booking/delete', $booking);
+            $this->view('Booking/delete', ['data' => $booking]);
         }
     }
 
@@ -82,38 +79,35 @@ class Booking extends \app\core\Controller
         }
     }
 
-    public function complete() {
+    public function complete()
+    {
+        $bookingID = $_GET['bookingID'] ?? null;  // Get bookingID from URL
+
         $bookingModel = new \app\models\Booking();
-        $detailedBooking = $bookingModel->getForBooking($_SESSION['bookingID']);
+        $detailedBooking = $bookingModel->getForBooking($bookingID);
 
         // Render the profile view with customer data.
         $this->view('Booking/complete', $detailedBooking);
     }
 
     public function modify()
-	{
-      
-        $bookingModel = new \app\models\Booking();
-        $detailedBooking = $bookingModel->getForBooking($_SESSION['bookingID']);
+    {
+        $bookingID = $_GET['bookingID'] ?? null;  // Get bookingID from URL
 
-    
+        $bookingModel = new \app\models\Booking();
+        $detailedBooking = $bookingModel->getForBooking($bookingID);
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $detailedBooking->bookingDate = $_POST['bookingDate']; 
-            $detailedBooking->bookingTime = $_POST['bookingTime']; 
+            $detailedBooking->bookingDate = $_POST['bookingDate'];
+            $detailedBooking->bookingTime = $_POST['bookingTime'];
             $detailedBooking->frequency = $_POST['Frequency'];
             $detailedBooking->status = 'Scheduled';
-          
-    
-    
             $detailedBooking->update();
+
             header('Location: /Booking/complete'); // Redirect to a profile page or other appropriate location
             exit;
         } else {
-            $this->view('Booking/modify',$detailedBooking);
+            $this->view('Booking/modify', ['data' => $detailedBooking]);  // Pass booking data to view
         }
-	}
-
-
+    }
 }
-
-?>

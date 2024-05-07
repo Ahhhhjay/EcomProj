@@ -73,7 +73,7 @@
             bottom: end;
             width: 100%;
         }
-        
+
         input[type="radio"] {
             margin-right: 5px;
         }

@@ -4,11 +4,6 @@ namespace app\controllers;
 class Reviews extends \app\core\Controller {
 
     public function index() {
-        if (!isset($_SESSION['customerID'])) {
-            header('location:/Customer/register');
-            exit;
-        }
-
         $reviewsModel = new \app\models\Reviews();
         $reviews = $reviewsModel->getAllWithCustomerDetails();
         $this->view('Reviews/index', ['reviews' => $reviews]);
@@ -36,7 +31,7 @@ class Reviews extends \app\core\Controller {
 
     public function edit($reviewID) {
         if (!isset($_SESSION['customerID'])) {
-            header('location:/User/login');
+            header('location:/Customer/login');
             exit;
         }
 

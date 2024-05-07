@@ -35,7 +35,7 @@ class Booking extends \app\core\Model
             'basePrice' => $this->basePrice,
             'ratePerSquareFoot' => $this->ratePerSquareFoot,
             'category' => $this->category
-            
+
         ];
         $STMT->execute($data);
         $this->bookingID = self::$_conn->lastInsertId();
@@ -50,12 +50,12 @@ class Booking extends \app\core\Model
         $STMT->execute();
         $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Profile');//set the type of data returned by fetches
         return $STMT->fetchAll();//return all records
-        
+
     }
 
     public function getForBooking($bookingID)
     {
-        $SQL = 'SELECT Booking.*,Customer.Address 
+        $SQL = 'SELECT Booking.*,Customer.Address
         FROM Booking
         INNER JOIN Customer ON Booking.customerID = Customer.customerID 
         WHERE Booking.bookingID = :bookingID';
@@ -68,28 +68,19 @@ class Booking extends \app\core\Model
         return $STMT->fetch();//return (what should be) the only record
     }
 
-    // public function getAllForCustomer($customerID) {
-    //     $SQL = 'SELECT * FROM Booking WHERE customerID = :customerID';
-    //     $STMT = self::$_conn->prepare($SQL);
-    //     $STMT->execute(['customerID' => $customerID]);
-    //     return $STMT->fetchAll(PDO::FETCH_CLASS, 'app\models\Booking');
-    // }
-
-
-    public function getDetailedBooking($bookingID)
+    // In app/models/Booking.php
+    public function getAllForCustomer($customerID)
     {
-        $SQL = 'SELECT Booking.*, Service.description, Service.Category, Customer.Address
-                FROM Booking
-                INNER JOIN Service ON Booking.serviceID = Service.serviceID
-                INNER JOIN Customer ON Booking.customerID = Customer.customerID
-                WHERE Booking.bookingID = :bookingID';
+        $SQL = 'SELECT bookingID, customerID, bookingDate, bookingTime, status, frequency, description, basePrice, ratePerSquareFoot, category, (basePrice + ratePerSquareFoot) AS totalPrice
+            FROM Booking 
+            WHERE customerID = :customerID 
+            ORDER BY bookingDate DESC';
         $STMT = self::$_conn->prepare($SQL);
-        $STMT->execute(['bookingID' => $bookingID]);
-        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Booking');
-        return $STMT->fetch();
+        $STMT->execute(['customerID' => $customerID]);
+        return $STMT->fetchAll(PDO::FETCH_CLASS, 'app\models\Booking');
     }
+
     //Update
-// Update booking
     public function update()
     {
         $SQL = 'UPDATE Booking SET bookingDate=:bookingDate, bookingTime=:bookingTime, Status=:Status, Frequency=:Frequency WHERE bookingID = :bookingID';
@@ -100,11 +91,9 @@ class Booking extends \app\core\Model
             'bookingTime' => $this->bookingTime,
             'Status' => $this->status,
             'Frequency' => $this->frequency,
-           
+
         ]);
     }
-
-
 
     // Delete booking
     public function delete()
@@ -113,12 +102,4 @@ class Booking extends \app\core\Model
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute(['bookingID' => $this->bookingID]);
     }
-
-
-
 }
-
-
-
-
-?>

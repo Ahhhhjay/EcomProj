@@ -60,4 +60,3 @@ class Service extends \app\core\Model
         $STMT->execute(['serviceID' => $this->serviceID]);
     }
 }
-?>

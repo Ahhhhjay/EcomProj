@@ -12,11 +12,11 @@ class Customer extends \app\core\Controller
      */
 
 
-     public function index()
-     {
+    public function index()
+    {
         //  $customer = new \app\models\Customer();
         //  $customer = $customer->getById($_SESSION['customerID']);
-         if (!isset($_SESSION['customerID'])) {
+        if (!isset($_SESSION['customerID'])) {
             // Redirect to login page if not logged in.
             header('Location: /Customer/login');
             exit;
@@ -33,11 +33,15 @@ class Customer extends \app\core\Controller
             exit;
         }
 
+        // Get bookings for the customer
+        $bookingModel = new \app\models\Booking();
+        $bookings = $bookingModel->getAllForCustomer($_SESSION['customerID']);
+
         // Render the profile view with customer data.
-        $this->view('Customer/index', $customer);
+        $this->view('Customer/index', ['customer' => $customer, 'bookings' => $bookings]);
     }
-        
-     
+
+
     public function register()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -81,58 +85,67 @@ class Customer extends \app\core\Controller
         }
     }
 
+    public function logout(){
+		//session_destroy();
+		//$_SESSION['user_id'] = null;
+
+		session_destroy();
+
+		header('location:/Home/index');
+	}
+
     /**
      * Deletes an existing customer.
      */
     public function delete()
     {
-        
+
         $customer = new \app\models\Customer();
         $customer = $customer->getById($_SESSION['customerID']);
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-           
 
-           
-                $customer->delete();
-                unset($_SESSION['customerID']);
-                header('Location:/Customer/index');
-           
+
+
+            $customer->delete();
+            unset($_SESSION['customerID']);
+            header('Location:/Customer/index');
+
         } else {
-            
+
             $this->view('Customer/delete', $customer);
         }
     }
 
-   
+
     // Additional controller methods can be added here for other operations like updating, retrieving, or listing customers
     public function update()
-	{
+    {
         if (!isset($_SESSION['customerID'])) {
             header('Location: /Customer/login');
             exit;
         }
-    
+
         $customerModel = new \app\models\Customer();
         $customer = $customerModel->getById($_SESSION['customerID']);
-    
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $customer->firstName = $_POST['firstName']; 
-            $customer->lastName = $_POST['lastName']; 
+            $customer->firstName = $_POST['firstName'];
+            $customer->lastName = $_POST['lastName'];
             $customer->Email = $_POST['Email'];
             $customer->contactNumber = $_POST['contactNumber'];
             $customer->Address = $_POST['Address'];
-    
+
             // Update the password only if a new one was provided
             if (!empty($_POST['passwordHash'])) {
                 $customer->passwordHash = password_hash($_POST['passwordHash'], PASSWORD_DEFAULT);
             }
-    
+
             $customer->update();
             header('Location: /Customer/index'); // Redirect to a profile page or other appropriate location
             exit;
         } else {
-            $this->view('Customer/update',$customer);
+            $this->view('Customer/update', $customer);
         }
-	}
+    }
 
 }

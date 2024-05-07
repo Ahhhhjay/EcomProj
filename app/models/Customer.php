@@ -83,4 +83,3 @@ class Customer extends \app\core\Model
         ]);
     }
 }
-?>

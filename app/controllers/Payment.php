@@ -52,5 +52,3 @@ class Payment extends app\core\Controller
 
     // Additional controller methods for other operations like updating, retrieving, or listing payments
 }
-
-?>

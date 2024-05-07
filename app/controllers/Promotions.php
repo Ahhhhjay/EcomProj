@@ -58,5 +58,3 @@ class Promotions extends app\core\Controller
 
     // Additional methods for other operations like updating, retrieving, or listing promotions can be added here
 }
-
-?>
