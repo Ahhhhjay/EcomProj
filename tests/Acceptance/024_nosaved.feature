@@ -1,4 +1,5 @@
-Feature: No Saved payment  
+Feature: No Saved payment
+
 Scenario: No saved payment methods available
     Given I am a returning customer but have not saved any payment methods
     When I navigate to the "Payment Methods" section in "My Account"

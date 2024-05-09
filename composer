@@ -1,1 +1,3 @@
-php composer.phar "$@"
+#!/bin/bash
+
+./php composer.phar "$@"
