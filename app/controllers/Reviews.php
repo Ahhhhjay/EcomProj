@@ -12,7 +12,7 @@ class Reviews extends \app\core\Controller {
     public function create() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (!isset($_SESSION['customerID'])) {
-                header('location:/Customer/register');
+                header('location:/Customer/login');
                 exit;
             }
 

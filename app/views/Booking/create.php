@@ -43,7 +43,7 @@
         }
 
         input,
-        select {
+        select, #cancel {
             width: 100%;
             padding: 10px;
             margin-top: 5px;
@@ -52,7 +52,8 @@
             border: 1px solid #ddd;
         }
 
-        input[type="submit"] {
+        input[type="submit"],
+        #cancel {
             background-color: #89CFF0;
             color: white;
             border: none;
@@ -60,7 +61,8 @@
             transition: background-color 0.3s;
         }
 
-        input[type="submit"]:hover {
+        input[type="submit"]:hover,
+        #cancel:hover {
             background-color: #66afe9;
         }
 
@@ -120,6 +122,7 @@
             </select>
 
             <input type="submit" value="Submit Booking">
+            <button id="cancel" onclick="location.href='/Home/index'">Cancel</button>
         </form>
     </main>
     <footer>
