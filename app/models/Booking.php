@@ -44,11 +44,13 @@ class Booking extends \app\core\Model
     //READ
     public function getAllBookings()
     {
-        $SQL = 'SELECT * FROM Booking';
+        $SQL = 'SELECT bookingID, customerID, bookingDate, bookingTime, status, frequency, description, basePrice, ratePerSquareFoot, category, (basePrice + ratePerSquareFoot) AS totalPrice
+        FROM Booking
+        ORDER BY bookingDate DESC';
 
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute();
-        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Profile');//set the type of data returned by fetches
+        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Booking');//set the type of data returned by fetches
         return $STMT->fetchAll();//return all records
 
     }

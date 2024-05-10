@@ -61,7 +61,7 @@ class Booking extends \app\core\Controller
     // Additional controller methods for other actions can be added here
     public function getAll()
     {
-        try {
+        
             // Instantiate Booking model
             $booking = new \app\models\Booking();
 
@@ -72,11 +72,8 @@ class Booking extends \app\core\Controller
             // Or you can directly send a JSON response, etc.
 
             // For example, if you want to pass it to a view:
-            $this->view('booking/all', ['bookings' => $allBookings]);
-        } catch (\Exception $e) {
-            // Error handling
-            header('Location: /booking/error');
-        }
+            $this->view('Admin/index', ['bookings' => $allBookings]);
+        
     }
 
     public function complete()
@@ -104,7 +101,8 @@ class Booking extends \app\core\Controller
             $detailedBooking->status = 'Scheduled';
             $detailedBooking->update();
 
-            header('Location: /Booking/complete'); // Redirect to a profile page or other appropriate location
+           
+            header('Location: /Booking/complete?bookingID=' . $detailedBooking->bookingID);
             exit;
         } else {
             $this->view('Booking/modify', ['data' => $detailedBooking]);  // Pass booking data to view

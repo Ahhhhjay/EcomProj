@@ -3,5 +3,8 @@
         "codeception/codeception": "^5.1",
         "codeception/module-phpbrowser": "*",
         "codeception/module-asserts": "*"
+    },
+    "require": {
+        "symfony/translation": "^7.0"
     }
 }
