@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking Page - CleanIt Services</title>
+    <title><?=__('Booking Page - CleanIt Services')?></title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         body {
@@ -23,10 +23,12 @@
 
         main {
             padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         form {
-            margin-top: 20px;
             background-color: white;
             padding: 20px;
             border-radius: 5px;
@@ -42,8 +44,7 @@
             color: #555;
         }
 
-        input,
-        select, #cancel {
+        input, select, button {
             width: 100%;
             padding: 10px;
             margin-top: 5px;
@@ -52,8 +53,7 @@
             border: 1px solid #ddd;
         }
 
-        input[type="submit"],
-        #cancel {
+        input[type="submit"], button {
             background-color: #89CFF0;
             color: white;
             border: none;
@@ -61,8 +61,7 @@
             transition: background-color 0.3s;
         }
 
-        input[type="submit"]:hover,
-        #cancel:hover {
+        input[type="submit"]:hover, button:hover {
             background-color: #66afe9;
         }
 
@@ -71,62 +70,58 @@
             color: white;
             padding: 10px;
             text-align: center;
-            position: absolute;
-            bottom: end;
             width: 100%;
+            position: fixed;
+            bottom: 0;
         }
 
-        input[type="radio"] {
-            margin-right: 5px;
+        @media (max-width: 600px) {
+            form {
+                width: 90%; /* Smaller width on smaller screens */
+                margin: 0 auto;
+            }
+
+            header, footer {
+                text-align: center; /* Ensure text is always centered */
+            }
         }
     </style>
 </head>
 
 <body>
     <header>
-        <h1>CleanIt - Book Your Service</h1>
+        <h1><?=__('CleanIt - Book Your Service')?></h1>
     </header>
     <main>
         <form action="" method="post">
-            <h1>Book Your Cleaning Service</h1>
-            <label for="description">Description of the type of cleaning:</label>
+            <h1><?=__('Book Your Cleaning Service')?></h1>
+            <label for="description"><?=__('Description of the type of cleaning:')?></label>
             <input type="text" id="description" name="description" required />
-            <br>
-            <label for="area">Enter area of residence (square feet):</label>
-            <input type="number" name="area" id="area" required>
-            <br>
-            <br>
-            <label for="category">The type of residence:</label>
-            <br>
-            <br>
-            <label for="commercial">Commercial</label>
+            <label for="area"><?=__('Enter area of residence (square feet):')?></label>
+            <input type="number" id="area" name="area" required>
+            <label for="category"><?=__('The type of residence:')?></label>
             <input type="radio" id="commercial" name="category" value="Commercial">
-            <!-- 250 -->
-            <label for="residential">Residential</label>
+            <label for="commercial"><?=__('Commercial')?></label>
             <input type="radio" id="residential" name="category" value="Residential" checked>
-            <!-- 100 -->
-            <br>
-            <label for="bookingDate">Booking Date:</label>
+            <label for="residential"><?=__('Residential')?></label>
+            <label for="bookingDate"><?=__('Booking Date:')?></label>
             <input type="date" id="bookingDate" name="bookingDate" required>
-
-            <label for="bookingTime">Booking Time:</label>
+            <label for="bookingTime"><?=__('Booking Time:')?></label>
             <input type="time" id="bookingTime" name="bookingTime" required>
-
-            <label for="frequency">Frequency:</label>
+            <label for="frequency"><?=__('Frequency:')?></label>
             <select id="frequency" name="frequency">
-                <option value="">Please Select</option>
-                <option value="One-time">One-time</option>
-                <option value="Weekly">Weekly</option>
-                <option value="Bi-Weekly">Bi-Weekly</option>
-                <option value="Monthly">Monthly</option>
+                <option value=""><?=__('Please Select')?></option>
+                <option value="One-time"><?=__('One-time')?></option>
+                <option value="Weekly"><?=__('Weekly')?></option>
+                <option value="Bi-Weekly"><?=__('Bi-Weekly')?></option>
+                <option value="Monthly"><?=__('Monthly')?></option>
             </select>
-
-            <input type="submit" value="Submit Booking">
-            <button id="cancel" onclick="location.href='/Home/index'">Cancel</button>
+            <input type="submit" value="<?=__('Submit Booking')?>">
+            <button id="cancel" onclick="location.href='/Home/index'"><?=__('Cancel')?></button>
         </form>
     </main>
     <footer>
-        © 2024 All Rights Reserved | CleanIt Services
+        <?=__('&copy; 2024 All Rights Reserved | Totally not fake website')?>
     </footer>
 </body>
 

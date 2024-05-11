@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-10 21:39+0000\n"
-"PO-Revision-Date: 2024-05-10 21:40+0000\n"
+"POT-Creation-Date: 2024-05-11 03:58+0000\n"
+"PO-Revision-Date: 2024-05-11 04:10+0000\n"
 "Last-Translator: root <EMAIL@ADDRESS>\n"
 "Language-Team: French\n"
 "Language: fr\n"
@@ -17,14 +17,365 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: app/views/Admin/index.php:106
+msgid "Delete Profile - CleanIt Services"
+msgstr "Supprimer le profil - Services CleanIt"
+
+msgid "CleanIt - Profile Management"
+msgstr "CleanIt - Gestion de profil"
+
+msgid "User profile"
+msgstr "Profil utilisateur"
+
+msgid "Do you want to proceed with the deletion of your Booking?"
+msgstr "Voulez-vous proc&eacute;der &agrave; la suppression de votre r&eacute;servation ?"
+
+msgid "Booking Date:"
+msgstr "Date de r&eacute;servation :"
+
+msgid "Booking Time:"
+msgstr "Heure de r&eacute;servation :"
+
+msgid "Frequency:"
+msgstr "Fr&eacute;quence :"
+
+msgid "Address:"
+msgstr "Adresse :"
+
+msgid "Description:"
+msgstr "Description :"
+
+msgid "Category:"
+msgstr "Cat&eacute;gorie :"
+
+msgid "Delete"
+msgstr "Supprimer"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "&copy; 2024 All Rights Reserved | CleanIt Services"
+msgstr "&copy; 2024 Tous droits r&eacute;serv&eacute;s | Services CleanIt"
+
+msgid "User Profile"
+msgstr "Profil de l&apos;utilisateur"
+
+msgid "Bookings"
+msgstr "R&eacute;servations"
+
 msgid "Date"
 msgstr "Date"
 
-#: app/views/Admin/index.php:107
 msgid "Time"
-msgstr "Temps"
+msgstr "Heure"
 
-#: app/views/Profile/index.php:9
-msgid "User profile"
-msgstr "Profil d'utilisateur"
+msgid "Description"
+msgstr "Description"
+
+msgid "Total Price"
+msgstr "Prix total"
+
+msgid "Category"
+msgstr "Cat&eacute;gorie"
+
+msgid "Frequency"
+msgstr "Fr&eacute;quence"
+
+msgid "Status"
+msgstr "Statut"
+
+msgid "Actions"
+msgstr "Actions"
+
+msgid "Edit"
+msgstr "Modifier"
+
+msgid "Are you sure you want to delete this booking?"
+msgstr "&Ecirc;tes-vous s&ucirc;r de vouloir supprimer cette r&eacute;servation ?"
+
+msgid "&copy; 2024 All Rights Reserved | Totally not fake website"
+msgstr "&copy; 2024 Tous droits r&eacute;serv&eacute;s | Site totalement pas faux"
+
+msgid "Login - CleanIt Services"
+msgstr "Connexion - Services CleanIt"
+
+msgid "MKCleaners -Admin Login"
+msgstr "Connexion Admin - MKCleaners"
+
+msgid "Email:"
+msgstr "Email :"
+
+msgid "Enter your email"
+msgstr "Entrez votre email"
+
+msgid "Password:"
+msgstr "Mot de passe :"
+
+msgid "Enter your password"
+msgstr "Entrez votre mot de passe"
+
+msgid "Login"
+msgstr "Connexion"
+
+msgid "Update Profile - CleanIt Services"
+msgstr "Mettre &agrave; jour le profil - Services CleanIt"
+
+msgid "Please Select"
+msgstr "Veuillez s&eacute;lectionner"
+
+msgid "One-time"
+msgstr "Une fois"
+
+msgid "Weekly"
+msgstr "Hebdomadaire"
+
+msgid "Bi-Weekly"
+msgstr "Bi-hebdomadaire"
+
+msgid "Monthly"
+msgstr "Mensuel"
+
+msgid "Update"
+msgstr "Mettre &agrave; jour"
+
+msgid "Complete Booking - CleanIt Services"
+msgstr "Finaliser la r&eacute;servation - Services CleanIt"
+
+msgid "Confirm Booking"
+msgstr "Confirmer la r&eacute;servation"
+
+msgid "Modify my booking"
+msgstr "Modifier ma r&eacute;servation"
+
+msgid "Delete my booking"
+msgstr "Supprimer ma r&eacute;servation"
+
+msgid "Finish Booking"
+msgstr "Terminer la r&eacute;servation"
+
+msgid "Booking Page - CleanIt Services"
+msgstr "Page de r&eacute;servation - Services CleanIt"
+
+msgid "CleanIt - Book Your Service"
+msgstr "CleanIt - R&eacute;servez votre service"
+
+msgid "Book Your Cleaning Service"
+msgstr "R&eacute;servez votre service de nettoyage"
+
+msgid "Description of the type of cleaning:"
+msgstr "Description du type de nettoyage :"
+
+msgid "Enter area of residence (square feet):"
+msgstr "Entrez la superficie de r&eacute;sidence (en pieds carr&eacute;s) :"
+
+msgid "The type of residence:"
+msgstr "Type de r&eacute;sidence :"
+
+msgid "Commercial"
+msgstr "Commercial"
+
+msgid "Residential"
+msgstr "R&eacute;sidentiel"
+
+msgid "Submit Booking"
+msgstr "Soumettre la r&eacute;servation"
+
+msgid "CleanIt Services - Update Profile"
+msgstr "Services CleanIt - Mettre &agrave; jour le profil"
+
+msgid "Do you want to proceed with the deletion of your profile?"
+msgstr "Voulez-vous proc&eacute;der &agrave; la suppression de votre profil ?"
+
+msgid "First name:"
+msgstr "Pr&eacute;nom :"
+
+msgid "Last name:"
+msgstr "Nom de famille :"
+
+msgid "Customer Profile"
+msgstr "Profil client"
+
+msgid "Modify my profile"
+msgstr "Modifier mon profil"
+
+msgid "Delete my profile"
+msgstr "Supprimer mon profil"
+
+msgid "Return to main"
+msgstr "Retour &agrave; l&apos;accueil"
+
+msgid "CleanIt Services - Login"
+msgstr "Services CleanIt - Connexion"
+
+msgid "I have no account, bring me to the registration page"
+msgstr "Je n&apos;ai pas de compte, amenez-moi &agrave; la page d&apos;inscription"
+
+msgid "Register - CleanIt Services"
+msgstr "Inscription - Services CleanIt"
+
+msgid "CleanIt Services - Registration"
+msgstr "Services CleanIt - Inscription"
+
+msgid "Home"
+msgstr "Accueil"
+
+msgid "Enter your first name"
+msgstr "Entrez votre pr&eacute;nom"
+
+msgid "Enter your last name"
+msgstr "Entrez votre nom de famille"
+
+msgid "Phone number:"
+msgstr "Num&eacute;ro de t&eacute;l&eacute;phone :"
+
+msgid "Enter your address"
+msgstr "Entrez votre adresse"
+
+msgid "Register"
+msgstr "Inscrire"
+
+msgid "I have an account, bring me to the login page"
+msgstr "J&apos;ai un compte, amenez-moi &agrave; la page de connexion"
+
+msgid "First Name"
+msgstr "Pr&eacute;nom"
+
+msgid "Enter your First Name"
+msgstr "Entrez votre pr&eacute;nom"
+
+msgid "Last Name"
+msgstr "Nom"
+
+msgid "Enter your Last Name"
+msgstr "Entrez votre nom"
+
+msgid "Email"
+msgstr "E-mail"
+
+msgid "Contact Number"
+msgstr "Num&eacute;ro de contact"
+
+msgid "Enter your contact number"
+msgstr "Entrez votre num&eacute;ro de contact"
+
+msgid "Address"
+msgstr "Adresse"
+
+msgid "Password"
+msgstr "Mot de passe"
+
+msgid "leave blank if you do not wish to change it"
+msgstr "laissez vide si vous ne souhaitez pas le modifier"
+
+msgid "Enter new password"
+msgstr "Entrez un nouveau mot de passe"
+
+msgid "CleanIt - Cleaning Services"
+msgstr "CleanIt - Services de nettoyage"
+
+msgid "CleanIt Logo"
+msgstr "Logo CleanIt"
+
+msgid "About Us"
+msgstr "&Agrave; propos de nous"
+
+msgid "Promotions"
+msgstr "Promotions"
+
+msgid "Leave a Review"
+msgstr "Laisser un avis"
+
+msgid "My Profile"
+msgstr "Mon profil"
+
+msgid "Logout"
+msgstr "D&eacute;connexion"
+
+msgid "Sign Up"
+msgstr "S&apos;inscrire"
+
+msgid "Welcome to MKCleaners MTL!"
+msgstr "Bienvenue chez MKCleaners MTL !"
+
+msgid "Book Now"
+msgstr "R&eacute;servez maintenant"
+
+msgid "Cleaning Service"
+msgstr "Service de nettoyage"
+
+msgid "Reviews"
+msgstr "Avis"
+
+msgid "Posted on: "
+msgstr "Publi&eacute; le :"
+
+msgid "MKCleaners MTL"
+msgstr "MKCleaners MTL"
+
+msgid "Discover our cleaning company, where your home is your best friend! Enjoy a spotless home without lifting a finger!"
+msgstr "D&eacute;couvrez notre entreprise de nettoyage, o&ugrave; votre maison est votre meilleure amie ! Profitez d&apos;une maison impeccable sans lever le petit doigt !"
+
+msgid "Contact info."
+msgstr "Informations de contact."
+
+msgid "Phone Number: (514) 799-4881"
+msgstr "Num&eacute;ro de t&eacute;l&eacute;phone : (514) 799-4881"
+
+msgid "Email: MKCleanersMTL@gmail.com"
+msgstr "Email : MKCleanersMTL@gmail.com"
+
+msgid "Instagram: mkcleanersmtl"
+msgstr "Instagram : mkcleanersmtl"
+
+msgid "Create Review"
+msgstr "Cr&eacute;er un avis"
+
+msgid "Post a New Review"
+msgstr "Publier un nouvel avis"
+
+msgid "Rating:"
+msgstr "&Eacute;valuation :"
+
+msgid "Review Text:"
+msgstr "Texte de l&apos;avis :"
+
+msgid "Submit Review"
+msgstr "Soumettre l&apos;avis"
+
+msgid "Delete Review - MKCleaners MTL"
+msgstr "Supprimer l&apos;avis - MKCleaners MTL"
+
+msgid "Are you sure you want to delete this review?"
+msgstr "&Ecirc;tes-vous s&ucirc;r de vouloir supprimer cet avis ?"
+
+msgid "Confirm Delete"
+msgstr "Confirmer la suppression"
+
+msgid "Edit Review"
+msgstr "Modifier l&apos;avis"
+
+msgid "MKCleaners MTL Logo"
+msgstr "Logo de MKCleaners MTL"
+
+msgid "Update Review"
+msgstr "Mettre &agrave; jour l&apos;avis"
+
+msgid "Reviews - MKCleaners MTL"
+msgstr "Avis - MKCleaners MTL"
+
+msgid "Customer Reviews"
+msgstr "Avis des clients"
+
+msgid "Post a Review"
+msgstr "Publier un avis"
+
+msgid "No reviews at the moment."
+msgstr "Aucun avis pour le moment."
+
+msgid "Posted on:"
+msgstr "Publi&eacute; le :"
+
+msgid "Phone Number:"
+msgstr "Num&eacute;ro de t&eacute;l&eacute;phone :"
+
+msgid "Instagram:"
+msgstr "Instagram :"

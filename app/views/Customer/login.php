@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - CleanIt Services</title>
+    <title><?= __('Login - CleanIt Services') ?></title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         body {
@@ -12,33 +13,40 @@
             background-color: #f4faff;
             color: #333;
         }
+
         header {
             background-color: #89CFF0;
             padding: 10px;
             text-align: center;
             color: white;
         }
+
         main {
             padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 80vh; /* Adjust height to vertically center the form */
+            height: 80vh;
+            /* Adjust height to vertically center the form */
         }
+
         form {
             background-color: white;
             padding: 20px;
             border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 500px;
         }
+
         label {
             display: block;
             margin-top: 10px;
             color: #555;
         }
-        input, select {
+
+        input,
+        select {
             width: 100%;
             padding: 10px;
             margin-top: 5px;
@@ -46,6 +54,7 @@
             border-radius: 5px;
             border: 1px solid #ddd;
         }
+
         input[type="submit"] {
             background-color: #89CFF0;
             color: white;
@@ -53,15 +62,18 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
+
         input[type="submit"]:hover {
             background-color: #66afe9;
         }
+
         a {
             color: #89CFF0;
             text-decoration: none;
             display: block;
             margin-top: 15px;
         }
+
         footer {
             background-color: #89CFF0;
             color: white;
@@ -73,30 +85,34 @@
         }
     </style>
 </head>
+
 <body>
     <header>
-        <h1>CleanIt Services - Login</h1>
+        <h1><?= __('CleanIt Services - Login') ?></h1>
     </header>
     <main>
         <form method="post" action="">
             <div class="form-group">
-                <label>Email:
-                    <input type="text" class="form-control" name="Email" placeholder="Enter your email" required>
+                <label><?= __('Email:') ?>
+                    <input type="text" class="form-control" name="Email" placeholder="<?= __('Enter your email') ?>"
+                        required>
                 </label>
             </div>
             <div class="form-group">
-                <label>Password:
-                    <input type="password" class="form-control" name="passwordHash" placeholder="Enter your password" required>
+                <label><?= __('Password:') ?>
+                    <input type="password" class="form-control" name="passwordHash"
+                        placeholder="<?= __('Enter your password') ?>" required>
                 </label>
             </div>
             <div class="form-group">
-                <input type="submit" name="action" value="Login">
-                <a href='/Customer/register'>I have no account, bring me to the registration page</a>
+                <input type="submit" name="action" value="<?= __('Login') ?>">
+                <a href='/Customer/register'><?= __('I have no account, bring me to the registration page') ?></a>
             </div>
         </form>
     </main>
     <footer>
-        © 2024 All Rights Reserved | CleanIt Services
+    <?=__('&copy; 2024 All Rights Reserved | Totally not fake website')?>
     </footer>
 </body>
+
 </html>

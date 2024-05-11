@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Profile - CleanIt Services</title>
+    <title><?= __('Update Profile - CleanIt Services') ?></title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         body {
@@ -88,48 +88,52 @@
 
 <body>
     <header>
-        <h1>CleanIt Services - Update Profile</h1>
+        <h1><?= __('CleanIt Services - Update Profile') ?></h1>
     </header>
     <main>
         <form method="post" action="">
             <div class="form-group">
-                <label>First Name
-                    <input type="text" class="form-control" name="firstName" placeholder="Enter your First Name"
-                        value="<?= htmlspecialchars($data->firstName) ?>" required>
+                <label><?= __('First Name') ?>:
+                    <input type="text" class="form-control" name="firstName"
+                        placeholder="<?= __('Enter your First Name') ?>" value="<?= htmlspecialchars($data->firstName) ?>"
+                        required>
                 </label>
-                <label>Last Name
-                    <input type="text" class="form-control" name="lastName" placeholder="Enter your Last Name"
-                        value="<?= htmlspecialchars($data->lastName) ?>" required>
+                <label><?= __('Last Name') ?>:
+                    <input type="text" class="form-control" name="lastName"
+                        placeholder="<?= __('Enter your Last Name') ?>" value="<?= htmlspecialchars($data->lastName) ?>"
+                        required>
                 </label>
 
-                <label>Email:
-                    <input type="email" class="form-control" name="Email" placeholder="Enter your email"
+                <label><?= __('Email') ?>:
+                    <input type="email" class="form-control" name="Email" placeholder="<?= __('Enter your email') ?>"
                         value="<?= htmlspecialchars($data->Email) ?>" required>
                 </label>
             </div>
             <div class="form-group">
-                <label>Contact Number:
-                    <input type="tel" class="form-control" name="contactNumber" placeholder="Enter your contact number"
+                <label><?= __('Contact Number') ?>:
+                    <input type="tel" class="form-control" name="contactNumber"
+                        placeholder="<?= __('Enter your contact number') ?>"
                         value="<?= htmlspecialchars($data->contactNumber) ?>" required>
                 </label>
             </div>
             <div class="form-group">
-                <label>Address:
-                    <input type="text" class="form-control" name="Address" placeholder="Enter your address"
+                <label><?= __('Address') ?>:
+                    <input type="text" class="form-control" name="Address" placeholder="<?= __('Enter your address') ?>"
                         value="<?= htmlspecialchars($data->Address) ?>" required>
                 </label>
             </div>
             <div class="form-group">
-                <label>Password (leave blank if you do not wish to change it):
-                    <input type="password" class="form-control" name="passwordHash" placeholder="Enter new password">
+                <label><?= __('Password') ?> (<?= __('leave blank if you do not wish to change it') ?>):
+                    <input type="password" class="form-control" name="passwordHash"
+                        placeholder="<?= __('Enter new password') ?>">
                 </label>
             </div>
-            <input type="submit" name="update" value="Update">
+            <input type="submit" name="update" value="<?= __('Update') ?>">
 
         </form>
     </main>
     <footer>
-        © 2024 All Rights Reserved | CleanIt Services
+    <?=__('&copy; 2024 All Rights Reserved | Totally not fake website')?>
     </footer>
 </body>
 

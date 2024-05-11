@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Review</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?=__('Edit Review')?></title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -56,8 +58,8 @@
             margin: 20px;
         }
         footer h3 {
-        color: #ffffff; 
-        margin-bottom: 10px;
+            color: #ffffff; 
+            margin-bottom: 10px;
         }
 
         footer p, footer a {
@@ -107,7 +109,7 @@
         }
         .star-rating label {
             font-size: 30px; 
-            color: #ccc; /
+            color: #ccc;
             cursor: pointer;
             padding: 5px; 
         }
@@ -124,22 +126,22 @@
 </head>
 <body>
     <header>
-        <img src="/Images/MKCleaningLogo.png" alt="MKCleaners MTL Logo">
+        <img src="/Images/MKCleaningLogo.png" alt="<?=__('MKCleaners MTL Logo')?>">
     </header>
     <nav>
-        <a href="/Home/index">Home</a>
-        <a href="#about-us">About Us</a>
-        <a href="#promotions">Promotions</a>
-        <a href="/Reviews/index">Leave a Review</a>
-        <a href="/Customer/index">My Profile</a>
+        <a href="/Home/index"><?=__('Home')?></a>
+        <a href="#about-us"><?=__('About Us')?></a>
+        <a href="#promotions"><?=__('Promotions')?></a>
+        <a href="/Reviews/index"><?=__('Leave a Review')?></a>
+        <a href="/Customer/index"><?=__('My Profile')?></a>
     </nav>
     <main>
-        <h1>Edit Review</h1>
+        <h1><?=__('Edit Review')?></h1>
         <?php if (isset($_SESSION['error'])): ?>
             <p style="color: red;"><?= $_SESSION['error']; ?></p>
         <?php unset($_SESSION['error']); endif; ?>
         <form action="/Reviews/edit/<?= htmlspecialchars($review->reviewID) ?>" method="POST">
-            <<label for="rating">Rating:</label>
+            <label for="rating"><?=__('Rating:')?>:</label>
             <div class="star-rating">
                 <!-- Reverse order so that higher numbers are on the right side -->
                 <input type="radio" id="star5" name="rating" value="5" <?= $review->rating == 5 ? 'checked' : '' ?>><label for="star5">&#9733;</label>
@@ -148,27 +150,27 @@
                 <input type="radio" id="star2" name="rating" value="2" <?= $review->rating == 2 ? 'checked' : '' ?>><label for="star2">&#9733;</label>
                 <input type="radio" id="star1" name="rating" value="1" <?= $review->rating == 1 ? 'checked' : '' ?>><label for="star1">&#9733;</label>
             </div>
-            <label for="text">Review Text:</label>
+            <label for="text"><?=__('Review Text:')?>:</label>
             <textarea id="text" name="text"><?= htmlspecialchars($review->text) ?></textarea>
-            <button type="submit">Update Review</button>
+            <button type="submit"><?=__('Update Review')?></button>
         </form>
-        <a href="/Reviews/index">Cancel</a>
+        <a href="/Reviews/index"><?=__('Cancel')?></a>
     </main>
     <footer style="background-color: #89CFF0; color: white; padding: 20px 0; font-family: 'Roboto', sans-serif;">
     <div style="display: flex; justify-content: space-around; align-items: start; flex-wrap: wrap; padding: 0 10%;">
         <div style="flex: 1; min-width: 200px; margin: 10px;">
-            <h3>MKCleaners MTL</h3>
-            <p>Discover our cleaning company, where your home is your best friend! Enjoy a spotless home without lifting a finger!</p>
+            <h3><?=__('MKCleaners MTL')?></h3>
+            <p><?=__('Discover our cleaning company, where your home is your best friend! Enjoy a spotless home without lifting a finger!')?></p>
         </div>
         <div style="flex: 1; min-width: 250px; margin: 10px;">
-            <h3>Contact info.</h3>
-            <p> Phone Number: (514) 799-4881 <br>
-            Email: MKCleanersMTL@gmail.com <br>
-            Instagram: mkcleanersmtl</p>
+            <h3><?=__('Contact info.')?></h3>
+            <p><?=__('Phone Number: (514) 799-4881')?><br>
+            <?=__('Email: MKCleanersMTL@gmail.com')?><br>
+            <?=__('Instagram: mkcleanersmtl')?></p>
         </div>
     </div>
     <div style="text-align: center; padding-top: 20px;">
-        © 2024 All Rights Reserved | MKCleaning
+    <?=__('&copy; 2024 All Rights Reserved | Totally not fake website')?>
     </div>
 </footer>
 </body>

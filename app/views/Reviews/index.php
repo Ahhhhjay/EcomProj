@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reviews - MKCleaners MTL</title>
+    <title><?=__('Reviews - MKCleaners MTL')?></title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         body {
@@ -165,42 +164,42 @@
 
 <body>
     <header>
-        <img src="/Images/MKCleaningLogo.png" alt="CleanIt Logo">
+        <img src="/Images/MKCleaningLogo.png" alt="<?=__('CleanIt Logo')?>">
     </header>
     <nav>
-        <a href="/Home/index">Home</a>
-        <a href="#about-us">About Us</a>
-        <a href="#promotions">Promotions</a>
-        <a href="/Reviews/index">Leave a Review</a>
-        <a href="/Customer/index">My Profile</a>
+        <a href="/Home/index"><?=__('Home')?></a>
+        <a href="#about-us"><?=__('About Us')?></a>
+        <a href="#promotions"><?=__('Promotions')?></a>
+        <a href="/Reviews/index"><?=__('Leave a Review')?></a>
+        <a href="/Customer/index"><?=__('My Profile')?></a>
         <!-- Dynamic button rendering based on login state -->
         <?php if (isset($_SESSION['customerID'])): ?>
-            <button onclick="location.href='/Customer/logout'">Logout</button>
+            <button onclick="location.href='/Customer/logout'"><?=__('Logout')?></button>
         <?php else: ?>
-            <button onclick="location.href='/Customer/login'">Login</button>
-            <button onclick="location.href='/Customer/register'">Sign Up</button>
+            <button onclick="location.href='/Customer/login'"><?=__('Login')?></button>
+            <button onclick="location.href='/Customer/register'"><?=__('Sign Up')?></button>
         <?php endif; ?>
     </nav>
     <main>
-        <h1>Customer Reviews</h1>
-        <a href="/Reviews/create" class="create-review-button">Post a Review</a>
+        <h1><?=__('Customer Reviews')?></h1>
+        <a href="/Reviews/create" class="create-review-button"><?=__('Post a Review')?></a>
         <section id="reviews">
             <?php if (empty($data['reviews'])): ?>
-                <p>No reviews at the moment.</p>
+                <p><?=__('No reviews at the moment.')?></p>
             <?php else: ?>
                 <?php foreach ($data['reviews'] as $review): ?>
                     <div class="review-item">
-                        <h3><?= htmlspecialchars($review->firstName) ?>         <?= htmlspecialchars($review->lastName) ?></h3>
+                        <h3><?= htmlspecialchars($review->firstName) ?> <?= htmlspecialchars($review->lastName) ?></h3>
                         <div class="star-rating">
                             <?php for ($i = 1; $i <= 5; $i++): ?>
                                 <span class="<?= $i <= $review->rating ? 'filled' : '' ?>">&#9733;</span>
                             <?php endfor; ?>
                         </div>
                         <p><?= nl2br(htmlspecialchars($review->text)) ?></p>
-                        <small>Posted on: <?= htmlspecialchars($review->datePosted) ?></small>
+                        <small><?=__('Posted on:')?> <?= htmlspecialchars($review->datePosted) ?></small>
                         <?php if (isset($_SESSION['customerID']) && $_SESSION['customerID'] == $review->customerID): ?>
-                            <a href="/Reviews/delete/<?= $review->reviewID ?>" class="button delete-button">Delete</a>
-                            <a href="/Reviews/edit/<?= $review->reviewID ?>" class="button edit-button">Edit</a> <?php else: ?>
+                            <a href="/Reviews/delete/<?= $review->reviewID ?>" class="button delete-button"><?=__('Delete')?></a>
+                            <a href="/Reviews/edit/<?= $review->reviewID ?>" class="button edit-button"><?=__('Edit')?></a>
                         <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
@@ -210,21 +209,19 @@
     <footer style="background-color: #89CFF0; color: white; padding: 20px 0; font-family: 'Roboto', sans-serif;">
         <div style="display: flex; justify-content: space-around; align-items: start; flex-wrap: wrap; padding: 0 10%;">
             <div style="flex: 1; min-width: 200px; margin: 10px;">
-                <h3>MKCleaners MTL</h3>
-                <p>Discover our cleaning company, where your home is your best friend! Enjoy a spotless home without
-                    lifting a finger!</p>
+                <h3><?=__('MKCleaners MTL')?></h3>
+                <p><?=__('Discover our cleaning company, where your home is your best friend! Enjoy a spotless home without lifting a finger!')?></p>
             </div>
             <div style="flex: 1; min-width: 250px; margin: 10px;">
-                <h3>Contact info.</h3>
-                <p> Phone Number: (514) 799-4881 <br>
-                    Email: MKCleanersMTL@gmail.com <br>
-                    Instagram: mkcleanersmtl</p>
+                <h3><?=__('Contact info.')?></h3>
+                <p> <?=__('Phone Number:')?> (514) 799-4881 <br>
+                    <?=__('Email:')?> MKCleanersMTL@gmail.com <br>
+                    <?=__('Instagram:')?> mkcleanersmtl</p>
             </div>
         </div>
         <div style="text-align: center; padding-top: 20px;">
-            © 2024 All Rights Reserved | MKCleaning
+        <?=__('&copy; 2024 All Rights Reserved | Totally not fake website')?>
         </div>
     </footer>
 </body>
-
 </html>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CleanIt - Cleaning Services</title>
+    <title><?= __('CleanIt - Cleaning Services') ?></title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         body {
@@ -146,35 +146,33 @@
 
 <body>
     <header>
-        <img src="/Images/MKCleaningLogo.png" alt="CleanIt Logo">
+        <img src="/Images/MKCleaningLogo.png" alt="<?= __('CleanIt Logo') ?>">
     </header>
     <nav>
-        <a href="/Home/index">Home</a>
-        <a href="#about-us">About Us</a>
-        <a href="#promotions">Promotions</a>
-        <a href="/Reviews/index">Leave a Review</a>
-        <a href="/Customer/index">My Profile</a>
+        <a href="/Home/index"><?= __('Home') ?></a>
+        <a href="#about-us"><?= __('About Us') ?></a>
+        <a href="#promotions"><?= __('Promotions') ?></a>
+        <a href="/Reviews/index"><?= __('Leave a Review') ?></a>
+        <a href="/Customer/index"><?= __('My Profile') ?></a>
         <!-- Dynamic button rendering based on login state -->
         <?php if (isset($_SESSION['customerID'])): ?>
-            <button onclick="location.href='/Customer/logout'">Logout</button>
+            <button onclick="location.href='/Customer/logout'"><?= __('Logout') ?></button>
         <?php else: ?>
-            <button onclick="location.href='/Customer/login'">Login</button>
-            <button onclick="location.href='/Customer/register'">Sign Up</button>
+            <button onclick="location.href='/Customer/login'"><?= __('Login') ?></button>
+            <button onclick="location.href='/Customer/register'"><?= __('Sign Up') ?></button>
         <?php endif; ?>
     </nav>
     <main>
-        <h1>Welcome to MKCleaners MTL!</h1>
-        <a href="/Booking/create" class="book-now">Book Now</a>
+        <h1><?= __('Welcome to MKCleaners MTL!') ?></h1>
+        <a href="/Booking/create" class="book-now"><?= __('Book Now') ?></a>
         <section id="about-us">
-            <h2>About Us</h2>
-            <p>At MKCleaners MTL, we offer comprehensive cleaning services designed to keep your space sparkling clean
-                and hygienic. From residential homes to commercial offices, our team of skilled professionals is
-                equipped to handle all aspects of cleaning with utmost precision and care. We utilize eco-friendly
-                cleaning products and state-of-the-art equipment to deliver exceptional results.</p>
-            <img src="/Images/cleaning-service-image.jpg" alt="Cleaning Service" class="service-image">
+            <h2><?= __('About Us') ?></h2>
+            <p><?= __('At MKCleaners MTL, we offer comprehensive cleaning services designed to keep your space sparkling clean and hygienic. From residential homes to commercial offices, our team of skilled professionals is equipped to handle all aspects of cleaning with utmost precision and care. We utilize eco-friendly cleaning products and state-of-the-art equipment to deliver exceptional results.') ?>
+            </p>
+            <img src="/Images/cleaning-service-image.jpg" alt="<?= __('Cleaning Service') ?>" class="service-image">
         </section>
         <section id="reviews">
-            <h2>Reviews</h2>
+            <h2><?= __('Reviews') ?></h2>
             <div class="reviews-row">
                 <?php foreach ($latestReviews as $review): ?>
                     <div class="review-item">
@@ -185,7 +183,7 @@
                             <?php endfor; ?>
                         </div>
                         <p><?= htmlspecialchars($review->text) ?></p>
-                        <small>Posted on: <?= date('M d, Y', strtotime($review->datePosted)) ?></small>
+                        <small><?= __('Posted on: ') ?><?= date('M d, Y', strtotime($review->datePosted)) ?></small>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -194,19 +192,19 @@
     <footer style="background-color: #89CFF0; color: white; padding: 20px 0; font-family: 'Roboto', sans-serif;">
         <div style="display: flex; justify-content: space-around; align-items: start; flex-wrap: wrap; padding: 0 10%;">
             <div style="flex: 1; min-width: 200px; margin: 10px;">
-                <h3>MKCleaners MTL</h3>
-                <p>Discover our cleaning company, where your home is your best friend! Enjoy a spotless home without
-                    lifting a finger!</p>
+                <h3><?= __('MKCleaners MTL') ?></h3>
+                <p><?= __('Discover our cleaning company, where your home is your best friend! Enjoy a spotless home without lifting a finger!') ?>
+                </p>
             </div>
             <div style="flex: 1; min-width: 250px; margin: 10px;">
-                <h3>Contact info.</h3>
-                <p> Phone Number: (514) 799-4881 <br>
-                    Email: MKCleanersMTL@gmail.com <br>
-                    Instagram: mkcleanersmtl</p>
+                <h3><?= __('Contact info.') ?></h3>
+                <p><?= __('Phone Number: (514) 799-4881') ?> <br>
+                    <?= __('Email: MKCleanersMTL@gmail.com') ?> <br>
+                    <?= __('Instagram: mkcleanersmtl') ?></p>
             </div>
         </div>
         <div style="text-align: center; padding-top: 20px;">
-            © 2024 All Rights Reserved | MKCleaning
+        <?=__('&copy; 2024 All Rights Reserved | Totally not fake website')?>
         </div>
     </footer>
 </body>

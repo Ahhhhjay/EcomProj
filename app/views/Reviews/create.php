@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Create Review</title>
+    <title><?=__('Create Review')?></title>
     <style>
     body {
             font-family: 'Roboto', sans-serif;
@@ -131,21 +131,21 @@
 </head>
 <body>
 <header>
-        <img src="/Images/MKCleaningLogo.png" alt="CleanIt Logo">
+        <img src="/Images/MKCleaningLogo.png" alt="<?=__('CleanIt Logo')?>">
     </header>
     <nav>
-        <a href="/Home/index">Home</a>
-        <a href="#about-us">About Us</a>
-        <a href="#promotions">Promotions</a>
-        <a href="/Reviews/index">Leave a Review</a>
-        <a href="/Customer/index">My Profile</a>
+        <a href="/Home/index"><?=__('Home')?></a>
+        <a href="#about-us"><?=__('About Us')?></a>
+        <a href="#promotions"><?=__('Promotions')?></a>
+        <a href="/Reviews/index"><?=__('Leave a Review')?></a>
+        <a href="/Customer/index"><?=__('My Profile')?></a>
     </nav>
-    <h1>Post a New Review</h1>
+    <h1><?=__('Post a New Review')?></h1>
     <main>
             <form action="" method="post" class="review-form">
             <input type="hidden" id="customerID" name="customerID" value="<?= $_SESSION['customerID'] ?>">
 
-                <label for="rating">Rating:</label>
+                <label for="rating"><?=__('Rating:')?>:</label>
                 <div class="star-rating">
                     <input type="radio" id="star5" name="rating" value="5"/><label for="star5">&#9734;</label>
                     <input type="radio" id="star4" name="rating" value="4"/><label for="star4">&#9734;</label>
@@ -154,27 +154,27 @@
                     <input type="radio" id="star1" name="rating" value="1"/><label for="star1">&#9734;</label>
                 </div>
                 
-                <label for="text">Review Text:</label>
+                <label for="text"><?=__('Review Text:')?>:</label>
                 <textarea id="text" name="text" required></textarea>
 
-                <button type="submit" class="submit-review-button">Submit Review</button>
+                <button type="submit" class="submit-review-button"><?=__('Submit Review')?></button>
             </form>
     </main>
     <footer style="background-color: #89CFF0; color: white; padding: 20px 0; font-family: 'Roboto', sans-serif;">
     <div style="display: flex; justify-content: space-around; align-items: start; flex-wrap: wrap; padding: 0 10%;">
         <div style="flex: 1; min-width: 200px; margin: 10px;">
             <h3>MKCleaners MTL</h3>
-            <p>Discover our cleaning company, where your home is your best friend! Enjoy a spotless home without lifting a finger!</p>
+            <p><?=__('Discover our cleaning company, where your home is your best friend! Enjoy a spotless home without lifting a finger!')?></p>
         </div>
         <div style="flex: 1; min-width: 250px; margin: 10px;">
-            <h3>Contact info.</h3>
-            <p> Phone Number: (514) 799-4881 <br>
-            Email: MKCleanersMTL@gmail.com <br>
-            Instagram: mkcleanersmtl</p>
+            <h3><?=__('Contact info.')?></h3>
+            <p> <?=__('Phone Number: (514) 799-4881')?> <br>
+            <?=__('Email: MKCleanersMTL@gmail.com')?> <br>
+            <?=__('Instagram: mkcleanersmtl')?></p>
         </div>
     </div>
     <div style="text-align: center; padding-top: 20px;">
-        © 2024 All Rights Reserved | MKCleaning
+    <?=__('&copy; 2024 All Rights Reserved | Totally not fake website')?>
     </div>
 </footer>
 </body>

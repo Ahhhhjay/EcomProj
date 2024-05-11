@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complete Booking - CleanIt Services</title>
+    <title><?=__('Complete Booking - CleanIt Services')?></title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         body {
@@ -82,34 +82,34 @@
 
 <body>
     <header>
-        <h1>Confirm Booking</h1>
+        <h1><?=__('Confirm Booking')?></h1>
     </header>
     <main>
         <dl>
-            <dt>Booking Date:</dt>
+            <dt><?=__('Booking Date:')?>:</dt>
             <dd><?= htmlspecialchars($data->bookingDate) ?></dd>
-            <dt>Booking Time:</dt>
+            <dt><?=__('Booking Time:')?>:</dt>
             <dd><?= htmlspecialchars($data->bookingTime) ?></dd>
-            <dt>Frequency:</dt>
+            <dt><?=__('Frequency:')?>:</dt>
             <dd><?= htmlspecialchars($data->Frequency) ?></dd>
-            <dt>Address:</dt>
+            <dt><?=__('Address:')?>:</dt>
             <dd><?= htmlspecialchars($data->Address) ?></dd>
-            <dt>Description:</dt>
+            <dt><?=__('Description:')?>:</dt>
             <dd><?= htmlspecialchars($data->description) ?></dd>
-            <dt>Category:</dt>
+            <dt><?=__('Category:')?>:</dt>
             <dd><?= htmlspecialchars($data->Category) ?></dd>
         </dl>
         <div class="links">
             <a href='/Booking/modify?bookingID=<?= htmlspecialchars($data->bookingID) ?>'
-                style="background-color: #4CAF50;">Modify my booking</a> |
+                style="background-color: #4CAF50;"><?=__('Modify my booking')?></a> |
             <a href='/Booking/delete?bookingID=<?= htmlspecialchars($data->bookingID) ?>'
                 style="background-color: #f44336;"
-                onclick="return confirm('Are you sure you want to delete this booking?');">Delete my booking</a> |
-            <a href='/Home/index' style="background-color: #555;">Finish Booking</a>
+                onclick="return confirm('<?=__('Are you sure you want to delete this booking?')?>');"><?=__('Delete my booking')?></a> |
+            <a href='/Home/index' style="background-color: #555;"><?=__('Finish Booking')?></a>
         </div>
     </main>
     <footer>
-        © 2024 All Rights Reserved | Totally not fake website
+    <?=__('&copy; 2024 All Rights Reserved | Totally not fake website')?>
     </footer>
 </body>
 

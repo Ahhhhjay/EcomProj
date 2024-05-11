@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - CleanIt Services</title>
+    <title><?=__('Login - CleanIt Services')?></title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         body {
@@ -75,28 +75,28 @@
 </head>
 <body>
     <header>
-        <h1>MKCleaners -Admin Login</h1>
+        <h1><?=__('MKCleaners -Admin Login')?></h1>
     </header>
     <main>
         <form method="post" action="">
             <div class="form-group">
-                <label>Email:
-                    <input type="text" class="form-control" name="Email" placeholder="Enter your email" required>
+                <label><?=__('Email:')?>
+                    <input type="text" class="form-control" name="Email" placeholder="<?=__('Enter your email')?>" required>
                 </label>
             </div>
             <div class="form-group">
-                <label>Password:
-                    <input type="password" class="form-control" name="password" placeholder="Enter your password" required>
+                <label><?=__('Password:')?>
+                    <input type="password" class="form-control" name="password" placeholder="<?=__('Enter your password')?>" required>
                 </label>
             </div>
             <div class="form-group">
-                <input type="submit" name="action" value="Login">
+                <input type="submit" name="action" value="<?=__('Login')?>">
                
             </div>
         </form>
     </main>
     <footer>
-        © 2024 All Rights Reserved | CleanIt Services
+    <?=__('&copy; 2024 All Rights Reserved | Totally not fake website')?>
     </footer>
 </body>
 </html>

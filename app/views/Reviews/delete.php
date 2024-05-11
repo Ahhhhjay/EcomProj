@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete Review - MKCleaners MTL</title>
+    <title><?=__('Delete Review - MKCleaners MTL')?></title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         body {
@@ -71,43 +71,39 @@
     </style>
 </head>
 <body>
-    <<header>
-        <img src="/Images/MKCleaningLogo.png" alt="CleanIt Logo">
+    <header>
+        <img src="/Images/MKCleaningLogo.png" alt="<?=__('CleanIt Logo')?>">
     </header>
     <nav>
-        <a href="/Home/index">Home</a>
-        <a href="#about-us">About Us</a>
-        <a href="#promotions">Promotions</a>
-        <a href="/Reviews/index">Leave a Review</a>
-        <a href="/Customer/index">My Profile</a>
+        <a href="/Home/index"><?=__('Home')?></a>
+        <a href="#about-us"><?=__('About Us')?></a>
+        <a href="#promotions"><?=__('Promotions')?></a>
+        <a href="/Reviews/index"><?=__('Leave a Review')?></a>
+        <a href="/Customer/index"><?=__('My Profile')?></a>
     </nav>
     <main>
-        <h2>Are you sure you want to delete this review?</h2>
+        <h2><?=__('Are you sure you want to delete this review?')?></h2>
         <form action="/Reviews/delete/<?= $reviewID ?>" method="POST">
-            <button type="submit" class="button">Confirm Delete</button>
-            <a href="/Reviews/index" class="button cancel-button">Cancel</a>
+            <button type="submit" class="button"><?=__('Confirm Delete')?></button>
+            <a href="/Reviews/index" class="button cancel-button"><?=__('Cancel')?></a>
         </form>
     </main>
     <footer style="background-color: #89CFF0; color: white; padding: 20px 0; font-family: 'Roboto', sans-serif;">
     <div style="display: flex; justify-content: space-around; align-items: start; flex-wrap: wrap; padding: 0 10%;">
         <div style="flex: 1; min-width: 200px; margin: 10px;">
-            <h3>MKCleaners MTL</h3>
-            <p>Discover our cleaning company, where your home is your best friend! Enjoy a spotless home without lifting a finger!</p>
+            <h3><?=__('MKCleaners MTL')?></h3>
+            <p><?=__('Discover our cleaning company, where your home is your best friend! Enjoy a spotless home without lifting a finger!')?></p>
         </div>
         <div style="flex: 1; min-width: 250px; margin: 10px;">
-            <h3>Contact info.</h3>
-            <p> Phone Number: (514) 799-4881 <br>
-            Email: MKCleanersMTL@gmail.com <br>
-            Instagram: mkcleanersmtl</p>
+            <h3><?=__('Contact info.')?></h3>
+            <p><?=__('Phone Number: (514) 799-4881')?><br>
+            <?=__('Email: MKCleanersMTL@gmail.com')?><br>
+            <?=__('Instagram: mkcleanersmtl')?></p>
         </div>
     </div>
     <div style="text-align: center; padding-top: 20px;">
-        © 2024 All Rights Reserved | MKCleaning
+    <?=__('&copy; 2024 All Rights Reserved | Totally not fake website')?>
     </div>
 </footer>
 </body>
 </html>
-
-
-
-

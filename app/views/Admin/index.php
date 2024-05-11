@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
+    <title><?=__('User Profile')?></title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         body {
@@ -99,18 +99,18 @@
         <!-- Optional Header Content -->
     </header>
     <main>
-        <h2>Bookings</h2>
+        <h2><?=__('Bookings')?></h2>
         <table style="width: 100%; border-collapse: collapse;">
             <thead>
                 <tr style="background-color: #f2f2f2;">
                     <th><?=__('Date')?></th>
                     <th><?=__('Time')?></th>
-                    <th>Description</th>
-                    <th>Total Price</th>
-                    <th>Category</th>
-                    <th>Frequency</th>
-                    <th>Status</th>
-                    <th>Actions</th>
+                    <th><?=__('Description')?></th>
+                    <th><?=__('Total Price')?></th>
+                    <th><?=__('Category')?></th>
+                    <th><?=__('Frequency')?></th>
+                    <th><?=__('Status')?></th>
+                    <th><?=__('Actions')?></th>
                 </tr>
             </thead>
             <tbody>
@@ -125,12 +125,12 @@
         <td><?= htmlspecialchars($booking->status) ?></td>
         <td>
         <td>
-                            <button onclick="location.href='/Admin/modify?bookingID=<?= $booking->bookingID ?>'"
-                                style="margin-right: 5px; padding: 5px 10px; background-color: #4CAF50; color: white; border: none; border-radius: 4px;">Edit</button>
-                            <button
-                                onclick="if(confirm('Are you sure you want to delete this booking?')) location.href='/Admin/delete?bookingID=<?= $booking->bookingID ?>';"
-                                style="padding: 5px 10px; background-color: #f44336; color: white; border: none; border-radius: 4px;">Delete</button>
-                        </td>        </td>
+            <button onclick="location.href='/Admin/modify?bookingID=<?= $booking->bookingID ?>'"
+                style="margin-right: 5px; padding: 5px 10px; background-color: #4CAF50; color: white; border: none; border-radius: 4px;"><?=__('Edit')?></button>
+            <button
+                onclick="if(confirm('<?=__('Are you sure you want to delete this booking?')?>')) location.href='/Admin/delete?bookingID=<?= $booking->bookingID ?>';"
+                style="padding: 5px 10px; background-color: #f44336; color: white; border: none; border-radius: 4px;"><?=__('Delete')?></button>
+        </td>        </td>
     </tr>
     <?php endforeach; ?>
 </tbody>
@@ -138,7 +138,7 @@
         </table>
     </main>
     <footer>
-        © 2024 All Rights Reserved | Totally not fake website
+        <?=__('&copy; 2024 All Rights Reserved | Totally not fake website')?>
     </footer>
 </body>
 

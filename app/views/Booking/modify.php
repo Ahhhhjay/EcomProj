@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Profile - CleanIt Services</title>
+    <title><?=__('Update Profile - CleanIt Services')?></title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         body {
@@ -26,8 +26,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 80vh;
-            /* Adjust height to vertically center the form */
+            height: 80vh; /* Adjust height to vertically center the form */
         }
 
         form {
@@ -88,33 +87,33 @@
 
 <body>
     <header>
-        <h1>CleanIt Services - Update Profile</h1>
+        <h1><?=__('CleanIt Services - Update Profile')?></h1>
     </header>
     <main>
         <form method="post" action="">
             <input type="hidden" name="bookingID" value="<?= htmlspecialchars($data->bookingID) ?>">
-            <label>Booking Date:
+            <label><?=__('Booking Date:')?>
                 <input type="date" class="form-control" name="bookingDate"
                     value="<?= htmlspecialchars($data->bookingDate) ?>" required>
             </label>
-            <label>Booking Time:
+            <label><?=__('Booking Time:')?>
                 <input type="time" class="form-control" name="bookingTime"
                     value="<?= htmlspecialchars($data->bookingTime) ?>" required>
             </label>
-            <label>Frequency:
+            <label><?=__('Frequency:')?>
                 <select id="frequency" name="Frequency">
-                    <option value="">Please Select</option>
-                    <option value="One-time" <?= $data->frequency == 'One-time' ? 'selected' : '' ?>>One-time</option>
-                    <option value="Weekly" <?= $data->frequency == 'Weekly' ? 'selected' : '' ?>>Weekly</option>
-                    <option value="Bi-Weekly" <?= $data->frequency == 'Bi-Weekly' ? 'selected' : '' ?>>Bi-Weekly</option>
-                    <option value="Monthly" <?= $data->frequency == 'Monthly' ? 'selected' : '' ?>>Monthly</option>
+                    <option value=""><?=__('Please Select')?></option>
+                    <option value="One-time" <?= $data->frequency == 'One-time' ? 'selected' : '' ?>><?=__('One-time')?></option>
+                    <option value="Weekly" <?= $data->frequency == 'Weekly' ? 'selected' : '' ?>><?=__('Weekly')?></option>
+                    <option value="Bi-Weekly" <?= $data->frequency == 'Bi-Weekly' ? 'selected' : '' ?>><?=__('Bi-Weekly')?></option>
+                    <option value="Monthly" <?= $data->frequency == 'Monthly' ? 'selected' : '' ?>><?=__('Monthly')?></option>
                 </select>
             </label>
-            <input type="submit" value="Update">
+            <input type="submit" value="<?=__('Update')?>">
         </form>
     </main>
     <footer>
-        © 2024 All Rights Reserved | CleanIt Services
+    <?=__('&copy; 2024 All Rights Reserved | Totally not fake website')?>
     </footer>
 </body>
 

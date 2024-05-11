@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete Profile - CleanIt Services</title>
+    <title><?=__('Delete Profile - CleanIt Services')?></title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         body {
@@ -86,30 +86,30 @@
 
 <body>
     <header>
-        <h1>CleanIt - Profile Management</h1>
+        <h1><?=__('CleanIt - Profile Management')?></h1>
     </header>
     <main>
         <form method="post" action="">
-            <h2>User profile</h2>
-            <p>Do you want to proceed with the deletion of your Booking?</p>
-            <dt>Booking Date:</dt>
-            <dd><?= $data->bookingDate ?></dd>
-            <dt>Booking Time:</dt>
-            <dd><?= $data->bookingTime ?></dd>
-            <dt>Frequency:</dt>
-            <dd><?= $data->Frequency ?></dd>
-            <dt>Address:</dt>
-            <dd><?= $data->Address ?></dd>
-            <dt>Description:</dt>
-            <dd><?= $data->description ?></dd>
-            <dt>Category:</dt>
-            <dd><?= $data->Category ?></dd>
-            <input type="submit" name="action" value="Delete">
-            <a href='/Admin/index'>Cancel</a>
+            <h2><?=__('User profile')?></h2>
+            <p><?=__('Do you want to proceed with the deletion of your Booking?')?></p>
+            <dt><?=__('Booking Date:')?></dt>
+            <dd><?= htmlspecialchars($data->bookingDate) ?></dd>
+            <dt><?=__('Booking Time:')?></dt>
+            <dd><?= htmlspecialchars($data->bookingTime) ?></dd>
+            <dt><?=__('Frequency:')?></dt>
+            <dd><?= htmlspecialchars($data->Frequency) ?></dd>
+            <dt><?=__('Address:')?></dt>
+            <dd><?= htmlspecialchars($data->Address) ?></dd>
+            <dt><?=__('Description:')?></dt>
+            <dd><?= htmlspecialchars($data->description) ?></dd>
+            <dt><?=__('Category:')?></dt>
+            <dd><?= htmlspecialchars($data->Category) ?></dd>
+            <input type="submit" name="action" value="<?=__('Delete')?>">
+            <a href='/Admin/index'><?=__('Cancel')?></a>
         </form>
     </main>
     <footer>
-        © 2024 All Rights Reserved | CleanIt Services
+        <?=__('&copy; 2024 All Rights Reserved | CleanIt Services')?>
     </footer>
 </body>
 
