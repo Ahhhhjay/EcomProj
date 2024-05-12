@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,33 +12,27 @@
             background-color: #f4faff;
             color: #333;
         }
-
         header {
             background-color: #89CFF0;
             padding: 10px 20px;
             text-align: center;
             color: white;
         }
-
         nav a {
             color: #ffffff;
             text-decoration: none;
             font-size: 24px;
             font-weight: bold;
         }
-
         main {
             padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-
-        h1,
-        h2 {
+        h1, h2 {
             color: #2a587a;
         }
-
         dl {
             width: 100%;
             max-width: 500px;
@@ -49,17 +42,14 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
         }
-
         dt {
             font-weight: bold;
             color: #555;
         }
-
         dd {
             margin-bottom: 20px;
             color: #666;
         }
-
         button {
             padding: 10px 20px;
             margin: 5px;
@@ -69,19 +59,15 @@
             font-size: 16px;
             cursor: pointer;
         }
-
         .modify-btn {
             background-color: #4CAF50;
         }
-
         .delete-btn {
             background-color: #f44336;
         }
-
         .main-btn {
             background-color: #555;
         }
-
         footer {
             background-color: #89CFF0;
             color: white;
@@ -93,7 +79,6 @@
         }
     </style>
 </head>
-
 <body>
     <header>
         <!-- Optional Header Content -->
@@ -103,6 +88,7 @@
         <table style="width: 100%; border-collapse: collapse;">
             <thead>
                 <tr style="background-color: #f2f2f2;">
+                    <th><?=__('Email')?></th>
                     <th><?=__('Date')?></th>
                     <th><?=__('Time')?></th>
                     <th><?=__('Description')?></th>
@@ -114,32 +100,29 @@
                 </tr>
             </thead>
             <tbody>
-    <?php foreach ($bookings as $booking): ?>
-    <tr>
-        <td><?= htmlspecialchars($booking->bookingDate) ?></td>
-        <td><?= htmlspecialchars($booking->bookingTime) ?></td>
-        <td><?= htmlspecialchars($booking->description) ?></td>
-        <td>$<?= htmlspecialchars(number_format($booking->basePrice + $booking->ratePerSquareFoot, 2)) ?></td>
-        <td><?= htmlspecialchars($booking->category) ?></td>
-        <td><?= htmlspecialchars($booking->frequency) ?></td>
-        <td><?= htmlspecialchars($booking->status) ?></td>
-        <td>
-        <td>
-            <button onclick="location.href='/Admin/modify?bookingID=<?= $booking->bookingID ?>'"
-                style="margin-right: 5px; padding: 5px 10px; background-color: #4CAF50; color: white; border: none; border-radius: 4px;"><?=__('Edit')?></button>
-            <button
-                onclick="if(confirm('<?=__('Are you sure you want to delete this booking?')?>')) location.href='/Admin/delete?bookingID=<?= $booking->bookingID ?>';"
-                style="padding: 5px 10px; background-color: #f44336; color: white; border: none; border-radius: 4px;"><?=__('Delete')?></button>
-        </td>        </td>
-    </tr>
-    <?php endforeach; ?>
-</tbody>
-
+                <?php foreach ($bookings as $booking): ?>
+                <tr>
+                    <td><?= htmlspecialchars($booking['Email']) ?></td>
+                    <td><?= htmlspecialchars($booking['bookingDate']) ?></td>
+                    <td><?= htmlspecialchars($booking['bookingTime']) ?></td>
+                    <td><?= htmlspecialchars($booking['description']) ?></td>
+                    <td>$<?= htmlspecialchars(number_format($booking['basePrice'] + $booking['ratePerSquareFoot'], 2)) ?></td>
+                    <td><?= htmlspecialchars($booking['Category']) ?></td>
+                    <td><?= htmlspecialchars($booking['Frequency']) ?></td>
+                    <td><?= htmlspecialchars($booking['Status']) ?></td>
+                    <td>
+                        <button onclick="location.href='/Admin/modify?bookingID=<?= $booking['bookingID'] ?>'"
+                            style="margin-right: 5px; padding: 5px 10px; background-color: #4CAF50; color: white; border: none; border-radius: 4px;"><?=__('Edit')?></button>
+                        <button onclick="if(confirm('<?=__('Are you sure you want to delete this booking?')?>')) location.href='/Admin/delete?bookingID=<?= $booking['bookingID'] ?>';"
+                            style="padding: 5px 10px; background-color: #f44336; color: white; border: none; border-radius: 4px;"><?=__('Delete')?></button>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
         </table>
     </main>
     <footer>
         <?=__('&copy; 2024 All Rights Reserved | Totally not fake website')?>
     </footer>
 </body>
-
 </html>

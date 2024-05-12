@@ -37,6 +37,7 @@ class Customer extends \app\core\Model
         return $STMT->fetchAll(PDO::FETCH_ASSOC);
     }
 
+   
     public function getById($customerID)
     {
         $SQL = 'SELECT * FROM Customer WHERE customerID = :customerID';

@@ -5,7 +5,7 @@ namespace app\controllers;
 class Admin extends \app\core\Controller {
     public function index() {
         $bookingModel = new \app\models\Booking();
-        $allBookings = $bookingModel->getAllBookings();
+        $allBookings = $bookingModel->getAllBookingsAndEmail();
         $this->view('Admin/index', ['bookings' => $allBookings]);
     }
 
@@ -20,7 +20,7 @@ class Admin extends \app\core\Controller {
             $detailedBooking->bookingDate = $_POST['bookingDate'];
             $detailedBooking->bookingTime = $_POST['bookingTime'];
             $detailedBooking->frequency = $_POST['Frequency'];
-            $detailedBooking->status = 'Scheduled';
+            $detailedBooking->status = $_POST['Status'];
             $detailedBooking->update();
 
             header('Location: /Admin/index'); // Redirect to a profile page or other appropriate location

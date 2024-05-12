@@ -109,6 +109,14 @@
                     <option value="Monthly" <?= $data->frequency == 'Monthly' ? 'selected' : '' ?>><?=__('Monthly')?></option>
                 </select>
             </label>
+            <label><?=__('Status:')?>
+                <select id="status" name="Status">
+                    <option value=""><?=__('Please Select')?></option>
+                    <option value="Scheduled" <?= $data->status  == 'Scheduled' ? 'selected' : '' ?>><?=__('Scheduled')?></option>
+                    <option value="Completed" <?= $data->status  == 'Completed' ? 'selected' : '' ?>><?=__('Completed')?></option>
+                    <option value="Cancelled" <?= $data->status  == 'Cancelled' ? 'selected' : '' ?>><?=__('Cancelled')?></option>
+                </select>
+            </label>
             <input type="submit" value="<?=__('Update')?>">
           
         </form> 
