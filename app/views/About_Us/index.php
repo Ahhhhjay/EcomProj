@@ -12,6 +12,10 @@
             margin: 0;
             color: #333;
             background-color: #f4faff;
+            /* Adjust min-height to ensure footer stays at bottom */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         header,
@@ -24,7 +28,8 @@
 
         nav {
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
+            margin-bottom: auto;
+            /* Push footer to the bottom */
         }
 
         nav a {
@@ -42,6 +47,8 @@
         main {
             padding: 20px;
             text-align: center;
+            flex: 1;
+            /* Allow content to grow to fill available space */
         }
 
         .content-section {
@@ -75,13 +82,21 @@
 
 <body>
     <header>
-        <h1>MKCleaners MTL</h1>
+        <img src="/Images/MKCleaningLogo.png" alt="CleanIt Logo">
     </header>
     <nav>
         <a href="/">Home</a>
         <a href="/About_Us/">About Us</a>
-        <a href="/Services/">Services</a>
-        <a href="/Contact/">Contact</a>
+        <a href="#promotions">Promotions</a>
+        <a href="/Reviews/">Leave a Review</a>
+        <a href="/Customer/">My Profile</a>
+        <!-- Dynamic button rendering based on login state -->
+        <?php if (isset($_SESSION['customerID'])): ?>
+            <button onclick="location.href='/Customer/logout'">Logout</button>
+        <?php else: ?>
+            <button onclick="location.href='/Customer/login'">Login</button>
+            <button onclick="location.href='/Customer/register'">Sign Up</button>
+        <?php endif; ?>
     </nav>
     <main>
         <section class="content-section">
@@ -110,7 +125,22 @@
         </section>
     </main>
     <footer>
-        &copy; 2024 MKCleaners MTL. All Rights Reserved.
+        <div style="display: flex; justify-content: space-around; align-items: start; flex-wrap: wrap; padding: 0 10%;">
+            <div style="flex: 1; min-width: 200px; margin: 10px;">
+                <h3>MKCleaners MTL</h3>
+                <p>Discover our cleaning company, where your home is your best friend! Enjoy a spotless home without
+                    lifting a finger!</p>
+            </div>
+            <div style="flex: 1; min-width: 250px; margin: 10px;">
+                <h3>Contact info.</h3>
+                <p>Phone Number: (514) 799-4881 <br>
+                    Email: MKCleanersMTL@gmail.com <br>
+                    Instagram: mkcleanersmtl</p>
+            </div>
+        </div>
+        <div style="text-align: center; padding-top: 20px;">
+            &copy; 2024 All Rights Reserved | Totally not fake website
+        </div>
     </footer>
 </body>
 
