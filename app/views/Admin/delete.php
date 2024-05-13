@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?=__('Delete Profile - CleanIt Services')?></title>
+    <title><?= __('Delete Profile - CleanIt Services') ?></title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         body {
@@ -86,30 +86,30 @@
 
 <body>
     <header>
-        <h1><?=__('CleanIt - Profile Management')?></h1>
+        <h1><?= __('CleanIt - Profile Management') ?></h1>
     </header>
     <main>
         <form method="post" action="">
-            <h2><?=__('User profile')?></h2>
-            <p><?=__('Do you want to proceed with the deletion of your Booking?')?></p>
-            <dt><?=__('Booking Date:')?></dt>
+            <h2><?= __('Booking Information') ?></h2>
+            <dt><?= __('Booking Date:') ?></dt>
             <dd><?= htmlspecialchars($data->bookingDate) ?></dd>
-            <dt><?=__('Booking Time:')?></dt>
+            <dt><?= __('Booking Time:') ?></dt>
             <dd><?= htmlspecialchars($data->bookingTime) ?></dd>
-            <dt><?=__('Frequency:')?></dt>
+            <dt><?= __('Frequency:') ?></dt>
             <dd><?= htmlspecialchars($data->Frequency) ?></dd>
-            <dt><?=__('Address:')?></dt>
+            <dt><?= __('Address:') ?></dt>
             <dd><?= htmlspecialchars($data->Address) ?></dd>
-            <dt><?=__('Description:')?></dt>
+            <dt><?= __('Description:') ?></dt>
             <dd><?= htmlspecialchars($data->description) ?></dd>
-            <dt><?=__('Category:')?></dt>
+            <dt><?= __('Category:') ?></dt>
             <dd><?= htmlspecialchars($data->Category) ?></dd>
-            <input type="submit" name="action" value="<?=__('Delete')?>">
-            <a href='/Admin/index'><?=__('Cancel')?></a>
+            <p><?= __('Do you want to proceed with the deletion of your Booking?') ?></p>
+            <input type="submit" name="action" value="<?= __('Delete') ?>">
+            <a href='/Admin/'><?= __('Cancel') ?></a>
         </form>
     </main>
     <footer>
-        <?=__('&copy; 2024 All Rights Reserved | CleanIt Services')?>
+        <?= __('&copy; 2024 All Rights Reserved | CleanIt Services') ?>
     </footer>
 </body>
 

@@ -27,7 +27,6 @@
             justify-content: center;
             align-items: center;
             height: 80vh;
-            /* Adjust height to vertically center the form */
         }
 
         form {
@@ -86,11 +85,11 @@
 
 <body>
     <header>
-        <h1><?= __('CleanIt - Profile Management') ?></h1>
+        <h1><?= __('CleanIt Services - Profile Management') ?></h1>
     </header>
     <main>
         <form method="post" action="">
-            <h2><?= __('User profile') ?></h2>
+            <h2><?= __('Customer Profile') ?></h2>
             <p><?= __('Do you want to proceed with the deletion of your profile?') ?></p>
             <dl>
                 <dt><?= __('First name:') ?></dt>
@@ -103,11 +102,11 @@
                 <dd><?= htmlspecialchars($data->Address) ?></dd>
             </dl>
             <input type="submit" name="action" value="<?= __('Delete') ?>">
-            <a href='/Home/index'><?= __('Cancel') ?></a>
+            <a href='/Customer/'><?= __('Cancel') ?></a>
         </form>
     </main>
     <footer>
-    <?=__('&copy; 2024 All Rights Reserved | Totally not fake website')?>
+        <?= __('&copy; 2024 All Rights Reserved | Totally not fake website') ?>
     </footer>
 </body>
 

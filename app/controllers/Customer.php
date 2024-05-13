@@ -7,37 +7,19 @@ namespace app\controllers;
  */
 class Customer extends \app\core\Controller
 {
-    /**
-     * Creates a new customer from POST data.
-     */
-
-
     public function index()
     {
-        //  $customer = new \app\models\Customer();
-        //  $customer = $customer->getById($_SESSION['customerID']);
         if (!isset($_SESSION['customerID'])) {
-            // Redirect to login page if not logged in.
             header('Location: /Customer/login');
             exit;
         }
 
-        // Get customer data from the model.
         $customerModel = new \app\models\Customer();
         $customer = $customerModel->getById($_SESSION['customerID']);
 
-        if (!$customer) {
-            // If no customer is found, handle the error.
-            // This could redirect to an error page or handle differently.
-            header('Location: /Customer/error'); // Assuming there's an error route.
-            exit;
-        }
-
-        // Get bookings for the customer
         $bookingModel = new \app\models\Booking();
         $bookings = $bookingModel->getAllForCustomer($_SESSION['customerID']);
 
-        // Render the profile view with customer data.
         $this->view('Customer/index', ['customer' => $customer, 'bookings' => $bookings]);
     }
 
@@ -46,6 +28,7 @@ class Customer extends \app\core\Controller
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $customer = new \app\models\Customer();
+            
             $customer->firstName = $_POST['firstName'];
             $customer->lastName = $_POST['lastName'];
             $customer->Email = $_POST['Email'];
@@ -55,7 +38,7 @@ class Customer extends \app\core\Controller
 
             $customer->insert();
 
-            header('location:/Customer/login');
+            header('Location:/Customer/login');
         } else {
             $this->view('Customer/register');
         }
@@ -76,9 +59,9 @@ class Customer extends \app\core\Controller
                 //remember that this is the user logging in...
                 $_SESSION['customerID'] = $customer->customerID;
 
-                header('location:/Home/index');
+                header('Location:/');
             } else {
-                header('location:/Customer/login');
+                header('Location:/Customer/login');
             }
         } else {
             $this->view('Customer/login');
@@ -86,32 +69,21 @@ class Customer extends \app\core\Controller
     }
 
     public function logout(){
-		//session_destroy();
-		//$_SESSION['user_id'] = null;
-
 		session_destroy();
 
-		header('location:/Home/index');
+		header('Location:/');
 	}
 
-    /**
-     * Deletes an existing customer.
-     */
     public function delete()
     {
 
         $customer = new \app\models\Customer();
         $customer = $customer->getById($_SESSION['customerID']);
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-
-
             $customer->delete();
             unset($_SESSION['customerID']);
-            header('Location:/Customer/index');
-
+            header('Location:/');
         } else {
-
             $this->view('Customer/delete', $customer);
         }
     }
@@ -141,7 +113,7 @@ class Customer extends \app\core\Controller
             }
 
             $customer->update();
-            header('Location: /Customer/index'); // Redirect to a profile page or other appropriate location
+            header('Location: /Customer/'); // Redirect to a profile page or other appropriate Location
             exit;
         } else {
             $this->view('Customer/update', $customer);

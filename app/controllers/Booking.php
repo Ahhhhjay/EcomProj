@@ -17,6 +17,7 @@ class Booking extends \app\core\Controller
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $booking = new \app\models\Booking();
+
             $booking->customerID = $_SESSION['customerID'];
             $booking->bookingDate = $_POST['bookingDate'];
             $booking->bookingTime = $_POST['bookingTime'];
@@ -33,64 +34,55 @@ class Booking extends \app\core\Controller
             }
             $booking->insert();
 
-            header('Location: /Booking/complete?bookingID=' . $booking->bookingID);
+            header('Location: /Booking/complete/' . $booking->bookingID);
         } else {
             $this->view('Booking/create');
-        }
-    }
-
-    /**
-     * Deletes an existing booking.
-     */
-    public function delete()
-    {
-        $bookingID = $_GET['bookingID'] ?? null;
-
-        $bookingModel = new \app\models\Booking();
-        $booking = $bookingModel->getForBooking($bookingID);
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $booking->delete();
-            unset($_SESSION['bookingID']);
-            header('Location:/Home/index');
-
-        } else {
-            $this->view('Booking/delete', ['data' => $booking]);
         }
     }
 
     // Additional controller methods for other actions can be added here
     public function getAll()
     {
-        
-            // Instantiate Booking model
-            $booking = new \app\models\Booking();
 
-            // Call method to get all bookings
-            $allBookings = $booking->getAllBookings();
+        // Instantiate Booking model
+        $booking = new \app\models\Booking();
 
-            // Here, you can do something with $allBookings, like passing it to a view for display
-            // Or you can directly send a JSON response, etc.
+        // Call method to get all bookings
+        $allBookings = $booking->getAllBookings();
 
-            // For example, if you want to pass it to a view:
-            $this->view('Admin/index', ['bookings' => $allBookings]);
-        
+        // Here, you can do something with $allBookings, like passing it to a view for display
+        // Or you can directly send a JSON response, etc.
+
+        // For example, if you want to pass it to a view:
+        $this->view('Admin/index', ['bookings' => $allBookings]);
+
     }
 
-    public function complete()
+    // Deletes an existing booking
+    public function delete($bookingID)
     {
-        $bookingID = $_GET['bookingID'] ?? null;  // Get bookingID from URL
+        $bookingModel = new \app\models\Booking();
+        $booking = $bookingModel->getForBooking($bookingID);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $booking->delete();
+            unset($_SESSION['bookingID']);
+            header('Location:/');
+        } else {
+            $this->view('Booking/delete', $booking);
+        }
+    }
 
+    // Display booking completion details
+    public function complete($bookingID)
+    {
         $bookingModel = new \app\models\Booking();
         $detailedBooking = $bookingModel->getForBooking($bookingID);
-
-        // Render the profile view with customer data.
         $this->view('Booking/complete', $detailedBooking);
     }
 
-    public function modify()
+    // Modifies an existing booking
+    public function modify($bookingID)
     {
-        $bookingID = $_GET['bookingID'] ?? null;  // Get bookingID from URL
-
         $bookingModel = new \app\models\Booking();
         $detailedBooking = $bookingModel->getForBooking($bookingID);
 
@@ -101,8 +93,7 @@ class Booking extends \app\core\Controller
             $detailedBooking->status = 'Scheduled';
             $detailedBooking->update();
 
-           
-            header('Location: /Booking/complete?bookingID=' . $detailedBooking->bookingID);
+            header('Location: /Booking/complete/' . $detailedBooking->bookingID);
             exit;
         } else {
             $this->view('Booking/modify', ['data' => $detailedBooking]);  // Pass booking data to view

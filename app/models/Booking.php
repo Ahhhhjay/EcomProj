@@ -59,15 +59,14 @@ class Booking extends \app\core\Model
         $SQL = 'SELECT Booking.*, Customer.*
                 FROM Booking
                 INNER JOIN Customer ON Booking.customerID = Customer.customerID 
-                WHERE Booking.bookingID = :bookingID
                 ORDER BY Booking.bookingDate DESC';
-    
+
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute();
-        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Booking'); // set the type of data returned by fetches
+        $STMT->setFetchMode(PDO::FETCH_ASSOC); // Using FETCH_ASSOC for easier column access
         return $STMT->fetchAll(); // return all records
     }
-    
+
     public function getAllBookingsAndEmail()
     {
         $SQL = 'SELECT Booking.*, Customer.Email
@@ -75,12 +74,12 @@ class Booking extends \app\core\Model
             INNER JOIN Customer ON Booking.customerID = Customer.customerID 
             ORDER BY Booking.bookingDate DESC';
 
-    $STMT = self::$_conn->prepare($SQL);
-    $STMT->execute();
-    $STMT->setFetchMode(PDO::FETCH_ASSOC); // Using FETCH_ASSOC for easier column access
-    return $STMT->fetchAll();
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute();
+        $STMT->setFetchMode(PDO::FETCH_ASSOC); // Using FETCH_ASSOC for easier column access
+        return $STMT->fetchAll();
     }
-    
+
     public function getForBooking($bookingID)
     {
         $SQL = 'SELECT Booking.*,Customer.Address

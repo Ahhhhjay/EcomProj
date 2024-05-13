@@ -89,7 +89,7 @@
 <body>
     <header>
         <h1><?= __('CleanIt Services - Registration') ?></h1>
-        <a href="/Home/index"><?= __('Home') ?></a>
+        <a href="/"><?= __('Home') ?></a>
     </header>
     <main>
         <form method="post" action="">

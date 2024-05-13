@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?=__('Update Profile - CleanIt Services')?></title>
+    <title><?= __('Update Profile - CleanIt Services') ?></title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         body {
@@ -45,7 +45,8 @@
         }
 
         input,
-        select {
+        select,
+        button {
             width: 100%;
             padding: 10px;
             margin-top: 5px;
@@ -54,7 +55,8 @@
             border: 1px solid #ddd;
         }
 
-        input[type="submit"] {
+        input[type="submit"],
+        button[type="button"] {
             background-color: #89CFF0;
             color: white;
             border: none;
@@ -62,7 +64,8 @@
             transition: background-color 0.3s;
         }
 
-        input[type="submit"]:hover {
+        input[type="submit"]:hover,
+        button[type="button"]:hover {
             background-color: #66afe9;
         }
 
@@ -92,38 +95,45 @@
     <main>
         <form method="post" action="">
             <input type="hidden" name="bookingID" value="<?= htmlspecialchars($data->bookingID) ?>">
-            <label><?=__('Booking Date:')?>
+            <label><?= __('Booking Date:') ?>
                 <input type="date" class="form-control" name="bookingDate"
                     value="<?= htmlspecialchars($data->bookingDate) ?>" required>
             </label>
-            <label><?=__('Booking Time:')?>
+            <label><?= __('Booking Time:') ?>
                 <input type="time" class="form-control" name="bookingTime"
                     value="<?= htmlspecialchars($data->bookingTime) ?>" required>
             </label>
-            <label><?=__('Frequency:')?>
+            <label><?= __('Frequency:') ?>
                 <select id="frequency" name="Frequency">
-                    <option value=""><?=__('Please Select')?></option>
-                    <option value="One-time" <?= $data->frequency == 'One-time' ? 'selected' : '' ?>><?=__('One-time')?></option>
-                    <option value="Weekly" <?= $data->frequency == 'Weekly' ? 'selected' : '' ?>><?=__('Weekly')?></option>
-                    <option value="Bi-Weekly" <?= $data->frequency == 'Bi-Weekly' ? 'selected' : '' ?>><?=__('Bi-Weekly')?></option>
-                    <option value="Monthly" <?= $data->frequency == 'Monthly' ? 'selected' : '' ?>><?=__('Monthly')?></option>
+                    <option value=""><?= __('Please Select') ?></option>
+                    <option value="One-time" <?= $data->frequency == 'One-time' ? 'selected' : '' ?>><?= __('One-time') ?>
+                    </option>
+                    <option value="Weekly" <?= $data->frequency == 'Weekly' ? 'selected' : '' ?>><?= __('Weekly') ?>
+                    </option>
+                    <option value="Bi-Weekly" <?= $data->frequency == 'Bi-Weekly' ? 'selected' : '' ?>>
+                        <?= __('Bi-Weekly') ?>
+                    </option>
+                    <option value="Monthly" <?= $data->frequency == 'Monthly' ? 'selected' : '' ?>><?= __('Monthly') ?>
+                    </option>
                 </select>
             </label>
-            <label><?=__('Status:')?>
+            <label><?= __('Status:') ?>
                 <select id="status" name="Status">
-                    <option value=""><?=__('Please Select')?></option>
-                    <option value="Scheduled" <?= $data->status  == 'Scheduled' ? 'selected' : '' ?>><?=__('Scheduled')?></option>
-                    <option value="Completed" <?= $data->status  == 'Completed' ? 'selected' : '' ?>><?=__('Completed')?></option>
-                    <option value="Cancelled" <?= $data->status  == 'Cancelled' ? 'selected' : '' ?>><?=__('Cancelled')?></option>
+                    <option value=""><?= __('Please Select') ?></option>
+                    <option value="Scheduled" <?= $data->status == 'Scheduled' ? 'selected' : '' ?>><?= __('Scheduled') ?>
+                    </option>
+                    <option value="Completed" <?= $data->status == 'Completed' ? 'selected' : '' ?>><?= __('Completed') ?>
+                    </option>
+                    <option value="Cancelled" <?= $data->status == 'Cancelled' ? 'selected' : '' ?>><?= __('Cancelled') ?>
+                    </option>
                 </select>
             </label>
-            <input type="submit" value="<?=__('Update')?>">
-          
-        </form> 
-        <button id="cancel" onclick="location.href='/Admin/index'"><?=__('Cancel')?></button>
+            <input type="submit" value="<?= __('Update') ?>">
+            <button type="button" onclick="location.href='/Admin/';"><?= __('Cancel') ?></button>
+        </form>
     </main>
     <footer>
-    <?=__('&copy; 2024 All Rights Reserved | Totally not fake website')?>
+        <?= __('&copy; 2024 All Rights Reserved | Totally not fake website') ?>
     </footer>
 </body>
 

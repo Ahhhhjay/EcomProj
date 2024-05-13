@@ -46,7 +46,8 @@
         }
 
         input,
-        select {
+        select,
+        button {
             width: 100%;
             padding: 10px;
             margin-top: 5px;
@@ -55,23 +56,19 @@
             border: 1px solid #ddd;
         }
 
-        input[type="submit"] {
+        input[type="submit"],
+        button[type="button"] {
             background-color: #89CFF0;
             color: white;
             border: none;
             cursor: pointer;
             transition: background-color 0.3s;
+            padding: 10px 20px;
         }
 
-        input[type="submit"]:hover {
+        input[type="submit"]:hover,
+        button[type="button"]:hover {
             background-color: #66afe9;
-        }
-
-        a {
-            color: #89CFF0;
-            text-decoration: none;
-            display: block;
-            margin-top: 15px;
         }
 
         footer {
@@ -88,15 +85,16 @@
 
 <body>
     <header>
-        <h1><?= __('CleanIt Services - Update Profile') ?></h1>
+        <h1><?= __('CleanIt Services - Profile Management') ?></h1>
     </header>
+
     <main>
         <form method="post" action="">
             <div class="form-group">
                 <label><?= __('First Name') ?>:
                     <input type="text" class="form-control" name="firstName"
-                        placeholder="<?= __('Enter your First Name') ?>" value="<?= htmlspecialchars($data->firstName) ?>"
-                        required>
+                        placeholder="<?= __('Enter your First Name') ?>"
+                        value="<?= htmlspecialchars($data->firstName) ?>" required>
                 </label>
                 <label><?= __('Last Name') ?>:
                     <input type="text" class="form-control" name="lastName"
@@ -109,6 +107,7 @@
                         value="<?= htmlspecialchars($data->Email) ?>" required>
                 </label>
             </div>
+
             <div class="form-group">
                 <label><?= __('Contact Number') ?>:
                     <input type="tel" class="form-control" name="contactNumber"
@@ -116,24 +115,28 @@
                         value="<?= htmlspecialchars($data->contactNumber) ?>" required>
                 </label>
             </div>
+
             <div class="form-group">
                 <label><?= __('Address') ?>:
                     <input type="text" class="form-control" name="Address" placeholder="<?= __('Enter your address') ?>"
                         value="<?= htmlspecialchars($data->Address) ?>" required>
                 </label>
             </div>
+
             <div class="form-group">
                 <label><?= __('Password') ?> (<?= __('leave blank if you do not wish to change it') ?>):
                     <input type="password" class="form-control" name="passwordHash"
                         placeholder="<?= __('Enter new password') ?>">
                 </label>
             </div>
-            <input type="submit" name="update" value="<?= __('Update') ?>">
 
+            <input type="submit" name="update" value="<?= __('Update') ?>">
+            <button type="button" onclick="location.href='/Customer/';"><?= __('Cancel') ?></button>
         </form>
     </main>
+
     <footer>
-    <?=__('&copy; 2024 All Rights Reserved | Totally not fake website')?>
+        <?= __('&copy; 2024 All Rights Reserved | Totally not fake website') ?>
     </footer>
 </body>
 

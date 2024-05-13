@@ -96,10 +96,10 @@
 
 <body>
     <header>
-        <!-- Optional Header Content -->
+        <h1><?= __('CleanIt Services - Customer Profile') ?></h1>
     </header>
+
     <main>
-        <h1><?= __('Customer Profile') ?></h1>
         <dl>
             <dt><?= __('First name:') ?></dt>
             <dd><?= $customer->firstName ?></dd>
@@ -110,12 +110,17 @@
             <dt><?= __('Address:') ?></dt>
             <dd><?= $customer->Address ?></dd>
         </dl>
+
         <div>
-            <button onclick="location.href='/Customer/update'" class="modify-btn"><?= __('Modify my profile') ?></button>
-            <button onclick="location.href='/Customer/delete';" class="delete-btn"><?= __('Delete my profile') ?></button>
-            <button onclick="location.href='/Home/index'" class="main-btn"><?= __('Return to main') ?></button>
+            <button onclick="location.href='/Customer/update'"
+                class="modify-btn"><?= __('Update my profile') ?></button>
+            <button onclick="location.href='/Customer/delete';"
+                class="delete-btn"><?= __('Delete my profile') ?></button>
+            <button onclick="location.href='/'" class="main-btn"><?= __('Return to main') ?></button>
         </div>
+
         <h2><?= __('Bookings') ?></h2>
+
         <table style="width: 100%; border-collapse: collapse;">
             <thead>
                 <tr style="background-color: #f2f2f2;">
@@ -129,6 +134,7 @@
                     <th><?= __('Actions') ?></th>
                 </tr>
             </thead>
+
             <tbody>
                 <?php foreach ($bookings as $booking): ?>
                     <tr>
@@ -140,19 +146,20 @@
                         <td><?= htmlspecialchars($booking->frequency) ?></td>
                         <td><?= htmlspecialchars($booking->status) ?></td>
                         <td>
-                            <button onclick="location.href='/Booking/modify?bookingID=<?= $booking->bookingID ?>'"
+                            <button onclick="location.href='/Booking/modify/<?= $booking->bookingID ?>'"
                                 style="margin-right: 5px; padding: 5px 10px; background-color: #4CAF50; color: white; border: none; border-radius: 4px;"><?= __('Edit') ?></button>
-                            <button
-                                onclick="if(confirm('<?= __('Are you sure you want to delete this booking?') ?>')) location.href='/Booking/delete?bookingID=<?= $booking->bookingID ?>';"
+                            <button onclick="location.href='/Booking/delete/<?= $booking->bookingID ?>';"
                                 style="padding: 5px 10px; background-color: #f44336; color: white; border: none; border-radius: 4px;"><?= __('Delete') ?></button>
                         </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
+
     </main>
+
     <footer>
-    <?=__('&copy; 2024 All Rights Reserved | Totally not fake website')?>
+        <?= __('&copy; 2024 All Rights Reserved | Totally not fake website') ?>
     </footer>
 </body>
 

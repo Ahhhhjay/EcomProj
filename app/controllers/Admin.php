@@ -5,14 +5,27 @@ namespace app\controllers;
 class Admin extends \app\core\Controller {
     public function index() {
         $bookingModel = new \app\models\Booking();
-        $allBookings = $bookingModel->getAllBookingsAndEmail();
-        $this->view('Admin/index', ['bookings' => $allBookings]);
+    
+        $allBookings = $bookingModel->getAllBookingsAndCustomer();
+    
+        if (!empty($_GET)) {
+            $allBookings = array_filter($allBookings, function($booking) {
+                return (empty($_GET['firstName']) || stripos($booking['firstName'], $_GET['firstName']) !== false)
+                    && (empty($_GET['lastName']) || stripos($booking['lastName'], $_GET['lastName']) !== false)
+                    && (empty($_GET['email']) || stripos($booking['Email'], $_GET['email']) !== false)
+                    && (empty($_GET['date']) || $booking['bookingDate'] == $_GET['date'])
+                    && (empty($_GET['category']) || $booking['Category'] == $_GET['category'])
+                    && (empty($_GET['frequency']) || $booking['Frequency'] == $_GET['frequency'])
+                    && (empty($_GET['status']) || $booking['Status'] == $_GET['status']);
+            });
+        }
+    
+        $this->view('Admin/index', $allBookings);
     }
+    
 
-    public function modify()
+    public function modify($bookingID)
     {
-        $bookingID = $_GET['bookingID'] ?? null;  // Get bookingID from URL
-
         $bookingModel = new \app\models\Booking();
         $detailedBooking = $bookingModel->getForBooking($bookingID);
 
@@ -53,10 +66,8 @@ class Admin extends \app\core\Controller {
         }
     }
 
-    public function delete()
+    public function delete($bookingID)
     {
-        $bookingID = $_GET['bookingID'] ?? null;
-
         $bookingModel = new \app\models\Booking();
         $booking = $bookingModel->getForBooking($bookingID);
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

@@ -149,11 +149,11 @@
         <img src="/Images/MKCleaningLogo.png" alt="<?= __('CleanIt Logo') ?>">
     </header>
     <nav>
-        <a href="/Home/index"><?= __('Home') ?></a>
+        <a href="/"><?= __('Home') ?></a>
         <a href="#about-us"><?= __('About Us') ?></a>
         <a href="#promotions"><?= __('Promotions') ?></a>
-        <a href="/Reviews/index"><?= __('Leave a Review') ?></a>
-        <a href="/Customer/index"><?= __('My Profile') ?></a>
+        <a href="/Reviews/"><?= __('Leave a Review') ?></a>
+        <a href="/Customer/"><?= __('My Profile') ?></a>
         <!-- Dynamic button rendering based on login state -->
         <?php if (isset($_SESSION['customerID'])): ?>
             <button onclick="location.href='/Customer/logout'"><?= __('Logout') ?></button>
@@ -173,6 +173,7 @@
         </section>
         <section id="reviews">
             <h2><?= __('Reviews') ?></h2>
+            
             <div class="reviews-row">
                 <?php foreach ($latestReviews as $review): ?>
                     <div class="review-item">
