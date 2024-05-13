@@ -152,7 +152,7 @@
     </header>
     <nav>
         <a href="/"><?= __('Home') ?></a>
-        <a href="#about-us"><?= __('About Us') ?></a>
+        <a href="/About_Us/"><?= __('About Us') ?></a>
         <a href="#promotions"><?= __('Promotions') ?></a>
         <a href="/Reviews/"><?= __('Leave a Review') ?></a>
         <a href="/Customer/"><?= __('My Profile') ?></a>

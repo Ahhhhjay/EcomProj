@@ -25,6 +25,7 @@
             display: block;
         }
 
+        /* Updated nav styles from Reviews/index */
         nav {
             background-color: #ffffff;
             text-align: center;
@@ -32,16 +33,33 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        nav a {
-            margin: 0 20px;
+        nav a,
+        nav button {
+            margin: 0 10px;
+            padding: 10px 20px;
             text-decoration: none;
             color: #89CFF0;
             font-weight: 500;
-            font-size: 20px;
+            font-size: 16px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
         }
 
-        nav a:hover {
+        nav a:hover,
+        nav button:hover {
             color: #66afe9;
+        }
+
+        nav button {
+            background-color: #89CFF0;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav button:hover {
+            background-color: #66afe9;
         }
 
         main {
@@ -109,10 +127,17 @@
 
     <nav>
         <a href="/"><?= __('Home') ?></a>
-        <a href="#about-us"><?= __('About Us') ?></a>
+        <a href="/About_Us/"><?= __('About Us') ?></a>
         <a href="#promotions"><?= __('Promotions') ?></a>
         <a href="/Reviews/"><?= __('Leave a Review') ?></a>
         <a href="/Customer/"><?= __('My Profile') ?></a>
+        <!-- Dynamic button rendering based on login state -->
+        <?php if (isset($_SESSION['customerID'])): ?>
+            <button onclick="location.href='/Customer/logout'"><?= __('Logout') ?></button>
+        <?php else: ?>
+            <button onclick="location.href='/Customer/login'"><?= __('Login') ?></button>
+            <button onclick="location.href='/Customer/register'"><?= __('Sign Up') ?></button>
+        <?php endif; ?>
     </nav>
 
     <main>

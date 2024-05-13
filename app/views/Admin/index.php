@@ -114,7 +114,7 @@
     </header>
     <main>
         <h2><?= __('Bookings') ?></h2>
-        <form action="/Admin/index" method="get" style="margin-bottom: 20px;">
+        <form action="/Admin/" method="get" style="margin-bottom: 20px;">
             <input type="text" name="firstName" placeholder="First Name" value="<?= $_GET['firstName'] ?? '' ?>">
             <input type="text" name="lastName" placeholder="Last Name" value="<?= $_GET['lastName'] ?? '' ?>">
             <input type="text" name="email" placeholder="Email" value="<?= $_GET['email'] ?? '' ?>">
