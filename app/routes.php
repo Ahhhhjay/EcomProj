@@ -2,8 +2,6 @@
 //defined a few routes "url"=>"controller,method"
 $this->addRoute('', 'Home,index');
 
-$this->addRoute('About_Us/','About_Us,index');
-
 $this->addRoute('Customer/', 'Customer,index');
 $this->addRoute('Customer/register', 'Customer,register');
 $this->addRoute('Customer/login', 'Customer,login');

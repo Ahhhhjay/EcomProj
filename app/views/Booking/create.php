@@ -157,7 +157,7 @@
                 <option value="Monthly"><?= __('Monthly') ?></option>
             </select>
 
-            <input type="submit" value="<?= __('Submit Booking') ?>">
+            <input type="submit" name="submit" value="<?= __('Submit Booking') ?>">
 
             <button id="cancel" onclick="location.href='/'"><?= __('Cancel') ?></button>
         </form>

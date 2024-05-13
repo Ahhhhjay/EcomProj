@@ -36,7 +36,7 @@ class Admin extends \app\core\Controller {
             $detailedBooking->status = $_POST['Status'];
             $detailedBooking->update();
 
-            header('Location: /Admin/'); // Redirect to a profile page or other appropriate location
+            header('Location: /Admin/index'); // Redirect to a profile page or other appropriate location
             exit;
         } else {
             $this->view('Admin/modify', ['data' => $detailedBooking]);  // Pass booking data to view

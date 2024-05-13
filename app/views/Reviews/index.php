@@ -170,7 +170,7 @@
 
     <nav>
         <a href="/"><?= __('Home') ?></a>
-        <a href="/About_Us/"><?= __('About Us') ?></a>
+        <a href="#about-us"><?= __('About Us') ?></a>
         <a href="#promotions"><?= __('Promotions') ?></a>
         <a href="/Reviews/"><?= __('Leave a Review') ?></a>
         <a href="/Customer/"><?= __('My Profile') ?></a>
@@ -189,7 +189,7 @@
         <section id="reviews">
             <?php if (empty($data['reviews'])): ?>
                 <p><?= __('No reviews at the moment.') ?></p>
-
+                
             <?php else: ?>
                 <?php foreach ($data['reviews'] as $review): ?>
                     <div class="review-item">
@@ -204,7 +204,7 @@
                         <p><?= nl2br(htmlspecialchars($review->text)) ?></p>
 
                         <small><?= __('Posted on:') ?>         <?= htmlspecialchars($review->datePosted) ?></small>
-
+                        
                         <?php if (isset($_SESSION['customerID']) && $_SESSION['customerID'] == $review->customerID): ?>
                             <a href="/Reviews/edit/<?= $review->reviewID ?>" class="button edit-button"><?= __('Edit') ?></a>
                             <a href="/Reviews/delete/<?= $review->reviewID ?>" class="button delete-button"><?= __('Delete') ?></a>
