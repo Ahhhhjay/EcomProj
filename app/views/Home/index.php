@@ -162,6 +162,7 @@
             <button onclick="location.href='/Customer/register'"><?= __('Sign Up') ?></button>
         <?php endif; ?>
     </nav>
+    
     <main>
         <h1><?= __('Welcome to MKCleaners MTL!') ?></h1>
         <a href="/Booking/create" class="book-now"><?= __('Book Now') ?></a>
@@ -190,6 +191,7 @@
             </div>
         </section>
     </main>
+
     <footer style="background-color: #89CFF0; color: white; padding: 20px 0; font-family: 'Roboto', sans-serif;">
         <div style="display: flex; justify-content: space-around; align-items: start; flex-wrap: wrap; padding: 0 10%;">
             <div style="flex: 1; min-width: 200px; margin: 10px;">
