@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 14, 2024 at 05:00 AM
+-- Generation Time: May 14, 2024 at 06:02 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -59,6 +59,13 @@ CREATE TABLE `Customer` (
   `Address` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `Customer`
+--
+
+INSERT INTO `Customer` (`customerID`, `firstName`, `lastName`, `Email`, `contactNumber`, `passwordHash`, `Address`) VALUES
+(1, 'Rolly Jake', 'Gayo', 'rj0gayo@gmail.com', '514-231-2213', '$2y$10$JRahk.8IW223xtM//3UnueAw7mVRPQWmaay3.d9XY96EhfjmJ6dyK', '5899 Ave Victoria');
+
 -- --------------------------------------------------------
 
 --
@@ -70,11 +77,11 @@ CREATE TABLE `Payment` (
   `bookingID` int(11) NOT NULL,
   `customerID` int(11) NOT NULL,
   `cardName` varchar(255) NOT NULL,
-  `cardNumber` int(255) NOT NULL,
+  `cardNumber` text NOT NULL,
   `expirationDate` date NOT NULL,
   `postalCode` varchar(32) NOT NULL,
   `billingAddress` varchar(255) NOT NULL,
-  `paymentDate` date NOT NULL
+  `paymentDate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -104,6 +111,14 @@ CREATE TABLE `Reviews` (
   `text` text NOT NULL,
   `datePosted` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `Reviews`
+--
+
+INSERT INTO `Reviews` (`reviewID`, `customerID`, `rating`, `text`, `datePosted`) VALUES
+(1, 1, 5, 'Very good cleaning!!!', '2024-05-14 03:04:03'),
+(2, 1, 2, 'Booo!!', '2024-05-14 03:04:11');
 
 --
 -- Indexes for dumped tables
@@ -157,7 +172,7 @@ ALTER TABLE `Booking`
 -- AUTO_INCREMENT for table `Customer`
 --
 ALTER TABLE `Customer`
-  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `Payment`
@@ -175,7 +190,7 @@ ALTER TABLE `Promotions`
 -- AUTO_INCREMENT for table `Reviews`
 --
 ALTER TABLE `Reviews`
-  MODIFY `reviewID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `reviewID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

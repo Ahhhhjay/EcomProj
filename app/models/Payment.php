@@ -18,22 +18,27 @@ class Payment extends Model
 
     public function insert()
     {
+        $expirationDate = \DateTime::createFromFormat('Y-m-d', $this->expirationDate);
+        if (!$expirationDate) {
+            throw new \Exception("Invalid expiration date format.");
+        }
+        $formattedExpirationDate = $expirationDate->format('Y-m-d');
 
-        $expirationDate = \DateTime::createFromFormat('m/y', $this->expirationDate);
-        $formattedExpirationDate = $expirationDate->format('Y-m-01');
+        if (!is_string($this->cardNumber) || strlen($this->cardNumber) > 19) {
+            throw new \Exception("Invalid card number.");
+        }
 
-        $SQL = "INSERT INTO Payment (bookingID, customerID, cardName, cardNumber, expirationDate, postalCode, billingAddress, paymentDate)
-                VALUES (:bookingID, :customerID, :cardName, :cardNumber, :expirationDate, :postalCode, :billingAddress, :paymentDate)";
+        $SQL = "INSERT INTO Payment (bookingID, customerID, cardName, cardNumber, expirationDate, postalCode, billingAddress)
+                VALUES (:bookingID, :customerID, :cardName, :cardNumber, :expirationDate, :postalCode, :billingAddress)";
         $stmt = self::$_conn->prepare($SQL);
         $stmt->execute([
             'bookingID' => $this->bookingID,
             'customerID' => $this->customerID,
             'cardName' => $this->cardName,
             'cardNumber' => $this->cardNumber,
-            'expirationDate' => $this->expirationDate,
+            'expirationDate' => $formattedExpirationDate,
             'postalCode' => $this->postalCode,
             'billingAddress' => $this->billingAddress,
-            'paymentDate' => $this->paymentDate
         ]);
         $this->paymentID = self::$_conn->lastInsertId();
     }
@@ -44,7 +49,7 @@ class Payment extends Model
         $stmt = self::$_conn->prepare($SQL);
         $stmt->execute(['paymentID' => $this->paymentID]);
     }
-    
+
     public function deleteByBookingID($bookingID)
     {
         $SQL = "DELETE FROM Payment WHERE bookingID = :bookingID";
@@ -60,5 +65,4 @@ class Payment extends Model
         $stmt->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Payment');
         return $stmt->fetch();
     }
-    // Other methods can be added here
 }

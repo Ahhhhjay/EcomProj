@@ -1,48 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= __('Payment Page - CleanIt Services') ?></title>
     <style>
-        body { 
-            font-family: 'Roboto', sans-serif; margin: 0; background-color: #f4faff; color: #333; 
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            background-color: #f4faff;
+            color: #333;
         }
-        header { 
-            background-color: #89CFF0; padding: 10px; text-align: center; color: white; 
-        }
-        main { 
-            padding: 20px; display: flex; justify-content: center; align-items: center; 
-        }
-        form { 
-            background-color: white; padding: 20px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); width: 100%; max-width: 500px; margin: auto; 
-        }
-        label { 
-            display: block; margin-top: 10px; color: #555;
-        }
-        input, select, button { 
-            width: calc(100% - 22px); padding: 10px; margin-top: 5px; margin-bottom: 20px; border-radius: 5px; border: 1px solid #ddd; box-sizing: border-box; 
-        }
-        input[type="submit"], button { 
-            background-color: #89CFF0; color: white; border: none; cursor: pointer; transition: background-color 0.3s; 
-        }
-        input[type="submit"]:hover, button:hover { 
-            background-color: #66afe9; }
 
-        footer { 
-            background-color: #89CFF0; color: white; padding: 10px; text-align: center; width: 100%; position: fixed; bottom: 0; 
+        header {
+            background-color: #89CFF0;
+            padding: 10px;
+            text-align: center;
+            color: white;
         }
-        @media (max-width: 600px) { 
-            form { width: 90%; margin: 0 auto; } header, footer { text-align: center; } 
+
+        main {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            color: #555;
+        }
+
+        input,
+        select,
+        button {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"],
+        button {
+            background-color: #89CFF0;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover,
+        button:hover {
+            background-color: #66afe9;
+        }
+
+        footer {
+            background-color: #89CFF0;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+        }
+
+        @media (max-width: 600px) {
+            form {
+                width: 90%;
+                margin: 0 auto;
+            }
+
+            header,
+            footer {
+                text-align: center;
+            }
         }
     </style>
+    <script>
+        function formatExpirationDate() {
+            const expirationInput = document.getElementById('expirationDate');
+            const expirationValue = expirationInput.value;
+
+            const [month, year] = expirationValue.split('/');
+
+            if (month.length === 2 && year.length === 2) {
+                // Convert to YYYY-MM-DD format
+                const formattedDate = `20${year}-${month}-01`;
+                expirationInput.value = formattedDate;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.querySelector('form');
+            form.addEventListener('submit', formatExpirationDate);
+        });
+    </script>
 </head>
+
 <body>
     <header>
         <h1><?= __('CleanIt - Enter Your Payment Details') ?></h1>
     </header>
     <main>
-        <form action="/Payment/create" method="post">
+        <form action="" method="post">
             <h1><?= __('Payment Details') ?></h1>
             <label for="cardName"><?= __('Cardholder Name:') ?></label>
             <input type="text" id="cardName" name="cardName" required />
@@ -63,11 +138,12 @@
             <input type="text" id="billingAddress" name="billingAddress" required />
 
             <input type="submit" value="<?= __('Submit Payment') ?>">
-            <button id="cancel" onclick="location.href='/'"><?= __('Cancel') ?></button>
+            <button id="cancel" onclick="location.href='/'" type="button"><?= __('Cancel') ?></button>
         </form>
     </main>
     <footer>
         <?= __('&copy; 2024 All Rights Reserved | Totally not fake website') ?>
     </footer>
 </body>
+
 </html>

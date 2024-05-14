@@ -21,8 +21,8 @@ class Booking extends \app\core\Model
     // Insert new booking
     public function insert()
     {
-        $SQL = 'INSERT INTO Booking (customerID, bookingDate, bookingTime, Status, Frequency, description, basePrice, ratePerSquareFoot, category, message)
-                VALUE (:customerID, :bookingDate, :bookingTime, :Status, :Frequency, :description, :basePrice, :ratePerSquareFoot, :category, :message)';
+        $SQL = 'INSERT INTO Booking (customerID, bookingDate, bookingTime, status, frequency, description, basePrice, ratePerSquareFoot, category, message)
+                VALUE (:customerID, :bookingDate, :bookingTime, :status, :frequency, :description, :basePrice, :ratePerSquareFoot, :category, :message)';
 
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute([
@@ -35,7 +35,7 @@ class Booking extends \app\core\Model
             'basePrice' => $this->basePrice,
             'ratePerSquareFoot' => $this->ratePerSquareFoot,
             'category' => $this->category,
-            'message' => $this->message
+            'message' => $this->message,
         ]);
         $STMT->execute();
         $this->bookingID = self::$_conn->lastInsertId();
@@ -66,28 +66,15 @@ class Booking extends \app\core\Model
         return $STMT->fetchAll(); // return all records
     }
 
-    public function getAllBookingsAndEmail()
-    {
-        $SQL = 'SELECT Booking.*, Customer.Email
-            FROM Booking
-            INNER JOIN Customer ON Booking.customerID = Customer.customerID 
-            ORDER BY Booking.bookingDate DESC';
-
-        $STMT = self::$_conn->prepare($SQL);
-        $STMT->execute();
-        $STMT->setFetchMode(PDO::FETCH_ASSOC); // Using FETCH_ASSOC for easier column access
-        return $STMT->fetchAll();
-    }
-
     public function getForBooking($bookingID)
     {
-        $SQL = 'SELECT Booking.*, Customer.Address
+        $SQL = 'SELECT Booking.*, Customer.*
                 FROM Booking
                 INNER JOIN Customer ON Booking.customerID = Customer.customerID 
                 WHERE Booking.bookingID = :bookingID';
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute(['bookingID' => $bookingID]);
-        $STMT->setFetchMode(PDO::FETCH_OBJ);
+        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Booking');
         return $STMT->fetch();
     }
 

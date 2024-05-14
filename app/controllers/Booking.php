@@ -2,10 +2,6 @@
 
 namespace app\controllers;
 
-use app\models\Booking as BookingModel;
-use app\models\Payment as PaymentModel;
-
-
 /**
  * BookingController handles the web requests related to bookings.
  */
@@ -14,43 +10,40 @@ class Booking extends \app\core\Controller
     /**
      * Creates a new booking with provided data.
      */
+    public function create()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $bookingData = [
+                'customerID' => $_SESSION['customerID'],
+                'bookingDate' => $_POST['bookingDate'],
+                'bookingTime' => $_POST['bookingTime'],
+                'status' => "Scheduled",
+                'frequency' => $_POST['frequency'] ?? null,
+                'description' => $_POST['description'],
+                'category' => $_POST['category'],
+                'area' => $_POST['area'],
+                'message' => $_POST['frequencyMessage'] ?? null,
+            ];
 
+            if ($bookingData['category'] == 'Commercial') {
+                $bookingData['basePrice'] = 250;
+                $bookingData['ratePerSquareFoot'] = 25.50 * $bookingData['area'];
+            } else {
+                $bookingData['basePrice'] = 100;
+                $bookingData['ratePerSquareFoot'] = 15.75 * $bookingData['area'];
+            }
 
-     public function create()
-     {
-         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-             $bookingData = [
-                 'customerID' => $_SESSION['customerID'],
-                 'bookingDate' => $_POST['bookingDate'],
-                 'bookingTime' => $_POST['bookingTime'],
-                 'status' => "Scheduled",
-                 'frequency' => $_POST['frequency'] ?? null,
-                 'description' => $_POST['description'],
-                 'category' => $_POST['category'],
-                 'area' => $_POST['area']
-             ];
- 
-             if ($bookingData['category'] == 'Commercial') {
-                 $bookingData['basePrice'] = 250;
-                 $bookingData['ratePerSquareFoot'] = 25.50 * $bookingData['area'];
-             } else {
-                 $bookingData['basePrice'] = 100;
-                 $bookingData['ratePerSquareFoot'] = 15.75 * $bookingData['area'];
-             }
-             $bookingData['message'] = $_POST['frequencyMessage'] ?? null;
- 
+            // session_start();
+            $_SESSION['bookingData'] = $bookingData;
 
-             session_start();
-             $_SESSION['bookingData'] = $bookingData;
- 
-             // Redirect to Payment/create
-             header('Location: /Payment/create');
-             exit();
-         } else {
-             $this->view('Booking/create');
-         }
-     }
-     
+            // Redirect to Payment/create
+            header('Location: /Payment/create');
+            exit();
+        } else {
+            $this->view('Booking/create');
+        }
+    }
+
     // Additional controller methods for other actions can be added here
     public function getAll()
     {
@@ -71,8 +64,8 @@ class Booking extends \app\core\Controller
 
     public function delete($bookingID)
     {
-        $paymentModel = new PaymentModel();
-        $bookingModel = new BookingModel();
+        $paymentModel = new \app\models\Payment();
+        $bookingModel = new \app\models\Booking();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Delete related payments
@@ -110,7 +103,7 @@ class Booking extends \app\core\Controller
             $detailedBooking->bookingTime = $_POST['bookingTime'];
             $detailedBooking->frequency = $_POST['Frequency'];
             $detailedBooking->status = 'Scheduled';
-            $detailedBooking->message = $_POST['frequencyMessage'] ?? null ;
+            $detailedBooking->message = $_POST['frequencyMessage'] ?? null;
             $detailedBooking->update();
 
             header('Location: /Booking/complete/' . $detailedBooking->bookingID);

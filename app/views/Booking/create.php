@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,7 +46,10 @@
             color: #555;
         }
 
-        input, select, textarea, button {
+        input,
+        select,
+        textarea,
+        button {
             width: calc(100% - 22px);
             padding: 10px;
             margin-top: 5px;
@@ -55,7 +59,8 @@
             box-sizing: border-box;
         }
 
-        input[type="submit"], button {
+        input[type="submit"],
+        button {
             background-color: #89CFF0;
             color: white;
             border: none;
@@ -63,7 +68,8 @@
             transition: background-color 0.3s;
         }
 
-        input[type="submit"]:hover, button:hover {
+        input[type="submit"]:hover,
+        button:hover {
             background-color: #66afe9;
         }
 
@@ -93,7 +99,8 @@
         }
 
         #frequencyMessage {
-            display: none; /* Hidden by default */
+            display: none;
+            /* Hidden by default */
         }
 
         @media (max-width: 600px) {
@@ -102,12 +109,14 @@
                 margin: 0 auto;
             }
 
-            header, footer {
+            header,
+            footer {
                 text-align: center;
             }
         }
     </style>
 </head>
+
 <body>
     <header>
         <h1><?= __('CleanIt - Book Your Service') ?></h1>
@@ -125,13 +134,9 @@
             <div class="radio-group">
                 <label for="commercial"><i class="fas fa-building"></i> <?= __('Commercial') ?></label>
                 <input type="radio" id="commercial" name="category" value="Commercial">
-<<<<<<< HEAD
-                <label for="residential"><i class="fas fa-home"></i> <?= __('Residential') ?></label>
-=======
                 <label for="residential">
                     <i class="fas fa-home"></i> <?= __('Residential') ?>
                 </label>
->>>>>>> 1be2952de32e5663c3274ed67ec1fcb41ce55296
                 <input type="radio" id="residential" name="category" value="Residential" checked>
             </div><br>
 
@@ -149,13 +154,10 @@
                 <option value="Bi-Weekly"><?= __('Bi-Weekly') ?></option>
                 <option value="Monthly"><?= __('Monthly') ?></option>
             </select>
-            <textarea id="frequencyMessage" name="frequencyMessage" rows="3" placeholder="Please confirm your availability for all scheduled dates."></textarea>
+            <textarea id="frequencyMessage" name="frequencyMessage" rows="3"
+                placeholder="Please confirm your availability for all scheduled dates."></textarea>
 
-<<<<<<< HEAD
             <input type="submit" value="<?= __('Proceed to Payment') ?>">
-=======
-            <input type="submit" value="<?= __('Submit Booking') ?>">
->>>>>>> 1be2952de32e5663c3274ed67ec1fcb41ce55296
             <button id="cancel" onclick="location.href='/'"><?= __('Cancel') ?></button>
         </form>
     </main>
@@ -163,7 +165,7 @@
         <?= __('&copy; 2024 All Rights Reserved | Totally not fake website') ?>
     </footer>
     <script>
-        document.getElementById('frequency').addEventListener('change', function() {
+        document.getElementById('frequency').addEventListener('change', function () {
             var textarea = document.getElementById('frequencyMessage');
             if (['Weekly', 'Bi-Weekly', 'Monthly'].includes(this.value)) {
                 textarea.style.display = 'block';
@@ -173,4 +175,5 @@
         });
     </script>
 </body>
+
 </html>
