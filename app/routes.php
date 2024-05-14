@@ -2,8 +2,6 @@
 //defined a few routes "url"=>"controller,method"
 $this->addRoute('', 'Home,index');
 
-$this->addRoute('About_Us/','About_Us,index');
-
 $this->addRoute('Customer/', 'Customer,index');
 $this->addRoute('Customer/register', 'Customer,register');
 $this->addRoute('Customer/login', 'Customer,login');
@@ -26,4 +24,8 @@ $this->addRoute('Admin/modify/{bookingID}', 'Admin,modify');
 $this->addRoute('Admin/delete/{bookingID}', 'Admin,delete');
 $this->addRoute('Admin/login', 'Admin,login');
 
+<<<<<<< HEAD
 $this->addRoute('Payment/create', 'Payment,create');
+=======
+$this->addRoute('About_Us/','About_Us,index');
+>>>>>>> 1be2952de32e5663c3274ed67ec1fcb41ce55296

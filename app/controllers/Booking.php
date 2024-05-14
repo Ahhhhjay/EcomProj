@@ -16,6 +16,7 @@ class Booking extends \app\core\Controller
      */
 
 
+<<<<<<< HEAD
      public function create()
      {
          if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -38,6 +39,36 @@ class Booking extends \app\core\Controller
                  $bookingData['ratePerSquareFoot'] = 15.75 * $bookingData['area'];
              }
  
+=======
+    public function create()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $booking = new \app\models\Booking();
+
+            $booking->customerID = $_SESSION['customerID'];
+            $booking->bookingDate = $_POST['bookingDate'];
+            $booking->bookingTime = $_POST['bookingTime'];
+            $booking->status = "Scheduled";
+            $booking->frequency = $_POST['frequency'] ?? null;
+            $booking->description = $_POST['description'];
+            $booking->category = $_POST['category'];
+            if ($booking->category == 'Commercial') {
+                $booking->basePrice = 250;
+                $booking->ratePerSquareFoot = 25.50 * $_POST['area'];
+            } else {
+                $booking->basePrice = 100;
+                $booking->ratePerSquareFoot = 15.75 * $_POST['area'];
+            }
+            $booking->message = $_POST['frequencyMessage'] ?? null;
+            
+            $booking->insert();
+
+            header('Location: /Booking/complete/' . $booking->bookingID);
+        } else {
+            $this->view('Booking/create');
+        }
+    }
+>>>>>>> 1be2952de32e5663c3274ed67ec1fcb41ce55296
 
              session_start();
              $_SESSION['bookingData'] = $bookingData;
@@ -109,6 +140,7 @@ class Booking extends \app\core\Controller
             $detailedBooking->bookingTime = $_POST['bookingTime'];
             $detailedBooking->frequency = $_POST['Frequency'];
             $detailedBooking->status = 'Scheduled';
+            $detailedBooking->message = $_POST['frequencyMessage'] ?? null ;
             $detailedBooking->update();
 
             header('Location: /Booking/complete/' . $detailedBooking->bookingID);

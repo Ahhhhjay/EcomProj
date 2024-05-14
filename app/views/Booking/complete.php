@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -73,13 +72,12 @@
             color: white;
             padding: 10px;
             text-align: center;
-            width: 100%;
             position: fixed;
             bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
-
 <body>
     <header>
         <h1><?= __('CleanIt Services - Booking Completed') ?></h1>
@@ -90,7 +88,11 @@
             <dt><?= __('Booking Date:') ?></dt>
             <dd><?= htmlspecialchars($data['booking']->bookingDate) ?></dd>
             <dt><?= __('Booking Time:') ?></dt>
+<<<<<<< HEAD
             <dd><?= htmlspecialchars($data['booking']->bookingTime) ?></dd>
+=======
+            <dd><?= htmlspecialchars($data->bookingTime) ?> - <?= date('H:i', strtotime($data->bookingTime . ' +2 hour')) ?></dd>
+>>>>>>> 1be2952de32e5663c3274ed67ec1fcb41ce55296
             <dt><?= __('Frequency:') ?></dt>
             <dd><?= htmlspecialchars($data['booking']->frequency) ?></dd>
             <dt><?= __('Address:') ?></dt>
@@ -118,12 +120,21 @@
             <dd><?= htmlspecialchars($data['payment']->paymentDate) ?></dd>
         </dl>
         <div class="links">
+<<<<<<< HEAD
             <a href='/Booking/modify/<?= htmlspecialchars($data->bookingID) ?>'
                 style="background-color: #4CAF50;"><?= __('Modify my booking') ?></a> |
             <a href='/Booking/delete/<?= htmlspecialchars($data['booking']->bookingID) ?>' style="background-color: #f44336;"><?= __('Delete my booking') ?></a>
             <a href='/' style="background-color: #555;"><?= __('Finish Booking') ?></a>
+=======
+            <a href='/Booking/modify/<?= htmlspecialchars($data->bookingID) ?>' style="background-color: #4CAF50;">
+                <?= __('Modify my booking') ?></a> |
+            <a href='/Booking/delete/<?= htmlspecialchars($data->bookingID) ?>' style="background-color: #f44336;"
+                onclick="return confirm('Are you sure you want to delete this booking?');">
+                <?= __('Delete my booking') ?></a> |
+            <a href='/' style="background-color: #555;">
+                <?= __('Finish Booking') ?></a>
+>>>>>>> 1be2952de32e5663c3274ed67ec1fcb41ce55296
         </div>
     </main>
 </body>
-
 </html>

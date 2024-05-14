@@ -16,7 +16,8 @@ class Admin extends \app\core\Controller {
                     && (empty($_GET['date']) || $booking['bookingDate'] == $_GET['date'])
                     && (empty($_GET['category']) || $booking['Category'] == $_GET['category'])
                     && (empty($_GET['frequency']) || $booking['Frequency'] == $_GET['frequency'])
-                    && (empty($_GET['status']) || $booking['Status'] == $_GET['status']);
+                    && (empty($_GET['status']) || $booking['Status'] == $_GET['status'])
+                    && (empty($_GET['message']) || $booking['message'] == $_GET['message']);
             });
         }
     
@@ -36,7 +37,7 @@ class Admin extends \app\core\Controller {
             $detailedBooking->status = $_POST['Status'];
             $detailedBooking->update();
 
-            header('Location: /Admin/'); // Redirect to a profile page or other appropriate location
+            header('Location: /Admin/index'); // Redirect to a profile page or other appropriate location
             exit;
         } else {
             $this->view('Admin/modify', ['data' => $detailedBooking]);  // Pass booking data to view
@@ -73,7 +74,7 @@ class Admin extends \app\core\Controller {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $booking->delete();
             unset($_SESSION['bookingID']);
-            header('Location:/Admin/index');
+            header('Location:/Admin/');
 
         } else {
             $this->view('Admin/delete', ['data' => $booking]);

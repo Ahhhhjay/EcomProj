@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - MKCleaners MTL</title>
+    <title><?= __('CleanIt - Cleaning Services') ?></title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         body {
@@ -14,34 +14,132 @@
             background-color: #f4faff;
         }
 
-        header,
-        nav {
+        header {
             background-color: #89CFF0;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
+            padding: 0;
+        }
+
+        header img {
+            width: 100%;
+            height: 250px;
+            display: block;
         }
 
         nav {
+            background-color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
         }
 
-        nav a {
-            color: white;
-            margin: 0 15px;
+        nav a,
+        nav button {
+            margin: 0 10px;
             padding: 10px 20px;
             text-decoration: none;
+            color: #89CFF0;
+            font-weight: 500;
             font-size: 16px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
         }
 
-        nav a:hover {
+        nav a:hover,
+        nav button:hover {
+            color: #66afe9;
+        }
+
+        nav button {
+            background-color: #89CFF0;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav button:hover {
             background-color: #66afe9;
         }
 
         main {
-            padding: 20px;
+            padding: 40px 20px;
             text-align: center;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h1,
+        h2 {
+            color: #2a587a;
+        }
+
+        footer h3 {
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        footer p,
+        footer a {
+            color: #d0e8f2;
+        }
+
+        .book-now {
+            background-color: #89CFF0;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .book-now:hover {
+            background-color: #66afe9;
+        }
+
+        .service-image {
+            width: 100%;
+            height: 150px;
+            margin-top: 20px;
+            display: block;
+        }
+
+        .star-rating .filled-star {
+            color: #f5b301;
+            /* Gold color for filled stars */
+            font-size: 20px;
+        }
+
+        .star-rating .empty-star {
+            color: #ccc;
+            /* Light gray for empty stars */
+            font-size: 20px;
+        }
+
+        .reviews-row {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            /* Ensures responsiveness */
+        }
+
+        .review-item {
+            background-color: #ffffff;
+            padding: 15px;
+            margin: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            /* Ensures that each review item takes equal space */
+            text-align: left;
+            min-width: 250px;
+            /* Ensures that items do not become too narrow */
+            max-width: 30%;
+            /* Prevents items from being too wide on larger screens */
         }
 
         .content-section {
@@ -51,44 +149,41 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             text-align: left;
         }
-
-        h1,
-        h2 {
-            color: #2a587a;
-        }
-
-        p {
-            line-height: 1.6;
-        }
-
-        footer {
-            background-color: #89CFF0;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
     </style>
 </head>
 
 <body>
     <header>
-        <h1>MKCleaners MTL</h1>
+        <img src="/Images/MKCleaningLogo.png" alt="<?= __('CleanIt Logo') ?>">
     </header>
     <nav>
-        <a href="/">Home</a>
-        <a href="/About_Us/">About Us</a>
-        <a href="/Services/">Services</a>
-        <a href="/Contact/">Contact</a>
+        <a href="/"><?= __('Home') ?></a>
+        <a href="/About_Us/"><?= __('About Us') ?></a>
+        <a href="#promotions"><?= __('Promotions') ?></a>
+        <a href="/Reviews/"><?= __('Leave a Review') ?></a>
+        <a href="/Customer/"><?= __('My Profile') ?></a>
+        <!-- Dynamic button rendering based on login state -->
+        <?php if (isset($_SESSION['customerID'])): ?>
+            <button onclick="location.href='/Customer/logout'"><?= __('Logout') ?></button>
+        <?php else: ?>
+            <button onclick="location.href='/Customer/login'"><?= __('Login') ?></button>
+            <button onclick="location.href='/Customer/register'"><?= __('Sign Up') ?></button>
+        <?php endif; ?>
     </nav>
+
     <main>
         <section class="content-section">
             <h2>Who We Are</h2>
             <p>At MKCleaners MTL, we are dedicated to providing top-notch home cleaning services. Our team is committed
                 to ensuring every corner of your home sparkles, using eco-friendly cleaning solutions that are safe for
                 your family and pets.</p>
+        </section>
+        <section class="content-section">
+            <h2>Booking information</h2>
+            <p>At MKCleaners MTL, all cleaning sessions are scheduled in two-hour intervals, ensuring each part of your 
+                home receives the attention it needs.If you require adjustments to the scheduling or have specific requirements,
+                 please do not hesitate to reach out to us for further information. We are here to 
+                 accommodate your unique needs and ensure your satisfaction.</p>
         </section>
         <section class="content-section">
             <h2>Our Mission</h2>
@@ -109,8 +204,24 @@
             <p>Instagram: @mkcleanersmtl</p>
         </section>
     </main>
-    <footer>
-        &copy; 2024 MKCleaners MTL. All Rights Reserved.
+
+    <footer style="background-color: #89CFF0; color: white; padding: 20px 0; font-family: 'Roboto', sans-serif;">
+        <div style="display: flex; justify-content: space-around; align-items: start; flex-wrap: wrap; padding: 0 10%;">
+            <div style="flex: 1; min-width: 200px; margin: 10px;">
+                <h3><?= __('MKCleaners MTL') ?></h3>
+                <p><?= __('Discover our cleaning company, where your home is your best friend! Enjoy a spotless home without lifting a finger!') ?>
+                </p>
+            </div>
+            <div style="flex: 1; min-width: 250px; margin: 10px;">
+                <h3><?= __('Contact info.') ?></h3>
+                <p><?= __('Phone Number: (514) 799-4881') ?> <br>
+                    <?= __('Email: MKCleanersMTL@gmail.com') ?> <br>
+                    <?= __('Instagram: mkcleanersmtl') ?></p>
+            </div>
+        </div>
+        <div style="text-align: center; padding-top: 20px;">
+            <?= __('&copy; 2024 All Rights Reserved | Totally not fake website') ?>
+        </div>
     </footer>
 </body>
 

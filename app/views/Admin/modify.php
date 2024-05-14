@@ -92,7 +92,6 @@
     <header>
         <!-- Optional Header Content -->
     </header>
-
     <main>
         <form method="post" action="">
             <input type="hidden" name="bookingID" value="<?= htmlspecialchars($data->bookingID) ?>">

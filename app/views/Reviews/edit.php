@@ -28,7 +28,6 @@
             display: block;
         }
 
-        /* Updated nav styles */
         nav {
             background-color: #ffffff;
             text-align: center;
@@ -36,70 +35,16 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        nav a,
-        nav button {
-            margin: 0 10px;
-            padding: 10px 20px;
+        nav a {
+            margin: 0 20px;
             text-decoration: none;
             color: #89CFF0;
             font-weight: 500;
-            font-size: 16px;
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
+            font-size: 20px;
         }
 
-        nav a:hover,
-        nav button:hover {
+        nav a:hover {
             color: #66afe9;
-        }
-
-        nav button {
-            background-color: #89CFF0;
-            color: white;
-            border-radius: 5px;
-            padding: 10px 20px;
-            /* Control the horizontal padding to manage width */
-            margin: 0 5px;
-            /* Slight margin for spacing between elements */
-            cursor: pointer;
-            border: none;
-            transition: background-color 0.3s;
-            font-size: 16px;
-            /* Adjust font size as needed */
-            text-align: center;
-            /* Center text inside button */
-            white-space: nowrap;
-            /* Prevents text from wrapping */
-            max-width: 140px;
-            /* Max width can be adjusted based on your design requirements */
-            display: inline-block;
-            /* This will allow the max-width to take effect */
-        }
-
-        nav button:hover {
-            background-color: #66afe9;
-            /* Slightly darker blue on hover */
-        }
-
-        nav .nav-button {
-            background-color: #89CFF0;
-            color: white;
-            border-radius: 5px;
-            padding: 10px 20px;
-            margin: 0 5px;
-            cursor: pointer;
-            border: none;
-            transition: background-color 0.3s;
-            font-size: 16px;
-            text-align: center;
-            white-space: nowrap;
-            max-width: 140px;
-            display: inline-block;
-        }
-
-        nav .nav-button:hover {
-            background-color: #66afe9;
         }
 
         main {
@@ -119,6 +64,16 @@
             width: 100%;
             max-width: 500px;
             margin: 20px;
+        }
+
+        footer h3 {
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        footer p,
+        footer a {
+            color: #d0e8f2;
         }
 
         label {
@@ -145,7 +100,6 @@
             border-radius: 5px;
             cursor: pointer;
             width: 100%;
-            transition: background-color 0.3s;
         }
 
         button:hover {
@@ -195,17 +149,10 @@
     </header>
     <nav>
         <a href="/"><?= __('Home') ?></a>
-        <a href="/About_Us/"><?= __('About Us') ?></a>
+        <a href="#about-us"><?= __('About Us') ?></a>
         <a href="#promotions"><?= __('Promotions') ?></a>
         <a href="/Reviews/"><?= __('Leave a Review') ?></a>
         <a href="/Customer/"><?= __('My Profile') ?></a>
-        <!-- Dynamic button rendering based on login state -->
-        <?php if (isset($_SESSION['customerID'])): ?>
-            <button class="nav-button" onclick="location.href='/Customer/logout'">Logout</button>
-        <?php else: ?>
-            <button class="nav-button" onclick="location.href='/Customer/login'">Login</button>
-            <button class="nav-button" onclick="location.href='/Customer/register'">Sign Up</button>
-        <?php endif; ?>
     </nav>
     <main>
         <h1><?= __('Edit Review') ?></h1>

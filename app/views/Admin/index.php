@@ -114,7 +114,7 @@
     </header>
     <main>
         <h2><?= __('Bookings') ?></h2>
-        <form action="/Admin/" method="get" style="margin-bottom: 20px;">
+        <form action="/Admin/index" method="get" style="margin-bottom: 20px;">
             <input type="text" name="firstName" placeholder="First Name" value="<?= $_GET['firstName'] ?? '' ?>">
             <input type="text" name="lastName" placeholder="Last Name" value="<?= $_GET['lastName'] ?? '' ?>">
             <input type="text" name="email" placeholder="Email" value="<?= $_GET['email'] ?? '' ?>">
@@ -151,6 +151,7 @@
                     <th><?= __('Category') ?></th>
                     <th><?= __('Frequency') ?></th>
                     <th><?= __('Status') ?></th>
+                    <th><?= __('Message') ?></th>
                     <th><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -169,6 +170,7 @@
                         <td><?= htmlspecialchars($booking['Category']) ?></td>
                         <td><?= htmlspecialchars($booking['Frequency']) ?></td>
                         <td><?= htmlspecialchars($booking['Status']) ?></td>
+                        <td><?= htmlspecialchars($booking['message']) ?></td>
                         <td>
                             <button onclick="location.href='/Admin/modify/<?= $booking['bookingID'] ?>'"
                                 style="margin-right: 5px; padding: 5px 10px; background-color: #4CAF50; color: white; border: none; border-radius: 4px;"><?= __('Edit') ?></button>
