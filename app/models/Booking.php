@@ -17,11 +17,13 @@ class Booking extends \app\core\Model
     public $ratePerSquareFoot;
     public $category;
 
+    public $message;
+
     // Insert new booking
     public function insert()
     {
-        $SQL = 'INSERT INTO Booking (customerID, bookingDate, bookingTime, Status, Frequency, description, basePrice, ratePerSquareFoot, category)
-                VALUE (:customerID, :bookingDate, :bookingTime, :Status, :Frequency, :description, :basePrice, :ratePerSquareFoot, :category)';
+        $SQL = 'INSERT INTO Booking (customerID, bookingDate, bookingTime, Status, Frequency, description, basePrice, ratePerSquareFoot, category, message)
+                VALUE (:customerID, :bookingDate, :bookingTime, :Status, :Frequency, :description, :basePrice, :ratePerSquareFoot, :category, :message)';
 
         $STMT = self::$_conn->prepare($SQL);
 
@@ -34,8 +36,8 @@ class Booking extends \app\core\Model
             'description' => $this->description,
             'basePrice' => $this->basePrice,
             'ratePerSquareFoot' => $this->ratePerSquareFoot,
-            'category' => $this->category
-
+            'category' => $this->category,
+            'message' => $this->message
         ];
         $STMT->execute($data);
         $this->bookingID = self::$_conn->lastInsertId();
@@ -44,7 +46,7 @@ class Booking extends \app\core\Model
     //READ
     public function getAllBookings()
     {
-        $SQL = 'SELECT bookingID, customerID, bookingDate, bookingTime, status, frequency, description, basePrice, ratePerSquareFoot, category, (basePrice + ratePerSquareFoot) AS totalPrice
+        $SQL = 'SELECT bookingID, customerID, bookingDate, bookingTime, status, frequency, description, basePrice, ratePerSquareFoot, category, message, (basePrice + ratePerSquareFoot) AS totalPrice
         FROM Booking
         ORDER BY bookingDate DESC';
 
@@ -110,7 +112,7 @@ class Booking extends \app\core\Model
     //Update
     public function update()
     {
-        $SQL = 'UPDATE Booking SET bookingDate=:bookingDate, bookingTime=:bookingTime, Status=:Status, Frequency=:Frequency WHERE bookingID = :bookingID';
+        $SQL = 'UPDATE Booking SET bookingDate=:bookingDate, bookingTime=:bookingTime, Status=:Status, Frequency=:Frequency, message=:message WHERE bookingID = :bookingID';
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute([
             'bookingID' => $this->bookingID,
@@ -118,6 +120,7 @@ class Booking extends \app\core\Model
             'bookingTime' => $this->bookingTime,
             'Status' => $this->status,
             'Frequency' => $this->frequency,
+            'message' => $this->message,
 
         ]);
     }

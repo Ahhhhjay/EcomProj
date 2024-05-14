@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,9 +45,7 @@
             color: #555;
         }
 
-        input,
-        select,
-        button {
+        input, select, textarea, button {
             width: calc(100% - 22px);
             padding: 10px;
             margin-top: 5px;
@@ -58,8 +55,7 @@
             box-sizing: border-box;
         }
 
-        input[type="submit"],
-        button {
+        input[type="submit"], button {
             background-color: #89CFF0;
             color: white;
             border: none;
@@ -67,8 +63,7 @@
             transition: background-color 0.3s;
         }
 
-        input[type="submit"]:hover,
-        button:hover {
+        input[type="submit"]:hover, button:hover {
             background-color: #66afe9;
         }
 
@@ -90,36 +85,33 @@
         .radio-group label {
             margin-right: 10px;
             margin-bottom: 0;
-            /* Remove extra margin-bottom */
         }
 
         .radio-group input[type="radio"] {
             vertical-align: middle;
             margin-bottom: 0;
-            /* Remove extra margin-bottom */
+        }
+
+        #frequencyMessage {
+            display: none; /* Hidden by default */
         }
 
         @media (max-width: 600px) {
             form {
                 width: 90%;
-                /* Smaller width on smaller screens */
                 margin: 0 auto;
             }
 
-            header,
-            footer {
+            header, footer {
                 text-align: center;
-                /* Ensure text is always centered */
             }
         }
     </style>
 </head>
-
 <body>
     <header>
         <h1><?= __('CleanIt - Book Your Service') ?></h1>
     </header>
-
     <main>
         <form action="" method="post">
             <h1><?= __('Book Your Cleaning Service') ?></h1>
@@ -135,7 +127,6 @@
                     <i class="fas fa-building"></i> <?= __('Commercial') ?>
                 </label>
                 <input type="radio" id="commercial" name="category" value="Commercial">
-
                 <label for="residential">
                     <i class="fas fa-home"></i> <?= __('Residential') ?>
                 </label>
@@ -146,7 +137,7 @@
             <input type="date" id="bookingDate" name="bookingDate" required>
 
             <label for="bookingTime"><?= __('Booking Time:') ?></label>
-            <input type="time" id="bookingTime" name="bookingTime" required>
+            <input type="time" id="bookingTime" name="bookingTime" required step="7200" min="00:00" max="22:00">
 
             <label for="frequency"><?= __('Frequency:') ?></label>
             <select id="frequency" name="frequency">
@@ -156,16 +147,24 @@
                 <option value="Bi-Weekly"><?= __('Bi-Weekly') ?></option>
                 <option value="Monthly"><?= __('Monthly') ?></option>
             </select>
+            <textarea id="frequencyMessage" name="frequencyMessage" rows="3" placeholder="Please confirm your availability for all scheduled dates."></textarea>
 
-            <input type="submit" name="submit" value="<?= __('Submit Booking') ?>">
-
+            <input type="submit" value="<?= __('Submit Booking') ?>">
             <button id="cancel" onclick="location.href='/'"><?= __('Cancel') ?></button>
         </form>
     </main>
-
     <footer>
         <?= __('&copy; 2024 All Rights Reserved | Totally not fake website') ?>
     </footer>
+    <script>
+        document.getElementById('frequency').addEventListener('change', function() {
+            var textarea = document.getElementById('frequencyMessage');
+            if (['Weekly', 'Bi-Weekly', 'Monthly'].includes(this.value)) {
+                textarea.style.display = 'block';
+            } else {
+                textarea.style.display = 'none';
+            }
+        });
+    </script>
 </body>
-
 </html>

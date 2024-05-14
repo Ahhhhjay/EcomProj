@@ -179,6 +179,13 @@
                 your family and pets.</p>
         </section>
         <section class="content-section">
+            <h2>Booking information</h2>
+            <p>At MKCleaners MTL, all cleaning sessions are scheduled in two-hour intervals, ensuring each part of your 
+                home receives the attention it needs.If you require adjustments to the scheduling or have specific requirements,
+                 please do not hesitate to reach out to us for further information. We are here to 
+                 accommodate your unique needs and ensure your satisfaction.</p>
+        </section>
+        <section class="content-section">
             <h2>Our Mission</h2>
             <p>Our mission is to improve the quality of life for our customers by delivering exceptional cleaning and
                 customer service. We aim to create clean, healthy, and happy environments through our professional

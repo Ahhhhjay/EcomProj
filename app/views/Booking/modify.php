@@ -47,6 +47,7 @@
 
         input,
         select,
+        textarea,
         button {
             width: 100%;
             padding: 10px;
@@ -86,6 +87,9 @@
             bottom: 0;
             width: 100%;
         }
+        #frequencyMessage {
+            display: none; /* Hidden by default */
+        }
     </style>
 </head>
 
@@ -115,6 +119,7 @@
                     <option value="Monthly" <?= $data->frequency == 'Monthly' ? 'selected' : '' ?>><?= __('Monthly') ?>
                     </option>
                 </select>
+                <textarea id="frequencyMessage" name="frequencyMessage" rows="3" placeholder="Please confirm your availability for all scheduled dates."></textarea>
             </label>
             <input type="submit" value="<?= __('Update') ?>">
             <button type="button" onclick="location.href='/Customer/';"><?= __('Cancel') ?></button>
@@ -123,6 +128,16 @@
     <footer>
         <?= __('&copy; 2024 All Rights Reserved | Totally not fake website') ?>
     </footer>
+    <script>
+        document.getElementById('frequency').addEventListener('change', function() {
+            var textarea = document.getElementById('frequencyMessage');
+            if (['Weekly', 'Bi-Weekly', 'Monthly'].includes(this.value)) {
+                textarea.style.display = 'block';
+            } else {
+                textarea.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 
 </html>

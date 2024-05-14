@@ -32,6 +32,8 @@ class Booking extends \app\core\Controller
                 $booking->basePrice = 100;
                 $booking->ratePerSquareFoot = 15.75 * $_POST['area'];
             }
+            $booking->message = $_POST['frequencyMessage'] ?? null;
+            
             $booking->insert();
 
             header('Location: /Booking/complete/' . $booking->bookingID);
@@ -91,6 +93,7 @@ class Booking extends \app\core\Controller
             $detailedBooking->bookingTime = $_POST['bookingTime'];
             $detailedBooking->frequency = $_POST['Frequency'];
             $detailedBooking->status = 'Scheduled';
+            $detailedBooking->message = $_POST['frequencyMessage'] ?? null ;
             $detailedBooking->update();
 
             header('Location: /Booking/complete/' . $detailedBooking->bookingID);

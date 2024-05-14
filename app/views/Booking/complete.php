@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -73,13 +72,12 @@
             color: white;
             padding: 10px;
             text-align: center;
-            width: 100%;
             position: fixed;
             bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
-
 <body>
     <header>
         <h1><?= __('CleanIt Services - Booking Completed') ?></h1>
@@ -89,7 +87,7 @@
             <dt><?= __('Booking Date:') ?></dt>
             <dd><?= htmlspecialchars($data->bookingDate) ?></dd>
             <dt><?= __('Booking Time:') ?></dt>
-            <dd><?= htmlspecialchars($data->bookingTime) ?></dd>
+            <dd><?= htmlspecialchars($data->bookingTime) ?> - <?= date('H:i', strtotime($data->bookingTime . ' +2 hour')) ?></dd>
             <dt><?= __('Frequency:') ?></dt>
             <dd><?= htmlspecialchars($data->Frequency) ?></dd>
             <dt><?= __('Address:') ?></dt>
@@ -100,17 +98,17 @@
             <dd><?= htmlspecialchars($data->Category) ?></dd>
         </dl>
         <div class="links">
-            <a href='/Booking/modify/<?= htmlspecialchars($data->bookingID) ?>'
-                style="background-color: #4CAF50;"><?= __('Modify my booking') ?></a> |
+            <a href='/Booking/modify/<?= htmlspecialchars($data->bookingID) ?>' style="background-color: #4CAF50;">
+                <?= __('Modify my booking') ?></a> |
             <a href='/Booking/delete/<?= htmlspecialchars($data->bookingID) ?>' style="background-color: #f44336;"
-                onclick="location.href='/Booking/delete/<?= $data->bookingID ?>';"><?= __('Delete my booking') ?></a>
-            |
-            <a href='/' style="background-color: #555;"><?= __('Finish Booking') ?></a>
+                onclick="return confirm('Are you sure you want to delete this booking?');">
+                <?= __('Delete my booking') ?></a> |
+            <a href='/' style="background-color: #555;">
+                <?= __('Finish Booking') ?></a>
         </div>
     </main>
     <footer>
         <?= __('&copy; 2024 All Rights Reserved | Totally not fake website') ?>
     </footer>
 </body>
-
 </html>
