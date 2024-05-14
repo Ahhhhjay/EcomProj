@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 07, 2024 at 05:29 AM
+-- Generation Time: May 13, 2024 at 11:41 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `MKCleaning`
 --
-CREATE DATABASE IF NOT EXISTS `MKCleaning` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `MKCleaning`;
 
 -- --------------------------------------------------------
 
@@ -39,17 +37,20 @@ CREATE TABLE `Booking` (
   `description` text NOT NULL,
   `basePrice` int(4) NOT NULL,
   `ratePerSquareFoot` decimal(10,2) NOT NULL,
-  `Category` enum('Residential','Commercial') NOT NULL,
-  `dateBooked` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `Category` enum('Residential','Commercial') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `Booking`
 --
 
-INSERT INTO `Booking` (`bookingID`, `customerID`, `bookingDate`, `bookingTime`, `Status`, `Frequency`, `description`, `basePrice`, `ratePerSquareFoot`, `Category`, `dateBooked`) VALUES
-(5, 5, '2024-05-02', '15:14:00', 'Scheduled', 'Monthly', 'I want you to clean my bedroom', 100, 378.00, 'Residential', '2024-05-07 02:19:53'),
-(6, 5, '2024-05-25', '10:33:00', 'Scheduled', 'One-time', 'I want you to clean my bathroom', 100, 220.50, 'Residential', '2024-05-07 02:33:08');
+INSERT INTO `Booking` (`bookingID`, `customerID`, `bookingDate`, `bookingTime`, `Status`, `Frequency`, `description`, `basePrice`, `ratePerSquareFoot`, `Category`) VALUES
+(7, 4, '2024-05-25', '18:45:00', 'Scheduled', 'One-time', 'clean house', 100, 378.00, 'Residential'),
+(8, 4, '2024-05-16', '17:50:00', 'Scheduled', 'One-time', 'clean house', 100, 378.00, 'Residential'),
+(9, 4, '2024-05-18', '17:48:00', 'Scheduled', 'One-time', 'clean house', 100, 362.25, 'Residential'),
+(10, 4, '2024-05-17', '16:49:00', 'Scheduled', 'One-time', 'clean house', 100, 315.00, 'Residential'),
+(11, 4, '2024-05-16', '17:50:00', 'Scheduled', 'One-time', 'clean house', 100, 378.00, 'Residential'),
+(12, 4, '2024-05-25', '19:03:00', 'Scheduled', 'One-time', 'clean house', 100, 346.50, 'Residential');
 
 -- --------------------------------------------------------
 
@@ -72,8 +73,8 @@ CREATE TABLE `Customer` (
 --
 
 INSERT INTO `Customer` (`customerID`, `firstName`, `lastName`, `Email`, `contactNumber`, `passwordHash`, `Address`) VALUES
-(5, 'Rolly Jake', 'Gayo', 'rj0gayo@gmail.com', '514-111-1232', '$2y$10$iR8T1Aa8lVayYSa1lfCF8uNkBb9r8XXd2jMIW.9ndU.3agYlHOQQW', '5899 Av Victoria'),
-(6, 'Steve', 'Hansen', 'steve@email.com', '514-333-1231', '$2y$10$mJJaLpvqjUc9N7CXlLgE8egNQMwLqFx2B8OU7OgATYTpW.TRbesiO', '8900 Av Linton');
+(3, 'Adryan', 'Vera', 'adryannayrda2319@email.com', '514-123-1111', '$2y$10$S6.i9oV7gKOYadkCLHvXl.lEGYgZiAZ7w9KIr2Cz8h7/u6j8Jyu9S', '2000 Van Horne'),
+(4, 'Ralph', 'Bantillo', 'ralphbantillo@gmail.com', '438-922-1772', '$2y$10$wO1m4nxnCB53fEa7ptvVLOmv0Q6iIToIiIyUqUjPTn0k4z9XPbhwe', '4A Rue Hadley');
 
 -- --------------------------------------------------------
 
@@ -83,10 +84,14 @@ INSERT INTO `Customer` (`customerID`, `firstName`, `lastName`, `Email`, `contact
 
 CREATE TABLE `Payment` (
   `paymentID` int(11) NOT NULL,
+  `bookingID` int(11) NOT NULL,
   `customerID` int(11) NOT NULL,
-  `cardNumber` varchar(255) NOT NULL,
+  `cardName` varchar(255) NOT NULL,
+  `cardNumber` int(255) NOT NULL,
   `expirationDate` date NOT NULL,
-  `billingAddress` varchar(255) NOT NULL
+  `postalCode` varchar(32) NOT NULL,
+  `billingAddress` varchar(255) NOT NULL,
+  `paymentDate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -122,11 +127,9 @@ CREATE TABLE `Reviews` (
 --
 
 INSERT INTO `Reviews` (`reviewID`, `customerID`, `rating`, `text`, `datePosted`) VALUES
-(15, 5, 4, 'Very good cleaning, I like the way it\'s cleaned!', '2024-05-06 22:14:22'),
-(16, 5, 2, 'Nothing here...', '2024-05-07 02:35:53'),
-(17, 5, 5, 'Super clean, love it!!!', '2024-05-07 02:36:11'),
-(18, 5, 5, 'Blah blah blah', '2024-05-07 02:45:24'),
-(19, 6, 4, 'Good cleaning!! Very beautiful!', '2024-05-07 02:51:33');
+(22, 4, 5, 'nice', '2024-05-06 03:42:15'),
+(23, 4, 1, 'ew', '2024-05-06 03:42:17'),
+(25, 4, 1, 'alright', '2024-05-06 04:27:25');
 
 --
 -- Indexes for dumped tables
@@ -150,7 +153,8 @@ ALTER TABLE `Customer`
 --
 ALTER TABLE `Payment`
   ADD PRIMARY KEY (`paymentID`),
-  ADD KEY `paymentCustomerIDKey` (`customerID`);
+  ADD KEY `paymentCustomerIDKey` (`customerID`),
+  ADD KEY `paymentBookingIDKey` (`bookingID`);
 
 --
 -- Indexes for table `Promotions`
@@ -173,13 +177,13 @@ ALTER TABLE `Reviews`
 -- AUTO_INCREMENT for table `Booking`
 --
 ALTER TABLE `Booking`
-  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `Customer`
 --
 ALTER TABLE `Customer`
-  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `Payment`
@@ -197,7 +201,7 @@ ALTER TABLE `Promotions`
 -- AUTO_INCREMENT for table `Reviews`
 --
 ALTER TABLE `Reviews`
-  MODIFY `reviewID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `reviewID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Constraints for dumped tables
@@ -213,6 +217,7 @@ ALTER TABLE `Booking`
 -- Constraints for table `Payment`
 --
 ALTER TABLE `Payment`
+  ADD CONSTRAINT `paymentBookingIDKey` FOREIGN KEY (`bookingID`) REFERENCES `Booking` (`bookingID`),
   ADD CONSTRAINT `paymentCustomerIDKey` FOREIGN KEY (`customerID`) REFERENCES `Customer` (`customerID`);
 
 --

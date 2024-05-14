@@ -1,71 +1,64 @@
 <?php
+
 namespace app\models;
 
-use PDO;
+use app\core\Model;
 
-class Payment extends \app\core\Model
+class Payment extends Model
 {
     public $paymentID;
+    public $bookingID;
     public $customerID;
+    public $cardName;
     public $cardNumber;
     public $expirationDate;
+    public $postalCode;
     public $billingAddress;
+    public $paymentDate;
 
-    // Insert
     public function insert()
     {
-        $SQL = 'INSERT INTO Payment (paymentID, customerID, cardNumber, expirationDate, billingAddress) VALUES (:paymentID, :customerID, :cardNumber, :expirationDate, :billingAddress)';
-        $STMT = self::$_conn->prepare($SQL);
-        $data = [
-            'paymentID' => $this->paymentID,
+
+        $expirationDate = \DateTime::createFromFormat('m/y', $this->expirationDate);
+        $formattedExpirationDate = $expirationDate->format('Y-m-01');
+
+        $SQL = "INSERT INTO Payment (bookingID, customerID, cardName, cardNumber, expirationDate, postalCode, billingAddress, paymentDate)
+                VALUES (:bookingID, :customerID, :cardName, :cardNumber, :expirationDate, :postalCode, :billingAddress, :paymentDate)";
+        $stmt = self::$_conn->prepare($SQL);
+        $stmt->execute([
+            'bookingID' => $this->bookingID,
             'customerID' => $this->customerID,
+            'cardName' => $this->cardName,
             'cardNumber' => $this->cardNumber,
             'expirationDate' => $this->expirationDate,
-            'billingAddress' => $this->billingAddress
-        ];
-        $STMT->execute($data);
-    }
-    public function getAllPayments()
-    {
-        $SQL = 'SELECT * FROM Payment';
-        $STMT = self::$_conn->prepare($SQL);
-        $STMT->execute();
-        return $STMT->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    // Read (Retrieve a specific payment by paymentID)
-    public function getPayment($paymentID)
-    {
-        $SQL = 'SELECT * FROM Payment WHERE paymentID = :paymentID';
-        $STMT = self::$_conn->prepare($SQL);
-        $STMT->execute(['paymentID' => $paymentID]);
-        return $STMT->fetch(PDO::FETCH_ASSOC);
-    }
-
-    // Update
-    public function update()
-    {
-        $SQL = 'UPDATE Payment SET  cardNumber = :cardNumber, 
-                expirationDate = :expirationDate, billingAddress = :billingAddress 
-                WHERE paymentID = :paymentID';
-        $STMT = self::$_conn->prepare($SQL);
-        $STMT->execute([
-            'paymentID' => $this->paymentID,
-            'cardNumber' => $this->cardNumber,
-            'expirationDate' => $this->expirationDate,
-            'billingAddress' => $this->billingAddress
+            'postalCode' => $this->postalCode,
+            'billingAddress' => $this->billingAddress,
+            'paymentDate' => $this->paymentDate
         ]);
+        $this->paymentID = self::$_conn->lastInsertId();
     }
 
-
-    // Delete
     public function delete()
     {
-        $SQL = 'DELETE FROM Payment WHERE paymentID = :paymentID';
-        $STMT = self::$_conn->prepare($SQL);
-        $STMT->execute([
-            'paymentID' => $this->paymentID
-        ]);
+        $SQL = "DELETE FROM Payment WHERE paymentID = :paymentID";
+        $stmt = self::$_conn->prepare($SQL);
+        $stmt->execute(['paymentID' => $this->paymentID]);
     }
+    
+    public function deleteByBookingID($bookingID)
+    {
+        $SQL = "DELETE FROM Payment WHERE bookingID = :bookingID";
+        $stmt = self::$_conn->prepare($SQL);
+        $stmt->execute(['bookingID' => $bookingID]);
+    }
+
+    public function getForBooking($bookingID)
+    {
+        $SQL = "SELECT * FROM Payment WHERE bookingID = :bookingID";
+        $stmt = self::$_conn->prepare($SQL);
+        $stmt->execute(['bookingID' => $bookingID]);
+        $stmt->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Payment');
+        return $stmt->fetch();
+    }
+    // Other methods can be added here
 }
-?>

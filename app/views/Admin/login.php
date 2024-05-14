@@ -23,7 +23,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 80vh; /* Adjust height to vertically center the form */
+            height: 80vh; 
         }
         form {
             background-color: white;

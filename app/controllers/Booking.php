@@ -2,6 +2,9 @@
 
 namespace app\controllers;
 
+use app\models\Booking as BookingModel;
+use app\models\Payment as PaymentModel;
+
 
 /**
  * BookingController handles the web requests related to bookings.
@@ -13,33 +16,40 @@ class Booking extends \app\core\Controller
      */
 
 
-    public function create()
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $booking = new \app\models\Booking();
+     public function create()
+     {
+         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+             $bookingData = [
+                 'customerID' => $_SESSION['customerID'],
+                 'bookingDate' => $_POST['bookingDate'],
+                 'bookingTime' => $_POST['bookingTime'],
+                 'status' => "Scheduled",
+                 'frequency' => $_POST['frequency'] ?? null,
+                 'description' => $_POST['description'],
+                 'category' => $_POST['category'],
+                 'area' => $_POST['area']
+             ];
+ 
+             if ($bookingData['category'] == 'Commercial') {
+                 $bookingData['basePrice'] = 250;
+                 $bookingData['ratePerSquareFoot'] = 25.50 * $bookingData['area'];
+             } else {
+                 $bookingData['basePrice'] = 100;
+                 $bookingData['ratePerSquareFoot'] = 15.75 * $bookingData['area'];
+             }
+ 
 
-            $booking->customerID = $_SESSION['customerID'];
-            $booking->bookingDate = $_POST['bookingDate'];
-            $booking->bookingTime = $_POST['bookingTime'];
-            $booking->status = "Scheduled";
-            $booking->frequency = $_POST['frequency'] ?? null;
-            $booking->description = $_POST['description'];
-            $booking->category = $_POST['category'];
-            if ($booking->category == 'Commercial') {
-                $booking->basePrice = 250;
-                $booking->ratePerSquareFoot = 25.50 * $_POST['area'];
-            } else {
-                $booking->basePrice = 100;
-                $booking->ratePerSquareFoot = 15.75 * $_POST['area'];
-            }
-            $booking->insert();
-
-            header('Location: /Booking/complete/' . $booking->bookingID);
-        } else {
-            $this->view('Booking/create');
-        }
-    }
-
+             session_start();
+             $_SESSION['bookingData'] = $bookingData;
+ 
+             // Redirect to Payment/create
+             header('Location: /Payment/create');
+             exit();
+         } else {
+             $this->view('Booking/create');
+         }
+     }
+     
     // Additional controller methods for other actions can be added here
     public function getAll()
     {
@@ -58,17 +68,23 @@ class Booking extends \app\core\Controller
 
     }
 
-    // Deletes an existing booking
     public function delete($bookingID)
     {
-        $bookingModel = new \app\models\Booking();
-        $booking = $bookingModel->getForBooking($bookingID);
+        $paymentModel = new PaymentModel();
+        $bookingModel = new BookingModel();
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $booking->delete();
+            // Delete related payments
+            $paymentModel->deleteByBookingID($bookingID);
+
+            // Delete the booking
+            $bookingModel->delete($bookingID);
+
             unset($_SESSION['bookingID']);
             header('Location:/');
         } else {
-            $this->view('Booking/delete', $booking);
+            $booking = $bookingModel->getForBooking($bookingID);
+            $this->view('Booking/delete', ['booking' => $booking]);
         }
     }
 
@@ -76,8 +92,10 @@ class Booking extends \app\core\Controller
     public function complete($bookingID)
     {
         $bookingModel = new \app\models\Booking();
+        $paymentModel = new \app\models\Payment();
         $detailedBooking = $bookingModel->getForBooking($bookingID);
-        $this->view('Booking/complete', $detailedBooking);
+        $detailedPayment = $paymentModel->getForBooking($bookingID);
+        $this->view('Booking/complete', ['booking' => $detailedBooking, 'payment' => $detailedPayment]);
     }
 
     // Modifies an existing booking

@@ -25,3 +25,5 @@ $this->addRoute('Admin/', 'Admin,index');
 $this->addRoute('Admin/modify/{bookingID}', 'Admin,modify');
 $this->addRoute('Admin/delete/{bookingID}', 'Admin,delete');
 $this->addRoute('Admin/login', 'Admin,login');
+
+$this->addRoute('Payment/create', 'Payment,create');

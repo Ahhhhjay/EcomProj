@@ -110,13 +110,11 @@
 
         .star-rating .filled-star {
             color: #f5b301;
-            /* Gold color for filled stars */
             font-size: 20px;
         }
 
         .star-rating .empty-star {
             color: #ccc;
-            /* Light gray for empty stars */
             font-size: 20px;
         }
 
@@ -125,7 +123,6 @@
             justify-content: space-around;
             margin-top: 20px;
             flex-wrap: wrap;
-            /* Ensures responsiveness */
         }
 
         .review-item {
@@ -134,12 +131,9 @@
             margin: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             flex: 1;
-            /* Ensures that each review item takes equal space */
             text-align: left;
             min-width: 250px;
-            /* Ensures that items do not become too narrow */
             max-width: 30%;
-            /* Prevents items from being too wide on larger screens */
         }
     </style>
 </head>
@@ -154,7 +148,6 @@
         <a href="#promotions"><?= __('Promotions') ?></a>
         <a href="/Reviews/"><?= __('Leave a Review') ?></a>
         <a href="/Customer/"><?= __('My Profile') ?></a>
-        <!-- Dynamic button rendering based on login state -->
         <?php if (isset($_SESSION['customerID'])): ?>
             <button onclick="location.href='/Customer/logout'"><?= __('Logout') ?></button>
         <?php else: ?>

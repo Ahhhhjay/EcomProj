@@ -90,18 +90,20 @@
     <main>
         <form method="post" action="">
             <h2><?=__('Booking Information')?></h2>
-            <dt><?=__('Booking Date:')?></dt>
-            <dd><?= htmlspecialchars($data->bookingDate) ?></dd>
-            <dt><?=__('Booking Time:')?></dt>
-            <dd><?= htmlspecialchars($data->bookingTime) ?></dd>
-            <dt><?=__('Frequency:')?></dt>
-            <dd><?= htmlspecialchars($data->Frequency) ?></dd>
-            <dt><?=__('Address:')?></dt>
-            <dd><?= htmlspecialchars($data->Address) ?></dd>
-            <dt><?=__('Description:')?></dt>
-            <dd><?= htmlspecialchars($data->description) ?></dd>
-            <dt><?=__('Category:')?></dt>
-            <dd><?= htmlspecialchars($data->Category) ?></dd>
+            <dl>
+                <dt><?=__('Booking Date:')?></dt>
+                <dd><?= htmlspecialchars($data['booking']->bookingDate) ?></dd>
+                <dt><?=__('Booking Time:')?></dt>
+                <dd><?= htmlspecialchars($data['booking']->bookingTime) ?></dd>
+                <dt><?=__('Frequency:')?></dt>
+                <dd><?= htmlspecialchars($data['booking']->frequency) ?></dd>
+                <dt><?=__('Address:')?></dt>
+                <dd><?= htmlspecialchars($data['booking']->Address) ?></dd>
+                <dt><?=__('Description:')?></dt>
+                <dd><?= htmlspecialchars($data['booking']->description) ?></dd>
+                <dt><?=__('Category:')?></dt>
+                <dd><?= htmlspecialchars($data['booking']->category) ?></dd>
+            </dl>
             <p><?=__('Do you want to proceed with the deletion of your Booking?')?></p>
             <input type="submit" name="action" value="<?=__('Delete')?>">
             <a href='/Customer/'><?=__('Cancel')?></a>

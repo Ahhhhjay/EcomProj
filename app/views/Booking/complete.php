@@ -85,32 +85,45 @@
         <h1><?= __('CleanIt Services - Booking Completed') ?></h1>
     </header>
     <main>
+        <h2><?= __('Booking Details') ?></h2>
         <dl>
             <dt><?= __('Booking Date:') ?></dt>
-            <dd><?= htmlspecialchars($data->bookingDate) ?></dd>
+            <dd><?= htmlspecialchars($data['booking']->bookingDate) ?></dd>
             <dt><?= __('Booking Time:') ?></dt>
-            <dd><?= htmlspecialchars($data->bookingTime) ?></dd>
+            <dd><?= htmlspecialchars($data['booking']->bookingTime) ?></dd>
             <dt><?= __('Frequency:') ?></dt>
-            <dd><?= htmlspecialchars($data->Frequency) ?></dd>
+            <dd><?= htmlspecialchars($data['booking']->frequency) ?></dd>
             <dt><?= __('Address:') ?></dt>
-            <dd><?= htmlspecialchars($data->Address) ?></dd>
+            <dd><?= htmlspecialchars($data['booking']->Address) ?></dd>
             <dt><?= __('Description:') ?></dt>
-            <dd><?= htmlspecialchars($data->description) ?></dd>
+            <dd><?= htmlspecialchars($data['booking']->description) ?></dd>
             <dt><?= __('Category:') ?></dt>
-            <dd><?= htmlspecialchars($data->Category) ?></dd>
+            <dd><?= htmlspecialchars($data['booking']->category) ?></dd>
+        </dl>
+
+        <h2><?= __('Payment Details') ?></h2>
+        <dl>
+
+            <dt><?= __('Cardholder Name:') ?></dt>
+            <dd><?= htmlspecialchars($data['payment']->cardName) ?></dd>
+            <dt><?= __('Card Number:') ?></dt>
+            <dd><?= htmlspecialchars($data['payment']->cardNumber) ?></dd>
+            <dt><?= __('Expiration Date:') ?></dt>
+            <dd><?= htmlspecialchars($data['payment']->expirationDate) ?></dd>
+            <dt><?= __('Postal Code:') ?></dt>
+            <dd><?= htmlspecialchars($data['payment']->postalCode) ?></dd>
+            <dt><?= __('Billing Address:') ?></dt>
+            <dd><?= htmlspecialchars($data['payment']->billingAddress) ?></dd>
+            <dt><?= __('Payment Date:') ?></dt>
+            <dd><?= htmlspecialchars($data['payment']->paymentDate) ?></dd>
         </dl>
         <div class="links">
             <a href='/Booking/modify/<?= htmlspecialchars($data->bookingID) ?>'
                 style="background-color: #4CAF50;"><?= __('Modify my booking') ?></a> |
-            <a href='/Booking/delete/<?= htmlspecialchars($data->bookingID) ?>' style="background-color: #f44336;"
-                onclick="location.href='/Booking/delete/<?= $data->bookingID ?>';"><?= __('Delete my booking') ?></a>
-            |
+            <a href='/Booking/delete/<?= htmlspecialchars($data['booking']->bookingID) ?>' style="background-color: #f44336;"><?= __('Delete my booking') ?></a>
             <a href='/' style="background-color: #555;"><?= __('Finish Booking') ?></a>
         </div>
     </main>
-    <footer>
-        <?= __('&copy; 2024 All Rights Reserved | Totally not fake website') ?>
-    </footer>
 </body>
 
 </html>

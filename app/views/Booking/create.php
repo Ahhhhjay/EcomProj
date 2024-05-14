@@ -121,7 +121,7 @@
     </header>
 
     <main>
-        <form action="" method="post">
+        <form action="/Booking/create" method="post">
             <h1><?= __('Book Your Cleaning Service') ?></h1>
             <label for="description"><?= __('Description of the type of cleaning:') ?></label>
             <input type="text" id="description" name="description" required />
@@ -131,14 +131,9 @@
 
             <label for="category"><?= __('The type of residence:') ?></label>
             <div class="radio-group">
-                <label for="commercial">
-                    <i class="fas fa-building"></i> <?= __('Commercial') ?>
-                </label>
+                <label for="commercial"><i class="fas fa-building"></i> <?= __('Commercial') ?></label>
                 <input type="radio" id="commercial" name="category" value="Commercial">
-
-                <label for="residential">
-                    <i class="fas fa-home"></i> <?= __('Residential') ?>
-                </label>
+                <label for="residential"><i class="fas fa-home"></i> <?= __('Residential') ?></label>
                 <input type="radio" id="residential" name="category" value="Residential" checked>
             </div><br>
 
@@ -157,8 +152,7 @@
                 <option value="Monthly"><?= __('Monthly') ?></option>
             </select>
 
-            <input type="submit" value="<?= __('Submit Booking') ?>">
-
+            <input type="submit" value="<?= __('Proceed to Payment') ?>">
             <button id="cancel" onclick="location.href='/'"><?= __('Cancel') ?></button>
         </form>
     </main>
