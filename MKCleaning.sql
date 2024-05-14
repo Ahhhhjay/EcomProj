@@ -3,11 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
-<<<<<<< HEAD
--- Generation Time: May 13, 2024 at 11:41 PM
-=======
--- Generation Time: May 14, 2024 at 03:55 AM
->>>>>>> 1be2952de32e5663c3274ed67ec1fcb41ce55296
+-- Generation Time: May 14, 2024 at 05:00 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -24,12 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `MKCleaning`
 --
-<<<<<<< HEAD
 
-=======
-CREATE DATABASE IF NOT EXISTS `MKCleaning` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `MKCleaning`;
->>>>>>> 1be2952de32e5663c3274ed67ec1fcb41ce55296
 -- --------------------------------------------------------
 
 --
@@ -46,34 +37,10 @@ CREATE TABLE `Booking` (
   `description` text NOT NULL,
   `basePrice` int(4) NOT NULL,
   `ratePerSquareFoot` decimal(10,2) NOT NULL,
-<<<<<<< HEAD
-  `Category` enum('Residential','Commercial') NOT NULL
-=======
   `Category` enum('Residential','Commercial') NOT NULL,
   `dateBooked` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `message` text DEFAULT NULL
->>>>>>> 1be2952de32e5663c3274ed67ec1fcb41ce55296
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `Booking`
---
-
-<<<<<<< HEAD
-INSERT INTO `Booking` (`bookingID`, `customerID`, `bookingDate`, `bookingTime`, `Status`, `Frequency`, `description`, `basePrice`, `ratePerSquareFoot`, `Category`) VALUES
-(7, 4, '2024-05-25', '18:45:00', 'Scheduled', 'One-time', 'clean house', 100, 378.00, 'Residential'),
-(8, 4, '2024-05-16', '17:50:00', 'Scheduled', 'One-time', 'clean house', 100, 378.00, 'Residential'),
-(9, 4, '2024-05-18', '17:48:00', 'Scheduled', 'One-time', 'clean house', 100, 362.25, 'Residential'),
-(10, 4, '2024-05-17', '16:49:00', 'Scheduled', 'One-time', 'clean house', 100, 315.00, 'Residential'),
-(11, 4, '2024-05-16', '17:50:00', 'Scheduled', 'One-time', 'clean house', 100, 378.00, 'Residential'),
-(12, 4, '2024-05-25', '19:03:00', 'Scheduled', 'One-time', 'clean house', 100, 346.50, 'Residential');
-=======
-INSERT INTO `Booking` (`bookingID`, `customerID`, `bookingDate`, `bookingTime`, `Status`, `Frequency`, `description`, `basePrice`, `ratePerSquareFoot`, `Category`, `dateBooked`, `message`) VALUES
-(5, 5, '2024-05-02', '15:14:00', 'Scheduled', 'Monthly', 'I want you to clean my bedroom', 100, 378.00, 'Residential', '2024-05-07 02:19:53', NULL),
-(6, 5, '2024-05-25', '10:33:00', 'Scheduled', 'One-time', 'I want you to clean my bathroom', 100, 220.50, 'Residential', '2024-05-07 02:33:08', NULL),
-(7, 7, '2024-05-25', '20:00:00', 'Scheduled', 'One-time', 'House', 100, 1102.50, 'Residential', '2024-05-13 22:36:06', NULL),
-(8, 7, '2024-05-31', '18:00:00', 'Scheduled', 'One-time', 'booo', 100, 1386.00, 'Residential', '2024-05-13 22:43:05', NULL);
->>>>>>> 1be2952de32e5663c3274ed67ec1fcb41ce55296
 
 -- --------------------------------------------------------
 
@@ -90,20 +57,6 @@ CREATE TABLE `Customer` (
   `passwordHash` varchar(255) NOT NULL,
   `Address` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `Customer`
---
-
-INSERT INTO `Customer` (`customerID`, `firstName`, `lastName`, `Email`, `contactNumber`, `passwordHash`, `Address`) VALUES
-<<<<<<< HEAD
-(3, 'Adryan', 'Vera', 'adryannayrda2319@email.com', '514-123-1111', '$2y$10$S6.i9oV7gKOYadkCLHvXl.lEGYgZiAZ7w9KIr2Cz8h7/u6j8Jyu9S', '2000 Van Horne'),
-(4, 'Ralph', 'Bantillo', 'ralphbantillo@gmail.com', '438-922-1772', '$2y$10$wO1m4nxnCB53fEa7ptvVLOmv0Q6iIToIiIyUqUjPTn0k4z9XPbhwe', '4A Rue Hadley');
-=======
-(5, 'Rolly Jake', 'Gayo', 'rj0gayo@gmail.com', '514-111-1232', '$2y$10$iR8T1Aa8lVayYSa1lfCF8uNkBb9r8XXd2jMIW.9ndU.3agYlHOQQW', '5899 Av Victoria'),
-(6, 'Steve', 'Hansen', 'steve@email.com', '514-333-1231', '$2y$10$mJJaLpvqjUc9N7CXlLgE8egNQMwLqFx2B8OU7OgATYTpW.TRbesiO', '8900 Av Linton'),
-(7, 'Adryan', 'De Vera', 'adryannayrda2319@gmail.com', '514-431-1701', '$2y$10$QrCiGv8vmpK3EEUOtY.l9O4BuszHus3..z1LnhfGoWn5t7juzX4F6', '2000 Van Horne');
->>>>>>> 1be2952de32e5663c3274ed67ec1fcb41ce55296
 
 -- --------------------------------------------------------
 
@@ -152,15 +105,6 @@ CREATE TABLE `Reviews` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `Reviews`
---
-
-INSERT INTO `Reviews` (`reviewID`, `customerID`, `rating`, `text`, `datePosted`) VALUES
-(22, 4, 5, 'nice', '2024-05-06 03:42:15'),
-(23, 4, 1, 'ew', '2024-05-06 03:42:17'),
-(25, 4, 1, 'alright', '2024-05-06 04:27:25');
-
---
 -- Indexes for dumped tables
 --
 
@@ -206,21 +150,13 @@ ALTER TABLE `Reviews`
 -- AUTO_INCREMENT for table `Booking`
 --
 ALTER TABLE `Booking`
-<<<<<<< HEAD
-  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-=======
-  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
->>>>>>> 1be2952de32e5663c3274ed67ec1fcb41ce55296
+  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `Customer`
 --
 ALTER TABLE `Customer`
-<<<<<<< HEAD
-  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-=======
-  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
->>>>>>> 1be2952de32e5663c3274ed67ec1fcb41ce55296
+  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `Payment`
@@ -238,7 +174,7 @@ ALTER TABLE `Promotions`
 -- AUTO_INCREMENT for table `Reviews`
 --
 ALTER TABLE `Reviews`
-  MODIFY `reviewID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `reviewID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -261,7 +197,7 @@ ALTER TABLE `Payment`
 -- Constraints for table `Reviews`
 --
 ALTER TABLE `Reviews`
-  ADD CONSTRAINT `reviewsCustomerIDKey` FOREIGN KEY (`customerID`) REFERENCES `Customer` (`customerID`);
+  ADD CONSTRAINT `reviewsCustomerIDKey` FOREIGN KEY (`customerID`) REFERENCES `Customer` (`customerID`) ON DELETE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

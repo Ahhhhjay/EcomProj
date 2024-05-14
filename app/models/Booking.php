@@ -16,13 +16,6 @@ class Booking extends \app\core\Model
     public $basePrice;
     public $ratePerSquareFoot;
     public $category;
-
-<<<<<<< HEAD
-    public function insert()
-    {
-        $SQL = 'INSERT INTO Booking (customerID, bookingDate, bookingTime, status, frequency, description, basePrice, ratePerSquareFoot, category)
-                VALUES (:customerID, :bookingDate, :bookingTime, :status, :frequency, :description, :basePrice, :ratePerSquareFoot, :category)';
-=======
     public $message;
 
     // Insert new booking
@@ -31,7 +24,6 @@ class Booking extends \app\core\Model
         $SQL = 'INSERT INTO Booking (customerID, bookingDate, bookingTime, Status, Frequency, description, basePrice, ratePerSquareFoot, category, message)
                 VALUE (:customerID, :bookingDate, :bookingTime, :Status, :Frequency, :description, :basePrice, :ratePerSquareFoot, :category, :message)';
 
->>>>>>> 1be2952de32e5663c3274ed67ec1fcb41ce55296
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute([
             'customerID' => $this->customerID,
@@ -42,15 +34,10 @@ class Booking extends \app\core\Model
             'description' => $this->description,
             'basePrice' => $this->basePrice,
             'ratePerSquareFoot' => $this->ratePerSquareFoot,
-<<<<<<< HEAD
-            'category' => $this->category
-        ]);
-=======
             'category' => $this->category,
             'message' => $this->message
-        ];
-        $STMT->execute($data);
->>>>>>> 1be2952de32e5663c3274ed67ec1fcb41ce55296
+        ]);
+        $STMT->execute();
         $this->bookingID = self::$_conn->lastInsertId();
     }
 

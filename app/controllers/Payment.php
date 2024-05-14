@@ -37,6 +37,7 @@ class Payment extends \app\core\Controller
             $booking->category = $bookingData['category'];
             $booking->basePrice = $bookingData['basePrice'];
             $booking->ratePerSquareFoot = $bookingData['ratePerSquareFoot'];
+            $booking->message = $bookingData['message'];
             $booking->insert(); // Call the insert method on the Booking model
 
             // Save the booking ID in the payment record
