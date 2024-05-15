@@ -100,6 +100,8 @@
             <dd><?= htmlspecialchars($data['booking']->description) ?></dd>
             <dt><?= __('Category:') ?></dt>
             <dd><?= htmlspecialchars($data['booking']->Category) ?></dd>
+            <dt><?= __('Price:') ?></dt>
+            <dd><?= htmlspecialchars('$'.$data['booking']->ratePerSquareFoot) ?></dd>
         </dl>
 
         <h2><?= __('Payment Details') ?></h2>

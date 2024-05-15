@@ -24,6 +24,14 @@ $this->addRoute('Admin/modify/{bookingID}', 'Admin,modify');
 $this->addRoute('Admin/delete/{bookingID}', 'Admin,delete');
 $this->addRoute('Admin/login', 'Admin,login');
 
+$this->addRoute('Promotions/', 'Promotions,homePage');
+$this->addRoute('Promotions/index', 'Promotions,index');
+$this->addRoute('Promotions/create', 'Promotions,create');
+$this->addRoute('Promotions/apply', 'Promotions,apply');
+$this->addRoute('Promotions/modify/{promotionID}', 'Promotions,modify');
+$this->addRoute('Promotions/delete/{promotionID}', 'Promotions,delete');
+
+
 $this->addRoute('Payment/create', 'Payment,create');
 
 $this->addRoute('About_Us/','About_Us,index');

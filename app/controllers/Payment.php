@@ -50,7 +50,8 @@ class Payment extends \app\core\Controller
             $this->view('Payment/create');
         }
     }
-
+    
+    
     public function delete()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

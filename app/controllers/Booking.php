@@ -37,12 +37,14 @@ class Booking extends \app\core\Controller
             $_SESSION['bookingData'] = $bookingData;
 
             // Redirect to Payment/create
-            header('Location: /Payment/create');
+            header('Location: /Promotions/apply');
             exit();
         } else {
             $this->view('Booking/create');
         }
     }
+
+
 
     // Additional controller methods for other actions can be added here
     public function getAll()

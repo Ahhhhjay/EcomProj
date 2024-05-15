@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 14, 2024 at 06:02 AM
+-- Generation Time: May 15, 2024 at 01:41 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -46,6 +46,17 @@ CREATE TABLE `Booking` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `BookingPromotions`
+--
+
+CREATE TABLE `BookingPromotions` (
+  `bookingID` int(11) NOT NULL,
+  `promotionID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Customer`
 --
 
@@ -64,7 +75,7 @@ CREATE TABLE `Customer` (
 --
 
 INSERT INTO `Customer` (`customerID`, `firstName`, `lastName`, `Email`, `contactNumber`, `passwordHash`, `Address`) VALUES
-(1, 'Rolly Jake', 'Gayo', 'rj0gayo@gmail.com', '514-231-2213', '$2y$10$JRahk.8IW223xtM//3UnueAw7mVRPQWmaay3.d9XY96EhfjmJ6dyK', '5899 Ave Victoria');
+(2, 'adryan', 'De Vera', 'adryannayrda2319@gmail.com', '514-111-1111', '$2y$10$Bqn0vrT/Q7jmLWiG9r.P4OaFbwW7JuHA7/C9lxF99Zrnbg7IWRxh6', '2000 Van Horne');
 
 -- --------------------------------------------------------
 
@@ -93,10 +104,21 @@ CREATE TABLE `Payment` (
 CREATE TABLE `Promotions` (
   `promotionID` int(11) NOT NULL,
   `description` text NOT NULL,
+  `code` varchar(8) NOT NULL,
   `discountRate` decimal(5,2) NOT NULL,
   `validFrom` date NOT NULL,
   `validTo` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `Promotions`
+--
+
+INSERT INTO `Promotions` (`promotionID`, `description`, `code`, `discountRate`, `validFrom`, `validTo`) VALUES
+(293, '15% off winter sale', '', 15.00, '2024-05-23', '2024-05-31'),
+(307, '10% off winter sale', '', 10.00, '2024-05-23', '2024-05-31'),
+(311, '20% off summer sale', '', 20.00, '2024-05-23', '2024-05-30'),
+(312, '20% off summer sale', '', 20.00, '2024-05-23', '2024-05-30');
 
 -- --------------------------------------------------------
 
@@ -113,14 +135,6 @@ CREATE TABLE `Reviews` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `Reviews`
---
-
-INSERT INTO `Reviews` (`reviewID`, `customerID`, `rating`, `text`, `datePosted`) VALUES
-(1, 1, 5, 'Very good cleaning!!!', '2024-05-14 03:04:03'),
-(2, 1, 2, 'Booo!!', '2024-05-14 03:04:11');
-
---
 -- Indexes for dumped tables
 --
 
@@ -130,6 +144,13 @@ INSERT INTO `Reviews` (`reviewID`, `customerID`, `rating`, `text`, `datePosted`)
 ALTER TABLE `Booking`
   ADD PRIMARY KEY (`bookingID`),
   ADD KEY `bookingCustomerIDKey` (`customerID`);
+
+--
+-- Indexes for table `BookingPromotions`
+--
+ALTER TABLE `BookingPromotions`
+  ADD PRIMARY KEY (`bookingID`,`promotionID`),
+  ADD KEY `promotionID` (`promotionID`);
 
 --
 -- Indexes for table `Customer`
@@ -166,25 +187,25 @@ ALTER TABLE `Reviews`
 -- AUTO_INCREMENT for table `Booking`
 --
 ALTER TABLE `Booking`
-  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `Customer`
 --
 ALTER TABLE `Customer`
-  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `Payment`
 --
 ALTER TABLE `Payment`
-  MODIFY `paymentID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `paymentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `Promotions`
 --
 ALTER TABLE `Promotions`
-  MODIFY `promotionID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `promotionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=313;
 
 --
 -- AUTO_INCREMENT for table `Reviews`
@@ -201,6 +222,13 @@ ALTER TABLE `Reviews`
 --
 ALTER TABLE `Booking`
   ADD CONSTRAINT `bookingCustomerIDKey` FOREIGN KEY (`customerID`) REFERENCES `Customer` (`customerID`);
+
+--
+-- Constraints for table `BookingPromotions`
+--
+ALTER TABLE `BookingPromotions`
+  ADD CONSTRAINT `BookingPromotions_ibfk_1` FOREIGN KEY (`bookingID`) REFERENCES `Booking` (`bookingID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `BookingPromotions_ibfk_2` FOREIGN KEY (`promotionID`) REFERENCES `Promotions` (`promotionID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `Payment`

@@ -80,4 +80,6 @@ class Admin extends \app\core\Controller {
             $this->view('Admin/delete', ['data' => $booking]);
         }
     }
+
+    
 }

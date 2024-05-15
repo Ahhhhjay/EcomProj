@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-11 03:58+0000\n"
+"POT-Creation-Date: 2024-05-15 01:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,136 +17,257 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: app/views/About_Us/index.php:7 app/views/Home/index.php:7
+#: app/views/Promotions/homePage.php:7
+msgid "CleanIt - Cleaning Services"
+msgstr ""
+
+#: app/views/About_Us/index.php:157 app/views/Home/index.php:143
+#: app/views/Promotions/homePage.php:157 app/views/Reviews/create.php:151
+#: app/views/Reviews/delete.php:107 app/views/Reviews/index.php:168
+msgid "CleanIt Logo"
+msgstr ""
+
+#: app/views/About_Us/index.php:160 app/views/Customer/register.php:92
+#: app/views/Home/index.php:146 app/views/Promotions/homePage.php:160
+#: app/views/Reviews/create.php:154 app/views/Reviews/delete.php:111
+#: app/views/Reviews/edit.php:151 app/views/Reviews/index.php:172
+msgid "Home"
+msgstr ""
+
+#: app/views/About_Us/index.php:161 app/views/Home/index.php:147
+#: app/views/Home/index.php:162 app/views/Promotions/homePage.php:161
+#: app/views/Reviews/create.php:155 app/views/Reviews/delete.php:112
+#: app/views/Reviews/edit.php:152 app/views/Reviews/index.php:173
+msgid "About Us"
+msgstr ""
+
+#: app/views/About_Us/index.php:162 app/views/Admin/index.php:152
+#: app/views/Home/index.php:148 app/views/Promotions/homePage.php:162
+#: app/views/Promotions/index.php:152 app/views/Promotions/index.php:155
+#: app/views/Reviews/create.php:156 app/views/Reviews/delete.php:113
+#: app/views/Reviews/edit.php:153 app/views/Reviews/index.php:174
+msgid "Promotions"
+msgstr ""
+
+#: app/views/About_Us/index.php:163 app/views/Home/index.php:149
+#: app/views/Promotions/homePage.php:163 app/views/Reviews/create.php:157
+#: app/views/Reviews/delete.php:114 app/views/Reviews/edit.php:154
+#: app/views/Reviews/index.php:175
+msgid "Leave a Review"
+msgstr ""
+
+#: app/views/About_Us/index.php:164 app/views/Home/index.php:150
+#: app/views/Promotions/homePage.php:164 app/views/Reviews/create.php:158
+#: app/views/Reviews/delete.php:115 app/views/Reviews/edit.php:155
+#: app/views/Reviews/index.php:176
+msgid "My Profile"
+msgstr ""
+
+#: app/views/About_Us/index.php:166 app/views/Home/index.php:152
+#: app/views/Promotions/homePage.php:166 app/views/Reviews/index.php:178
+msgid "Logout"
+msgstr ""
+
+#: app/views/About_Us/index.php:168 app/views/Admin/login.php:93
+#: app/views/Customer/login.php:108 app/views/Home/index.php:154
+#: app/views/Promotions/homePage.php:168 app/views/Reviews/index.php:180
+msgid "Login"
+msgstr ""
+
+#: app/views/About_Us/index.php:169 app/views/Home/index.php:155
+#: app/views/Promotions/homePage.php:169 app/views/Reviews/index.php:181
+msgid "Sign Up"
+msgstr ""
+
+#: app/views/About_Us/index.php:210 app/views/Home/index.php:189
+#: app/views/Promotions/homePage.php:197 app/views/Reviews/delete.php:140
+#: app/views/Reviews/edit.php:199 app/views/Reviews/index.php:220
+msgid "MKCleaners MTL"
+msgstr ""
+
+#: app/views/About_Us/index.php:211 app/views/Home/index.php:190
+#: app/views/Promotions/homePage.php:198 app/views/Reviews/create.php:184
+#: app/views/Reviews/delete.php:141 app/views/Reviews/edit.php:200
+#: app/views/Reviews/index.php:221
+msgid ""
+"Discover our cleaning company, where your home is your best friend! Enjoy a "
+"spotless home without lifting a finger!"
+msgstr ""
+
+#: app/views/About_Us/index.php:215 app/views/Home/index.php:194
+#: app/views/Promotions/homePage.php:202 app/views/Reviews/create.php:188
+#: app/views/Reviews/delete.php:146 app/views/Reviews/edit.php:205
+#: app/views/Reviews/index.php:226
+msgid "Contact info."
+msgstr ""
+
+#: app/views/About_Us/index.php:216 app/views/Home/index.php:195
+#: app/views/Promotions/homePage.php:203 app/views/Reviews/create.php:189
+#: app/views/Reviews/delete.php:147 app/views/Reviews/edit.php:206
+msgid "Phone Number: (514) 799-4881"
+msgstr ""
+
+#: app/views/About_Us/index.php:217 app/views/Home/index.php:196
+#: app/views/Promotions/homePage.php:204 app/views/Reviews/create.php:190
+#: app/views/Reviews/delete.php:148 app/views/Reviews/edit.php:207
+msgid "Email: MKCleanersMTL@gmail.com"
+msgstr ""
+
+#: app/views/About_Us/index.php:218 app/views/Home/index.php:197
+#: app/views/Promotions/homePage.php:205 app/views/Reviews/create.php:191
+#: app/views/Reviews/delete.php:149 app/views/Reviews/edit.php:208
+msgid "Instagram: mkcleanersmtl"
+msgstr ""
+
+#: app/views/About_Us/index.php:222 app/views/Admin/index.php:226
+#: app/views/Admin/login.php:99 app/views/Admin/modify.php:136
+#: app/views/Booking/create.php:165 app/views/Booking/delete.php:113
+#: app/views/Booking/modify.php:129 app/views/Customer/delete.php:109
+#: app/views/Customer/index.php:162 app/views/Customer/login.php:114
+#: app/views/Customer/register.php:138 app/views/Customer/update.php:139
+#: app/views/Home/index.php:201 app/views/Payment/create.php:145
+#: app/views/Promotions/create.php:186 app/views/Promotions/homePage.php:209
+#: app/views/Promotions/index.php:193 app/views/Promotions/modify.php:129
+#: app/views/Reviews/create.php:195 app/views/Reviews/delete.php:154
+#: app/views/Reviews/edit.php:214 app/views/Reviews/index.php:234
+msgid "&copy; 2024 All Rights Reserved | Totally not fake website"
+msgstr ""
+
 #: app/views/Admin/delete.php:7 app/views/Booking/delete.php:7
-#: app/views/Customer/delete.php:7
+#: app/views/Customer/delete.php:7 app/views/Promotions/delete.php:7
 msgid "Delete Profile - CleanIt Services"
 msgstr ""
 
-#: app/views/Admin/delete.php:89 app/views/Booking/delete.php:88
-#: app/views/Customer/delete.php:89
+#: app/views/Admin/delete.php:89
 msgid "CleanIt - Profile Management"
 msgstr ""
 
 #: app/views/Admin/delete.php:93 app/views/Booking/delete.php:92
-#: app/views/Customer/delete.php:93
-msgid "User profile"
+msgid "Booking Information"
 msgstr ""
 
-#: app/views/Admin/delete.php:94 app/views/Booking/delete.php:93
-msgid "Do you want to proceed with the deletion of your Booking?"
-msgstr ""
-
-#: app/views/Admin/delete.php:95 app/views/Admin/modify.php:95
-#: app/views/Booking/complete.php:89 app/views/Booking/create.php:109
-#: app/views/Booking/delete.php:94 app/views/Booking/modify.php:95
+#: app/views/Admin/delete.php:94 app/views/Admin/modify.php:98
+#: app/views/Booking/complete.php:90 app/views/Booking/create.php:143
+#: app/views/Booking/delete.php:94 app/views/Booking/modify.php:103
 msgid "Booking Date:"
 msgstr ""
 
-#: app/views/Admin/delete.php:97 app/views/Admin/modify.php:99
-#: app/views/Booking/complete.php:91 app/views/Booking/create.php:112
-#: app/views/Booking/delete.php:96 app/views/Booking/modify.php:99
+#: app/views/Admin/delete.php:96 app/views/Admin/modify.php:102
+#: app/views/Booking/complete.php:92 app/views/Booking/create.php:146
+#: app/views/Booking/delete.php:96 app/views/Booking/modify.php:107
 msgid "Booking Time:"
 msgstr ""
 
-#: app/views/Admin/delete.php:99 app/views/Admin/modify.php:103
-#: app/views/Booking/complete.php:93 app/views/Booking/create.php:115
-#: app/views/Booking/delete.php:98 app/views/Booking/modify.php:103
+#: app/views/Admin/delete.php:98 app/views/Admin/modify.php:106
+#: app/views/Booking/complete.php:95 app/views/Booking/create.php:149
+#: app/views/Booking/delete.php:98 app/views/Booking/modify.php:111
 msgid "Frequency:"
 msgstr ""
 
-#: app/views/Admin/delete.php:101 app/views/Booking/complete.php:95
-#: app/views/Booking/delete.php:100 app/views/Customer/delete.php:102
+#: app/views/Admin/delete.php:100 app/views/Booking/complete.php:97
+#: app/views/Booking/delete.php:100 app/views/Customer/delete.php:101
 #: app/views/Customer/index.php:110 app/views/Customer/register.php:121
 msgid "Address:"
 msgstr ""
 
-#: app/views/Admin/delete.php:103 app/views/Booking/complete.php:97
-#: app/views/Booking/delete.php:102
+#: app/views/Admin/delete.php:102 app/views/Booking/complete.php:99
+#: app/views/Booking/delete.php:102 app/views/Promotions/delete.php:94
+#: app/views/Promotions/modify.php:103
 msgid "Description:"
 msgstr ""
 
-#: app/views/Admin/delete.php:105 app/views/Booking/complete.php:99
+#: app/views/Admin/delete.php:104 app/views/Booking/complete.php:101
 #: app/views/Booking/delete.php:104
 msgid "Category:"
 msgstr ""
 
-#: app/views/Admin/delete.php:107 app/views/Admin/index.php:132
-#: app/views/Booking/delete.php:106 app/views/Customer/delete.php:105
-#: app/views/Customer/index.php:147 app/views/Reviews/index.php:201
+#: app/views/Admin/delete.php:106 app/views/Booking/delete.php:107
+msgid "Do you want to proceed with the deletion of your Booking?"
+msgstr ""
+
+#: app/views/Admin/delete.php:107 app/views/Admin/index.php:218
+#: app/views/Booking/delete.php:108 app/views/Customer/delete.php:104
+#: app/views/Customer/index.php:152 app/views/Promotions/delete.php:105
+#: app/views/Promotions/index.php:180 app/views/Reviews/index.php:209
 msgid "Delete"
 msgstr ""
 
-#: app/views/Admin/delete.php:108 app/views/Admin/modify.php:115
-#: app/views/Booking/create.php:125 app/views/Booking/delete.php:107
-#: app/views/Customer/delete.php:106 app/views/Reviews/delete.php:88
-#: app/views/Reviews/edit.php:157
+#: app/views/Admin/delete.php:108 app/views/Admin/modify.php:132
+#: app/views/Booking/create.php:161 app/views/Booking/delete.php:109
+#: app/views/Booking/modify.php:125 app/views/Customer/delete.php:105
+#: app/views/Customer/update.php:134 app/views/Payment/create.php:141
+#: app/views/Promotions/create.php:182 app/views/Promotions/delete.php:106
+#: app/views/Promotions/modify.php:125 app/views/Reviews/delete.php:132
+#: app/views/Reviews/edit.php:190
 msgid "Cancel"
 msgstr ""
 
-#: app/views/Admin/delete.php:112
+#: app/views/Admin/delete.php:112 app/views/Promotions/apply.php:96
+#: app/views/Promotions/delete.php:110
 msgid "&copy; 2024 All Rights Reserved | CleanIt Services"
 msgstr ""
 
-#: app/views/Admin/index.php:7
+#: app/views/Admin/index.php:7 app/views/Promotions/index.php:7
 msgid "User Profile"
 msgstr ""
 
-#: app/views/Admin/index.php:102 app/views/Customer/index.php:118
+#: app/views/Admin/index.php:151 app/views/Admin/index.php:155
+#: app/views/Customer/index.php:122 app/views/Promotions/index.php:151
 msgid "Bookings"
 msgstr ""
 
-#: app/views/Admin/index.php:106 app/views/Customer/index.php:122
+#: app/views/Admin/index.php:183 app/views/Customer/update.php:94
+msgid "First Name"
+msgstr ""
+
+#: app/views/Admin/index.php:184 app/views/Customer/update.php:99
+msgid "Last Name"
+msgstr ""
+
+#: app/views/Admin/index.php:185 app/views/Customer/update.php:105
+msgid "Email"
+msgstr ""
+
+#: app/views/Admin/index.php:186 app/views/Customer/index.php:127
 msgid "Date"
 msgstr ""
 
-#: app/views/Admin/index.php:107 app/views/Customer/index.php:123
+#: app/views/Admin/index.php:187 app/views/Customer/index.php:128
 msgid "Time"
 msgstr ""
 
-#: app/views/Admin/index.php:108 app/views/Customer/index.php:124
+#: app/views/Admin/index.php:188 app/views/Customer/index.php:129
 msgid "Description"
 msgstr ""
 
-#: app/views/Admin/index.php:109 app/views/Customer/index.php:125
+#: app/views/Admin/index.php:189 app/views/Customer/index.php:130
 msgid "Total Price"
 msgstr ""
 
-#: app/views/Admin/index.php:110 app/views/Customer/index.php:126
+#: app/views/Admin/index.php:190 app/views/Customer/index.php:131
 msgid "Category"
 msgstr ""
 
-#: app/views/Admin/index.php:111 app/views/Customer/index.php:127
+#: app/views/Admin/index.php:191 app/views/Customer/index.php:132
 msgid "Frequency"
 msgstr ""
 
-#: app/views/Admin/index.php:112 app/views/Customer/index.php:128
+#: app/views/Admin/index.php:192 app/views/Customer/index.php:133
 msgid "Status"
 msgstr ""
 
-#: app/views/Admin/index.php:113 app/views/Customer/index.php:129
+#: app/views/Admin/index.php:193
+msgid "Message"
+msgstr ""
+
+#: app/views/Admin/index.php:194 app/views/Customer/index.php:134
 msgid "Actions"
 msgstr ""
 
-#: app/views/Admin/index.php:129 app/views/Customer/index.php:144
-#: app/views/Reviews/index.php:202
+#: app/views/Admin/index.php:215 app/views/Customer/index.php:150
+#: app/views/Promotions/index.php:177 app/views/Reviews/index.php:208
 msgid "Edit"
-msgstr ""
-
-#: app/views/Admin/index.php:131 app/views/Booking/complete.php:107
-#: app/views/Customer/index.php:146
-msgid "Are you sure you want to delete this booking?"
-msgstr ""
-
-#: app/views/Admin/index.php:141 app/views/Admin/login.php:99
-#: app/views/Admin/modify.php:118 app/views/Booking/complete.php:112
-#: app/views/Booking/create.php:129 app/views/Booking/delete.php:111
-#: app/views/Booking/modify.php:116 app/views/Customer/delete.php:110
-#: app/views/Customer/index.php:155 app/views/Customer/login.php:114
-#: app/views/Customer/register.php:138 app/views/Customer/update.php:136
-#: app/views/Home/index.php:207 app/views/Reviews/create.php:177
-#: app/views/Reviews/delete.php:105 app/views/Reviews/edit.php:173
-#: app/views/Reviews/index.php:223
-msgid "&copy; 2024 All Rights Reserved | Totally not fake website"
 msgstr ""
 
 #: app/views/Admin/login.php:6 app/views/Customer/login.php:7
@@ -157,14 +278,14 @@ msgstr ""
 msgid "MKCleaners -Admin Login"
 msgstr ""
 
-#: app/views/Admin/login.php:83 app/views/Customer/delete.php:100
+#: app/views/Admin/login.php:83 app/views/Customer/delete.php:99
 #: app/views/Customer/index.php:108 app/views/Customer/login.php:96
-#: app/views/Customer/register.php:109 app/views/Reviews/index.php:218
+#: app/views/Customer/register.php:109 app/views/Reviews/index.php:228
 msgid "Email:"
 msgstr ""
 
 #: app/views/Admin/login.php:84 app/views/Customer/login.php:97
-#: app/views/Customer/register.php:110 app/views/Customer/update.php:108
+#: app/views/Customer/register.php:110 app/views/Customer/update.php:106
 msgid "Enter your email"
 msgstr ""
 
@@ -178,43 +299,54 @@ msgstr ""
 msgid "Enter your password"
 msgstr ""
 
-#: app/views/Admin/login.php:93 app/views/Customer/login.php:108
-#: app/views/Home/index.php:161 app/views/Reviews/index.php:179
-msgid "Login"
-msgstr ""
-
 #: app/views/Admin/modify.php:7 app/views/Booking/modify.php:7
-#: app/views/Customer/update.php:7
+#: app/views/Customer/update.php:7 app/views/Promotions/modify.php:7
 msgid "Update Profile - CleanIt Services"
 msgstr ""
 
-#: app/views/Admin/modify.php:105 app/views/Booking/create.php:117
-#: app/views/Booking/modify.php:105
+#: app/views/Admin/modify.php:108 app/views/Admin/modify.php:122
+#: app/views/Booking/create.php:151 app/views/Booking/modify.php:113
 msgid "Please Select"
 msgstr ""
 
-#: app/views/Admin/modify.php:106 app/views/Booking/create.php:118
-#: app/views/Booking/modify.php:106
+#: app/views/Admin/modify.php:109 app/views/Booking/create.php:152
+#: app/views/Booking/modify.php:114
 msgid "One-time"
 msgstr ""
 
-#: app/views/Admin/modify.php:107 app/views/Booking/create.php:119
-#: app/views/Booking/modify.php:107
+#: app/views/Admin/modify.php:111 app/views/Booking/create.php:153
+#: app/views/Booking/modify.php:116
 msgid "Weekly"
 msgstr ""
 
-#: app/views/Admin/modify.php:108 app/views/Booking/create.php:120
-#: app/views/Booking/modify.php:108
+#: app/views/Admin/modify.php:114 app/views/Booking/create.php:154
+#: app/views/Booking/modify.php:117
 msgid "Bi-Weekly"
 msgstr ""
 
-#: app/views/Admin/modify.php:109 app/views/Booking/create.php:121
-#: app/views/Booking/modify.php:109
+#: app/views/Admin/modify.php:116 app/views/Booking/create.php:155
+#: app/views/Booking/modify.php:119
 msgid "Monthly"
 msgstr ""
 
-#: app/views/Admin/modify.php:112 app/views/Booking/modify.php:112
-#: app/views/Customer/update.php:131
+#: app/views/Admin/modify.php:120
+msgid "Status:"
+msgstr ""
+
+#: app/views/Admin/modify.php:123
+msgid "Scheduled"
+msgstr ""
+
+#: app/views/Admin/modify.php:125
+msgid "Completed"
+msgstr ""
+
+#: app/views/Admin/modify.php:127
+msgid "Cancelled"
+msgstr ""
+
+#: app/views/Admin/modify.php:131 app/views/Booking/modify.php:124
+#: app/views/Customer/update.php:133 app/views/Promotions/modify.php:124
 msgid "Update"
 msgstr ""
 
@@ -223,88 +355,136 @@ msgid "Complete Booking - CleanIt Services"
 msgstr ""
 
 #: app/views/Booking/complete.php:85
-msgid "Confirm Booking"
+msgid "CleanIt Services - Booking Completed"
 msgstr ""
 
-#: app/views/Booking/complete.php:104
+#: app/views/Booking/complete.php:88
+msgid "Booking Details"
+msgstr ""
+
+#: app/views/Booking/complete.php:103
+msgid "Price:"
+msgstr ""
+
+#: app/views/Booking/complete.php:107 app/views/Payment/create.php:121
+msgid "Payment Details"
+msgstr ""
+
+#: app/views/Booking/complete.php:109 app/views/Payment/create.php:122
+msgid "Cardholder Name:"
+msgstr ""
+
+#: app/views/Booking/complete.php:111 app/views/Payment/create.php:125
+msgid "Card Number:"
+msgstr ""
+
+#: app/views/Booking/complete.php:113
+msgid "Expiration Date:"
+msgstr ""
+
+#: app/views/Booking/complete.php:115 app/views/Payment/create.php:134
+msgid "Postal Code:"
+msgstr ""
+
+#: app/views/Booking/complete.php:117 app/views/Payment/create.php:137
+msgid "Billing Address:"
+msgstr ""
+
+#: app/views/Booking/complete.php:119
+msgid "Payment Date:"
+msgstr ""
+
+#: app/views/Booking/complete.php:124
 msgid "Modify my booking"
 msgstr ""
 
-#: app/views/Booking/complete.php:107
+#: app/views/Booking/complete.php:126
 msgid "Delete my booking"
 msgstr ""
 
-#: app/views/Booking/complete.php:108
+#: app/views/Booking/complete.php:127
 msgid "Finish Booking"
 msgstr ""
 
-#: app/views/Booking/create.php:7
+#: app/views/Booking/create.php:7 app/views/Promotions/create.php:7
 msgid "Booking Page - CleanIt Services"
 msgstr ""
 
-#: app/views/Booking/create.php:87
+#: app/views/Booking/create.php:122
 msgid "CleanIt - Book Your Service"
 msgstr ""
 
-#: app/views/Booking/create.php:91
+#: app/views/Booking/create.php:126 app/views/Promotions/create.php:161
 msgid "Book Your Cleaning Service"
 msgstr ""
 
-#: app/views/Booking/create.php:92
+#: app/views/Booking/create.php:127
 msgid "Description of the type of cleaning:"
 msgstr ""
 
-#: app/views/Booking/create.php:95
+#: app/views/Booking/create.php:130
 msgid "Enter area of residence (square feet):"
 msgstr ""
 
-#: app/views/Booking/create.php:99
+#: app/views/Booking/create.php:133
 msgid "The type of residence:"
 msgstr ""
 
-#: app/views/Booking/create.php:102
+#: app/views/Booking/create.php:135
 msgid "Commercial"
 msgstr ""
 
-#: app/views/Booking/create.php:105
+#: app/views/Booking/create.php:138
 msgid "Residential"
 msgstr ""
 
-#: app/views/Booking/create.php:124
-msgid "Submit Booking"
+#: app/views/Booking/create.php:160
+msgid "Proceed to Payment"
 msgstr ""
 
-#: app/views/Booking/modify.php:90 app/views/Customer/update.php:91
+#: app/views/Booking/delete.php:88
+msgid "CleanIt - Booking Management"
+msgstr ""
+
+#: app/views/Booking/modify.php:98
 msgid "CleanIt Services - Update Profile"
 msgstr ""
 
-#: app/views/Customer/delete.php:94
+#: app/views/Customer/delete.php:88 app/views/Customer/update.php:88
+msgid "CleanIt Services - Profile Management"
+msgstr ""
+
+#: app/views/Customer/delete.php:92 app/views/Customer/index.php:7
+msgid "Customer Profile"
+msgstr ""
+
+#: app/views/Customer/delete.php:93
 msgid "Do you want to proceed with the deletion of your profile?"
 msgstr ""
 
-#: app/views/Customer/delete.php:96 app/views/Customer/index.php:104
+#: app/views/Customer/delete.php:95 app/views/Customer/index.php:104
 #: app/views/Customer/register.php:97
 msgid "First name:"
 msgstr ""
 
-#: app/views/Customer/delete.php:98 app/views/Customer/index.php:106
+#: app/views/Customer/delete.php:97 app/views/Customer/index.php:106
 #: app/views/Customer/register.php:103
 msgid "Last name:"
 msgstr ""
 
-#: app/views/Customer/index.php:7 app/views/Customer/index.php:102
-msgid "Customer Profile"
-msgstr ""
-
-#: app/views/Customer/index.php:114
-msgid "Modify my profile"
-msgstr ""
-
-#: app/views/Customer/index.php:115
-msgid "Delete my profile"
+#: app/views/Customer/index.php:99
+msgid "CleanIt Services - Customer Profile"
 msgstr ""
 
 #: app/views/Customer/index.php:116
+msgid "Update my profile"
+msgstr ""
+
+#: app/views/Customer/index.php:118
+msgid "Delete my profile"
+msgstr ""
+
+#: app/views/Customer/index.php:119
 msgid "Return to main"
 msgstr ""
 
@@ -322,12 +502,6 @@ msgstr ""
 
 #: app/views/Customer/register.php:91
 msgid "CleanIt Services - Registration"
-msgstr ""
-
-#: app/views/Customer/register.php:92 app/views/Home/index.php:152
-#: app/views/Reviews/create.php:137 app/views/Reviews/delete.php:78
-#: app/views/Reviews/edit.php:132 app/views/Reviews/index.php:170
-msgid "Home"
 msgstr ""
 
 #: app/views/Customer/register.php:99
@@ -355,30 +529,18 @@ msgid "I have an account, bring me to the login page"
 msgstr ""
 
 #: app/views/Customer/update.php:96
-msgid "First Name"
-msgstr ""
-
-#: app/views/Customer/update.php:98
 msgid "Enter your First Name"
 msgstr ""
 
 #: app/views/Customer/update.php:101
-msgid "Last Name"
-msgstr ""
-
-#: app/views/Customer/update.php:103
 msgid "Enter your Last Name"
 msgstr ""
 
-#: app/views/Customer/update.php:107
-msgid "Email"
-msgstr ""
-
-#: app/views/Customer/update.php:113
+#: app/views/Customer/update.php:112
 msgid "Contact Number"
 msgstr ""
 
-#: app/views/Customer/update.php:115
+#: app/views/Customer/update.php:114
 msgid "Enter your contact number"
 msgstr ""
 
@@ -386,68 +548,27 @@ msgstr ""
 msgid "Address"
 msgstr ""
 
-#: app/views/Customer/update.php:126
+#: app/views/Customer/update.php:127
 msgid "Password"
 msgstr ""
 
-#: app/views/Customer/update.php:126
+#: app/views/Customer/update.php:127
 msgid "leave blank if you do not wish to change it"
 msgstr ""
 
-#: app/views/Customer/update.php:128
+#: app/views/Customer/update.php:129
 msgid "Enter new password"
 msgstr ""
 
-#: app/views/Home/index.php:7
-msgid "CleanIt - Cleaning Services"
-msgstr ""
-
-#: app/views/Home/index.php:149 app/views/Reviews/create.php:134
-#: app/views/Reviews/delete.php:75 app/views/Reviews/index.php:167
-msgid "CleanIt Logo"
-msgstr ""
-
-#: app/views/Home/index.php:153 app/views/Home/index.php:169
-#: app/views/Reviews/create.php:138 app/views/Reviews/delete.php:79
-#: app/views/Reviews/edit.php:133 app/views/Reviews/index.php:171
-msgid "About Us"
-msgstr ""
-
-#: app/views/Home/index.php:154 app/views/Reviews/create.php:139
-#: app/views/Reviews/delete.php:80 app/views/Reviews/edit.php:134
-#: app/views/Reviews/index.php:172
-msgid "Promotions"
-msgstr ""
-
-#: app/views/Home/index.php:155 app/views/Reviews/create.php:140
-#: app/views/Reviews/delete.php:81 app/views/Reviews/edit.php:135
-#: app/views/Reviews/index.php:173
-msgid "Leave a Review"
-msgstr ""
-
-#: app/views/Home/index.php:156 app/views/Reviews/create.php:141
-#: app/views/Reviews/delete.php:82 app/views/Reviews/edit.php:136
-#: app/views/Reviews/index.php:174
-msgid "My Profile"
-msgstr ""
-
-#: app/views/Home/index.php:159 app/views/Reviews/index.php:177
-msgid "Logout"
-msgstr ""
-
-#: app/views/Home/index.php:162 app/views/Reviews/index.php:180
-msgid "Sign Up"
-msgstr ""
-
-#: app/views/Home/index.php:166
+#: app/views/Home/index.php:159
 msgid "Welcome to MKCleaners MTL!"
 msgstr ""
 
-#: app/views/Home/index.php:167
+#: app/views/Home/index.php:160
 msgid "Book Now"
 msgstr ""
 
-#: app/views/Home/index.php:170
+#: app/views/Home/index.php:163
 msgid ""
 "At MKCleaners MTL, we offer comprehensive cleaning services designed to keep "
 "your space sparkling clean and hygienic. From residential homes to "
@@ -457,120 +578,205 @@ msgid ""
 "exceptional results."
 msgstr ""
 
-#: app/views/Home/index.php:172
+#: app/views/Home/index.php:165
 msgid "Cleaning Service"
 msgstr ""
 
-#: app/views/Home/index.php:175
+#: app/views/Home/index.php:168
 msgid "Reviews"
 msgstr ""
 
-#: app/views/Home/index.php:186
+#: app/views/Home/index.php:180 app/views/Reviews/delete.php:128
 msgid "Posted on: "
 msgstr ""
 
-#: app/views/Home/index.php:195 app/views/Reviews/delete.php:94
-#: app/views/Reviews/edit.php:162 app/views/Reviews/index.php:212
-msgid "MKCleaners MTL"
+#: app/views/Payment/create.php:7
+msgid "Payment Page - CleanIt Services"
 msgstr ""
 
-#: app/views/Home/index.php:196 app/views/Reviews/create.php:167
-#: app/views/Reviews/delete.php:95 app/views/Reviews/edit.php:163
-#: app/views/Reviews/index.php:213
-msgid ""
-"Discover our cleaning company, where your home is your best friend! Enjoy a "
-"spotless home without lifting a finger!"
+#: app/views/Payment/create.php:117
+msgid "CleanIt - Enter Your Payment Details"
 msgstr ""
 
-#: app/views/Home/index.php:200 app/views/Reviews/create.php:170
-#: app/views/Reviews/delete.php:98 app/views/Reviews/edit.php:166
-#: app/views/Reviews/index.php:216
-msgid "Contact info."
+#: app/views/Payment/create.php:128
+msgid "Expiration Date (MM/YY):"
 msgstr ""
 
-#: app/views/Home/index.php:201 app/views/Reviews/create.php:171
-#: app/views/Reviews/delete.php:99 app/views/Reviews/edit.php:167
-msgid "Phone Number: (514) 799-4881"
+#: app/views/Payment/create.php:131
+msgid "CVV:"
 msgstr ""
 
-#: app/views/Home/index.php:202 app/views/Reviews/create.php:172
-#: app/views/Reviews/delete.php:100 app/views/Reviews/edit.php:168
-msgid "Email: MKCleanersMTL@gmail.com"
+#: app/views/Payment/create.php:140
+msgid "Submit Payment"
 msgstr ""
 
-#: app/views/Home/index.php:203 app/views/Reviews/create.php:173
-#: app/views/Reviews/delete.php:101 app/views/Reviews/edit.php:169
-msgid "Instagram: mkcleanersmtl"
+#: app/views/Profile/index.php:9
+msgid "User profile"
 msgstr ""
 
-#: app/views/Reviews/create.php:5
+#: app/views/Promotions/apply.php:7
+msgid "Apply Promotion - CleanIt Services"
+msgstr ""
+
+#: app/views/Promotions/apply.php:83
+msgid "Enter Your Promotion Code"
+msgstr ""
+
+#: app/views/Promotions/apply.php:87 app/views/Promotions/index.php:160
+msgid "Promotion Code"
+msgstr ""
+
+#: app/views/Promotions/apply.php:88 app/views/Promotions/create.php:165
+#: app/views/Promotions/delete.php:96
+msgid "Promotion Code:"
+msgstr ""
+
+#: app/views/Promotions/apply.php:91
+msgid "Apply Code and Proceed"
+msgstr ""
+
+#: app/views/Promotions/apply.php:92
+msgid "No Thanks"
+msgstr ""
+
+#: app/views/Promotions/create.php:157
+msgid "Create Promotions"
+msgstr ""
+
+#: app/views/Promotions/create.php:162
+msgid "Description of Promotion:"
+msgstr ""
+
+#: app/views/Promotions/create.php:168
+msgid "Enter the discount rate:"
+msgstr ""
+
+#: app/views/Promotions/create.php:172 app/views/Promotions/delete.php:100
+#: app/views/Promotions/modify.php:115
+msgid "Start Date:"
+msgstr ""
+
+#: app/views/Promotions/create.php:176 app/views/Promotions/delete.php:102
+#: app/views/Promotions/modify.php:119
+msgid "End Date:"
+msgstr ""
+
+#: app/views/Promotions/create.php:181
+msgid "Create Promotion"
+msgstr ""
+
+#: app/views/Promotions/delete.php:89
+msgid "Delete Promotion"
+msgstr ""
+
+#: app/views/Promotions/delete.php:93
+msgid "Promotions Information"
+msgstr ""
+
+#: app/views/Promotions/delete.php:98 app/views/Promotions/modify.php:111
+msgid "Discount Rate:"
+msgstr ""
+
+#: app/views/Promotions/delete.php:104
+msgid "Do you want to proceed with the deletion of the promotion?"
+msgstr ""
+
+#: app/views/Promotions/homePage.php:176
+msgid "Current Promotions"
+msgstr ""
+
+#: app/views/Promotions/index.php:159
+msgid "Promotion Description"
+msgstr ""
+
+#: app/views/Promotions/index.php:161
+msgid "Discount Rate"
+msgstr ""
+
+#: app/views/Promotions/index.php:162
+msgid "Valid From"
+msgstr ""
+
+#: app/views/Promotions/index.php:163
+msgid "End Date"
+msgstr ""
+
+#: app/views/Promotions/modify.php:98
+msgid "Modify Promotion"
+msgstr ""
+
+#: app/views/Promotions/modify.php:107
+msgid "Code:"
+msgstr ""
+
+#: app/views/Reviews/create.php:6
 msgid "Create Review"
 msgstr ""
 
-#: app/views/Reviews/create.php:143
+#: app/views/Reviews/create.php:160
 msgid "Post a New Review"
 msgstr ""
 
-#: app/views/Reviews/create.php:148 app/views/Reviews/edit.php:144
+#: app/views/Reviews/create.php:165 app/views/Reviews/edit.php:166
 msgid "Rating:"
 msgstr ""
 
-#: app/views/Reviews/create.php:157 app/views/Reviews/edit.php:153
+#: app/views/Reviews/create.php:174 app/views/Reviews/edit.php:182
 msgid "Review Text:"
 msgstr ""
 
-#: app/views/Reviews/create.php:160
+#: app/views/Reviews/create.php:177
 msgid "Submit Review"
 msgstr ""
 
-#: app/views/Reviews/delete.php:6
+#: app/views/Reviews/delete.php:7
 msgid "Delete Review - MKCleaners MTL"
 msgstr ""
 
-#: app/views/Reviews/delete.php:85
+#: app/views/Reviews/delete.php:119
 msgid "Are you sure you want to delete this review?"
 msgstr ""
 
-#: app/views/Reviews/delete.php:87
+#: app/views/Reviews/delete.php:131
 msgid "Confirm Delete"
 msgstr ""
 
-#: app/views/Reviews/edit.php:6 app/views/Reviews/edit.php:139
+#: app/views/Reviews/edit.php:7 app/views/Reviews/edit.php:158
 msgid "Edit Review"
 msgstr ""
 
-#: app/views/Reviews/edit.php:129
+#: app/views/Reviews/edit.php:148
 msgid "MKCleaners MTL Logo"
 msgstr ""
 
-#: app/views/Reviews/edit.php:155
+#: app/views/Reviews/edit.php:186
 msgid "Update Review"
 msgstr ""
 
-#: app/views/Reviews/index.php:6
+#: app/views/Reviews/index.php:7
 msgid "Reviews - MKCleaners MTL"
 msgstr ""
 
-#: app/views/Reviews/index.php:184
+#: app/views/Reviews/index.php:186
 msgid "Customer Reviews"
 msgstr ""
 
-#: app/views/Reviews/index.php:185
+#: app/views/Reviews/index.php:187
 msgid "Post a Review"
 msgstr ""
 
-#: app/views/Reviews/index.php:188
+#: app/views/Reviews/index.php:190
 msgid "No reviews at the moment."
 msgstr ""
 
-#: app/views/Reviews/index.php:199
+#: app/views/Reviews/index.php:205
 msgid "Posted on:"
 msgstr ""
 
-#: app/views/Reviews/index.php:217
+#: app/views/Reviews/index.php:227
 msgid "Phone Number:"
 msgstr ""
 
-#: app/views/Reviews/index.php:219
+#: app/views/Reviews/index.php:229
 msgid "Instagram:"
 msgstr ""

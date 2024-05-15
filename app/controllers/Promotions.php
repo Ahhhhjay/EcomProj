@@ -8,53 +8,118 @@ namespace app\controllers;
 /**
  * PromotionsController manages actions related to promotional operations.
  */
-class Promotions extends app\core\Controller
+class Promotions extends \app\core\Controller
 {
     /**
      * Creates a new promotion from POST data.
      */
-    public function create()
-    {
-        $promotion = new \app\models\Promotions();
-        $promotion->promotionID = $_POST['promotionID'] ?? null;
-        $promotion->description = $_POST['description'];
-        $promotion->discountRate = $_POST['discountRate'];
-        $promotion->validFrom = $_POST['validFrom'];
-        $promotion->validTo = $_POST['validTo'];
 
-        try {
-            $promotion->insert();
-            // Redirect to a success page or send a success response
-            header('Location: /promotion/success');
-        } catch (\Exception $e) {
-            // Handle errors and potentially log them, redirect to an error page
-            header('Location: /promotion/error');
-        }
-    }
+
+     public function index()
+     {
+         $promotionModel = new \app\models\Promotions();        
+         $allPromotions = $promotionModel->getAllPromos();
+         if (!empty($_GET)) {
+             $allPromotions = array_filter($allPromotions, function($promotion) {
+                 return 
+                     (empty($_GET['description']) || $promotion['description'] == $_GET['description'])
+                     && (empty($_GET['code']) || $promotion['code'] == $_GET['code'])
+                     && (empty($_GET['discountRate']) || $promotion['discountRate'] == $_GET['discountRate'])
+                     && (empty($_GET['validFrom']) || $promotion['validFrom'] == $_GET['validFrom'])
+                     && (empty($_GET['validTo']) || $promotion['validTo'] == $_GET['validTo']);
+             });
+         }
+     
+         // Pass data correctly as an associative array with a 'promotions' key
+         $this->view('Promotions/index', ['promotions' => $allPromotions]);
+     }
+     
+     public function create()
+     {
+         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+             $promotion = new \app\models\Promotions();
+             $promotion->description = $_POST['description'] ?? '';
+             $promotion->code = $_POST['code'] ??'';
+             $promotion->discountRate = $_POST['discountRate'] ?? 0;
+             $promotion->validFrom = $_POST['validFrom'] ?? date('Y-m-d');
+             $promotion->validTo = $_POST['validTo'] ?? date('Y-m-d');
+             $promotion->insert();
+     
+             header('Location: /Promotions/index');// Redirect to a safe URL
+             exit(); // Ensure no further code is executed after redirection
+         } else {
+             $this->view('Promotions/create'); // Show the creation form
+         }
+     }
+     
 
     /**
      * Deletes an existing promotion.
      */
-    public function delete()
+    public function delete($promotionID)
     {
-        $promotionID = $_POST['promotionID'] ?? null;
-        if ($promotionID) {
-            $promotion =  new \app\models\Promotions();
-            $promotion->promotionID = $promotionID;
+        $promotionModel = new \app\models\Promotions();
+        $promotion = $promotionModel->getPromo($promotionID);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $promotion->delete();
+            unset($_SESSION['[promotionID]']);
+            header('Location:/Promotions/index');
 
-            try {
-                $promotion->delete();
-                // Redirect or respond after successful deletion
-                header('Location: /promotion/deleted');
-            } catch (\Exception $e) {
-                // Error handling
-                header('Location: /promotion/error');
-            }
         } else {
-            // Error handling for no promotion ID provided
-            header('Location: /promotion/error');
+            $this->view('Promotions/delete', ['data' => $promotion]);
         }
     }
+
+
+
+    
+    public function modify($promotionID)
+    {
+        $promotionModel = new \app\models\Promotions();
+        $detailedPromotion = $promotionModel->getPromo($promotionID);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $detailedPromotion->description = $_POST['description'];
+            $detailedPromotion->code = $_POST['code'] ??'';
+            $detailedPromotion->discountRate = $_POST['discountRate'];
+            $detailedPromotion->validFrom = $_POST['validFrom'];
+            $detailedPromotion->validTo = $_POST['validTo'];
+            $detailedPromotion->update();
+
+            header('Location: /Promotions/index'); // Redirect to a profile page or other appropriate location
+            exit;
+        } else {
+            $this->view('Promotions/modify', ['data' =>  $detailedPromotion]);  // Pass booking data to view
+        }
+    }
+
+    // In your Promotions controller
+    public function homePage() {
+    $promotionModel = new \app\models\Promotions();
+    $promotions = $promotionModel->getAllPromos();
+    $this->view('Promotions/homePage', ['promotions' => $promotions]);
+}
+
+public function apply() {
+    if (!isset($_SESSION['bookingData'])) {
+        header('Location: /Booking/create');
+        exit();
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $promoCode = $_POST['promoCode'];
+        $promotion = new \app\models\Promotions();
+        $discount = $promotion->getByCode($promoCode);
+
+        if ($discount) {
+            $_SESSION['discount'] = $discount->discountRate;
+            header('Location: /Payment/create');
+            exit();
+        } 
+    }
+    $this->view('Promotions/apply');
+}
+
 
     // Additional methods for other operations like updating, retrieving, or listing promotions can be added here
 }

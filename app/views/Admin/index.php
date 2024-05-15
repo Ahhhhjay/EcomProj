@@ -105,6 +105,41 @@
         tbody td:nth-child(4) {
             text-align: left;
         }
+        nav {
+            background-color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a,
+        nav button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #89CFF0;
+            font-weight: 500;
+            font-size: 16px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        nav a:hover,
+        nav button:hover {
+            color: #66afe9;
+        }
+
+        nav button {
+            background-color: #89CFF0;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav button:hover {
+            background-color: #66afe9;
+        }
     </style>
 </head>
 
@@ -112,6 +147,10 @@
     <header>
         <!-- Optional Header Content -->
     </header>
+    <nav>
+        <a href="/Admin/"><?= __('Bookings') ?></a>
+        <a href="/Promotions/index"><?= __('Promotions') ?></a>
+    </nav>
     <main>
         <h2><?= __('Bookings') ?></h2>
         <form action="/Admin/index" method="get" style="margin-bottom: 20px;">

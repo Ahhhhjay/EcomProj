@@ -169,12 +169,11 @@
     </header>
 
     <nav>
-        <a href="/"><?= __('Home') ?></a>
-        <a href="#about-us"><?= __('About Us') ?></a>
-        <a href="#promotions"><?= __('Promotions') ?></a>
+    <a href="/"><?= __('Home') ?></a>
+        <a href="/About_Us/"><?= __('About Us') ?></a>
+        <a href="/Promotions/"><?= __('Promotions') ?></a>
         <a href="/Reviews/"><?= __('Leave a Review') ?></a>
         <a href="/Customer/"><?= __('My Profile') ?></a>
-        <!-- Dynamic button rendering based on login state -->
         <?php if (isset($_SESSION['customerID'])): ?>
             <button onclick="location.href='/Customer/logout'"><?= __('Logout') ?></button>
         <?php else: ?>
