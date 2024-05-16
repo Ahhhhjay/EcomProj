@@ -11,6 +11,13 @@ class Reviews extends \app\core\Controller
         $this->view('Reviews/index', ['reviews' => $reviews]);
     }
 
+    public function adminIndex() {
+        $reviewsModel = new \app\models\Reviews();
+        $reviews = $reviewsModel->getAllWithCustomerDetails(); 
+        
+        $this->view('Reviews/adminIndex', ['reviews' => $reviews]);  
+    }
+
     public function create()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -62,6 +69,15 @@ class Reviews extends \app\core\Controller
         }
 
         $this->view('Reviews/edit', ['review' => $review]);
+    }
+
+    public function getById($reviewID) {
+        $SQL = 'SELECT * FROM Reviews WHERE reviewID = :reviewID';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->bindParam(':reviewID', $reviewID, PDO::PARAM_INT);
+        $STMT->execute();
+        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Review');
+        return $STMT->fetch();
     }
 
     public function delete($reviewID)

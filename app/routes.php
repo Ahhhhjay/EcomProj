@@ -20,6 +20,7 @@ $this->addRoute('Reviews/', 'Reviews,index');
 $this->addRoute('Reviews/create', 'Reviews,create');
 $this->addRoute('Reviews/delete/{reviewID}', 'Reviews,delete');
 $this->addRoute('Reviews/edit/{reviewID}', 'Reviews,edit');
+$this->addRoute('Reviews/adminIndex', 'Reviews,adminIndex');
 
 $this->addRoute('Admin/', 'Admin,index');
 $this->addRoute('Admin/modify/{bookingID}', 'Admin,modify');
@@ -27,6 +28,7 @@ $this->addRoute('Admin/delete/{bookingID}', 'Admin,delete');
 $this->addRoute('Admin/login', 'Admin,login');
 $this->addRoute('Admin/customerModify/{customerID}', 'Admin,customerModify');
 $this->addRoute('Admin/customerDelete/{customerID}', 'Admin,customerDelete');
+$this->addRoute('Admin/reviewDelete/{reviewID}', 'Admin,reviewDelete');
 
 $this->addRoute('Promotions/', 'Promotions,homePage');
 $this->addRoute('Promotions/index', 'Promotions,index');

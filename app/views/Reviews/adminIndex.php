@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= __('User Profile') ?></title>
+    <title><?= __('Review Management - Admin Panel') ?></title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         body {
@@ -140,61 +139,65 @@
         nav button:hover {
             background-color: #66afe9;
         }
+        .star-rating .filled-star {
+            color: #f5b301;
+            font-size: 20px; 
+        }
+
+        .star-rating .empty-star {
+            color: #ccc; 
+            font-size: 20px;
+        }
     </style>
 </head>
-
 <body>
     <header>
-        <!-- Optional Header Content -->
+        <h1><?= __('Review Management') ?></h1>
     </header>
     <nav>
-        <a href="/Admin/"><?= __('Bookings') ?></a>
+        <a href="/Admin/"><?= __('Dashboard') ?></a>
         <a href="/Customer/adminIndex"><?= __('Customers') ?></a>
         <a href="/Promotions/index"><?= __('Promotions') ?></a>
         <a href="/Reviews/adminIndex"><?= __('Reviews') ?></a>
-        <button onclick="location.href='/Customer/login'"><?= __('Logout') ?></button>
+        <button onclick="location.href='/Customer/logout'"><?= __('Logout') ?></button>
     </nav>
     <main>
-    <h2><?= __('Promotions') ?></h2>
-    <table style="width: 100%; border-collapse: collapse;">
-        <thead>
-            <tr style="background-color: #f2f2f2;">
-                <th><?= __('Promotion Description') ?></th>
-                <th><?= __('Promotion Code') ?></th>
-                <th><?= __('Discount Rate') ?></th>
-                <th><?= __('Valid From') ?></th>
-                <th><?= __('End Date') ?></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php if (!empty($promotions)): ?>
-                <?php foreach ($promotions as $promotion): ?>
-                    <tr>
-                        <td><?= htmlspecialchars($promotion['description']) ?></td>
-                        <td><?= htmlspecialchars($promotion['code']) ?></td>
-                        <td><?= htmlspecialchars($promotion['discountRate']) ?></td>
-                        <td><?= htmlspecialchars($promotion['validFrom']) ?></td>
-                        <td><?= htmlspecialchars($promotion['validTo']) ?></td>
-                        <td>
-                            <button onclick="location.href='/Promotions/modify/<?= $promotion['promotionID'] ?>'"
-                                style="margin-right: 5px; padding: 5px 10px; background-color: #4CAF50; color: white; border: none; border-radius: 4px;"><?= __('Edit') ?></button>
-                            <button
-                                onclick="location.href='/Promotions/delete/<?= $promotion['promotionID'] ?>';"
-                                style="padding: 5px 10px; background-color: #f44336; color: white; border: none; border-radius: 4px;"><?= __('Delete') ?></button>
-                        </td>
-                    </tr>
+        <h2><?= __('Reviews') ?></h2>
+        <table>
+            <thead>
+                <tr>
+                    <th><?= __('Customer') ?></th>
+                    <th><?= __('Rating') ?></th>
+                    <th><?= __('Review Text') ?></th>
+                    <th><?= __('Date Posted') ?></th>
+                    <th><?= __('Actions') ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($reviews as $review): ?>
+                <tr>
+                    <td><?= htmlspecialchars($review->firstName . ' ' . $review->lastName) ?></td>
+                    <td>
+                        <div class="star-rating">
+                            <?php for ($i = 1; $i <= 5; $i++): ?>
+                                <span class="<?= $i <= $review->rating ? 'filled-star' : 'empty-star' ?>">&#9733;</span>
+                            <?php endfor; ?>
+                        </div>
+                    </td>
+                    <td><?= htmlspecialchars($review->text) ?></td>
+                    <td><?= htmlspecialchars($review->datePosted) ?></td>
+                    <td>
+                    <button
+                        onclick="location.href='/Admin/reviewDelete/<?= $review->reviewID ?>';"
+                        style="padding: 5px 10px; background-color: #f44336; color: white; border: none; border-radius: 4px;"><?= __('Delete') ?></button>
+                    </td>
+                </tr>
                 <?php endforeach; ?>
-            <?php else: ?>
-                <tr><td colspan="4"><?=__('No promotions available')?>.</td></tr>
-            <?php endif; ?>
-        </tbody>
-    </table>
-    
-    <a href="/Promotions/create" style="padding: 5px 10px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; display: block; width: max-content; margin: 10px auto; text-align: center;">Create Promotion</a>
-</main>
-<footer>
-    <?= __('&copy; 2024 All Rights Reserved | Totally not fake website') ?>
-</footer>
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <?= __('&copy; 2024 All Rights Reserved | Admin Panel') ?>
+    </footer>
 </body>
-
 </html>

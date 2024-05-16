@@ -77,6 +77,33 @@ class Admin extends \app\core\Controller {
             $this->view('Admin/customerDelete', ['data' => $customer]);
         }
     }
+
+    public function reviewDelete($reviewID)
+    {
+        $reviewsModel = new \app\models\Reviews();
+        $review = $reviewsModel->getById($reviewID);  
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if ($review) {
+                $success = $reviewsModel->delete($reviewID);  
+                if ($success) {
+                    $_SESSION['message'] = 'Review deleted successfully.';
+                    header('Location: /Reviews/adminIndex'); 
+                    exit;
+                } else {
+                    $_SESSION['error'] = 'Failed to delete review.';
+                    header('Location: /Reviews/adminIndex');  
+                    exit;
+                }
+            } else {
+                $_SESSION['error'] = 'Review not found.';
+                header('Location: /Reviews/adminIndex');
+                exit;
+            }
+        } else {
+            $this->view('Admin/reviewDelete', ['review' => $review]);
+        }
+    }
+
     public function login()
     {
         //show the login form and log the user in

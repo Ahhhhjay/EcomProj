@@ -151,6 +151,7 @@
         <a href="/Admin/"><?= __('Bookings') ?></a>
         <a href="/Customer/adminIndex"><?= __('Customers') ?></a>
         <a href="/Promotions/index"><?= __('Promotions') ?></a>
+        <a href="/Reviews/adminIndex"><?= __('Reviews') ?></a>
         <button onclick="location.href='/Customer/login'"><?= __('Logout') ?></button>
 
     </nav>
