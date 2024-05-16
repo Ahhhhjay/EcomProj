@@ -12,8 +12,7 @@ class Payment extends \app\core\Controller
             exit();
         }
 
-        
-
+    
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $payment = new \app\models\Payment();
             $payment->customerID = $_SESSION['customerID'];
@@ -50,7 +49,7 @@ class Payment extends \app\core\Controller
             header('Location: /Booking/complete/' . $booking->bookingID);
             exit();
         } else {
-            $this->view('Payment/create');
+            $this->view('Payment/create', ['booking' => $_SESSION['bookingData']]);
         }
     }
     

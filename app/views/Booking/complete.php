@@ -87,8 +87,8 @@
     <main>
         <h2><?= __('Booking Details') ?></h2>
         <dl>
-            <dt><?= __('Booking Date:') ?></dt>
-            <dd><?= htmlspecialchars($data['booking']->bookingDate) ?></dd>
+        <dt><?= __('Booking Date:') ?></dt>
+        <dd><?= htmlspecialchars($booking['bookingDate']) ?></dd>
             <dt><?= __('Booking Time:') ?></dt>
             <dd><?= htmlspecialchars($data['booking']->bookingTime) ?> -
                 <?= date('H:i', strtotime($data['booking']->bookingTime . ' +2 hour')) ?></dd>

@@ -132,10 +132,10 @@
 
             <label for="category"><?= __('The type of residence:') ?></label>
             <div class="radio-group">
-                <label for="commercial"><i class="fas fa-building"></i> <?= __('Commercial') ?></label>
+                <label for="commercial"><i class="fas fa-building"></i> <?= __('Commercial(x20.75)') ?></label>
                 <input type="radio" id="commercial" name="category" value="Commercial">
                 <label for="residential">
-                    <i class="fas fa-home"></i> <?= __('Residential') ?>
+                    <i class="fas fa-home"></i> <?= __('Residential(x15.75)') ?>
                 </label>
                 <input type="radio" id="residential" name="category" value="Residential" checked>
             </div><br>

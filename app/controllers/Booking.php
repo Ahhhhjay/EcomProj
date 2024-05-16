@@ -12,8 +12,6 @@ class Booking extends \app\core\Controller
      */
     public function create()
     {
-
-        
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $bookingData = [
                 'customerID' => $_SESSION['customerID'],
@@ -25,6 +23,7 @@ class Booking extends \app\core\Controller
                 'category' => $_POST['category'],
                 'area' => $_POST['area'],
                 'message' => $_POST['frequencyMessage'] ?? null,
+                'promoCode' => $_POST['promoCode'] ?? null,
             ];
 
             if ($bookingData['category'] == 'Commercial') {
@@ -35,11 +34,25 @@ class Booking extends \app\core\Controller
                 $bookingData['ratePerSquareFoot'] = 15.75 * $bookingData['area'];
             }
 
+            if (!empty($bookingData['promoCode'])) {
+                $promotionModel = new \app\models\Promotions();
+                $promotion = $promotionModel->getByCode($bookingData['promoCode']);
+                if ($promotion && date('Y-m-d') >= $promotion->validFrom && date('Y-m-d') <= $promotion->validTo) {
+                    $discountAmount = ($bookingData['basePrice'] + $bookingData['ratePerSquareFoot']) * ($promotion->discountRate / 100);
+                    $bookingData['totalPrice'] = $bookingData['basePrice'] + $bookingData['ratePerSquareFoot'] - $discountAmount;
+                } else {
+                    $bookingData['totalPrice'] = $bookingData['basePrice'] + $bookingData['ratePerSquareFoot'];
+                    $_SESSION['error'] = "Invalid or expired promotion code.";
+                }
+            } else {
+                $bookingData['totalPrice'] = $bookingData['basePrice'] + $bookingData['ratePerSquareFoot'];
+            }
+
             // session_start();
             $_SESSION['bookingData'] = $bookingData;
 
             // Redirect to Payment/create
-            header('Location: /Promotions/apply');
+            header('Location: /Payment/create');
             exit();
         } else {
             $this->view('Booking/create');
