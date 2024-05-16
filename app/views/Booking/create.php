@@ -140,6 +140,8 @@
                 <input type="radio" id="residential" name="category" value="Residential" checked>
             </div><br>
 
+            
+
             <label for="bookingDate"><?= __('Booking Date:') ?></label>
             <input type="date" id="bookingDate" name="bookingDate" required>
 
@@ -155,9 +157,9 @@
                 <option value="Monthly"><?= __('Monthly') ?></option>
             </select>
             <textarea id="frequencyMessage" name="frequencyMessage" rows="3"
-                placeholder="Please confirm your availability for all scheduled dates."></textarea>
+                placeholder=<?= __('Please confirm your availability for all scheduled dates."')?>></textarea>
 
-            <input type="submit" value="<?= __('Proceed to Payment') ?>">
+            <input type="submit" value="<?= __('Proceed to Payment') ?>" name="submit">
             <button id="cancel" onclick="location.href='/'"><?= __('Cancel') ?></button>
         </form>
     </main>

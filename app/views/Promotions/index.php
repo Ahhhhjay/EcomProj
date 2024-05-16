@@ -149,7 +149,9 @@
     </header>
     <nav>
         <a href="/Admin/"><?= __('Bookings') ?></a>
+        <a href="/Customer/adminIndex"><?= __('Customers') ?></a>
         <a href="/Promotions/index"><?= __('Promotions') ?></a>
+        <button onclick="location.href='/Customer/login'"><?= __('Logout') ?></button>
     </nav>
     <main>
     <h2><?= __('Promotions') ?></h2>
@@ -182,7 +184,7 @@
                     </tr>
                 <?php endforeach; ?>
             <?php else: ?>
-                <tr><td colspan="4">No promotions available.</td></tr>
+                <tr><td colspan="4"><?=__('No promotions available')?>.</td></tr>
             <?php endif; ?>
         </tbody>
     </table>

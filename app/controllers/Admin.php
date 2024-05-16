@@ -37,13 +37,46 @@ class Admin extends \app\core\Controller {
             $detailedBooking->status = $_POST['Status'];
             $detailedBooking->update();
 
-            header('Location: /Admin/index'); // Redirect to a profile page or other appropriate location
+            header('Location: /Admin/'); // Redirect to a profile page or other appropriate location
             exit;
         } else {
             $this->view('Admin/modify', ['data' => $detailedBooking]);  // Pass booking data to view
         }
     }
 
+
+    public function customerModify($customerID)
+    {
+        $customerModel = new \app\models\Customer();
+        $detailedCustomer = $customerModel->getById($customerID);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $detailedCustomer->firstName = $_POST['firstName'];
+            $detailedCustomer->lastName = $_POST['lastName'];
+            $detailedCustomer->Email = $_POST['Email'];
+            $detailedCustomer->contactNumber = $_POST['contactNumber'];
+            $detailedCustomer->update();
+
+            header('Location: /Customer/adminIndex'); // Redirect to a profile page or other appropriate location
+            exit;
+        } else {
+            $this->view('Admin/customerModify', ['data' => $detailedCustomer]);  // Pass booking data to view
+        }
+    }
+
+    public function customerDelete($customerID)
+    {
+        $customerModel = new \app\models\Customer();
+        $customer = $customerModel->getById($customerID);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $customer->delete();
+            unset($_SESSION['customerID']);
+            header('Location:/Customer/adminIndex');
+
+        } else {
+            $this->view('Admin/customerDelete', ['data' => $customer]);
+        }
+    }
     public function login()
     {
         //show the login form and log the user in

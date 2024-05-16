@@ -119,7 +119,7 @@
                     <option value="Monthly" <?= $data->frequency == 'Monthly' ? 'selected' : '' ?>><?= __('Monthly') ?>
                     </option>
                 </select>
-                <textarea id="frequencyMessage" name="frequencyMessage" rows="3" placeholder="Please confirm your availability for all scheduled dates."></textarea>
+                <textarea id="frequencyMessage" name="frequencyMessage" rows="3" placeholder=<?= __('Please confirm your availability for all scheduled dates.') ?>></textarea>
             </label>
             <input type="submit" value="<?= __('Update') ?>">
             <button type="button" onclick="location.href='/Customer/';"><?= __('Cancel') ?></button>

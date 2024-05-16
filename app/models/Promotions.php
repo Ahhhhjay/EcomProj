@@ -23,7 +23,7 @@ class Promotions extends \app\core\Model
             'validFrom' => $this->validFrom,
             'validTo' => $this->validTo
         ]);
-        $STMT->execute();
+        
         $this->promotionID = self::$_conn->lastInsertId();
     }
 

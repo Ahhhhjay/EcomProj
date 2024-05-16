@@ -119,6 +119,7 @@
     <main>
         <form action="" method="post">
             <h1><?= __('Payment Details') ?></h1>
+            
             <label for="cardName"><?= __('Cardholder Name:') ?></label>
             <input type="text" id="cardName" name="cardName" required />
 

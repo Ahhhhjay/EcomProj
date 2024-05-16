@@ -172,35 +172,27 @@
 
     <main>
         <section class="content-section">
-            <h2>Who We Are</h2>
-            <p>At MKCleaners MTL, we are dedicated to providing top-notch home cleaning services. Our team is committed
-                to ensuring every corner of your home sparkles, using eco-friendly cleaning solutions that are safe for
-                your family and pets.</p>
+            <h2><?=__('Who We Are')?></h2>
+            <p><?=__('At MKCleaners MTL, we are dedicated to providing top-notch home cleaning services. Our team is committed to ensuring every corner of your home sparkles, using eco-friendly cleaning solutions that are safe for your family and pets.') ?></p>
         </section>
         <section class="content-section">
-            <h2>Booking information</h2>
-            <p>At MKCleaners MTL, all cleaning sessions are scheduled in two-hour intervals, ensuring each part of your 
-                home receives the attention it needs.If you require adjustments to the scheduling or have specific requirements,
-                 please do not hesitate to reach out to us for further information. We are here to 
-                 accommodate your unique needs and ensure your satisfaction.</p>
+            <h2><?=__('Booking information')?></h2>
+            <p><?=__('At MKCleaners MTL, all cleaning sessions are scheduled in two-hour intervals, ensuring each part of your home receives the attention it needs.If you require adjustments to the scheduling or have specific requirements, please do not hesitate to reach out to us for further information. We are here to accommodate your unique needs and ensure your satisfaction.')?></p>
         </section>
         <section class="content-section">
-            <h2>Our Mission</h2>
-            <p>Our mission is to improve the quality of life for our customers by delivering exceptional cleaning and
-                customer service. We aim to create clean, healthy, and happy environments through our professional
-                services.</p>
+            <h2><?=__('Our Mission')?></h2>
+            <p><?=__('Our mission is to improve the quality of life for our customers by delivering exceptional cleaning and customer service. We aim to create clean, healthy, and happy environments through our professional services.')?></p>
         </section>
         <section class="content-section">
-            <h2>Our Team</h2>
-            <p>Our team consists of experienced and trained professionals who are passionate about cleanliness. We
-                conduct thorough background checks to ensure trustworthy and reliable service for every customer.</p>
+            <h2><?=__('Our Team')?></h2>
+            <p><?=__('Our team consists of experienced and trained professionals who are passionate about cleanliness. We conduct thorough background checks to ensure trustworthy and reliable service for every customer.')?></p>
         </section>
         <section class="content-section">
-            <h2>Contact Us</h2>
-            <p>For bookings or more information:</p>
-            <p>Phone: (514) 799-4881</p>
-            <p>Email: MKCleanersMTL@gmail.com</p>
-            <p>Instagram: @mkcleanersmtl</p>
+            <h2><?=__('Contact Us')?></h2>
+            <p><?=__('For bookings or more information:')?></p>
+            <p><?=__('Phone: (514) 799-4881')?></p>
+            <p><?=__('Email: MKCleanersMTL@gmail.com')?></p>
+            <p><?=__('Instagram: @mkcleanersmt')?>l</p>
         </section>
     </main>
 

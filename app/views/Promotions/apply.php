@@ -86,7 +86,7 @@
         <form action="/Payment" method="get"> <!-- Make sure to update the form action to the correct route -->
             <h1><?= __('Promotion Code') ?></h1>
             <label for="promoCode"><?= __('Promotion Code:') ?></label>
-            <input type="text" id="promoCode" name="promoCode" placeholder="Enter code here" required />
+            <input type="text" id="promoCode" name="promoCode" placeholder=<?=__('Enter code here')?> required />
 
             <button type="submit"><?= __('Apply Code and Proceed') ?></button>
             <button id="cancel" onclick="location.href='/Payment/create'"><?= __('No Thanks') ?></button>

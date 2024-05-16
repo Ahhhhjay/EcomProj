@@ -12,6 +12,8 @@ class Booking extends \app\core\Controller
      */
     public function create()
     {
+
+        
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $bookingData = [
                 'customerID' => $_SESSION['customerID'],

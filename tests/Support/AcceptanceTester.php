@@ -28,9 +28,12 @@ class AcceptanceTester extends \Codeception\Actor
        /**
      * @Given I am on the login page
      */
-    public function iAmOnTheLoginPage()
+       /**
+     * @Given I am on the :arg1 page
+     */
+    public function iAmOnThePage($arg1)
     {
-      $this->amOnPage("Customer/login");
+        $this->amOnPage($arg1);
     }
 
    /**
@@ -105,4 +108,90 @@ class AcceptanceTester extends \Codeception\Actor
     {
         $this->amOnPage("Booking/complete");
     }
+
+    //case 3
+
+    /**
+     * @Given I am logged in as a customer
+     */
+    public function iAmLoggedInAsACustomer()
+    {
+       $this->iAmLoggedIn();
+    }
+
+   /**
+    * @When I navigate to the booking page
+    */
+      /**
+     * @When I navigate to the :arg1 page
+     */
+    public function iNavigateToThePage($arg1)
+    {
+        $this->amOnPage($arg1);
+    }
+
+   /**
+    * @When I select :arg1 from the appointment frequency dropdown
+    */
+    public function iSelectFromTheAppointmentFrequencyDropdown($arg1)
+    {
+        //$this->fillField("frequency", $arg1);
+        $this->selectOption("frequency",$arg1);
+    }
+
+       /**
+     * @Then I should see a :arg1 box so I can input my information
+     */
+    public function iShouldSeeABoxSoICanInputMyInformation($arg1)
+    {
+        $this->fillField("frequencyMessage",$arg1);
+    }
+
+   /**
+    * @Then I select my Sunday at :num1::num2:num2 PM for the initial cleaning
+    */
+    public function iSelectMySundayAtPMForTheInitialCleaning($num1, $num2, $num3)
+    {
+        $this->fillField("area", $num1);
+        $this->fillField("bookingDate", $num2);
+        $this->fillField("bookingTime", $num3);
+       
+    }
+
+   /**
+    * @Then I should be redirected to a confirmation page about my appointment
+    */
+    public function iShouldBeRedirectedToAConfirmationPageAboutMyAppointment()
+    {
+        $this->amOnPage("Booking/complete");
+    }
+
+      /**
+     * @When I want to put specific details of my cleaning
+     */
+     /**
+     * @When I want to put specific details of my cleaning
+     */
+    public function iWantToPutSpecificDetailsOfMyCleaning()
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `I want to put specific details of my cleaning` is not defined");
+    }
+
+   /**
+    * @Then I should see a :arg1 text field
+    */
+    public function iShouldSeeATextField($arg1)
+    {
+        $this->seeElement("description", $arg1);
+    }
+
+   /**
+    * @Then I write that I want  :arg1 cleaned
+    */
+    public function iWriteThatIWantCleaned($arg1)
+    {
+        $this->fillField("description", $arg1);
+    }
+
+
 }

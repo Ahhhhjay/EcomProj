@@ -6,10 +6,13 @@ class Payment extends \app\core\Controller
 {
     public function create()
     {
+
         if (!isset($_SESSION['bookingData'])) {
             header('Location: /Booking/create');
             exit();
         }
+
+        
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $payment = new \app\models\Payment();

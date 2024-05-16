@@ -8,6 +8,8 @@ $this->addRoute('Customer/login', 'Customer,login');
 $this->addRoute('Customer/logout', 'Customer,logout');
 $this->addRoute('Customer/update', 'Customer,update');
 $this->addRoute('Customer/delete', 'Customer,delete');
+$this->addRoute('Customer/adminIndex', 'Customer,adminIndex');
+
 
 $this->addRoute('Booking/create', 'Booking,create');
 $this->addRoute('Booking/complete/{bookingID}', 'Booking,complete');
@@ -23,6 +25,8 @@ $this->addRoute('Admin/', 'Admin,index');
 $this->addRoute('Admin/modify/{bookingID}', 'Admin,modify');
 $this->addRoute('Admin/delete/{bookingID}', 'Admin,delete');
 $this->addRoute('Admin/login', 'Admin,login');
+$this->addRoute('Admin/customerModify/{customerID}', 'Admin,customerModify');
+$this->addRoute('Admin/customerDelete/{customerID}', 'Admin,customerDelete');
 
 $this->addRoute('Promotions/', 'Promotions,homePage');
 $this->addRoute('Promotions/index', 'Promotions,index');

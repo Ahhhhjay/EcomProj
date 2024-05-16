@@ -37,7 +37,6 @@ class Booking extends \app\core\Model
             'category' => $this->category,
             'message' => $this->message,
         ]);
-        $STMT->execute();
         $this->bookingID = self::$_conn->lastInsertId();
     }
 

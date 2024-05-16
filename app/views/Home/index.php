@@ -162,6 +162,12 @@
             <h2><?= __('About Us') ?></h2>
             <p><?= __('At MKCleaners MTL, we offer comprehensive cleaning services designed to keep your space sparkling clean and hygienic. From residential homes to commercial offices, our team of skilled professionals is equipped to handle all aspects of cleaning with utmost precision and care. We utilize eco-friendly cleaning products and state-of-the-art equipment to deliver exceptional results.') ?>
             </p>
+            <video width="640" height="360" controls>
+        <!-- <source src="IMG_4911.webm" type="video/webm"> -->
+        <source src="C:\Users\adrya\OneDrive\Documents\GitHub\EcomProj\pics&vids\IMG_4911.mp4" type="video/mp4">
+        <!-- <source src="path/to/your/video.webm" type="video/webm">  -->
+        Your browser does not support the video tag.
+    </video>
             <img src="/Images/cleaning-service-image.jpg" alt="<?= __('Cleaning Service') ?>" class="service-image">
         </section>
         <section id="reviews">

@@ -178,14 +178,14 @@
                 <?php foreach ($promotions as $promotion): ?>
                     <div class="promotion-item">
                         <h3><?= htmlspecialchars($promotion['description']) ?></h3>
-                        <h4>Promotion Code:<?= htmlspecialchars($promotion['code']) ?></h4>
-                        <p>Discount Rate: <?= htmlspecialchars($promotion['discountRate']) ?>%</p>
-                        <p>Valid From: <?= htmlspecialchars($promotion['validFrom']) ?></p>
-                        <p>Valid To: <?= htmlspecialchars($promotion['validTo']) ?></p>
+                        <h4><?=__('Promotion Code')?>:<?= htmlspecialchars($promotion['code']) ?></h4>
+                        <p><?=__('Discount Rate')?>: <?= htmlspecialchars($promotion['discountRate']) ?>%</p>
+                        <p><?=__('Valid From')?>: <?= htmlspecialchars($promotion['validFrom']) ?></p>
+                        <p><?=__('Valid To')?>: <?= htmlspecialchars($promotion['validTo']) ?></p>
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
-                <p>No current promotions available.</p>
+                <p><?=__('No current promotions available')?>.</p>
             <?php endif; ?>
         </section>
     </main>

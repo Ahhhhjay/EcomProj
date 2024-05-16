@@ -148,33 +148,36 @@
         <!-- Optional Header Content -->
     </header>
     <nav>
-        <a href="/Admin/"><?= __('Bookings') ?></a>
+         <a href="/Admin/"><?= __('Bookings') ?></a>
+        <a href="/Customer/adminIndex"><?= __('Customers') ?></a>
         <a href="/Promotions/index"><?= __('Promotions') ?></a>
+        <button onclick="location.href='/Customer/login'"><?= __('Logout') ?></button>
     </nav>
     <main>
         <h2><?= __('Bookings') ?></h2>
-        <form action="/Admin/index" method="get" style="margin-bottom: 20px;">
-            <input type="text" name="firstName" placeholder="First Name" value="<?= $_GET['firstName'] ?? '' ?>">
-            <input type="text" name="lastName" placeholder="Last Name" value="<?= $_GET['lastName'] ?? '' ?>">
-            <input type="text" name="email" placeholder="Email" value="<?= $_GET['email'] ?? '' ?>">
+        <form action="/Admin/" method="get" style="margin-bottom: 20px;">
+            <input type="text" name="firstName" placeholder=<?=__('First Name')?> value="<?= $_GET['firstName'] ?? '' ?>">
+            <input type="text" name="lastName" placeholder=<?= __('Last Name') ?>value="<?= $_GET['lastName'] ?? '' ?>">
+            <input type="text" name="email" placeholder=<?= __('Email') ?> value="<?= $_GET['email'] ?? '' ?>">
             <input type="date" name="date" value="<?= $_GET['date'] ?? '' ?>">
             <select name="category">
-                <option value="">All Categories</option>
-                <option value="Residential" <?= isset($_GET['category']) && $_GET['category'] == 'Residential' ? 'selected' : '' ?>>Residential</option>
-                <option value="Commercial" <?= isset($_GET['category']) && $_GET['category'] == 'Commercial' ? 'selected' : '' ?>>Commercial</option>
+                <option value=""><?=__('All Categories')?></option>
+                <option value="Residential" <?= isset($_GET['category']) && $_GET['category'] == 'Residential' ? 'selected' : '' ?>><?=__('Residential')?></option>
+                <option value="Commercial" <?= isset($_GET['category']) && $_GET['category'] == 'Commercial' ? 'selected' : '' ?>><?=__('Commercial')?></option>
             </select>
             <select name="frequency">
-                <option value="">Any Frequency</option>
-                <option value="One-time" <?= isset($_GET['frequency']) && $_GET['frequency'] == 'One-time' ? 'selected' : '' ?>>One-time</option>
-                <option value="Weekly" <?= isset($_GET['frequency']) && $_GET['frequency'] == 'Weekly' ? 'selected' : '' ?>>Weekly</option>
-                <option value="Monthly" <?= isset($_GET['frequency']) && $_GET['frequency'] == 'Monthly' ? 'selected' : '' ?>>Monthly</option>
+                <option value=""><?=__('Any Frequency')?></option>
+                <option value="One-time" <?= isset($_GET['frequency']) && $_GET['frequency'] == 'One-time' ? 'selected' : '' ?>><?=__('One-time')?></option>
+                <option value="Weekly" <?= isset($_GET['frequency']) && $_GET['frequency'] == 'Weekly' ? 'selected' : '' ?>><?=__('Weekly')?></option>
+                <option value="Monthly" <?= isset($_GET['frequency']) && $_GET['frequency'] == 'Monthly' ? 'selected' : '' ?>><?=__('Monthly')?></option>
             </select>
             <select name="status">
-                <option value="">Any Status</option>
-                <option value="Scheduled" <?= isset($_GET['status']) && $_GET['status'] == 'Scheduled' ? 'selected' : '' ?>>Scheduled</option>
-                <option value="Completed" <?= isset($_GET['status']) && $_GET['status'] == 'Completed' ? 'selected' : '' ?>>Completed</option>
+                <option value=""><?=__('Any Status')?></option>
+                <option value="Scheduled" <?= isset($_GET['status']) && $_GET['status'] == 'Scheduled' ? 'selected' : '' ?>><?=__('Scheduled')?></option>
+                <option value="Completed" <?= isset($_GET['status']) && $_GET['status'] == 'Completed' ? 'selected' : '' ?>><?=__('Completed')?></option>
+                <option value="Cancelled" <?= isset($_GET['status']) && $_GET['status'] == 'Cancelled' ? 'selected' : '' ?>><?=__('Cancelled')?></option>
             </select>
-            <button type="submit">Search</button>
+            <button type="submit"><?=__('Search')?></button>
         </form>
 
         <table style="width: 100%; border-collapse: collapse;">
