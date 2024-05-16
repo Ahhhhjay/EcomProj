@@ -28,7 +28,7 @@ class Customer extends \app\core\Controller
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $customer = new \app\models\Customer();
-            
+
             $customer->firstName = $_POST['firstName'];
             $customer->lastName = $_POST['lastName'];
             $customer->Email = $_POST['Email'];
@@ -79,11 +79,12 @@ class Customer extends \app\core\Controller
         }
     }
 
-    public function logout(){
-		session_destroy();
+    public function logout()
+    {
+        session_destroy();
 
-		header('Location:/');
-	}
+        header('Location:/');
+    }
 
     public function delete()
     {
