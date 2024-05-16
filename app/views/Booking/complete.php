@@ -88,42 +88,42 @@
         <h2><?= __('Booking Details') ?></h2>
         <dl>
         <dt><?= __('Booking Date:') ?></dt>
-        <dd><?= htmlspecialchars($booking['bookingDate']) ?></dd>
+        <dd><?= htmlspecialchars($booking->bookingDate) ?></dd>
             <dt><?= __('Booking Time:') ?></dt>
-            <dd><?= htmlspecialchars($data['booking']->bookingTime) ?> -
-                <?= date('H:i', strtotime($data['booking']->bookingTime . ' +2 hour')) ?></dd>
+            <dd><?= htmlspecialchars($booking->bookingTime) ?> -
+                <?= date('H:i', strtotime($booking->bookingTime . ' +2 hour')) ?></dd>
             <dt><?= __('Frequency:') ?></dt>
             <dd><?= htmlspecialchars($data['booking']->Frequency) ?></dd>
             <dt><?= __('Address:') ?></dt>
-            <dd><?= htmlspecialchars($data['booking']->Address) ?></dd>
+            <dd><?= htmlspecialchars($booking->Address) ?></dd>
             <dt><?= __('Description:') ?></dt>
-            <dd><?= htmlspecialchars($data['booking']->description) ?></dd>
+            <dd><?= htmlspecialchars($booking->description) ?></dd>
             <dt><?= __('Category:') ?></dt>
-            <dd><?= htmlspecialchars($data['booking']->Category) ?></dd>
+            <dd><?= htmlspecialchars($booking->Category) ?></dd>
             <dt><?= __('Price:') ?></dt>
-            <dd><?= htmlspecialchars('$'.$data['booking']->ratePerSquareFoot) ?></dd>
+            <dd><?= htmlspecialchars('$'.$booking->ratePerSquareFoot) ?></dd>
         </dl>
 
         <h2><?= __('Payment Details') ?></h2>
         <dl>
             <dt><?= __('Cardholder Name:') ?></dt>
-            <dd><?= htmlspecialchars($data['payment']->cardName) ?></dd>
+            <dd><?= htmlspecialchars($payment->cardName) ?></dd>
             <dt><?= __('Card Number:') ?></dt>
-            <dd><?= htmlspecialchars($data['payment']->cardNumber) ?></dd>
+            <dd><?= htmlspecialchars($payment->cardNumber) ?></dd>
             <dt><?= __('Expiration Date:') ?></dt>
-            <dd><?= htmlspecialchars($data['payment']->expirationDate) ?></dd>
+            <dd><?= htmlspecialchars($payment->expirationDate) ?></dd>
             <dt><?= __('Postal Code:') ?></dt>
-            <dd><?= htmlspecialchars($data['payment']->postalCode) ?></dd>
+            <dd><?= htmlspecialchars($payment->postalCode) ?></dd>
             <dt><?= __('Billing Address:') ?></dt>
-            <dd><?= htmlspecialchars($data['payment']->billingAddress) ?></dd>
+            <dd><?= htmlspecialchars($payment->billingAddress) ?></dd>
             <dt><?= __('Payment Date:') ?></dt>
-            <dd><?= htmlspecialchars($data['payment']->paymentDate) ?></dd>
+            <dd><?= htmlspecialchars($payment->paymentDate) ?></dd>
         </dl>
         <div class="links">
-            <a href='/Booking/modify/<?= htmlspecialchars($data['booking']->bookingID) ?>'
+            <a href='/Booking/modify/<?= htmlspecialchars($booking->bookingID) ?>'
                 style="background-color: #4CAF50;"><?= __('Modify my booking') ?></a> |
-            <a href='/Booking/delete/<?= htmlspecialchars($data['booking']->bookingID) ?>'
-                style="background-color: #f44336;"><?= __('Delete my booking') ?></a>
+            <a href='/Booking/delete/<?= htmlspecialchars($booking->bookingID) ?>'
+                style="background-color: #f44336;"><?= __('Delete my booking') ?></a> |
             <a href='/' style="background-color: #555;"><?= __('Finish Booking') ?></a>
         </div>
     </main>
