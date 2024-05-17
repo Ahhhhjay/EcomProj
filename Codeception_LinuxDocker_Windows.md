@@ -54,7 +54,7 @@ docker run --name myXampp -p 22:22 -p 80:80 -d -v YOUR_PROJECT_LOCATION:/opt/lam
 ```
 For example, if your project Web root folder is `C:\MyProject` then the code should be 
 ```
-docker run --name myXampp -p 22:22 -p 80:80 -d -v C:\MyProject:/opt/lampp/htdocs tomsik68/xampp
+docker run --name myXampp -p 22:22 -p 80:80 -d -v C:\Users\2142176\Documents\GitHub\EcomProj:/opt/lampp/htdocs tomsik68/xampp
 ```
 
 ### Start a Terminal to your Container

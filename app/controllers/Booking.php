@@ -12,6 +12,11 @@ class Booking extends \app\core\Controller
      */
     public function create()
     {
+        if (!isset($_SESSION['customerID'])) {
+            header('Location: /Customer/login');
+            exit;
+        }
+        
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $bookingData = [
                 'customerID' => $_SESSION['customerID'],
