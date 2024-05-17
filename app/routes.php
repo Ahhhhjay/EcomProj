@@ -36,8 +36,10 @@ $this->addRoute('Promotions/create', 'Promotions,create');
 $this->addRoute('Promotions/apply', 'Promotions,apply');
 $this->addRoute('Promotions/modify/{promotionID}', 'Promotions,modify');
 $this->addRoute('Promotions/delete/{promotionID}', 'Promotions,delete');
+$this->addRoute('Promotions/paymentPromotion', 'Promotions,paymentPromotion');
 
 
 $this->addRoute('Payment/create', 'Payment,create');
+$this->addRoute('Payment/paymentPromotion', 'Payment,paymentPromotion');
 
 $this->addRoute('About_Us/','About_Us,index');

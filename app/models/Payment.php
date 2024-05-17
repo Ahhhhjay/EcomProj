@@ -18,11 +18,20 @@ class Payment extends Model
 
     public function insert()
     {
-        $expirationDate = \DateTime::createFromFormat('Y-m-d', $this->expirationDate);
-        if (!$expirationDate) {
-            throw new \Exception("Invalid expiration date format.");
+        $parts = explode('/', $this->expirationDate);
+        if (count($parts) === 2) {
+            $month = $parts[0];
+            $year = '20' . $parts[1]; // Assuming all cards expire in the 2000s
+            // Construct a valid date string in YYYY-MM format
+            $expirationDate = \DateTime::createFromFormat('Y-m', $year . '-' . $month);
+            if (!$expirationDate) {
+                throw new \Exception("Invalid expiration date format.");
+            }
+            // Format to Y-m-d for database insertion, using the first of the month as a default
+            $formattedExpirationDate = $expirationDate->format('Y-m-d');
+        } else {
+            throw new \Exception("Expiration date must be in MM/YY format.");
         }
-        $formattedExpirationDate = $expirationDate->format('Y-m-d');
 
         if (!is_string($this->cardNumber) || strlen($this->cardNumber) > 19) {
             throw new \Exception("Invalid card number.");

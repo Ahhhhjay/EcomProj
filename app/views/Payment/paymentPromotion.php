@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -69,7 +68,6 @@
             justify-content: center;
             align-items: center;
         }
-
         form {
             background-color: white;
             padding: 20px;
@@ -79,16 +77,12 @@
             max-width: 500px;
             margin: auto;
         }
-
         label {
             display: block;
             margin-top: 10px;
             color: #555;
         }
-
-        input,
-        select,
-        .form {
+        input, select, #cancel {
             width: calc(100% - 22px);
             padding: 10px;
             margin-top: 5px;
@@ -97,76 +91,28 @@
             border: 1px solid #ddd;
             box-sizing: border-box;
         }
-
-        input[type="submit"],
-        .form {
+        input[type="submit"], #cancel {
             background-color: #89CFF0;
             color: white;
             border: none;
             cursor: pointer;
             transition: background-color 0.3s;
         }
-
-        input[type="submit"]:hover,
-        .form:hover {
+        input[type="submit"]:hover, button:hover {
             background-color: #66afe9;
-        }
-
-        @media (max-width: 600px) {
-            form {
-                width: 90%;
-                margin: 0 auto;
-            }
-        }
-        dl {
-            width: 100%;
-            max-width: 500px;
-            background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
-        }
-
-        dt {
-            font-weight: bold;
-            color: #555;
-        }
-
-        dd {
-            margin-bottom: 20px;
-            color: #666;
         }
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
-
         th, td {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
         }
-
         th {
             background-color: #f4faff;
-        }
-        .promo-row {
-        display: flex;
-        align-items: center;
-        margin-bottom: 10px;
-        }
-
-        .promo-row input, .promo-row button {
-            flex: 1; 
-            margin-right: 10px;
-        }
-
-        .promo-row button {
-            flex: none;
-            width: auto; 
-            padding: 8px 15px; 
         }
     </style>
 </head>
@@ -188,27 +134,20 @@
         <?php endif; ?>
     </nav>
     <main>
-        <form action="" method="post">
+        <form action="/Payment/create" method="post"> 
             <h1><?= __('Payment Details') ?></h1>
-            
             <label for="cardName"><?= __('Cardholder Name:') ?></label>
-            <input type="text" id="cardName" name="cardName" required value="<?= htmlspecialchars($_SESSION['formData']['cardName'] ?? '') ?>" />
-
+            <input type="text" id="cardName" name="cardName" required />
             <label for="cardNumber"><?= __('Card Number:') ?></label>
-            <input type="text" id="cardNumber" name="cardNumber" required value="<?= htmlspecialchars($_SESSION['formData']['cardNumber'] ?? '') ?>" />
-
+            <input type="text" id="cardNumber" name="cardNumber" required />
             <label for="expirationDate"><?= __('Expiration Date (MM/YY):') ?></label>
-            <input type="text" id="expirationDate" name="expirationDate" required value="<?= htmlspecialchars($_SESSION['formData']['expirationDate'] ?? '') ?>" />
-
+            <input type="text" id="expirationDate" name="expirationDate" required />
             <label for="cvv"><?= __('CVV:') ?></label>
-            <input type="text" id="cvv" name="cvv" required value="<?= htmlspecialchars($_SESSION['formData']['cvv'] ?? '') ?>" />
-
+            <input type="text" id="cvv" name="cvv" required />
             <label for="postalCode"><?= __('Postal Code:') ?></label>
-            <input type="text" id="postalCode" name="postalCode" required value="<?= htmlspecialchars($_SESSION['formData']['postalCode'] ?? '') ?>" />
-
+            <input type="text" id="postalCode" name="postalCode" required />
             <label for="billingAddress"><?= __('Billing Address:') ?></label>
-            <input type="text" id="billingAddress" name="billingAddress" required value="<?= htmlspecialchars($_SESSION['formData']['billingAddress'] ?? '') ?>" />
-
+            <input type="text" id="billingAddress" name="billingAddress" required />
             <section>
                 <h2><?= __('Price Summary') ?></h2>
                 <table>
@@ -217,31 +156,21 @@
                         <th><?= __('Amount') ?></th>
                     </tr>
                     <tr>
-                        <td><?= __('Base Price:') ?></td>
-                        <td>$<?= htmlspecialchars(number_format($booking['basePrice'], 2)) ?></td>
+                        <td><?= __('Original Price:') ?></td>
+                        <td>$<?= htmlspecialchars(number_format($_SESSION['bookingData']['basePrice'] + $_SESSION['bookingData']['ratePerSquareFoot'], 2)) ?></td>
                     </tr>
                     <tr>
-                        <td><?= __('Rate per Square Foot:') ?></td>
-                        <td>$<?= htmlspecialchars(number_format($booking['ratePerSquareFoot'], 2)) ?></td>
+                        <td><?= __('Discount Applied:') ?></td>
+                        <td>-$<?= htmlspecialchars(number_format($_SESSION['bookingData']['appliedDiscount'] ?? 0, 2)) ?></td>
                     </tr>
-                    <label for="promoCode"><?= __('Promo Code:') ?></label>
                     <tr>
                         <td><strong><?= __('Total Price:') ?></strong></td>
-                        <td id="totalPrice">$<?= htmlspecialchars(number_format($_SESSION['bookingData']['basePrice'] + $_SESSION['bookingData']['ratePerSquareFoot'], 2)) ?></td>
+                        <td>$<?= htmlspecialchars(number_format($_SESSION['bookingData']['totalPrice'], 2)) ?></td>
                     </tr>
                 </table>
-                <div class="promo-row">
-                    <input type="text" id="promoCode" name="promoCode" placeholder="Enter promo code" />
-                    <button class="form" type="submit" name="applyPromo" value="1"><?= __('Apply Promo Code') ?></button>
-                </div>
-                <?php if (isset($_SESSION['promoError'])): ?>
-                    <div style="color: red; text-align: center; margin-bottom: 20px;">
-                        <?= htmlspecialchars($_SESSION['promoError']); ?>
-                    </div>
-                <?php endif; ?>
             </section>
             <input type="submit" value="<?= __('Submit Payment') ?>">
-            <button class="form" onclick="location.href='/'" type="button"><?= __('Cancel') ?></button>
+            <button id="cancel" onclick="location.href='/'" type="button"><?= __('Cancel') ?></button>
         </form>
     </main>
     <footer style="background-color: #89CFF0; color: white; padding: 20px 0; font-family: 'Roboto', sans-serif; padding-top: 10px;">
@@ -263,7 +192,7 @@
         </div>
     </footer>
 </body>
-    <script>
+<script>
         function formatExpirationDate() {
             const expirationInput = document.getElementById('expirationDate');
             const expirationValue = expirationInput.value;

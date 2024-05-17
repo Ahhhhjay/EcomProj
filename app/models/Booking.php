@@ -18,11 +18,10 @@ class Booking extends \app\core\Model
     public $category;
     public $message;
 
-    // Insert new booking
     public function insert()
     {
-        $SQL = 'INSERT INTO Booking (customerID, bookingDate, bookingTime, status, frequency, description, basePrice, ratePerSquareFoot, category, message)
-                VALUE (:customerID, :bookingDate, :bookingTime, :status, :frequency, :description, :basePrice, :ratePerSquareFoot, :category, :message)';
+        $SQL = 'INSERT INTO Booking (customerID, bookingDate, bookingTime, status, frequency, description, basePrice, ratePerSquareFoot, category, message, promoCode)
+                VALUES (:customerID, :bookingDate, :bookingTime, :status, :frequency, :description, :basePrice, :ratePerSquareFoot, :category, :message, :promoCode)';
 
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute([
@@ -36,6 +35,7 @@ class Booking extends \app\core\Model
             'ratePerSquareFoot' => $this->ratePerSquareFoot,
             'category' => $this->category,
             'message' => $this->message,
+            'promoCode' => $this->promoCode ?? null  // Provide a default null if promoCode is not set
         ]);
         $this->bookingID = self::$_conn->lastInsertId();
     }

@@ -99,6 +99,25 @@ class Booking extends \app\core\Controller
         }
     }
 
+    public function applyPromoCode() {
+        if (!isset($_POST['promoCode']) || !isset($_SESSION['bookingData'])) {
+            return $this->render('error'); // Simplified error handling
+        }
+
+        $promoCode = $_POST['promoCode'];
+        $promotionsModel = new \app\models\Promotions();
+        $promotion = $promotionsModel->getByCode($promoCode);
+
+        if ($promotion) {
+            $discount = $promotion->discountRate / 100;
+            $totalPrice = ($_SESSION['bookingData']['basePrice'] + $_SESSION['bookingData']['ratePerSquareFoot']) * (1 - $discount);
+            $_SESSION['bookingData']['totalPrice'] = $totalPrice;
+            return $this->render('payment_page', ['totalPrice' => $totalPrice, 'discountApplied' => true]); // Pass the new total to the view
+        } else {
+            return $this->render('payment_page', ['error' => 'Invalid promo code']); // Pass error to the view
+        }
+    }
+
     // Display booking completion details
     public function complete($bookingID)
     {

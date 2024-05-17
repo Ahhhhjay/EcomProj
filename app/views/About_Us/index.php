@@ -15,14 +15,16 @@
         }
 
         header {
-            background-color: #89CFF0;
+            background-color: #C7E2F5;
             padding: 0;
         }
 
         header img {
             width: 100%;
-            height: 250px;
+            height: auto;
             display: block;
+            max-height: 300px;
+            object-fit: contain;
         }
 
         nav {
@@ -196,7 +198,7 @@
         </section>
     </main>
 
-    <footer style="background-color: #89CFF0; color: white; padding: 20px 0; font-family: 'Roboto', sans-serif;">
+    <footer style="background-color: #89CFF0; color: white; padding: 20px 0; font-family: 'Roboto', sans-serif; padding-top: 10px;">
         <div style="display: flex; justify-content: space-around; align-items: start; flex-wrap: wrap; padding: 0 10%;">
             <div style="flex: 1; min-width: 200px; margin: 10px;">
                 <h3><?= __('MKCleaners MTL') ?></h3>
@@ -211,7 +213,7 @@
             </div>
         </div>
         <div style="text-align: center; padding-top: 20px;">
-            <?= __('&copy; 2024 All Rights Reserved | Totally not fake website') ?>
+        <?=__('&copy; 2024 All Rights Reserved')?>
         </div>
     </footer>
 </body>

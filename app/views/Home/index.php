@@ -15,14 +15,16 @@
         }
 
         header {
-            background-color: #89CFF0;
+            background-color: #C7E2F5;
             padding: 0;
         }
 
         header img {
             width: 100%;
-            height: 250px;
+            height: auto;
             display: block;
+            max-height: 300px;
+            object-fit: contain;
         }
 
         nav {
@@ -135,9 +137,9 @@
             min-width: 250px;
             max-width: 30%;
         }
+        
     </style>
 </head>
-
 <body>
     <header>
         <img src="/Images/MKCleaningLogo.png" alt="<?= __('CleanIt Logo') ?>">
@@ -158,21 +160,21 @@
     <main>
         <h1><?= __('Welcome to MKCleaners MTL!') ?></h1>
         <a href="/Booking/create" class="book-now"><?= __('Book Now') ?></a>
-        <section id="about-us">
-            <h2><?= __('About Us') ?></h2>
-            <p><?= __('At MKCleaners MTL, we offer comprehensive cleaning services designed to keep your space sparkling clean and hygienic. From residential homes to commercial offices, our team of skilled professionals is equipped to handle all aspects of cleaning with utmost precision and care. We utilize eco-friendly cleaning products and state-of-the-art equipment to deliver exceptional results.') ?>
-            </p>
-            <video width="640" height="360" controls>
-        <!-- <source src="IMG_4911.webm" type="video/webm"> -->
-        <source src="C:\Users\adrya\OneDrive\Documents\GitHub\EcomProj\pics&vids\IMG_4911.mp4" type="video/mp4">
-        <!-- <source src="path/to/your/video.webm" type="video/webm">  -->
-        Your browser does not support the video tag.
-    </video>
-            <img src="/Images/cleaning-service-image.jpg" alt="<?= __('Cleaning Service') ?>" class="service-image">
+
+        <section id="about-us" style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px; padding: 20px;">
+            <div style="flex: 1; min-width: 300px;">
+                <video width="400" height="700" controls style="border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                    <source src="/Images/cleaning.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div style="flex: 1; min-width: 300px; text-align: left;">
+                <h2 style="margin-bottom: 10px;"><?= __('About Us') ?></h2>
+                <p><?= __('At MKCleaners MTL, we offer comprehensive cleaning services designed to keep your space sparkling clean and hygienic. From residential homes to commercial offices, our team of skilled professionals is equipped to handle all aspects of cleaning with utmost precision and care. We utilize eco-friendly cleaning products and state-of-the-art equipment to deliver exceptional results.') ?></p>
+            </div>
         </section>
+        <h2>Reviews</h2>
         <section id="reviews">
-            <h2><?= __('Reviews') ?></h2>
-            
             <div class="reviews-row">
                 <?php foreach ($latestReviews as $review): ?>
                     <div class="review-item">
@@ -189,7 +191,7 @@
             </div>
         </section>
     </main>
-    <footer style="background-color: #89CFF0; color: white; padding: 20px 0; font-family: 'Roboto', sans-serif;">
+    <footer style="background-color: #89CFF0; color: white; padding: 20px 0; font-family: 'Roboto', sans-serif; padding-top: 10px;">
         <div style="display: flex; justify-content: space-around; align-items: start; flex-wrap: wrap; padding: 0 10%;">
             <div style="flex: 1; min-width: 200px; margin: 10px;">
                 <h3><?= __('MKCleaners MTL') ?></h3>
@@ -204,9 +206,8 @@
             </div>
         </div>
         <div style="text-align: center; padding-top: 20px;">
-        <?=__('&copy; 2024 All Rights Reserved | Totally not fake website')?>
+        <?=__('&copy; 2024 All Rights Reserved')?>
         </div>
     </footer>
 </body>
-
 </html>

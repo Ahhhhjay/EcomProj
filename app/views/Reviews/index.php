@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,14 +14,16 @@
         }
 
         header {
-            background-color: #89CFF0;
+            background-color: #C7E2F5;
             padding: 0;
         }
 
         header img {
             width: 100%;
-            height: 250px;
+            height: auto;
             display: block;
+            max-height: 300px;
+            object-fit: contain;
         }
 
         nav {
@@ -231,7 +232,7 @@
         </div>
 
         <div style="text-align: center; padding-top: 20px;">
-            <?= __('&copy; 2024 All Rights Reserved | Totally not fake website') ?>
+            <?= __('&copy; 2024 All Rights Reserved') ?>
         </div>
     </footer>
 </body>

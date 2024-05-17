@@ -6,7 +6,6 @@ use PDO;
 class Promotions extends \app\core\Model
 {
     public $promotionID;
-
     public $description;
     public $code;
     public $discountRate;
@@ -55,12 +54,10 @@ class Promotions extends \app\core\Model
 
     public function getByCode($code)
     {
-        $SQL = 'SELECT *
-                FROM Promotions
-                WHERE code = :code';
+        $SQL = 'SELECT * FROM Promotions WHERE code = :code';
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute(['code' => $code]);
-        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Promotions');
+        $STMT->setFetchMode(PDO::FETCH_ASSOC);  // Adjust to your needs
         return $STMT->fetch();
     }
 

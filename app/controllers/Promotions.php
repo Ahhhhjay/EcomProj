@@ -34,27 +34,28 @@ class Promotions extends \app\core\Controller
          $this->view('Promotions/index', ['promotions' => $allPromotions]);
      }
      
+     public function paymentPromotion() {
+        if (!isset($_SESSION['bookingData'])) {
+            header('Location: /Booking/create');
+            exit();
+        }
+    
+        // Check for any existing promo data in session
+        if (isset($_SESSION['bookingData']['promoCode'])) {
+            // Assuming there's already logic that calculates the new price with promo applied
+            $bookingData = $_SESSION['bookingData'];
+            $this->view('Promotions/paymentPromotion', ['booking' => $bookingData]);
+        } else {
+            // Redirect back if no promo code has been applied yet
+            header('Location: /Payment/create');
+            exit();
+        }
+    }
+    
      public function getByCode($code)
     {
         $promotionModel = new \app\models\Promotions();
         return $promotionModel->getByCode($code);
-    }
-
-    public function applyPromoCode() {
-        if (!isset($_POST['promoCode'])) {
-            echo json_encode(['isValid' => false]);
-            return;
-        }
-        $promoCode = $_POST['promoCode'];
-        $promotionModel = new \app\models\Promotions();
-        $promotion = $promotionModel->getByCode($promoCode);
-        if ($promotion && new DateTime() >= new DateTime($promotion->validFrom) && new DateTime() <= new DateTime($promotion->validTo)) {
-            $discount = $promotion->discountRate / 100;
-            $newTotal = ($_SESSION['bookingData']['basePrice'] + $_SESSION['bookingData']['ratePerSquareFoot']) * (1 - $discount);
-            echo json_encode(['isValid' => true, 'newTotal' => $newTotal]);
-        } else {
-            echo json_encode(['isValid' => false]);
-        }
     }
 
      public function create()
@@ -93,7 +94,20 @@ class Promotions extends \app\core\Controller
         }
     }
 
+    public function applyPromo() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['promoCode'])) {
+            $promoCode = $_POST['promoCode'];
+            $promotionModel = new \app\models\Promotions();
+            $promotion = $promotionModel->getByCode($promoCode);
 
+            if ($promotion && $promotion->validTo >= date('Y-m-d')) {
+                echo json_encode(['success' => true, 'discountRate' => $promotion->discountRate]);
+            } else {
+                echo json_encode(['success' => false]);
+            }
+        }
+        exit();
+    }
 
     
     public function modify($promotionID)

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- hi -->
 <head>
     <meta charset="UTF-8">
-    <title><?= __('Create Review') ?></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= __('Reviews - MKCleaners MTL') ?></title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -13,14 +14,16 @@
         }
 
         header {
-            background-color: #89CFF0;
+            background-color: #C7E2F5;
             padding: 0;
         }
 
         header img {
             width: 100%;
-            height: 250px;
+            height: auto;
             display: block;
+            max-height: 300px;
+            object-fit: contain;
         }
 
         nav {
@@ -30,16 +33,33 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        nav a {
-            margin: 0 20px;
+        nav a,
+        nav button {
+            margin: 0 10px;
+            padding: 10px 20px;
             text-decoration: none;
             color: #89CFF0;
             font-weight: 500;
-            font-size: 20px;
+            font-size: 16px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
         }
 
-        nav a:hover {
+        nav a:hover,
+        nav button:hover {
             color: #66afe9;
+        }
+
+        nav button {
+            background-color: #89CFF0;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav button:hover {
+            background-color: #66afe9;
         }
 
         main {
@@ -57,25 +77,14 @@
             text-align: center;
         }
 
-        footer {
-            background-color: #89CFF0;
-            color: white;
-            padding: 20px 0;
+        footer h3 {
+            color: #ffffff;
+            margin-bottom: 10px;
         }
 
-        footer h3,
         footer p,
         footer a {
-            margin: 0;
-            padding: 0;
-        }
-
-        footer div {
-            display: flex;
-            justify-content: space-around;
-            align-items: start;
-            flex-wrap: wrap;
-            padding: 0 10%;
+            color: #d0e8f2;
         }
 
         .review-form {
@@ -151,18 +160,24 @@
         <img src="/Images/MKCleaningLogo.png" alt="<?= __('CleanIt Logo') ?>">
     </header>
     <nav>
-        <a href="/"><?= __('Home') ?></a>
-        <a href="#about-us"><?= __('About Us') ?></a>
-        <a href="#promotions"><?= __('Promotions') ?></a>
+    <a href="/"><?= __('Home') ?></a>
+        <a href="/About_Us/"><?= __('About Us') ?></a>
+        <a href="/Promotions/"><?= __('Promotions') ?></a>
         <a href="/Reviews/"><?= __('Leave a Review') ?></a>
         <a href="/Customer/"><?= __('My Profile') ?></a>
+        <?php if (isset($_SESSION['customerID'])): ?>
+            <button onclick="location.href='/Customer/logout'"><?= __('Logout') ?></button>
+        <?php else: ?>
+            <button onclick="location.href='/Customer/login'"><?= __('Login') ?></button>
+            <button onclick="location.href='/Customer/register'"><?= __('Sign Up') ?></button>
+        <?php endif; ?>
     </nav>
-    <h1><?= __('Post a New Review') ?></h1>
     <main>
+    <h1><?= __('Post a New Review') ?></h1>
         <form action="" method="post" class="review-form">
             <input type="hidden" id="customerID" name="customerID" value="<?= $_SESSION['customerID'] ?>">
 
-            <label for="rating"><?= __('Rating:') ?>:</label>
+            <label for="rating"><?= __('Rating') ?>:</label>
             <div class="star-rating">
                 <input type="radio" id="star5" name="rating" value="5" /><label for="star5">&#9734;</label>
                 <input type="radio" id="star4" name="rating" value="4" /><label for="star4">&#9734;</label>
@@ -177,22 +192,22 @@
             <button type="submit" class="submit-review-button"><?= __('Submit Review') ?></button>
         </form>
     </main>
-    <footer style="background-color: #89CFF0; color: white; padding: 20px 0; font-family: 'Roboto', sans-serif;">
+    <footer style="background-color: #89CFF0; color: white; padding: 20px 0; font-family: 'Roboto', sans-serif; padding-top: 10px;">
         <div style="display: flex; justify-content: space-around; align-items: start; flex-wrap: wrap; padding: 0 10%;">
             <div style="flex: 1; min-width: 200px; margin: 10px;">
-                <h3>MKCleaners MTL</h3>
+                <h3><?= __('MKCleaners MTL') ?></h3>
                 <p><?= __('Discover our cleaning company, where your home is your best friend! Enjoy a spotless home without lifting a finger!') ?>
                 </p>
             </div>
             <div style="flex: 1; min-width: 250px; margin: 10px;">
                 <h3><?= __('Contact info.') ?></h3>
-                <p> <?= __('Phone Number: (514) 799-4881') ?> <br>
+                <p><?= __('Phone Number: (514) 799-4881') ?> <br>
                     <?= __('Email: MKCleanersMTL@gmail.com') ?> <br>
                     <?= __('Instagram: mkcleanersmtl') ?></p>
             </div>
         </div>
         <div style="text-align: center; padding-top: 20px;">
-            <?= __('&copy; 2024 All Rights Reserved | Totally not fake website') ?>
+        <?=__('&copy; 2024 All Rights Reserved')?>
         </div>
     </footer>
 </body>
@@ -204,9 +219,9 @@
                 let currentRating = this.value;
                 stars.forEach(star => {
                     if (star.value <= currentRating) {
-                        star.nextElementSibling.style.color = '#f5b301'; // Filled star color
+                        star.nextElementSibling.style.color = '#f5b301'; 
                     } else {
-                        star.nextElementSibling.style.color = '#ccc'; // Empty star color
+                        star.nextElementSibling.style.color = '#ccc'; 
                     }
                 });
             });
