@@ -54,7 +54,9 @@ class Promotions extends \app\core\Model
 
     public function getByCode($code)
     {
-        $SQL = 'SELECT * FROM Promotions WHERE code = :code';
+        $SQL = 'SELECT discountRate
+                FROM Promotions 
+                WHERE code = :code';
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute(['code' => $code]);
         $STMT->setFetchMode(PDO::FETCH_ASSOC);  // Adjust to your needs

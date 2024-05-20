@@ -136,7 +136,6 @@ class Promotions extends \app\core\Controller
     $promotions = $promotionModel->getAllPromos();
     $this->view('Promotions/homePage', ['promotions' => $promotions]);
 }
-
 public function apply() {
     if (!isset($_SESSION['bookingData'])) {
         header('Location: /Booking/create');
@@ -146,17 +145,34 @@ public function apply() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $promoCode = $_POST['promoCode'];
         $promotion = new \app\models\Promotions();
-        $discount = $promotion->getByCode($promoCode);
+        $discountData = $promotion->getByCode($promoCode);
 
-        if ($discount) {
-            $_SESSION['discount'] = $discount->discountRate;
-            header('Location: /Payment/create');
+        if ($discountData && isset($discountData['discountRate'])) {
+            $discountRate = floatval($discountData['discountRate']); // Convert to numeric value
+
+            $totalPrice = $_SESSION['bookingData']['totalPrice'];
+
+            if ($discountRate != 0) {
+                $priceOFF = $totalPrice / $discountRate;
+                $finalPrice = $totalPrice - $priceOFF;
+                $_SESSION['finalPrice'] = $finalPrice;
+                header('Location: /Payment/create');
+                exit();
+            } else {
+                // Handle division by zero
+                $_SESSION['error'] = "Discount value cannot be zero.";
+                header('Location: /Promotions/apply');
+                exit();
+            }
+        } else {
+            // Handle the case where the discount code is not found or discountRate is missing
+            $_SESSION['error'] = "Promotion code not found or invalid discount rate.";
+            header('Location: /Promotions/apply');
             exit();
-        } 
+        }
     }
     $this->view('Promotions/apply');
 }
-
 
     // Additional methods for other operations like updating, retrieving, or listing promotions can be added here
 }

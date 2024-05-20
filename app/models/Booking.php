@@ -18,6 +18,8 @@ class Booking extends \app\core\Model
     public $category;
     public $message;
 
+    public $promoCode;
+
     public function insert()
     {
         $SQL = 'INSERT INTO Booking (customerID, bookingDate, bookingTime, status, frequency, description, basePrice, ratePerSquareFoot, category, message, promoCode)
@@ -91,6 +93,22 @@ class Booking extends \app\core\Model
 
     //Update
     public function update()
+    {
+        $SQL = 'UPDATE Booking SET bookingDate=:bookingDate, bookingTime=:bookingTime, Status=:Status, Frequency=:Frequency, message=:message WHERE bookingID = :bookingID';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute([
+            'bookingID' => $this->bookingID,
+            'bookingDate' => $this->bookingDate,
+            'bookingTime' => $this->bookingTime,
+            'Status' => $this->status,
+            'Frequency' => $this->frequency,
+            'message' => $this->message,
+
+        ]);
+    }
+
+
+    public function updateBookingAfterPayment($bookingID)
     {
         $SQL = 'UPDATE Booking SET bookingDate=:bookingDate, bookingTime=:bookingTime, Status=:Status, Frequency=:Frequency, message=:message WHERE bookingID = :bookingID';
         $STMT = self::$_conn->prepare($SQL);

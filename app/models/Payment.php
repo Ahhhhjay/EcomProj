@@ -9,6 +9,7 @@ class Payment extends Model
     public $paymentID;
     public $bookingID;
     public $customerID;
+    
     public $total_price;
     public $cardName;
     public $cardNumber;

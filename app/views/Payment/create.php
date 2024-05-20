@@ -188,7 +188,7 @@
         <?php endif; ?>
     </nav>
     <main>
-        <form action="" method="post">
+        <form action="" method="POST">
             <h1><?= __('Payment Details') ?></h1>
             
             <label for="cardName"><?= __('Cardholder Name:') ?></label>
@@ -224,21 +224,14 @@
                         <td><?= __('Rate per Square Foot:') ?></td>
                         <td>$<?= htmlspecialchars(number_format($booking['ratePerSquareFoot'], 2)) ?></td>
                     </tr>
+                    
                     <label for="promoCode"><?= __('Promo Code:') ?></label>
                     <tr>
                         <td><strong><?= __('Total Price:') ?></strong></td>
                         <td id="totalPrice">$<?= htmlspecialchars(number_format($_SESSION['bookingData']['basePrice'] + $_SESSION['bookingData']['ratePerSquareFoot'], 2)) ?></td>
                     </tr>
                 </table>
-                <div class="promo-row">
-                    <input type="text" id="promoCode" name="promoCode" placeholder="Enter promo code" />
-                    <button class="form" type="submit" name="applyPromo" value="1"><?= __('Apply Promo Code') ?></button>
-                </div>
-                <?php if (isset($_SESSION['promoError'])): ?>
-                    <div style="color: red; text-align: center; margin-bottom: 20px;">
-                        <?= htmlspecialchars($_SESSION['promoError']); ?>
-                    </div>
-                <?php endif; ?>
+             
             </section>
             <input type="submit" value="<?= __('Submit Payment') ?>">
             <button class="form" onclick="location.href='/'" type="button"><?= __('Cancel') ?></button>

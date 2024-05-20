@@ -29,6 +29,7 @@ class Booking extends \app\core\Controller
                 'area' => $_POST['area'],
                 'message' => $_POST['frequencyMessage'] ?? null,
                 'promoCode' => $_POST['promoCode'] ?? null,
+                
             ];
 
             if ($bookingData['category'] == 'Commercial') {
@@ -57,7 +58,7 @@ class Booking extends \app\core\Controller
             $_SESSION['bookingData'] = $bookingData;
 
             // Redirect to Payment/create
-            header('Location: /Payment/create');
+            header('Location: /Promotions/apply');
             exit();
         } else {
             $this->view('Booking/create');

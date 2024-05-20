@@ -83,7 +83,7 @@
         <h1><?= __('Enter Your Promotion Code') ?></h1>
     </header>
     <main>
-        <form action="/Payment" method="get"> <!-- Make sure to update the form action to the correct route -->
+        <form action="" method="POST"> <!-- Make sure to update the form action to the correct route -->
             <h1><?= __('Promotion Code') ?></h1>
             <label for="promoCode"><?= __('Promotion Code:') ?></label>
             <input type="text" id="promoCode" name="promoCode" placeholder=<?=__('Enter code here')?> required />
