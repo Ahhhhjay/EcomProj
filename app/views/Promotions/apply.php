@@ -44,7 +44,8 @@
             color: #555;
         }
 
-        input, button {
+        input,
+        button {
             width: calc(100% - 22px);
             padding: 10px;
             margin-top: 5px;
@@ -54,7 +55,8 @@
             box-sizing: border-box;
         }
 
-        input[type="submit"], button {
+        input[type="submit"],
+        button {
             background-color: #89CFF0;
             color: white;
             border: none;
@@ -62,7 +64,8 @@
             transition: background-color 0.3s;
         }
 
-        input[type="submit"]:hover, button:hover {
+        input[type="submit"]:hover,
+        button:hover {
             background-color: #66afe9;
         }
 
@@ -83,13 +86,13 @@
         <h1><?= __('Enter Your Promotion Code') ?></h1>
     </header>
     <main>
-        <form action="" method="POST"> <!-- Make sure to update the form action to the correct route -->
+        <form action="" method="POST">
             <h1><?= __('Promotion Code') ?></h1>
             <label for="promoCode"><?= __('Promotion Code:') ?></label>
-            <input type="text" id="promoCode" name="promoCode" placeholder=<?=__('Enter code here')?> required />
+            <input type="text" id="promoCode" name="promoCode" placeholder=<?= __('Enter code here') ?> required />
 
             <button type="submit"><?= __('Apply Code and Proceed') ?></button>
-            <button id="cancel" onclick="location.href='/Payment/create'"><?= __('No Thanks') ?></button>
+            <button id="cancel" class="form" onclick="window.location.href='?action=denied'" type="button"><?= __('No thanks') ?></button>
         </form>
     </main>
     <footer>

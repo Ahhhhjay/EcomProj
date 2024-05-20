@@ -11,7 +11,7 @@ class Customer extends \app\core\Controller
     {
         if (!isset($_SESSION['customerID'])) {
             header('Location: /Customer/login');
-            exit;
+            exit();
         }
 
         $customerModel = new \app\models\Customer();
@@ -20,8 +20,17 @@ class Customer extends \app\core\Controller
         $bookingModel = new \app\models\Booking();
         $bookings = $bookingModel->getAllForCustomer($_SESSION['customerID']);
 
+        // Controller logic to fetch and pass to view
+        $paymentModel = new \app\models\Payment();
+        $payments = $paymentModel->getPaymentsByCustomer($_SESSION['customerID']);
+
+        foreach ($bookings as $booking) {
+            $booking->totalPrice = isset($payments[$booking->bookingID]) ? $payments[$booking->bookingID]->total_price : '0.00';
+        }
+
         $this->view('Customer/index', ['customer' => $customer, 'bookings' => $bookings]);
     }
+
 
 
     public function register()

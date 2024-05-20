@@ -20,7 +20,7 @@ class Payment extends \app\core\Controller
         //         exit();
         //     }
         // }
-        
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $payment = new \app\models\Payment();
             $payment->customerID = $_SESSION['customerID'];
@@ -29,8 +29,9 @@ class Payment extends \app\core\Controller
             $payment->expirationDate = $_POST['expirationDate']; // Should be in YYYY-MM-DD format
             $payment->postalCode = $_POST['postalCode'];
             $payment->billingAddress = $_POST['billingAddress'];
-            if(isset($_SESSION['finalPrice'])) {
+            if (isset($_SESSION['finalPrice'])) {
                 $payment->total_price = $_SESSION['finalPrice'];
+            } else {
                 
             }
             // Complete the booking
@@ -47,6 +48,7 @@ class Payment extends \app\core\Controller
             $booking->basePrice = $bookingData['basePrice'];
             $booking->ratePerSquareFoot = $bookingData['ratePerSquareFoot'];
             $booking->message = $bookingData['message'];
+            $booking->promoCode = $bookingData['promoCode'] ?? null;
             $booking->insert(); // Call the insert method on the Booking model
 
             // Save the booking ID in the payment record
@@ -55,9 +57,19 @@ class Payment extends \app\core\Controller
 
             // Clear session data
             unset($_SESSION['bookingData']);
+            unset($_SESSION['finalPrice']);
 
             // Redirect to booking completion page
             header('Location: /Booking/complete/' . $booking->bookingID);
+            exit();
+        } else if (isset($_GET['action']) && $_GET['action'] == 'cancel') {
+            foreach ($_SESSION as $key => $value) {
+                if ($key !== 'customerID') {
+                    unset($_SESSION[$key]);
+                }
+            }
+
+            header('Location: /'); // Redirect to a default page after clearing
             exit();
         } else {
             $this->view('Payment/create', ['booking' => $_SESSION['bookingData']]);
@@ -72,7 +84,7 @@ class Payment extends \app\core\Controller
     //         $currentPrice = $_SESSION['bookingData']['basePrice'] + $_SESSION['bookingData']['ratePerSquareFoot'];
     //         $discountAmount = $currentPrice * ($discount / 100);
     //         $newTotal = $currentPrice - $discountAmount;
-    
+
     //         $_SESSION['bookingData']['totalPrice'] = $newTotal;
     //         $_SESSION['bookingData']['appliedDiscount'] = $discountAmount;
     //         $_SESSION['bookingData']['promoCode'] = $promoCode;
@@ -83,18 +95,18 @@ class Payment extends \app\core\Controller
     //         exit();
     //     }
     // }
-    
+
 
     // public function paymentPromotion() {
     //     if (!isset($_SESSION['bookingData'])) {
     //         header('Location: /Booking/create');
     //         exit();
     //     }
-    
+
     //     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitPayment'])) {
     //         // Assume all required data are still in $_SESSION or are submitted with the form
     //         $bookingData = $_SESSION['bookingData'];
-    
+
     //         $payment = new \app\models\Payment();
     //         $payment->customerID = $bookingData['customerID'];
     //         $payment->cardName = $bookingData['cardName'];  // Ensure these details are passed from the form or session
@@ -104,13 +116,13 @@ class Payment extends \app\core\Controller
     //         $payment->billingAddress = $bookingData['billingAddress'];
     //         $payment->bookingID = $bookingData['bookingID'];  // Ensure this is set when the promo is applied
     //         $payment->insert();
-    
+
     //         // You might need to update the booking info if anything changes due to the promo
     //         $booking = new \app\models\Booking();
     //         $booking->updateBookingAfterPayment($bookingData);
-    
+
     //         unset($_SESSION['bookingData']); // Clear the session data
-    
+
     //         // Redirect to a confirmation or completion page
     //         header('Location: /Booking/complete/' . $booking->bookingID);
     //         exit();
@@ -120,9 +132,10 @@ class Payment extends \app\core\Controller
     //         $this->view('Payment/paymentPromotion', ['booking' => $bookingData]);
     //     }
     // }
-    
+
     // This method finalizes the booking after all data verification from the promotion payment view
-    public function completeBooking() {
+    public function completeBooking()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Process final booking logic here
             // Redirect to a booking completion page or display confirmation

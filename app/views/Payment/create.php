@@ -118,6 +118,7 @@
                 margin: 0 auto;
             }
         }
+
         dl {
             width: 100%;
             max-width: 500px;
@@ -137,13 +138,15 @@
             margin-bottom: 20px;
             color: #666;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
 
-        th, td {
+        th,
+        td {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
@@ -152,27 +155,30 @@
         th {
             background-color: #f4faff;
         }
+
         .promo-row {
-        display: flex;
-        align-items: center;
-        margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
         }
 
-        .promo-row input, .promo-row button {
-            flex: 1; 
+        .promo-row input,
+        .promo-row button {
+            flex: 1;
             margin-right: 10px;
         }
 
         .promo-row button {
             flex: none;
-            width: auto; 
-            padding: 8px 15px; 
+            width: auto;
+            padding: 8px 15px;
         }
     </style>
 </head>
+
 <body>
     <header>
-    <img src="/Images/MKCleaningLogo.png" alt="<?= __('CleanIt Logo') ?>">
+        <img src="/Images/MKCleaningLogo.png" alt="<?= __('CleanIt Logo') ?>">
     </header>
     <nav>
         <a href="/"><?= __('Home') ?></a>
@@ -190,24 +196,30 @@
     <main>
         <form action="" method="POST">
             <h1><?= __('Payment Details') ?></h1>
-            
+
             <label for="cardName"><?= __('Cardholder Name:') ?></label>
-            <input type="text" id="cardName" name="cardName" required value="<?= htmlspecialchars($_SESSION['formData']['cardName'] ?? '') ?>" />
+            <input type="text" id="cardName" name="cardName" required
+                value="<?= htmlspecialchars($_SESSION['formData']['cardName'] ?? '') ?>" />
 
             <label for="cardNumber"><?= __('Card Number:') ?></label>
-            <input type="text" id="cardNumber" name="cardNumber" required value="<?= htmlspecialchars($_SESSION['formData']['cardNumber'] ?? '') ?>" />
+            <input type="text" id="cardNumber" name="cardNumber" required
+                value="<?= htmlspecialchars($_SESSION['formData']['cardNumber'] ?? '') ?>" />
 
             <label for="expirationDate"><?= __('Expiration Date (MM/YY):') ?></label>
-            <input type="text" id="expirationDate" name="expirationDate" required value="<?= htmlspecialchars($_SESSION['formData']['expirationDate'] ?? '') ?>" />
+            <input type="text" id="expirationDate" name="expirationDate" required
+                value="<?= htmlspecialchars($_SESSION['formData']['expirationDate'] ?? '') ?>" />
 
             <label for="cvv"><?= __('CVV:') ?></label>
-            <input type="text" id="cvv" name="cvv" required value="<?= htmlspecialchars($_SESSION['formData']['cvv'] ?? '') ?>" />
+            <input type="text" id="cvv" name="cvv" required
+                value="<?= htmlspecialchars($_SESSION['formData']['cvv'] ?? '') ?>" />
 
             <label for="postalCode"><?= __('Postal Code:') ?></label>
-            <input type="text" id="postalCode" name="postalCode" required value="<?= htmlspecialchars($_SESSION['formData']['postalCode'] ?? '') ?>" />
+            <input type="text" id="postalCode" name="postalCode" required
+                value="<?= htmlspecialchars($_SESSION['formData']['postalCode'] ?? '') ?>" />
 
             <label for="billingAddress"><?= __('Billing Address:') ?></label>
-            <input type="text" id="billingAddress" name="billingAddress" required value="<?= htmlspecialchars($_SESSION['formData']['billingAddress'] ?? '') ?>" />
+            <input type="text" id="billingAddress" name="billingAddress" required
+                value="<?= htmlspecialchars($_SESSION['formData']['billingAddress'] ?? '') ?>" />
 
             <section>
                 <h2><?= __('Price Summary') ?></h2>
@@ -224,20 +236,29 @@
                         <td><?= __('Rate per Square Foot:') ?></td>
                         <td>$<?= htmlspecialchars(number_format($booking['ratePerSquareFoot'], 2)) ?></td>
                     </tr>
-                    
-                    <label for="promoCode"><?= __('Promo Code:') ?></label>
+                    <tr>
+                        <td><?= __('Original Price:') ?></td>
+                        <td>$<?= htmlspecialchars(number_format($_SESSION['bookingData']['basePrice'] + $_SESSION['bookingData']['ratePerSquareFoot'], 2)) ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><?= __('Discount Applied:') ?></td>
+                        <td>$<?= htmlspecialchars(number_format((($_SESSION['bookingData']['basePrice'] + $_SESSION['bookingData']['ratePerSquareFoot']) - $_SESSION['finalPrice']) ?? 0, 2)) ?>
+                        </td>
+                    </tr>
                     <tr>
                         <td><strong><?= __('Total Price:') ?></strong></td>
-                        <td id="totalPrice">$<?= htmlspecialchars(number_format($_SESSION['bookingData']['basePrice'] + $_SESSION['bookingData']['ratePerSquareFoot'], 2)) ?></td>
+                        <td>$<?= htmlspecialchars(number_format($_SESSION['finalPrice'] ?? 0, 2)) ?></td>
                     </tr>
                 </table>
-             
+
             </section>
             <input type="submit" value="<?= __('Submit Payment') ?>">
-            <button class="form" onclick="location.href='/'" type="button"><?= __('Cancel') ?></button>
+            <button class="form" onclick="window.location.href='?action=cancel'" type="button"><?= __('Cancel') ?></button>
         </form>
     </main>
-    <footer style="background-color: #89CFF0; color: white; padding: 20px 0; font-family: 'Roboto', sans-serif; padding-top: 10px;">
+    <footer
+        style="background-color: #89CFF0; color: white; padding: 20px 0; font-family: 'Roboto', sans-serif; padding-top: 10px;">
         <div style="display: flex; justify-content: space-around; align-items: start; flex-wrap: wrap; padding: 0 10%;">
             <div style="flex: 1; min-width: 200px; margin: 10px;">
                 <h3><?= __('MKCleaners MTL') ?></h3>
@@ -252,21 +273,22 @@
             </div>
         </div>
         <div style="text-align: center; padding-top: 20px;">
-        <?=__('&copy; 2024 All Rights Reserved')?>
+            <?= __('&copy; 2024 All Rights Reserved') ?>
         </div>
     </footer>
 </body>
-    <script>
-        function formatExpirationDate() {
-            const expirationInput = document.getElementById('expirationDate');
-            const expirationValue = expirationInput.value;
+<script>
+    function formatExpirationDate() {
+        const expirationInput = document.getElementById('expirationDate');
+        const expirationValue = expirationInput.value;
 
-            const [month, year] = expirationValue.split('/');
+        const [month, year] = expirationValue.split('/');
 
-            if (month.length === 2 && year.length === 2) {
-                const formattedDate = `20${year}-${month}-01`;
-                expirationInput.value = formattedDate;
-            }
+        if (month.length === 2 && year.length === 2) {
+            const formattedDate = `20${year}-${month}-01`;
+            expirationInput.value = formattedDate;
         }
-    </script>
+    }
+</script>
+
 </html>

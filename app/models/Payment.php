@@ -9,7 +9,7 @@ class Payment extends Model
     public $paymentID;
     public $bookingID;
     public $customerID;
-    
+
     public $total_price;
     public $cardName;
     public $cardNumber;
@@ -74,5 +74,22 @@ class Payment extends Model
         $stmt->execute(['bookingID' => $bookingID]);
         $stmt->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Payment');
         return $stmt->fetch();
+    }
+
+    public function getPaymentsByCustomer($customerID)
+    {
+        $SQL = "SELECT bookingID, SUM(total_price) AS total_price FROM Payment WHERE customerID = :customerID GROUP BY bookingID";
+        $stmt = self::$_conn->prepare($SQL);
+        $stmt->execute(['customerID' => $customerID]);
+
+        // Fetching as objects of Payment class
+        $payments = $stmt->fetchAll(\PDO::FETCH_CLASS, 'app\models\Payment');
+
+        // Since FETCH_CLASS will not index the result by bookingID, you will need to re-index if necessary
+        $result = [];
+        foreach ($payments as $payment) {
+            $result[$payment->bookingID] = $payment;
+        }
+        return $result;
     }
 }

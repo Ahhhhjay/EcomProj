@@ -191,8 +191,10 @@
         </dl>
 
         <div>
-            <button onclick="location.href='/Customer/update'" class="modify-btn"><?= __('Update my profile') ?></button>
-            <button onclick="location.href='/Customer/delete';" class="delete-btn"><?= __('Delete my profile') ?></button>
+            <button onclick="location.href='/Customer/update'"
+                class="modify-btn"><?= __('Update my profile') ?></button>
+            <button onclick="location.href='/Customer/delete';"
+                class="delete-btn"><?= __('Delete my profile') ?></button>
             <button onclick="location.href='/'" class="main-btn"><?= __('Return to main') ?></button>
         </div>
 
@@ -222,8 +224,10 @@
                         <td><?= htmlspecialchars($booking->frequency) ?></td>
                         <td><?= htmlspecialchars($booking->status) ?></td>
                         <td class="actions">
-                            <button onclick="location.href='/Booking/modify/<?= $booking->bookingID ?>'" class="edit-btn"><?= __('Edit') ?></button>
-                            <button onclick="location.href='/Booking/delete/<?= $booking->bookingID ?>';" class="delete-btn"><?= __('Delete') ?></button>
+                            <button onclick="location.href='/Booking/modify/<?= $booking->bookingID ?>'"
+                                class="edit-btn"><?= __('Edit') ?></button>
+                            <button onclick="location.href='/Booking/delete/<?= $booking->bookingID ?>';"
+                                class="delete-btn"><?= __('Delete') ?></button>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -231,11 +235,13 @@
         </table>
 
     </main>
-    <footer style="background-color: #89CFF0; color: white; padding: 20px 0; font-family: 'Roboto', sans-serif; padding-top: 10px;">
+    <footer
+        style="background-color: #89CFF0; color: white; padding: 20px 0; font-family: 'Roboto', sans-serif; padding-top: 10px;">
         <div style="display: flex; justify-content: space-around; align-items: start; flex-wrap: wrap; padding: 0 10%;">
             <div style="flex: 1; min-width: 200px; margin: 10px;">
                 <h3><?= __('MKCleaners MTL') ?></h3>
-                <p><?= __('Discover our cleaning company, where your home is your best friend! Enjoy a spotless home without lifting a finger!') ?></p>
+                <p><?= __('Discover our cleaning company, where your home is your best friend! Enjoy a spotless home without lifting a finger!') ?>
+                </p>
             </div>
             <div style="flex: 1; min-width: 250px; margin: 10px;">
                 <h3><?= __('Contact info.') ?></h3>

@@ -147,7 +147,7 @@
             <dt><?= __('Category:') ?></dt>
             <dd><?= htmlspecialchars($booking->Category) ?></dd>
             <dt><?= __('Price:') ?></dt>
-            <dd><?= htmlspecialchars('$'.$booking->ratePerSquareFoot) ?></dd>
+            <dd><?= htmlspecialchars('$'.$payment->total_price) ?></dd>
         </dl>
 
         <h2><?= __('Payment Details') ?></h2>

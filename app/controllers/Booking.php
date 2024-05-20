@@ -28,8 +28,7 @@ class Booking extends \app\core\Controller
                 'category' => $_POST['category'],
                 'area' => $_POST['area'],
                 'message' => $_POST['frequencyMessage'] ?? null,
-                'promoCode' => $_POST['promoCode'] ?? null,
-                
+                'promoCode' => $_POST['promoCode'] ?? null,               
             ];
 
             if ($bookingData['category'] == 'Commercial') {

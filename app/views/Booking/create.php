@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         integrity="sha512-34NcOtnLZVfE7CjMlax4KbtvNNgz51oBwkzKQzIof6qBMXaQjJt+VcckF3gkmhPLPV1aMmAwOeq3XGAnK57VDw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -150,6 +150,7 @@
     <header>
         <img src="/Images/MKCleaningLogo.png" alt="<?= __('CleanIt Logo') ?>">
     </header>
+
     <nav>
         <a href="/"><?= __('Home') ?></a>
         <a href="/About_Us/"><?= __('About Us') ?></a>
@@ -163,6 +164,7 @@
             <button onclick="location.href='/Customer/register'"><?= __('Sign Up') ?></button>
         <?php endif; ?>
     </nav>
+
     <main>
         <form action="/Booking/create" method="post">
             <h1><?= __('Book Your Cleaning Service') ?></h1>
@@ -182,7 +184,7 @@
                 <input type="radio" id="residential" name="category" value="Residential" checked>
             </div><br>
 
-            
+
 
             <label for="bookingDate"><?= __('Booking Date:') ?></label>
             <input type="date" id="bookingDate" name="bookingDate" required>
@@ -198,14 +200,15 @@
                 <option value="Bi-Weekly"><?= __('Bi-Weekly') ?></option>
                 <option value="Monthly"><?= __('Monthly') ?></option>
             </select>
-            <textarea id="frequencyMessage" name="frequencyMessage" rows="3"
-                placeholder=<?= __('Please confirm your availability for all scheduled dates."')?>></textarea>
+            <textarea id="frequencyMessage" name="frequencyMessage" rows="3" placeholder=<?= __('Please confirm your availability for all scheduled dates."') ?>></textarea>
 
             <input type="submit" value="<?= __('Proceed to Payment') ?>" name="submit">
             <button id="cancel" onclick="location.href='/'"><?= __('Cancel') ?></button>
         </form>
     </main>
-    <footer style="background-color: #89CFF0; color: white; padding: 20px 0; font-family: 'Roboto', sans-serif; padding-top: 10px;">
+
+    <footer
+        style="background-color: #89CFF0; color: white; padding: 20px 0; font-family: 'Roboto', sans-serif; padding-top: 10px;">
         <div style="display: flex; justify-content: space-around; align-items: start; flex-wrap: wrap; padding: 0 10%;">
             <div style="flex: 1; min-width: 200px; margin: 10px;">
                 <h3><?= __('MKCleaners MTL') ?></h3>
@@ -220,9 +223,10 @@
             </div>
         </div>
         <div style="text-align: center; padding-top: 20px;">
-        <?=__('&copy; 2024 All Rights Reserved')?>
+            <?= __('&copy; 2024 All Rights Reserved') ?>
         </div>
     </footer>
+
     <script>
         document.getElementById('frequency').addEventListener('change', function () {
             var textarea = document.getElementById('frequencyMessage');
@@ -236,7 +240,7 @@
         document.addEventListener('DOMContentLoaded', function () {
             var today = new Date();
             var day = String(today.getDate()).padStart(2, '0');
-            var month = String(today.getMonth() + 1).padStart(2, '0'); 
+            var month = String(today.getMonth() + 1).padStart(2, '0');
             var year = today.getFullYear();
             var todayDate = year + '-' + month + '-' + day;
 

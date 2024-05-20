@@ -54,7 +54,7 @@ class Promotions extends \app\core\Model
 
     public function getByCode($code)
     {
-        $SQL = 'SELECT discountRate
+        $SQL = 'SELECT *
                 FROM Promotions 
                 WHERE code = :code';
         $STMT = self::$_conn->prepare($SQL);
