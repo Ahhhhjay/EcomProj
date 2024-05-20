@@ -46,31 +46,20 @@ class Customer extends \app\core\Controller
 
     public function login()
     {
-        //show the login form and log the user in
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            //log the user in... if the password is right
-            //get the user from the database
             $Email = $_POST['Email'];
-
-         
             $passwordHash = $_POST['passwordHash'];
+
             $customer = new \app\models\Customer();
             $customer = $customer->get($Email);
-            if ($Email == "admin@gmail.com" && $passwordHash == "password1234" ) {
-                //remember that this is the user logging in...
-                
 
+            if ($Email == "admin@gmail.com" && password_verify($passwordHash, $customer->passwordHash)) {
                 header('location:/Admin/');
-               
-            }
-           
-            //check the password against the hash
-            else if($Email && password_verify($passwordHash, $customer->passwordHash)) {
-                //remember that this is the user logging in...
+            } else if ($Email && password_verify($passwordHash, $customer->passwordHash)) {
                 $_SESSION['customerID'] = $customer->customerID;
 
                 header('Location:/');
-                
+
             } else {
                 header('Location:/Customer/login');
             }
@@ -132,20 +121,21 @@ class Customer extends \app\core\Controller
         }
     }
 
-    public function adminIndex() {
+    public function adminIndex()
+    {
         $customerModel = new \app\models\Customer();
-    
+
         $allCustomers = $customerModel->getAll();
-    
+
         if (!empty($_GET)) {
-            $allCustomers = array_filter($allCustomers, function($customer) {
-                return (empty($_GET['firstName']) || stripos($customer['firstName'], $_GET['firstName']) !== false)
-                    && (empty($_GET['lastName']) || stripos($customer['lastName'], $_GET['lastName']) !== false)
-                    && (empty($_GET['email']) || stripos($customer['Email'], $_GET['email']) !== false)
-                    && (empty($_GET['contactNumber']) || stripos($customer['contactNumber'], $_GET['contactNumber']) !== false);
+            $allCustomers = array_filter($allCustomers, function ($customer) {
+                return (empty ($_GET['firstName']) || stripos($customer['firstName'], $_GET['firstName']) !== false)
+                    && (empty ($_GET['lastName']) || stripos($customer['lastName'], $_GET['lastName']) !== false)
+                    && (empty ($_GET['email']) || stripos($customer['Email'], $_GET['email']) !== false)
+                    && (empty ($_GET['contactNumber']) || stripos($customer['contactNumber'], $_GET['contactNumber']) !== false);
             });
         }
-    
+
         $this->view('Customer/adminIndex', $allCustomers);
     }
 

@@ -105,6 +105,7 @@
         tbody td:nth-child(4) {
             text-align: left;
         }
+
         nav {
             background-color: #ffffff;
             text-align: center;
@@ -152,7 +153,7 @@
         <a href="/Customer/adminIndex"><?= __('Customers') ?></a>
         <a href="/Promotions/index"><?= __('Promotions') ?></a>
         <a href="/Reviews/adminIndex"><?= __('Reviews') ?></a>
-        <button onclick="location.href='/Customer/login'"><?= __('Logout') ?></button>
+        <button onclick="location.href='/Customer/logout'"><?= __('Logout') ?></button>
 
     </nav>
     <main>
@@ -171,7 +172,7 @@
                     <th><?= __('Last Name') ?></th>
                     <th><?= __('Email') ?></th>
                     <th><?= __('Contact number') ?></th>
-                   
+
                 </tr>
             </thead>
 
@@ -185,8 +186,7 @@
                         <td>
                             <button onclick="location.href='/Admin/customerModify/<?= $customer['customerID'] ?>'"
                                 style="margin-right: 5px; padding: 5px 10px; background-color: #4CAF50; color: white; border: none; border-radius: 4px;"><?= __('Edit') ?></button>
-                            <button
-                                onclick="location.href='/Admin/customerDelete/<?= $customer['customerID'] ?>';"
+                            <button onclick="location.href='/Admin/customerDelete/<?= $customer['customerID'] ?>';"
                                 style="padding: 5px 10px; background-color: #f44336; color: white; border: none; border-radius: 4px;"><?= __('Delete') ?></button>
                         </td>
                     </tr>

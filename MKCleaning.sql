@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 17, 2024 at 11:29 AM
+-- Generation Time: May 20, 2024 at 05:24 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -22,6 +22,7 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `MKCleaning` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `MKCleaning`;
+
 -- --------------------------------------------------------
 
 --
@@ -43,15 +44,6 @@ CREATE TABLE `Booking` (
   `message` text DEFAULT NULL,
   `promoCode` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `Booking`
---
-
-INSERT INTO `Booking` (`bookingID`, `customerID`, `bookingDate`, `bookingTime`, `Status`, `Frequency`, `description`, `basePrice`, `ratePerSquareFoot`, `Category`, `dateBooked`, `message`, `promoCode`) VALUES
-(30, 3, '2024-05-18', '12:00:00', 'Scheduled', 'One-time', 'clean house', 100, 315.00, 'Residential', '2024-05-17 07:45:54', '', NULL),
-(31, 3, '2024-05-18', '22:00:00', 'Scheduled', 'One-time', 'deep clean', 100, 393.75, 'Residential', '2024-05-17 08:52:39', '', NULL),
-(32, 3, '2024-05-18', '06:00:00', 'Scheduled', 'One-time', 'clean house', 100, 315.00, 'Residential', '2024-05-17 09:18:36', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -85,8 +77,7 @@ CREATE TABLE `Customer` (
 --
 
 INSERT INTO `Customer` (`customerID`, `firstName`, `lastName`, `Email`, `contactNumber`, `passwordHash`, `Address`) VALUES
-(2, 'adryan', 'De Vera', 'adryannayrda2319@gmail.com', '514-111-1111', '$2y$10$Bqn0vrT/Q7jmLWiG9r.P4OaFbwW7JuHA7/C9lxF99Zrnbg7IWRxh6', '2000 Van Horne'),
-(3, 'Ralph', 'Bantillo', 'ralphbantillo@gmail.com', '438-922-1772', '$2y$10$EYlkX3g8izaIKS2Dl.zu2OfnHREFPSWiIrDEZQjBE4Gvz/AgBHXjC', '4A Rue Hadley');
+(1, 'admin', 'admin', 'admin@gmail.com', '111-111-1111', '$2y$10$UyHuMwqi4fTED9x.JwKy3.hgCs9r14WKFlQXllr6o1XmSViuwq.3i', 'null');
 
 -- --------------------------------------------------------
 
@@ -98,6 +89,7 @@ CREATE TABLE `Payment` (
   `paymentID` int(11) NOT NULL,
   `bookingID` int(11) NOT NULL,
   `customerID` int(11) NOT NULL,
+  `total_price` decimal(11,2) NOT NULL,
   `cardName` varchar(255) NOT NULL,
   `cardNumber` text NOT NULL,
   `expirationDate` date NOT NULL,
@@ -105,15 +97,6 @@ CREATE TABLE `Payment` (
   `billingAddress` varchar(255) NOT NULL,
   `paymentDate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `Payment`
---
-
-INSERT INTO `Payment` (`paymentID`, `bookingID`, `customerID`, `cardName`, `cardNumber`, `expirationDate`, `postalCode`, `billingAddress`, `paymentDate`) VALUES
-(12, 30, 3, 'Ralph', '1234123412341234', '2025-05-17', 'H9B 2B7', '4A Rue Hadley', '2024-05-17 07:45:54'),
-(13, 31, 3, 'Ralph', '1234123412341234', '2025-05-17', 'H9B 2B7', '4A Rue Hadley', '2024-05-17 08:52:39'),
-(14, 32, 3, 'Ralph', '1234123412341234', '2025-05-17', 'H9B 2B7', '4A Rue Hadley', '2024-05-17 09:18:36');
 
 -- --------------------------------------------------------
 
@@ -130,13 +113,6 @@ CREATE TABLE `Promotions` (
   `validTo` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `Promotions`
---
-
-INSERT INTO `Promotions` (`promotionID`, `description`, `code`, `discountRate`, `validFrom`, `validTo`) VALUES
-(313, 'Summer2024', 'Sun24', 25.00, '2024-05-21', '2024-08-31');
-
 -- --------------------------------------------------------
 
 --
@@ -150,13 +126,6 @@ CREATE TABLE `Reviews` (
   `text` text NOT NULL,
   `datePosted` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `Reviews`
---
-
-INSERT INTO `Reviews` (`reviewID`, `customerID`, `rating`, `text`, `datePosted`) VALUES
-(11, 3, 5, 'very nice', '2024-05-17 08:44:53');
 
 --
 -- Indexes for dumped tables
@@ -211,31 +180,31 @@ ALTER TABLE `Reviews`
 -- AUTO_INCREMENT for table `Booking`
 --
 ALTER TABLE `Booking`
-  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `Customer`
 --
 ALTER TABLE `Customer`
-  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `Payment`
 --
 ALTER TABLE `Payment`
-  MODIFY `paymentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `paymentID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `Promotions`
 --
 ALTER TABLE `Promotions`
-  MODIFY `promotionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=314;
+  MODIFY `promotionID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `Reviews`
 --
 ALTER TABLE `Reviews`
-  MODIFY `reviewID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `reviewID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
