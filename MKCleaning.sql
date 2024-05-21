@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 20, 2024 at 05:24 PM
+-- Generation Time: May 21, 2024 at 07:45 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -71,13 +71,6 @@ CREATE TABLE `Customer` (
   `passwordHash` varchar(255) NOT NULL,
   `Address` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `Customer`
---
-
-INSERT INTO `Customer` (`customerID`, `firstName`, `lastName`, `Email`, `contactNumber`, `passwordHash`, `Address`) VALUES
-(1, 'admin', 'admin', 'admin@gmail.com', '111-111-1111', '$2y$10$UyHuMwqi4fTED9x.JwKy3.hgCs9r14WKFlQXllr6o1XmSViuwq.3i', 'null');
 
 -- --------------------------------------------------------
 
@@ -186,7 +179,7 @@ ALTER TABLE `Booking`
 -- AUTO_INCREMENT for table `Customer`
 --
 ALTER TABLE `Customer`
-  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `Payment`
