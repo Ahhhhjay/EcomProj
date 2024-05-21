@@ -121,16 +121,26 @@
     <img src="/Images/MKCleaningLogo.png" alt="<?= __('CleanIt Logo') ?>">
     </header>
     <nav>
-        <a href="/"><?= __('Home') ?></a>
-        <a href="/About_Us/"><?= __('About Us') ?></a>
-        <a href="/Promotions/"><?= __('Promotions') ?></a>
-        <a href="/Reviews/"><?= __('Leave a Review') ?></a>
-        <a href="/Customer/"><?= __('My Profile') ?></a>
+        <a href="/<?= isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en' ?>"><?= __('Home') ?></a>
+        <a
+            href="/About_Us/<?= isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en' ?>"><?= __('About Us') ?></a>
+        <a
+            href="/Promotions/<?= isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en' ?>"><?= __('Promotions') ?></a>
+        <a
+            href="/Reviews/<?= isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en' ?>"><?= __('Leave a Review') ?></a>
+        <a
+            href="/Customer/<?= isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en' ?>"><?= __('My Profile') ?></a>
         <?php if (isset($_SESSION['customerID'])): ?>
             <button onclick="location.href='/Customer/logout'"><?= __('Logout') ?></button>
         <?php else: ?>
             <button onclick="location.href='/Customer/login'"><?= __('Login') ?></button>
             <button onclick="location.href='/Customer/register'"><?= __('Sign Up') ?></button>
+        <?php endif; ?>
+        <!-- Language selection buttons -->
+        <?php if (isset($_GET['lang']) && $_GET['lang'] === 'fr'): ?>
+            <button onclick="location.href='/?lang=en'">English</button>
+        <?php else: ?>
+            <button onclick="location.href='/?lang=fr'">Français</button>
         <?php endif; ?>
     </nav>
     <main>

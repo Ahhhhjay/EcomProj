@@ -196,7 +196,7 @@
 
     <main>
         <h1><?= __('Customer Reviews') ?></h1>
-        <a href="/Reviews/create" class="create-review-button"><?= __('Post a Review') ?></a>
+        <a href="/Reviews/create<?= isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en' ?>" class="create-review-button"><?= __('Post a Review') ?></a>
         <section id="reviews">
             <?php if (empty($data['reviews'])): ?>
                 <p><?= __('No reviews at the moment.') ?></p>

@@ -105,6 +105,7 @@
         tbody td:nth-child(4) {
             text-align: left;
         }
+
         nav {
             background-color: #ffffff;
             text-align: center;
@@ -145,7 +146,7 @@
 
 <body>
     <header>
-        <!-- Optional Header Content -->
+        <h1><?= __('Promotions') ?></h1>
     </header>
     <nav>
         <a href="/Admin/"><?= __('Bookings') ?></a>
@@ -155,46 +156,49 @@
         <button onclick="location.href='/Customer/login'"><?= __('Logout') ?></button>
     </nav>
     <main>
-    <h2><?= __('Promotions') ?></h2>
-    <table style="width: 100%; border-collapse: collapse;">
-        <thead>
-            <tr style="background-color: #f2f2f2;">
-                <th><?= __('Promotion Description') ?></th>
-                <th><?= __('Promotion Code') ?></th>
-                <th><?= __('Discount Rate') ?></th>
-                <th><?= __('Valid From') ?></th>
-                <th><?= __('End Date') ?></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php if (!empty($promotions)): ?>
-                <?php foreach ($promotions as $promotion): ?>
+        <h2><?= __('Promotions') ?></h2>
+        <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr style="background-color: #f2f2f2;">
+                    <th><?= __('Promotion Description') ?></th>
+                    <th><?= __('Promotion Code') ?></th>
+                    <th><?= __('Discount Rate') ?></th>
+                    <th><?= __('Valid From') ?></th>
+                    <th><?= __('End Date') ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (!empty($promotions)): ?>
+                    <?php foreach ($promotions as $promotion): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($promotion['description']) ?></td>
+                            <td><?= htmlspecialchars($promotion['code']) ?></td>
+                            <td><?= htmlspecialchars($promotion['discountRate']) ?></td>
+                            <td><?= htmlspecialchars($promotion['validFrom']) ?></td>
+                            <td><?= htmlspecialchars($promotion['validTo']) ?></td>
+                            <td>
+                                <button onclick="location.href='/Promotions/modify/<?= $promotion['promotionID'] ?>'"
+                                    style="margin-right: 5px; padding: 5px 10px; background-color: #4CAF50; color: white; border: none; border-radius: 4px;"><?= __('Edit') ?></button>
+                                <button onclick="location.href='/Promotions/delete/<?= $promotion['promotionID'] ?>';"
+                                    style="padding: 5px 10px; background-color: #f44336; color: white; border: none; border-radius: 4px;"><?= __('Delete') ?></button>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
                     <tr>
-                        <td><?= htmlspecialchars($promotion['description']) ?></td>
-                        <td><?= htmlspecialchars($promotion['code']) ?></td>
-                        <td><?= htmlspecialchars($promotion['discountRate']) ?></td>
-                        <td><?= htmlspecialchars($promotion['validFrom']) ?></td>
-                        <td><?= htmlspecialchars($promotion['validTo']) ?></td>
-                        <td>
-                            <button onclick="location.href='/Promotions/modify/<?= $promotion['promotionID'] ?>'"
-                                style="margin-right: 5px; padding: 5px 10px; background-color: #4CAF50; color: white; border: none; border-radius: 4px;"><?= __('Edit') ?></button>
-                            <button
-                                onclick="location.href='/Promotions/delete/<?= $promotion['promotionID'] ?>';"
-                                style="padding: 5px 10px; background-color: #f44336; color: white; border: none; border-radius: 4px;"><?= __('Delete') ?></button>
-                        </td>
+                        <td colspan="4"><?= __('No promotions available') ?>.</td>
                     </tr>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <tr><td colspan="4"><?=__('No promotions available')?>.</td></tr>
-            <?php endif; ?>
-        </tbody>
-    </table>
-    
-    <a href="/Promotions/create" style="padding: 5px 10px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; display: block; width: max-content; margin: 10px auto; text-align: center;">Create Promotion</a>
-</main>
-<footer>
-    <?= __('&copy; 2024 All Rights Reserved | Totally not fake website') ?>
-</footer>
+                <?php endif; ?>
+            </tbody>
+        </table>
+
+        <a href="/Promotions/create"
+            style="padding: 5px 10px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; display: block; width: max-content; margin: 10px auto; text-align: center;">Create
+            Promotion</a>
+    </main>
+    <footer>
+        <?= __('&copy; 2024 All Rights Reserved | Totally not fake website') ?>
+    </footer>
 </body>
 
 </html>

@@ -41,7 +41,7 @@ class App
                 return [$controllerMethod, $namedParams];
             }
         }
-        return false;
+        return ['Home,index', []];
     }
 
     function filtered($controllerInstance, $method)

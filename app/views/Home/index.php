@@ -144,7 +144,7 @@
     <header>
         <img src="/Images/MKCleaningLogo.png" alt="<?= __('CleanIt Logo') ?>">
     </header>
-    
+
     <nav>
         <a href="/<?= isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en' ?>"><?= __('Home') ?></a>
         <a
@@ -156,10 +156,13 @@
         <a
             href="/Customer/<?= isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en' ?>"><?= __('My Profile') ?></a>
         <?php if (isset($_SESSION['customerID'])): ?>
-            <button onclick="location.href='/Customer/logout'"><?= __('Logout') ?></button>
+            <button
+                onclick="location.href='/Customer/logout<?= isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en' ?>'"><?= __('Logout') ?></button>
         <?php else: ?>
-            <button onclick="location.href='/Customer/login'"><?= __('Login') ?></button>
-            <button onclick="location.href='/Customer/register'"><?= __('Sign Up') ?></button>
+            <button
+                onclick="location.href='/Customer/login<?= isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en' ?>'"><?= __('Login') ?></button>
+            <button
+                onclick="location.href='/Customer/register<?= isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en' ?>'"><?= __('Sign Up') ?></button>
         <?php endif; ?>
         <!-- Language selection buttons -->
         <?php if (isset($_GET['lang']) && $_GET['lang'] === 'fr'): ?>
@@ -171,7 +174,8 @@
 
     <main>
         <h1><?= __('Welcome to MKCleaners MTL!') ?></h1>
-        <a href="/Booking/create" class="book-now"><?= __('Book Now') ?></a>
+        <a href="/Booking/create<?= isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en' ?>"
+            class="book-now"><?= __('Book Now') ?></a>
 
         <section id="about-us" style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px; padding: 20px;">
             <div style="flex: 1; min-width: 300px;">

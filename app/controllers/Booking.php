@@ -12,11 +12,14 @@ class Booking extends \app\core\Controller
      */
     public function create()
     {
+        $langParam = isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en';
+
         if (!isset($_SESSION['customerID'])) {
-            header('Location: /Customer/login');
+            header('Location: /Customer/login' . $langParam);
             exit;
         }
-        
+
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $bookingData = [
                 'customerID' => $_SESSION['customerID'],
@@ -28,7 +31,7 @@ class Booking extends \app\core\Controller
                 'category' => $_POST['category'],
                 'area' => $_POST['area'],
                 'message' => $_POST['frequencyMessage'] ?? null,
-                'promoCode' => $_POST['promoCode'] ?? null,               
+                'promoCode' => $_POST['promoCode'] ?? null,
             ];
 
             if ($bookingData['category'] == 'Commercial') {
@@ -57,7 +60,7 @@ class Booking extends \app\core\Controller
             $_SESSION['bookingData'] = $bookingData;
 
             // Redirect to Payment/create
-            header('Location: /Promotions/apply');
+            header('Location: /Promotions/apply' . $langParam);
             exit();
         } else {
             $this->view('Booking/create');
@@ -86,6 +89,8 @@ class Booking extends \app\core\Controller
 
     public function delete($bookingID)
     {
+        $langParam = isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en';
+
         $paymentModel = new \app\models\Payment();
         $bookingModel = new \app\models\Booking();
 
@@ -97,14 +102,15 @@ class Booking extends \app\core\Controller
             $bookingModel->delete($bookingID);
 
             unset($_SESSION['bookingID']);
-            header('Location:/');
+            header('Location:/' . $langParam);
         } else {
             $booking = $bookingModel->getForBooking($bookingID);
             $this->view('Booking/delete', ['booking' => $booking]);
         }
     }
 
-    public function applyPromoCode() {
+    public function applyPromoCode()
+    {
         if (!isset($_POST['promoCode']) || !isset($_SESSION['bookingData'])) {
             return $this->render('error'); // Simplified error handling
         }
@@ -136,6 +142,8 @@ class Booking extends \app\core\Controller
     // Modifies an existing booking
     public function modify($bookingID)
     {
+        $langParam = isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en';
+
         $bookingModel = new \app\models\Booking();
         $detailedBooking = $bookingModel->getForBooking($bookingID);
 
@@ -147,7 +155,7 @@ class Booking extends \app\core\Controller
             $detailedBooking->message = $_POST['frequencyMessage'] ?? null;
             $detailedBooking->update();
 
-            header('Location: /Booking/complete/' . $detailedBooking->bookingID);
+            header('Location: /Booking/complete/' . $detailedBooking->bookingID . $langParam);
             exit;
         } else {
             $this->view('Booking/modify', ['data' => $detailedBooking]);  // Pass booking data to view

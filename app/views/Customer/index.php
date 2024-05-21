@@ -188,6 +188,7 @@
             <button onclick="location.href='/?lang=fr'">Français</button>
         <?php endif; ?>
     </nav>
+    
     <main>
         <dl>
             <dt><?= __('First name:') ?></dt>

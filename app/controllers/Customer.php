@@ -9,8 +9,10 @@ class Customer extends \app\core\Controller
 {
     public function index()
     {
+        $langParam = isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en';
+
         if (!isset($_SESSION['customerID'])) {
-            header('Location: /Customer/login');
+            header('Location: /Customer/login' . $langParam);
             exit();
         }
 
@@ -35,6 +37,8 @@ class Customer extends \app\core\Controller
 
     public function register()
     {
+        $langParam = isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en';
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $customer = new \app\models\Customer();
 
@@ -47,7 +51,7 @@ class Customer extends \app\core\Controller
 
             $customer->insert();
 
-            header('Location:/Customer/login');
+            header('Location:/Customer/login' . $langParam);
         } else {
             $this->view('Customer/register');
         }
@@ -55,6 +59,8 @@ class Customer extends \app\core\Controller
 
     public function login()
     {
+        $langParam = isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en';
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $Email = $_POST['Email'];
             $passwordHash = $_POST['passwordHash'];
@@ -63,14 +69,14 @@ class Customer extends \app\core\Controller
             $customer = $customer->get($Email);
 
             if ($Email == "admin@gmail.com" && $passwordHash == "admin") {
-                header('location:/Admin/');
+                header('location:/Admin/' . $langParam);
             } else if ($Email && password_verify($passwordHash, $customer->passwordHash)) {
                 $_SESSION['customerID'] = $customer->customerID;
 
-                header('Location:/');
+                header('Location:/' . $langParam);
 
             } else {
-                header('Location:/Customer/login');
+                header('Location:/Customer/login' .$langParam);
             }
         } else {
             $this->view('Customer/login');
@@ -79,20 +85,23 @@ class Customer extends \app\core\Controller
 
     public function logout()
     {
+        $langParam = isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en';
+
         session_destroy();
 
-        header('Location:/');
+        header('Location:/' . $langParam);
     }
 
     public function delete()
     {
+        $langParam = isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en';
 
         $customer = new \app\models\Customer();
         $customer = $customer->getById($_SESSION['customerID']);
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $customer->delete();
             unset($_SESSION['customerID']);
-            header('Location:/');
+            header('Location:/' . $langParam);
         } else {
             $this->view('Customer/delete', $customer);
         }
@@ -102,8 +111,10 @@ class Customer extends \app\core\Controller
     // Additional controller methods can be added here for other operations like updating, retrieving, or listing customers
     public function update()
     {
+        $langParam = isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en';
+
         if (!isset($_SESSION['customerID'])) {
-            header('Location: /Customer/login');
+            header('Location: /Customer/login' . $langParam);
             exit;
         }
 
@@ -123,7 +134,7 @@ class Customer extends \app\core\Controller
             }
 
             $customer->update();
-            header('Location: /Customer/'); // Redirect to a profile page or other appropriate Location
+            header('Location: /Customer/' . $langParam); // Redirect to a profile page or other appropriate Location
             exit;
         } else {
             $this->view('Customer/update', $customer);
