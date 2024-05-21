@@ -254,7 +254,8 @@
 
             </section>
             <input type="submit" value="<?= __('Submit Payment') ?>">
-            <button class="form" onclick="window.location.href='?action=cancel'" type="button"><?= __('Cancel') ?></button>
+            <button class="form" onclick="window.location.href='?action=cancel'"
+                type="button"><?= __('Cancel') ?></button>
         </form>
     </main>
     <footer

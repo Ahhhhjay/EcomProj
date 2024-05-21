@@ -1,1 +1,1 @@
-/opt/lampp/bin/xgettext "$@"
+/opt/lampp/bin/xgettext "$@" 

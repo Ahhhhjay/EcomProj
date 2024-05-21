@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -170,16 +171,26 @@
     </header>
 
     <nav>
-    <a href="/"><?= __('Home') ?></a>
-        <a href="/About_Us/"><?= __('About Us') ?></a>
-        <a href="/Promotions/"><?= __('Promotions') ?></a>
-        <a href="/Reviews/"><?= __('Leave a Review') ?></a>
-        <a href="/Customer/"><?= __('My Profile') ?></a>
+        <a href="/<?= isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en' ?>"><?= __('Home') ?></a>
+        <a
+            href="/About_Us/<?= isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en' ?>"><?= __('About Us') ?></a>
+        <a
+            href="/Promotions/<?= isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en' ?>"><?= __('Promotions') ?></a>
+        <a
+            href="/Reviews/<?= isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en' ?>"><?= __('Leave a Review') ?></a>
+        <a
+            href="/Customer/<?= isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en' ?>"><?= __('My Profile') ?></a>
         <?php if (isset($_SESSION['customerID'])): ?>
             <button onclick="location.href='/Customer/logout'"><?= __('Logout') ?></button>
         <?php else: ?>
             <button onclick="location.href='/Customer/login'"><?= __('Login') ?></button>
             <button onclick="location.href='/Customer/register'"><?= __('Sign Up') ?></button>
+        <?php endif; ?>
+        <!-- Language selection buttons -->
+        <?php if (isset($_GET['lang']) && $_GET['lang'] === 'fr'): ?>
+            <button onclick="location.href='/?lang=en'">English</button>
+        <?php else: ?>
+            <button onclick="location.href='/?lang=fr'">Français</button>
         <?php endif; ?>
     </nav>
 
@@ -189,7 +200,7 @@
         <section id="reviews">
             <?php if (empty($data['reviews'])): ?>
                 <p><?= __('No reviews at the moment.') ?></p>
-                
+
             <?php else: ?>
                 <?php foreach ($data['reviews'] as $review): ?>
                     <div class="review-item">
@@ -204,7 +215,7 @@
                         <p><?= nl2br(htmlspecialchars($review->text)) ?></p>
 
                         <small><?= __('Posted on:') ?>         <?= htmlspecialchars($review->datePosted) ?></small>
-                        
+
                         <?php if (isset($_SESSION['customerID']) && $_SESSION['customerID'] == $review->customerID): ?>
                             <a href="/Reviews/edit/<?= $review->reviewID ?>" class="button edit-button"><?= __('Edit') ?></a>
                             <a href="/Reviews/delete/<?= $review->reviewID ?>" class="button delete-button"><?= __('Delete') ?></a>

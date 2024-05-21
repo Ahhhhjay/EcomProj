@@ -158,47 +158,63 @@
     <header>
         <img src="/Images/MKCleaningLogo.png" alt="<?= __('CleanIt Logo') ?>">
     </header>
+
     <nav>
-    <a href="/"><?= __('Home') ?></a>
-        <a href="/About_Us/"><?= __('About Us') ?></a>
-        <a href="/Promotions/"><?= __('Promotions') ?></a>
-        <a href="/Reviews/"><?= __('Leave a Review') ?></a>
-        <a href="/Customer/"><?= __('My Profile') ?></a>
+        <a href="/<?= isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en' ?>"><?= __('Home') ?></a>
+        <a
+            href="/About_Us/<?= isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en' ?>"><?= __('About Us') ?></a>
+        <a
+            href="/Promotions/<?= isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en' ?>"><?= __('Promotions') ?></a>
+        <a
+            href="/Reviews/<?= isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en' ?>"><?= __('Leave a Review') ?></a>
+        <a
+            href="/Customer/<?= isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en' ?>"><?= __('My Profile') ?></a>
         <?php if (isset($_SESSION['customerID'])): ?>
             <button onclick="location.href='/Customer/logout'"><?= __('Logout') ?></button>
         <?php else: ?>
             <button onclick="location.href='/Customer/login'"><?= __('Login') ?></button>
             <button onclick="location.href='/Customer/register'"><?= __('Sign Up') ?></button>
         <?php endif; ?>
+        <!-- Language selection buttons -->
+        <?php if (isset($_GET['lang']) && $_GET['lang'] === 'fr'): ?>
+            <button onclick="location.href='/?lang=en'">English</button>
+        <?php else: ?>
+            <button onclick="location.href='/?lang=fr'">Français</button>
+        <?php endif; ?>
     </nav>
 
     <main>
         <section class="content-section">
-            <h2><?=__('Who We Are')?></h2>
-            <p><?=__('At MKCleaners MTL, we are dedicated to providing top-notch home cleaning services. Our team is committed to ensuring every corner of your home sparkles, using eco-friendly cleaning solutions that are safe for your family and pets.') ?></p>
+            <h2><?= __('Who We Are') ?></h2>
+            <p><?= __('At MKCleaners MTL, we are dedicated to providing top-notch home cleaning services. Our team is committed to ensuring every corner of your home sparkles, using eco-friendly cleaning solutions that are safe for your family and pets.') ?>
+            </p>
         </section>
         <section class="content-section">
-            <h2><?=__('Booking information')?></h2>
-            <p><?=__('At MKCleaners MTL, all cleaning sessions are scheduled in two-hour intervals, ensuring each part of your home receives the attention it needs.If you require adjustments to the scheduling or have specific requirements, please do not hesitate to reach out to us for further information. We are here to accommodate your unique needs and ensure your satisfaction.')?></p>
+            <h2><?= __('Booking information') ?></h2>
+            <p><?= __('At MKCleaners MTL, all cleaning sessions are scheduled in two-hour intervals, ensuring each part of your home receives the attention it needs.If you require adjustments to the scheduling or have specific requirements, please do not hesitate to reach out to us for further information. We are here to accommodate your unique needs and ensure your satisfaction.') ?>
+            </p>
         </section>
         <section class="content-section">
-            <h2><?=__('Our Mission')?></h2>
-            <p><?=__('Our mission is to improve the quality of life for our customers by delivering exceptional cleaning and customer service. We aim to create clean, healthy, and happy environments through our professional services.')?></p>
+            <h2><?= __('Our Mission') ?></h2>
+            <p><?= __('Our mission is to improve the quality of life for our customers by delivering exceptional cleaning and customer service. We aim to create clean, healthy, and happy environments through our professional services.') ?>
+            </p>
         </section>
         <section class="content-section">
-            <h2><?=__('Our Team')?></h2>
-            <p><?=__('Our team consists of experienced and trained professionals who are passionate about cleanliness. We conduct thorough background checks to ensure trustworthy and reliable service for every customer.')?></p>
+            <h2><?= __('Our Team') ?></h2>
+            <p><?= __('Our team consists of experienced and trained professionals who are passionate about cleanliness. We conduct thorough background checks to ensure trustworthy and reliable service for every customer.') ?>
+            </p>
         </section>
         <section class="content-section">
-            <h2><?=__('Contact Us')?></h2>
-            <p><?=__('For bookings or more information:')?></p>
-            <p><?=__('Phone: (514) 799-4881')?></p>
-            <p><?=__('Email: MKCleanersMTL@gmail.com')?></p>
-            <p><?=__('Instagram: @mkcleanersmt')?>l</p>
+            <h2><?= __('Contact Us') ?></h2>
+            <p><?= __('For bookings or more information:') ?></p>
+            <p><?= __('Phone: (514) 799-4881') ?></p>
+            <p><?= __('Email: MKCleanersMTL@gmail.com') ?></p>
+            <p><?= __('Instagram: @mkcleanersmt') ?>l</p>
         </section>
     </main>
 
-    <footer style="background-color: #89CFF0; color: white; padding: 20px 0; font-family: 'Roboto', sans-serif; padding-top: 10px;">
+    <footer
+        style="background-color: #89CFF0; color: white; padding: 20px 0; font-family: 'Roboto', sans-serif; padding-top: 10px;">
         <div style="display: flex; justify-content: space-around; align-items: start; flex-wrap: wrap; padding: 0 10%;">
             <div style="flex: 1; min-width: 200px; margin: 10px;">
                 <h3><?= __('MKCleaners MTL') ?></h3>
@@ -213,7 +229,7 @@
             </div>
         </div>
         <div style="text-align: center; padding-top: 20px;">
-        <?=__('&copy; 2024 All Rights Reserved')?>
+            <?= __('&copy; 2024 All Rights Reserved') ?>
         </div>
     </footer>
 </body>

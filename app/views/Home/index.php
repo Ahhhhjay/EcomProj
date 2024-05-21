@@ -137,40 +137,54 @@
             min-width: 250px;
             max-width: 30%;
         }
-        
     </style>
 </head>
+
 <body>
     <header>
         <img src="/Images/MKCleaningLogo.png" alt="<?= __('CleanIt Logo') ?>">
     </header>
+    
     <nav>
-        <a href="/"><?= __('Home') ?></a>
-        <a href="/About_Us/"><?= __('About Us') ?></a>
-        <a href="/Promotions/"><?= __('Promotions') ?></a>
-        <a href="/Reviews/"><?= __('Leave a Review') ?></a>
-        <a href="/Customer/"><?= __('My Profile') ?></a>
+        <a href="/<?= isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en' ?>"><?= __('Home') ?></a>
+        <a
+            href="/About_Us/<?= isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en' ?>"><?= __('About Us') ?></a>
+        <a
+            href="/Promotions/<?= isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en' ?>"><?= __('Promotions') ?></a>
+        <a
+            href="/Reviews/<?= isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en' ?>"><?= __('Leave a Review') ?></a>
+        <a
+            href="/Customer/<?= isset($_GET['lang']) && $_GET['lang'] === 'fr' ? '?lang=fr' : '?lang=en' ?>"><?= __('My Profile') ?></a>
         <?php if (isset($_SESSION['customerID'])): ?>
             <button onclick="location.href='/Customer/logout'"><?= __('Logout') ?></button>
         <?php else: ?>
             <button onclick="location.href='/Customer/login'"><?= __('Login') ?></button>
             <button onclick="location.href='/Customer/register'"><?= __('Sign Up') ?></button>
         <?php endif; ?>
+        <!-- Language selection buttons -->
+        <?php if (isset($_GET['lang']) && $_GET['lang'] === 'fr'): ?>
+            <button onclick="location.href='/?lang=en'">English</button>
+        <?php else: ?>
+            <button onclick="location.href='/?lang=fr'">Français</button>
+        <?php endif; ?>
     </nav>
+
     <main>
         <h1><?= __('Welcome to MKCleaners MTL!') ?></h1>
         <a href="/Booking/create" class="book-now"><?= __('Book Now') ?></a>
 
         <section id="about-us" style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px; padding: 20px;">
             <div style="flex: 1; min-width: 300px;">
-                <video width="400" height="700" controls style="border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                <video width="400" height="700" controls
+                    style="border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
                     <source src="/Images/cleaning.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
             <div style="flex: 1; min-width: 300px; text-align: left;">
                 <h2 style="margin-bottom: 10px;"><?= __('About Us') ?></h2>
-                <p><?= __('At MKCleaners MTL, we offer comprehensive cleaning services designed to keep your space sparkling clean and hygienic. From residential homes to commercial offices, our team of skilled professionals is equipped to handle all aspects of cleaning with utmost precision and care. We utilize eco-friendly cleaning products and state-of-the-art equipment to deliver exceptional results.') ?></p>
+                <p><?= __('At MKCleaners MTL, we offer comprehensive cleaning services designed to keep your space sparkling clean and hygienic. From residential homes to commercial offices, our team of skilled professionals is equipped to handle all aspects of cleaning with utmost precision and care. We utilize eco-friendly cleaning products and state-of-the-art equipment to deliver exceptional results.') ?>
+                </p>
             </div>
         </section>
         <h2>Reviews</h2>
@@ -191,7 +205,8 @@
             </div>
         </section>
     </main>
-    <footer style="background-color: #89CFF0; color: white; padding: 20px 0; font-family: 'Roboto', sans-serif; padding-top: 10px;">
+    <footer
+        style="background-color: #89CFF0; color: white; padding: 20px 0; font-family: 'Roboto', sans-serif; padding-top: 10px;">
         <div style="display: flex; justify-content: space-around; align-items: start; flex-wrap: wrap; padding: 0 10%;">
             <div style="flex: 1; min-width: 200px; margin: 10px;">
                 <h3><?= __('MKCleaners MTL') ?></h3>
@@ -206,8 +221,9 @@
             </div>
         </div>
         <div style="text-align: center; padding-top: 20px;">
-        <?=__('&copy; 2024 All Rights Reserved')?>
+            <?= __('&copy; 2024 All Rights Reserved') ?>
         </div>
     </footer>
 </body>
+
 </html>

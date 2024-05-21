@@ -1,8 +1,6 @@
 {
     "require-dev": {
-        "codeception/codeception": "^5.1",
-        "codeception/module-phpbrowser": "*",
-        "codeception/module-asserts": "*"
+        "codeception/codeception": "^5.1"
     },
     "require": {
         "symfony/translation": "^7.0"
