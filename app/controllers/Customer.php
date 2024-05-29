@@ -50,6 +50,8 @@ class Customer extends \app\core\Controller
             $customer->Address = $_POST['Address'];
 
             $customer->insert();
+            
+
 
             header('Location:/Customer/login' . $langParam);
         } else {
@@ -68,8 +70,13 @@ class Customer extends \app\core\Controller
             $customer = new \app\models\Customer();
             $customer = $customer->get($Email);
 
-            if ($Email == "admin@gmail.com" && $passwordHash == "admin") {
+            $admin = new \app\models\Admin();
+            $admin = $admin->get($Email);
+
+            //admin login is admin@gmail.com and password is "admin"
+            if ($Email && password_verify($passwordHash, $admin->passwordHash)) {
                 header('location:/Admin/' . $langParam);
+                exit;
             } else if ($Email && password_verify($passwordHash, $customer->passwordHash)) {
                 $_SESSION['customerID'] = $customer->customerID;
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 21, 2024 at 08:17 PM
+-- Generation Time: May 29, 2024 at 08:47 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -22,6 +22,17 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `MKCleaning` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `MKCleaning`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Admin`
+--
+
+CREATE TABLE `Admin` (
+  `admin_id` int(11) NOT NULL,
+  `Email` varchar(255) NOT NULL,
+  `passwordHash` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -166,6 +177,12 @@ INSERT INTO `Reviews` (`reviewID`, `customerID`, `rating`, `text`, `datePosted`)
 --
 
 --
+-- Indexes for table `Admin`
+--
+ALTER TABLE `Admin`
+  ADD PRIMARY KEY (`admin_id`);
+
+--
 -- Indexes for table `Booking`
 --
 ALTER TABLE `Booking`
@@ -209,6 +226,12 @@ ALTER TABLE `Reviews`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `Admin`
+--
+ALTER TABLE `Admin`
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `Booking`
